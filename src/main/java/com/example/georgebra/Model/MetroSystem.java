@@ -218,21 +218,21 @@ public class MetroSystem implements Drawable{
         }
         System.out.println();
         */
-        /*
+        ///*
         for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
         System.out.println();
-        */
-        /*
+        //*/
         //System.out.println(v);
         //System.out.println(stationIndexMap.get(v));
+        /*
         for (int i = 0; i < stationList.size(); i++) {
             for (Pair<Station, Integer> edge: adjListSystem[i]) {
                 System.out.println(i + " " + indexStationMap.get(i) + " -> " + edge.getKey() + " " + edge.getValue());
             }
         }
-        */
+         */
         //TODO END TEST END TEST END TEST END TEST END TEST END TEST END TEST END TEST
 
         //pseudo bfs

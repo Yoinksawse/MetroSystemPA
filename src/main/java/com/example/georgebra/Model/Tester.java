@@ -126,6 +126,47 @@ public class Tester {
     }
 
     public static void testDijkstraAlgorithm() {
+        /*
+        RL1 RL2 2
+RL2 RL1 2
+RL2 RL3 3
+RL3 RL2 4
+RL3 RL4/GL4 2
+RL4/GL4 RL3 2
+RL4/GL4 RL5 4
+RL4/GL4 GL3 2
+RL4/GL4 GL5 3
+RL5 RL4/GL4 4
+RL5 RL6 1
+RL6 RL5 1
+RL6 RL7 3
+RL7 RL6 3
+GL1 GL2/BL5 2
+GL2/BL5 GL1 2
+GL2/BL5 GL3 3
+GL2/BL5 BL4 2
+GL2/BL5 BL6 4
+GL3 GL2/BL5 3
+GL3 RL4/GL4 2
+GL5 RL4/GL4 3
+GL5 GL6 2
+GL6 GL5 2
+GL6 GL7 4
+GL7 GL6 4
+BL1 BL2 3
+BL2 BL1 3
+BL2 BL3 2
+BL3 BL2 2
+BL3 BL4 3
+BL4 BL3 3
+BL4 GL2/BL5 2
+BL6 GL2/BL5 4
+BL6 BL7 1
+BL7 BL6 1
+         */
+
+
+
         System.out.println("\n=== Testing Dijkstra Algorithm ===");
 
         MetroSystem metro = new MetroSystem("Dijkstra Test System");
