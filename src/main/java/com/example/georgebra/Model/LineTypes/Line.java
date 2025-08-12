@@ -44,9 +44,6 @@ public abstract class Line {
         stationIndexMap.put(newStation, stationList.size());
         indexStationMap.put(stationList.size(), newStation);
         stationList.add(newStation);
-
-
-
     }
 
     /*
@@ -62,10 +59,18 @@ public abstract class Line {
     public void addEdge(Station u, Station v, int weight) {
         boolean containU = false;
         boolean containV = false;
-        for (Station s: stationList)
-            if (u.getName().equals(s.getName())) containU = true;
-        for (Station s: stationList)
-            if (v.getName().equals(s.getName())) containV = true;
+        for (Station s: stationList) {
+            if (u.getName().equals(s.getName())) {
+                containU = true;
+                break;
+            }
+        }
+        for (Station s: stationList) {
+            if (v.getName().equals(s.getName())) {
+                containV = true;
+                break;
+            }
+        }
         if (!containU) addStation(u);
         if (!containV) addStation(v);
         adjListLine[stationIndexMap.get(u)].add(new Pair<>(v, weight));

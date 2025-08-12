@@ -209,20 +209,20 @@ public class Tester {
         // Rest of your test code...
         System.out.println("Metro system with 21 stations and 3 lines created");
 
-        // Test 1: Simple path within one line
-        System.out.println("\nTest 1: Red A to Red D (same line)");
-        ArrayList<Station> path1 = metro.dijkstra(r1, centralHub);
-        printPath(path1);
+//        // Test 1: Simple path within one line
+//        System.out.println("\nTest 1: Red A to Red D (same line)");
+//        ArrayList<Station> path1 = metro.dijkstra(r1, centralHub);
+//        printPath(path1);
 
 //        // Test 2: Path requiring one interchange
 //        System.out.println("\nTest 2: Red A to Green G (via Central Hub)");
 //        ArrayList<Station> path2 = metro.dijkstra(r1, g7);
 //        printPath(path2);
 
-//        // Test 3: Path requiring two interchanges
-//        System.out.println("\nTest 3: Blue A to Green G (via West Hub and Central Hub)");
-//        ArrayList<Station> path3 = metro.dijkstra(b1, g7);
-//        printPath(path3);
+        // Test 3: Path requiring two interchanges
+        System.out.println("\nTest 3: Blue A to Green G (via West Hub and Central Hub)");
+        ArrayList<Station> path3 = metro.dijkstra(b1, g7);
+        printPath(path3);
 
 //        // Test 4: No path exists
 //        System.out.println("\nTest 4: Blue A to Red G (no connection)");

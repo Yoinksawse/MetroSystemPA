@@ -125,7 +125,7 @@ public class MetroSystem implements Drawable{
     public void addLine(Line newLine) {
         lineList.add(newLine);
 
-        ArrayList<Pair<Station,Integer>>[] adjListLine = newLine.getAdjListLine();
+        ArrayList<Pair<Station,Integer>> adjListLine[] = newLine.getAdjListLine();
         HashMap<Integer,Station> indexStationMap = newLine.getIndexStationMap();
         HashSet<Station> recorded = new HashSet<>();
         for (int i = 0; i < indexStationMap.size(); i++) {
@@ -141,20 +141,22 @@ public class MetroSystem implements Drawable{
                     }
                 }
 
-                if (actualU == null) {
-                    //this.addStation(u);
-                    actualU = (Interchange) u;
-                }
-
+                if (actualU == null) actualU = (Interchange) u;
                 recorded.add(actualU);
 
                 //for that interchange object, create edges between it and the vs of this one!!
-                for (Pair<Station, Integer> x: adjListLine[i]) {
-                    Station v = x.getKey();
-                    int time = x.getValue();
-                    if (!recorded.contains(v) && !(v instanceof Interchange)) {
-                        addEdge(actualU, v,time);
+                for (Pair<Station, Integer> edge: adjListLine[i]) {
+                    Station v = edge.getKey();
+                    int time = edge.getValue();
+
+                    boolean recordedContains = false;
+                    for (Station s: recorded) {
+                        if (s.getName().equals(v.getName())) {
+                            recordedContains = true;
+                            break;
+                        }
                     }
+                    if (!recordedContains) addEdge(actualU, v, time);
                 }
             }
             else {
@@ -163,12 +165,19 @@ public class MetroSystem implements Drawable{
 
                 //copy all non-interchange edges
                 recorded.add(u);
-                for (Pair<Station, Integer> x: adjListLine[i]) {
-                    Station v = x.getKey();
-                    int time = x.getValue();
-                    if (!recorded.contains(v) && !(v instanceof Interchange)) {
-                        addEdge(u, v, time);
+                for (Pair<Station, Integer> edge: adjListLine[i]) {
+                    Station v = edge.getKey();
+                    int time = edge.getValue();
+
+                    boolean recordedContains = false;
+                    for (Station s: recorded) {
+                        if (s.getName().equals(v.getName())) {
+                            recordedContains = true;
+                            break;
+                        }
                     }
+
+                    if (!recordedContains) addEdge(u, v, time);
                 }
             }
         }
@@ -184,22 +193,15 @@ public class MetroSystem implements Drawable{
 
     //init data structures
     boolean visited[] = new boolean[1005];
-    //HashMap<Station, Integer> stationIndexMap = this.stationIndexMap; //mapping indexes to stations
-    //HashMap<Integer, Station> indexStationMap = new HashMap<>();      //& vice versa
     PriorityQueue<Station> unmarked = new PriorityQueue<>();
     HashMap<Station, Station> prevMap = new HashMap<>();
 
     //initialisation
     public ArrayList<Station> dijkstra(Station u, Station v) {
-        //clear prev data=
+        //clear prev data
         prevMap.clear();
 
-        //get reversed values for second map
-
-        //for (HashMap.Entry<Station, Integer> e: stationIndexMap.entrySet())
-        //    indexStationMap.put(e.getValue(), e.getKey());
-
-        Arrays.fill(visited, false);  //none are visited=
+        Arrays.fill(visited, false);  //none are visited
         unmarked.add(u);    //search begins at u
         u.setEstimate(0);           //starting node has time 0
 
@@ -209,35 +211,48 @@ public class MetroSystem implements Drawable{
             }
         }
 
-        //TODO
+        //TODO BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST
+        /*
         for (Map.Entry<Integer, Station> entry: indexStationMap.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
-
         System.out.println();
-
-        //TODO
+        */
+        /*
+        for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        System.out.println();
+        */
+        /*
+        //System.out.println(v);
+        //System.out.println(stationIndexMap.get(v));
         for (int i = 0; i < stationList.size(); i++) {
             for (Pair<Station, Integer> edge: adjListSystem[i]) {
                 System.out.println(i + " " + indexStationMap.get(i) + " -> " + edge.getKey() + " " + edge.getValue());
             }
         }
+        */
+        //TODO END TEST END TEST END TEST END TEST END TEST END TEST END TEST END TEST
 
         //pseudo bfs
         while (!unmarked.isEmpty()){
+            //System.out.println(Arrays.toString(unmarked.toArray()));
             Station cur = unmarked.poll();
+
 
             if (visited[stationIndexMap.get(cur)]) continue;
             visited[stationIndexMap.get(cur)] = true;
             if (cur.getName().equals(v.getName())) break;
 
             //update estimate of all adj nodes
-            for (Pair<Station, Integer> edge: adjListSystem[stationIndexMap.get(cur)]) {//visit them
+            for (Pair<Station, Integer> edge: adjListSystem[stationIndexMap.get(cur)]) { //visit them
                 Station nxt = edge.getKey();
                 int weight = edge.getValue();
 
                 int newTime = cur.getEstimate() + weight;
                 if (newTime < nxt.getEstimate()) {
+                    //System.out.println(cur + " -> " + nxt + ": " + newTime + " " + nxt.getEstimate());
                     nxt.setEstimate(newTime);
                     prevMap.put(nxt, cur);
                     unmarked.add(nxt);
