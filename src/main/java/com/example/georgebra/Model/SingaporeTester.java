@@ -93,9 +93,7 @@ public class SingaporeTester {
         }
 
         // Add stations to line
-        for (Station s : stationObjects) {
-            line.addStation(s);
-        }
+        //for (Station s : stationObjects) line.addStation(s);
 
         // Create connections with travel times
         for (int i = 0; i < stationObjects.size()-1; i++) {

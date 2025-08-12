@@ -57,26 +57,23 @@ public class Interchange extends Station implements Drawable {
     }
 
     //check if the interchange already exists, if it does, add the lines to existing interchange
-    public static Interchange checkExistenceAndMergeLines(Interchange x) {
-        if (interchangeNames.contains(x.getName())) { //it already has an "instance" somewhere
-            for (Interchange i: interchanges) {
-                if (i.getName().equals(x.getName())) { //find that instance
-                    ArrayList<Pair<String, String>> xDifferentLinesInfo = ((Interchange) x).getDifferentLinesInfo();
+    public static Interchange checkExistenceAndMergeLines(Interchange other) {
+        //find existing
+        for (Interchange existing: interchanges) {
+            if (existing.getName().equals(other.getName())) { //it already has an "instance" somewhere
+                ArrayList<Pair<String, String>> xDifferentLinesInfo = other.getDifferentLinesInfo();
 
-                    for (int j = 0; j < xDifferentLinesInfo.size(); j++) {
-                        i.addLine(xDifferentLinesInfo.get(j).getKey(), xDifferentLinesInfo.get(j).getValue());
-                    }
-                    return i;
+                for (int j = 0; j < xDifferentLinesInfo.size(); j++) {
+                    existing.addLine(xDifferentLinesInfo.get(j).getKey(), xDifferentLinesInfo.get(j).getValue());
                 }
+                return existing; //the existing one
             }
-            System.out.println("No such Interchange is a duplicate and exists in the interchange list??");
-            return null;
         }
-        else { //it does not have an "instance" anywhere: record it i guess?
-            Interchange.interchanges.add(x);
-            Interchange.interchangeNames.add(x.getName());
-            return null; //not a duplicate
-        }
+
+        //it does not have an "instance" anywhere: record it i guess?
+        Interchange.interchanges.add(other);
+        Interchange.interchangeNames.add(other.getName());
+        return null; //not a duplicate
     }
 
     public static ArrayList<Interchange> getInterchanges() {
@@ -109,7 +106,7 @@ public class Interchange extends Station implements Drawable {
         for (Pair<String, String> id: differentLinesInfo) {
             ids += (id.getValue() + "/");
         }
-        if (ids.length() >= 2) ids = ids.substring(0, ids.length() - 2);
+        if (ids.length() >= 2) ids = ids.substring(0, ids.length() - 1);
         return "*" + ids + " (" + this.name + ")";
     }
 }

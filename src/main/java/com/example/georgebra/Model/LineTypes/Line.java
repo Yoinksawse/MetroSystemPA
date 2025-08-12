@@ -14,6 +14,7 @@ public abstract class Line {
     protected String lineColour; //in hex, TODO: convert pls!!!!!!!!
     protected ArrayList<Station> stationList = new ArrayList<>();
     protected HashMap<Station, Integer> stationIndexMap = new HashMap<>();
+    protected HashMap<Integer, Station> indexStationMap = new HashMap<>();
     protected ArrayList<Pair<Station, Integer>> adjListLine[];
 
     public Line(String lineName, String lineID, int lineNo, String colour) throws MissingFormatArgumentException{
@@ -35,14 +36,20 @@ public abstract class Line {
         this(other.getLineName(), other.getLineID(), other.getLineNo(), other.getLineColour());
         this.stationList = other.getStationList();
         this.stationIndexMap = other.getStationIndexMap();
+        this.indexStationMap = other.getIndexStationMap();
         this.adjListLine = other.getAdjListLine();
     }
 
-    public void addStation(Station newStation) {
+    private void addStation(Station newStation) {
         stationIndexMap.put(newStation, stationList.size());
+        indexStationMap.put(stationList.size(), newStation);
         stationList.add(newStation);
+
+
+
     }
 
+    /*
     public void removeStation(Station x) throws IllegalArgumentException {
         if (stationList.contains(x)) {
             stationIndexMap.remove(x);
@@ -50,26 +57,29 @@ public abstract class Line {
         }
         else throw new IllegalArgumentException(x + " does not exist.");
     }
+     */
 
     public void addEdge(Station u, Station v, int weight) {
-        if (!stationList.contains(u)) {
-            stationIndexMap.put(u, stationList.size());
-            stationList.add(u);
-        }
-        if (!stationList.contains(v)) {
-            stationIndexMap.put(v, stationList.size());
-            stationList.add(v);
-        }
+        boolean containU = false;
+        boolean containV = false;
+        for (Station s: stationList)
+            if (u.getName().equals(s.getName())) containU = true;
+        for (Station s: stationList)
+            if (v.getName().equals(s.getName())) containV = true;
+        if (!containU) addStation(u);
+        if (!containV) addStation(v);
         adjListLine[stationIndexMap.get(u)].add(new Pair<>(v, weight));
         adjListLine[stationIndexMap.get(v)].add(new Pair<>(u, weight));
     }
 
+    /*
     public void removeEdge(Station u, Station v) throws IllegalArgumentException {
         if (!stationList.contains(u)) throw new IllegalArgumentException(u + " does not exist.");
         if (!stationList.contains(v)) throw new IllegalArgumentException(v + " does not exist.");
         adjListLine[stationIndexMap.get(u)].remove(v);
         adjListLine[stationIndexMap.get(v)].remove(u);
     }
+    */
 
     public void setLineColour(String colour) {
         this.lineColour = colour; // HEX
@@ -94,6 +104,10 @@ public abstract class Line {
     public HashMap<Station, Integer> getStationIndexMap() {
         return new HashMap<Station, Integer>(stationIndexMap);
     }
+
+    public HashMap<Integer, Station> getIndexStationMap() {
+        return new HashMap<Integer, Station>(indexStationMap);
+    }
     public ArrayList<Pair<Station, Integer>>[] getAdjListLine() {
         return this.adjListLine;
     }
@@ -104,6 +118,7 @@ public abstract class Line {
     public abstract Group setHighlighted();
 
     //utils
+    //DO NOT USE
     public static HashMap<Integer,Station> reverseStationIndexMap(Line line) {
         HashMap<Station, Integer> stationIndexMap = line.getStationIndexMap();
         HashMap<Integer, Station> indexStationMap = new HashMap<>();
@@ -131,7 +146,7 @@ public abstract class Line {
         String root = "Line " + this.lineNo + ": " + this.lineName + " (" + this.lineID + ")\n";
 
         //the adjacency list
-        HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);
+        //HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);
         HashSet<Station> recorded = new HashSet<>();
         for (int i = 0; i < indexStationMap.size(); i++) {
             Station u = indexStationMap.get(i);

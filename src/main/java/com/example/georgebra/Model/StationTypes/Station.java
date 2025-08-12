@@ -23,7 +23,9 @@ public abstract class Station implements Comparable<Station>{
         if (name.isEmpty() || lineName.isEmpty()) {
             throw new MissingFormatArgumentException("Provide a Line name.");
         }
+        //
         if (id.isEmpty() || !Character.isDigit(id.charAt(id.length() - 1)) || !Character.isLetter(id.charAt(0))) {
+            System.out.println(id);
             throw new IllegalArgumentException("Invalid Station ID.");
         }
 
@@ -111,7 +113,7 @@ public abstract class Station implements Comparable<Station>{
     }
 
     @Override
-    public int compareTo(Station other) {
+    public int compareTo(Station other) { //sort in ascending order for max heap
         return Integer.compare(this.estimate, other.estimate);
     }
 

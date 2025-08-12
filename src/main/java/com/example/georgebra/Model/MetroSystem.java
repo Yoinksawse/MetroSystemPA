@@ -11,17 +11,16 @@ import java.util.*;
 
 public class MetroSystem implements Drawable{
     //private ArrayList<Pair<Station, ArrayList<Station>>> adjList; //keeping the pair with station just in case
-    private int stationCnt;
     private String cityName;
     private ArrayList<Station> stationList = new ArrayList<>();
     private HashSet<Interchange> interchanges = new HashSet<>();
     private ArrayList<Line> lineList = new ArrayList<>();
     private HashMap<Station, Integer> stationIndexMap = new HashMap<>();
+    private HashMap<Integer, Station> indexStationMap = new HashMap<>();
     private ArrayList<Pair<Station, Integer>> adjListSystem[];
     Group currentSystem = new Group();
 
     public MetroSystem(String cityName) {
-        this.stationCnt = 0;
         this.cityName = cityName;
 
         //initialisation
@@ -45,45 +44,89 @@ public class MetroSystem implements Drawable{
        return currentSystem;
     }
 
-    public void addStation(Station x) throws IllegalArgumentException{
-        if (x instanceof Interchange) { //if it is an interchange
-            Interchange existing;
-            existing = Interchange.checkExistenceAndMergeLines((Interchange) x);
-
-            if (existing != null) x = existing;
-            else interchanges.add((Interchange) x);
-        }
-
-        //check if the station exists
-        for (Station s: stationList) {
-            if (x.getName().equals(s.getName())) {
-                throw new IllegalArgumentException("Station: " + x.getName() + " already exists");
+    private Station addStation(Station station) {
+        for (Station s : stationList) {
+            if (s.getName().equals(station.getName())) {
+                return null;
             }
         }
-        //if not interchange
-        stationList.add(x);
-        stationIndexMap.put(x, stationCnt);
-        stationCnt++;
+
+        if (station instanceof Interchange) {
+            Interchange existing = Interchange.checkExistenceAndMergeLines((Interchange) station);
+            if (existing != null) {
+                station = existing;
+            } else {
+                interchanges.add((Interchange) station);
+            }
+        }
+
+        boolean containStation = false;
+        for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
+            Station s = entry.getKey();
+            if (s.getName().equals(station.getName())) {
+                containStation = true;
+                break;
+            }
+        }
+        if (!containStation) {
+            stationIndexMap.put(station, stationList.size());
+            indexStationMap.put(stationList.size(), station);
+            stationList.add(station);
+        }
+
+        if (station instanceof Interchange) return station;
+        return null;
     }
 
     public void addEdge(Station u, Station v, int weight) {
-        if (u == null || v == null) return;
-        try {
-            addStation(u);
-            addStation(v);
+        boolean containU = false;
+        boolean containV = false;
+        for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
+            Station s = entry.getKey();
+            if (u.getName().equals(s.getName())) {
+                containU = true;
+                break;
+            }
         }
-        catch (IllegalArgumentException e) {
-            System.out.println(e.toString());
+        for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
+            Station s = entry.getKey();
+            if (v.getName().equals(s.getName())) {
+                containV = true;
+                break;
+            }
         }
-        adjListSystem[stationIndexMap.get(u)].add(new Pair<Station, Integer>(v, weight));
-        //adjListSystem[stationIndexMap.get(v)].add(u);
+
+        Station newU = u, newV = v;
+        if (!containU) {
+            Station tempU = addStation(u);
+            if (tempU != null) newU = tempU;
+        }
+        if (!containV) {
+            Station tempV = addStation(v);
+            if (tempV != null) newV = tempV;
+        }
+
+        if (u instanceof Interchange) {
+            for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
+                Station s = entry.getKey();
+                if (u.getName().equals(s.getName())) newU = s;
+            }
+        }
+        if (v instanceof Interchange) {
+            for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
+                Station s = entry.getKey();
+                if (v.getName().equals(s.getName())) newV = s;
+            }
+        }
+        adjListSystem[stationIndexMap.get(newU)].add(new Pair<Station, Integer>(newV, weight));
+        adjListSystem[stationIndexMap.get(newV)].add(new Pair<Station, Integer>(newU, weight));
     }
 
     public void addLine(Line newLine) {
         lineList.add(newLine);
 
         ArrayList<Pair<Station,Integer>>[] adjListLine = newLine.getAdjListLine();
-        HashMap<Integer,Station> indexStationMap = Line.reverseStationIndexMap(newLine);
+        HashMap<Integer,Station> indexStationMap = newLine.getIndexStationMap();
         HashSet<Station> recorded = new HashSet<>();
         for (int i = 0; i < indexStationMap.size(); i++) {
             Station u = indexStationMap.get(i);
@@ -99,7 +142,7 @@ public class MetroSystem implements Drawable{
                 }
 
                 if (actualU == null) {
-                    this.addStation(u);
+                    //this.addStation(u);
                     actualU = (Interchange) u;
                 }
 
@@ -116,7 +159,7 @@ public class MetroSystem implements Drawable{
             }
             else {
                 //copy all non-interchange stations
-                this.addStation(u);
+                //this.addStation(u);
 
                 //copy all non-interchange edges
                 recorded.add(u);
@@ -140,55 +183,79 @@ public class MetroSystem implements Drawable{
     }
 
     //init data structures
-    ArrayList<Station> shortestPath = new ArrayList<>();    //recording the answer
-    HashMap<Station, Station> prevMap = new HashMap<>();
     boolean visited[] = new boolean[1005];
-    HashMap<Station, Integer> stationToIndexMap = this.stationIndexMap; //mapping indexes to stations
-    HashMap<Integer, Station> indexToStationMap = new HashMap<>();      //& vice versa
+    //HashMap<Station, Integer> stationIndexMap = this.stationIndexMap; //mapping indexes to stations
+    //HashMap<Integer, Station> indexStationMap = new HashMap<>();      //& vice versa
     PriorityQueue<Station> unmarked = new PriorityQueue<>();
+    HashMap<Station, Station> prevMap = new HashMap<>();
 
     //initialisation
     public ArrayList<Station> dijkstra(Station u, Station v) {
-        //clear prev data
-        shortestPath.clear();
+        //clear prev data=
         prevMap.clear();
 
-        //set reversed values for second map
-        for (HashMap.Entry<Station, Integer> e: stationIndexMap.entrySet())
-            indexToStationMap.put(e.getValue(), e.getKey());
+        //get reversed values for second map
 
-        Arrays.fill(visited, false);  //none are visited
-        visited[stationToIndexMap.get(u)] = true; //except starting node
+        //for (HashMap.Entry<Station, Integer> e: stationIndexMap.entrySet())
+        //    indexStationMap.put(e.getValue(), e.getKey());
+
+        Arrays.fill(visited, false);  //none are visited=
+        unmarked.add(u);    //search begins at u
         u.setEstimate(0);           //starting node has time 0
-        shortestPath.add(u);  //shortest path begins with starting node
 
         for (Station s: stationList) {
             if (!s.getName().equals(u.getName())) {  //for all stations except the starting station,
                 s.setEstimate(Integer.MAX_VALUE); //set estimates
-                unmarked.add(s);  //not yet considered
             }
         }
 
-        runDijkstra(u, v);
-        return shortestPath;
-    }
-
-    private void runDijkstra(Station u, Station v) {
-        //update estimate of all adj nodes
-        for (Pair<Station, Integer> edge: adjListSystem[stationToIndexMap.get(u)]) {//visit them
-            //and add edge weight to current node
-            edge.getKey().setEstimate(u.getEstimate() + edge.getValue());
+        //TODO
+        for (Map.Entry<Integer, Station> entry: indexStationMap.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
         }
 
-        //choose next node
+        System.out.println();
+
+        //TODO
+        for (int i = 0; i < stationList.size(); i++) {
+            for (Pair<Station, Integer> edge: adjListSystem[i]) {
+                System.out.println(i + " " + indexStationMap.get(i) + " -> " + edge.getKey() + " " + edge.getValue());
+            }
+        }
+
+        //pseudo bfs
         while (!unmarked.isEmpty()){
-            Station nxt = unmarked.peek();
-            unmarked.remove();
-            if (!visited[stationToIndexMap.get(nxt)]) {
-                visited[stationToIndexMap.get(nxt)] = true;
-                runDijkstra(nxt, v);
+            Station cur = unmarked.poll();
+
+            if (visited[stationIndexMap.get(cur)]) continue;
+            visited[stationIndexMap.get(cur)] = true;
+            if (cur.getName().equals(v.getName())) break;
+
+            //update estimate of all adj nodes
+            for (Pair<Station, Integer> edge: adjListSystem[stationIndexMap.get(cur)]) {//visit them
+                Station nxt = edge.getKey();
+                int weight = edge.getValue();
+
+                int newTime = cur.getEstimate() + weight;
+                if (newTime < nxt.getEstimate()) {
+                    nxt.setEstimate(newTime);
+                    prevMap.put(nxt, cur);
+                    unmarked.add(nxt);
+                }
             }
         }
+
+        //reconstruction from end node
+        ArrayList<Station> path = new ArrayList<>();
+        if (v.getEstimate() == Integer.MAX_VALUE) return path; //no path
+
+        Station cur = v;
+        while (cur != null) {
+            path.add(cur);
+            cur = prevMap.get(cur);
+        }
+        Collections.reverse(path);
+        return path;
     }
 
     //utils
