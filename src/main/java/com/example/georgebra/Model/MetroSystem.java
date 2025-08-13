@@ -1,9 +1,11 @@
 package com.example.georgebra.Model;
 
-import com.example.georgebra.Model.LineTypes.Line;
+import com.example.georgebra.Model.LineTypes.MetroLine;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.Model.StationTypes.Station;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.util.Pair;
 import java.util.PriorityQueue;
 
@@ -14,7 +16,7 @@ public class MetroSystem implements Drawable{
     private String cityName;
     private ArrayList<Station> stationList = new ArrayList<>();
     private HashSet<Interchange> interchanges = new HashSet<>();
-    private ArrayList<Line> lineList = new ArrayList<>();
+    private ArrayList<MetroLine> metroLineList = new ArrayList<>();
     private HashMap<Station, Integer> stationIndexMap = new HashMap<>();
     private HashMap<Integer, Station> indexStationMap = new HashMap<>();
     private ArrayList<Pair<Station, Integer>> adjListSystem[];
@@ -31,16 +33,50 @@ public class MetroSystem implements Drawable{
     }
 
     public Group draw() {
+        //Clean UI
         currentSystem.getChildren().clear();
 
-        //TODO: implement drawing a system with a full DFS
-        //currentSystem.getChildren().add(stn);
+        int stationCnt = stationIndexMap.size();
+        HashSet<String> visitedU = new HashSet<>();
+        for (int i = 0; i < stationCnt; i++) {
+            visitedU.add(indexStationMap.get(i).getName());
+            for (Pair<Station, Integer> entry: adjListSystem[i]) {
+                //prevent creation of repeats
+                if (visitedU.contains(entry.getKey().getName())) continue;
 
+                //create nodes
+                Station u = indexStationMap.get(i);
+                Station v = entry.getKey();
+
+                Line edgeLine = new Line(u.getX(), u.getY(), v.getX(), v.getY());
+                edgeLine.setStrokeWidth(10);
+                Color colour = Color.web(u.getStationLineColour());
+                edgeLine.setFill(colour);
+
+                //group nodes
+                Group UGroup = u.draw();
+                Group VGroup = v.draw();
+
+                Group edge = new Group();
+                edge.getChildren().add(edgeLine);
+
+                //add bindings
+                edgeLine.startXProperty().bindBidirectional(UGroup.layoutXProperty());
+                edgeLine.startYProperty().bindBidirectional(UGroup.layoutYProperty());
+                edgeLine.endXProperty().bindBidirectional(VGroup.layoutXProperty());
+                edgeLine.endYProperty().bindBidirectional(VGroup.layoutYProperty());
+
+                //package up
+                currentSystem.getChildren().add(UGroup);
+                currentSystem.getChildren().add(VGroup);
+                currentSystem.getChildren().add(edge);
+            }
+        }
         return currentSystem;
     }
 
     //TODO
-    public Group setHighlighted() {
+    public Group setHighlighted(boolean highlighted) {
        return currentSystem;
     }
 
@@ -122,11 +158,11 @@ public class MetroSystem implements Drawable{
         adjListSystem[stationIndexMap.get(newV)].add(new Pair<Station, Integer>(newU, weight));
     }
 
-    public void addLine(Line newLine) {
-        lineList.add(newLine);
+    public void addLine(MetroLine newMetroLine) {
+        metroLineList.add(newMetroLine);
 
-        ArrayList<Pair<Station,Integer>> adjListLine[] = newLine.getAdjListLine();
-        HashMap<Integer,Station> indexStationMap = newLine.getIndexStationMap();
+        ArrayList<Pair<Station,Integer>> adjListLine[] = newMetroLine.getAdjListLine();
+        HashMap<Integer,Station> indexStationMap = newMetroLine.getIndexStationMap();
         HashSet<Station> recorded = new HashSet<>();
         for (int i = 0; i < indexStationMap.size(); i++) {
             Station u = indexStationMap.get(i);
@@ -187,8 +223,8 @@ public class MetroSystem implements Drawable{
         return new ArrayList<>(this.stationList);
     }
 
-    public ArrayList<Line> getLineList() {
-        return new ArrayList<>(this.lineList);
+    public ArrayList<MetroLine> getLineList() {
+        return new ArrayList<>(this.metroLineList);
     }
 
     //init data structures
@@ -276,29 +312,16 @@ public class MetroSystem implements Drawable{
     //utils
     @Override
     public String toString() {
-        String systemString = "=== " + this.cityName + " Metro ===\n";
+        String systemString = ""; //=== " + this.cityName + " Metro ===\n";
         for (Station s: stationList) {
-            systemString += (s + "\n");
+            systemString += (s + " " + s.getX() + " " + s.getY() + "\n");
         }
 
-        for (Line line: lineList) {
+        for (MetroLine line: this.metroLineList) {
             systemString += (line.toString());
         }
 
-        for (Interchange i: interchanges) {
-            systemString += (i.toString() + "\n");
-        }
-
         return systemString;
-    }
-
-    private Interchange findInterchangeDuplicate(Interchange other) {
-        for (Interchange i: interchanges) {
-            if (i.getStationID().equals(other.getStationID())) {
-                return i;
-            }
-        }
-        return null;
     }
 
     //useless crap

@@ -5,5 +5,5 @@ import javafx.scene.Group;
 public interface Drawable {
     //void draw();
     Group draw();
-    Group setHighlighted();
+    Group setHighlighted(boolean tf);
 }

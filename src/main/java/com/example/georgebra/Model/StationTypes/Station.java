@@ -1,7 +1,10 @@
 package com.example.georgebra.Model.StationTypes;
 
 import com.example.georgebra.Model.Drawable;
+import com.example.georgebra.Model.LineTypes.MetroLine;
 import javafx.scene.Group;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import java.util.MissingFormatArgumentException;
@@ -11,22 +14,21 @@ public abstract class Station implements Comparable<Station>{
     protected int stationNo; //3
     protected final String id; //NE3    Must have at least 2 letters, 1st denoting line, 2nd denoting station
     protected final String name; //Outram Park
-    protected final String lineName; //North East Line
-    protected double x;
-    protected double y;
+    protected final String lineName; //North East MetroLine
+    protected double x = 0;
+    protected double y = 0;
     protected boolean selected;
     protected boolean dragging;
-
+    public final DropShadow highlightShadow =
+            new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
     int estimate;
 
-    public Station(double x, double y, String id, String name, String lineName, int stationNo) throws MissingFormatArgumentException{
+    public Station(double x, double y, String id, String name, String lineName , int stationNo) throws MissingFormatArgumentException{
         if (name.isEmpty() || lineName.isEmpty()) {
-            throw new MissingFormatArgumentException("Provide a Line name.");
+            throw new MissingFormatArgumentException("Provide a MetroLine name.");
         }
-        //
         if (id.isEmpty() || !Character.isDigit(id.charAt(id.length() - 1)) || !Character.isLetter(id.charAt(0))) {
-            System.out.println(id);
-            throw new IllegalArgumentException("Invalid Station ID.");
+            throw new IllegalArgumentException("Invalid Station ID. (" + id + ")");
         }
 
         this.id = id;
@@ -41,7 +43,7 @@ public abstract class Station implements Comparable<Station>{
 
     //specialised for interchange: will have empty id
     public Station(double x, double y, String name, int stationNo) throws MissingFormatArgumentException {
-        if (name.isEmpty()) throw new MissingFormatArgumentException("Provide a Line name.");
+        if (name.isEmpty()) throw new MissingFormatArgumentException("Provide a MetroLine name.");
 
         this.id = "";
         this.name = name;
@@ -54,11 +56,12 @@ public abstract class Station implements Comparable<Station>{
     }
 
     public Station(Station other) {
-        this(other.getX(), other.getY(), other.getStationID(), other.getName(), other.lineName, other.getStationNo());
+        this(other.getX(), other.getY(), other.getStationID(), other.getName(), other.getLineName(), other.getStationNo());
     }
 
+    //useless
     public abstract Group draw();
-    public abstract Group setHighlighted();
+    public abstract Group setHighlighted(boolean highlighted);
     //javafx.scene.shape.Circle stn = new javafx.scene.shape.Circle(x, y, 8.0);
 
     public void setEstimate(int x) {
@@ -78,6 +81,10 @@ public abstract class Station implements Comparable<Station>{
         this.selected = true;
     }
 
+    //TODO
+    public String getStationLineColour() {
+        return MetroLine.lineNameToColour.get(this.lineName);
+    }
     public int getEstimate() {
         return this.estimate;
     }
@@ -109,25 +116,11 @@ public abstract class Station implements Comparable<Station>{
 
     @Override
     public String toString() {
-        return this.id + " (" + this.name + ")";
+        return this.id + ":" + this.name;
     }
 
     @Override
-    public int compareTo(Station other) { //sort in ascending order for max heap
+    public int compareTo(Station other) { //sort in ascending order for max heap pq
         return Integer.compare(this.estimate, other.estimate);
     }
-
-    /*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Station station = (Station) o;
-        return Objects.equals(id, station.id);
-    }
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-     */
 }

@@ -3,11 +3,14 @@ package com.example.georgebra.Model.LineTypes;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.Model.StationTypes.Station;
 import javafx.scene.Group;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.util.Pair;
 
 import java.util.*;
 
-public abstract class Line {
+public abstract class MetroLine {
     protected final int lineNo;
     protected final String lineID;
     protected final String lineName;
@@ -16,15 +19,21 @@ public abstract class Line {
     protected HashMap<Station, Integer> stationIndexMap = new HashMap<>();
     protected HashMap<Integer, Station> indexStationMap = new HashMap<>();
     protected ArrayList<Pair<Station, Integer>> adjListLine[];
+    public static HashMap<String, String> lineNameToColour = new HashMap<>();
 
-    public Line(String lineName, String lineID, int lineNo, String colour) throws MissingFormatArgumentException{
-        if (lineName.isEmpty() || lineID.isEmpty()) throw new MissingFormatArgumentException("Provide a Line name.");
-        if (lineNo < 0) throw new IllegalArgumentException("Invalid Line number.");
+    public final DropShadow highlightShadow =
+            new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
+
+    public MetroLine(String lineName, String lineID, int lineNo, String colour) throws MissingFormatArgumentException{
+        if (lineName.isEmpty() || lineID.isEmpty()) throw new MissingFormatArgumentException("Provide a MetroLine name.");
+        if (lineNo < 0) throw new IllegalArgumentException("Invalid MetroLine number.");
 
         this.lineNo = lineNo;
         this.lineID = lineID;
         this.lineName = lineName;
         this.lineColour = colour;
+
+        lineNameToColour.put(this.lineName, this.lineColour);
 
         //initialisation
         this.adjListLine = new ArrayList[500];
@@ -32,7 +41,7 @@ public abstract class Line {
             adjListLine[i] = new ArrayList<>();
         }
     }
-    public Line(Line other) {
+    public MetroLine(MetroLine other) {
         this(other.getLineName(), other.getLineID(), other.getLineNo(), other.getLineColour());
         this.stationList = other.getStationList();
         this.stationIndexMap = other.getStationIndexMap();
@@ -120,12 +129,12 @@ public abstract class Line {
 
     //TODO: draws
     public abstract Group draw();
-    public abstract Group setHighlighted();
+    public abstract Group setHighlighted(boolean highlighted);
 
     //utils
     //DO NOT USE
-    public static HashMap<Integer,Station> reverseStationIndexMap(Line line) {
-        HashMap<Station, Integer> stationIndexMap = line.getStationIndexMap();
+    public static HashMap<Integer,Station> reverseStationIndexMap(MetroLine metroLine) {
+        HashMap<Station, Integer> stationIndexMap = metroLine.getStationIndexMap();
         HashMap<Integer, Station> indexStationMap = new HashMap<>();
         for (HashMap.Entry<Station, Integer> e: stationIndexMap.entrySet()) {
             indexStationMap.put(e.getValue(), e.getKey());
@@ -143,12 +152,12 @@ public abstract class Line {
             }
         }
 
-        throw new IllegalArgumentException("Interchange " + x.getName() + " is not in Line" + this.lineID);
+        throw new IllegalArgumentException("Interchange " + x.getName() + " is not in MetroLine" + this.lineID);
     }
 
     public String toString() { //the adj list will only require station IDs
         //adds beginning root
-        String root = "Line " + this.lineNo + ": " + this.lineName + " (" + this.lineID + ")\n";
+        String root = "+Line " + this.lineNo + ": " + this.lineName + ", " + this.lineID + "\n";
 
         //the adjacency list
         //HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);
@@ -169,17 +178,4 @@ public abstract class Line {
         }
         return root;
     }
-
-    /*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Line line = (Line) o;
-        return Objects.equals(lineID, line.lineID);
-    }
-    public int hashCode() {
-        return Objects.hash(lineID);
-    }
-    */
 }

@@ -1,214 +1,213 @@
-=== Singapore Metro ===
-NS28 (Marina South Pier)
-*NS27/CE2/TE20 (Marina Bay)
-*NS26/EW14 (Raffles Place)
-*NS25/EW13 (City Hall)
-*NS24/NE6/CC1 (Dhoby Ghaut)
-NS23 (Somerset)
-*NS22/TE14 (Orchard)
-*NS21/DT11 (Newton)
-NS20 (Novena)
-NS19 (Toa Payoh)
-NS18 (Braddell)
-*NS17/CC15 (Bishan)
-NS16 (Ang Mo Kio)
-NS15 (Yio Chu Kang)
-NS14 (Khatib)
-NS13 (Yishun)
-NS12 (Canberra)
-NS11 (Sembawang)
-NS10 (Admiralty)
-*NS9/TE2 (Woodlands)
-NS8 (Marsiling)
-NS7 (Kranji)
-NS6 (Sungei Kadut)
-NS5 (Yew Tee)
-*NS4/BP1 (Choa Chu Kang)
-NS3 (Bukit Gombak)
-NS2 (Bukit Batok)
-*NS1/EW24 (Jurong East)
+NS28:Marina South Pier
+*NS27/CE2/TE20:Marina Bay
+*NS26/EW14:Raffles Place
+*NS25/EW13:City Hall
+*NS24/NE6/CC1:Dhoby Ghaut
+NS23:Somerset
+*NS22/TE14:Orchard
+*NS21/DT11:Newton
+NS20:Novena
+NS19:Toa Payoh
+NS18:Braddell
+*NS17/CC15:Bishan
+NS16:Ang Mo Kio
+NS15:Yio Chu Kang
+NS14:Khatib
+NS13:Yishun
+NS12:Canberra
+NS11:Sembawang
+NS10:Admiralty
+*NS9/TE2:Woodlands
+NS8:Marsiling
+NS7:Kranji
+NS6:Sungei Kadut
+NS5:Yew Tee
+*NS4/BP1:Choa Chu Kang
+NS3:Bukit Gombak
+NS2:Bukit Batok
+*NS1/EW24:Jurong East
 
-EW1 (Pasir Ris)
-*EW2/DT32 (Tampines)
-EW3 (Simei)
-EW4 (Tanah Merah)
-EW5 (Bedok)
-EW6 (Kembangan)
-EW7 (Eunos)
-*EW8/CC9 (Paya Lebar)
-EW9 (Aljunied)
-EW10 (Kallang)
-*EW11/DT9 (Lavender)
-*EW12/DT14 (Bugis)
-*EW13/NS25 (City Hall)
-*EW14/NS26 (Raffles Place)
-EW15 (Tanjong Pagar)
-*EW16/NE3/TE17 (Outram Park)
-EW17 (Tiong Bahru)
-EW18 (Redhill)
-EW19 (Queenstown)
-EW20 (Commonwealth)
-*EW21/CC22 (Buona Vista)
-EW22 (Dover)
-EW23 (Clementi)
-EW24/NS1 (Jurong East)
-EW25 (Chinese Garden)
-EW26 (Lakeside)
-EW27 (Boon Lay)
-EW28 (Pioneer)
-EW29 (Joo Koon)
-EW30 (Gul Circle)
-EW31 (Tuas Crescent)
-EW32 (Tuas West Road)
-EW33 (Tuas Link)
-CG1/DT35 (Expo)
-CG2 (Changi Airport)
+EW1:Pasir Ris
+*EW2/DT32:Tampines
+EW3:Simei
+*EW4/CG0:Tanah Merah
+EW5:Bedok
+EW6:Kembangan
+EW7:Eunos
+*EW8/CC9:Paya Lebar
+EW9:Aljunied
+EW10:Kallang
+*EW11/DT9:Lavender
+*EW12/DT14:Bugis
+*EW13/NS25:City Hall
+*EW14/NS26:Raffles Place
+EW15:Tanjong Pagar
+*EW16/NE3/TE17:Outram Park
+EW17:Tiong Bahru
+EW18:Redhill
+EW19:Queenstown
+EW20:Commonwealth
+*EW21/CC22:Buona Vista
+EW22:Dover
+EW23:Clementi
+*EW24/NS1:Jurong East
+EW25:Chinese Garden
+EW26:Lakeside
+EW27:Boon Lay
+EW28:Pioneer
+EW29:Joo Koon
+EW30:Gul Circle
+EW31:Tuas Crescent
+EW32:Tuas West Road
+EW33:Tuas Link
+*CG1/DT35:Expo
+CG2:Changi Airport
 
-NE1/CC29 (HarbourFront)
-*NE2/EW16/TE17 (Outram Park)
-NE3 (Chinatown)
-NE4 (Clarke Quay)
-*NE5/NS24/CC1 (Dhoby Ghaut)
-NE6 (Dhoby Ghaut)
-*NE7/DT12 (Little India)
-NE8 (Farrer Park)
-NE9 (Boon Keng)
-NE10 (Potong Pasir)
-NE11 (Woodleigh)
-*NE12/CC13 (Serangoon)
-NE13 (Kovan)
-NE14 (Hougang)
-NE15 (Buangkok)
-NE16 (Sengkang)
-NE17 (Punggol)
+*SE1/NE1/CC29:HarbourFront
+*NE2/EW16/TE17:Outram Park
+NE3:Chinatown
+NE4:Clarke Quay
+*NE5/NS24/CC1:Dhoby Ghaut
+NE6:Dhoby Ghaut
+*NE7/DT12:Little India
+NE8:Farrer Park
+NE9:Boon Keng
+NE10:Potong Pasir
+NE11:Woodleigh
+*NE12/CC13:Serangoon
+NE13:Kovan
+NE14:Hougang
+NE15:Buangkok
+NE16:Sengkang
+NE17:Punggol
 
-CC1/NS24 (Dhoby Ghaut)
-CC2 (Bras Basah)
-CC3 (Esplanade)
-*CC4/DT15 (Promenade)
-CC5 (Nicoll Highway)
-CC6 (Stadium)
-CC7 (Farrer Road)
-*CC8/DT9 (Botanic Gardens)
-CC9 (Lorong Chuan / Paya Lebar area)
-CC10 (Marymount)
-*CC11/DT27 (Tai Seng)
-CC12 (Bartley)
-*CC13/NE12 (Woodleigh / Serangoon area)
-CC14 (Potong Pasir)
-CC15/NS17 (Bishan)
-CC16 (Tai Seng / Marymount area)
-CC17 (Upper Paya Lebar / Caldecott area)
-CC18 (Dakota)
-CC19 (Paya Lebar / Botanic Gardens region)
-CC20 (Boon Keng)
-CC21 (Botanic Gardens area)
-CC22 (Buona Vista)
-CC23 (Holland Village / one-north area)
-CC24 (Buona Vista)
-CC25 (HarbourFront area)
-CC26 (Pasir Ris?)
-CC27 (Labrador Park)
-CC28 (Telok Blangah)
-CC29 (HarbourFront)
+*CC1/NS24:Dhoby Ghaut
+CC2:Bras Basah
+CC3:Esplanade
+*CC4/DT15:Promenade
+CC5:Nicoll Highway
+CC6:Stadium
+CC7:Farrer Road
+*CC8/DT9:Botanic Gardens
+CC9:Paya Lebar
+CC10:Marymount
+*CC11/DT27:Tai Seng
+CC12:Bartley
+*CC13/NE12:Serangoon
+CC14:Potong Pasir
+*CC15/NS17:Bishan
+CC16:Marymount
+CC17:Caldecott
+CC18:Dakota
+CC19:Botanic Gardens
+CC20:Boon Keng
+CC21:Botanic Gardens area
+CC22:Buona Vista
+CC23:one-north
+CC24:Kent Ridge
+CC25:HarbourFront area
+CC26:Pasir Panjang
+CC27:Labrador Park
+CC28:Telok Blangah
+CC29:HarbourFront
 
-DT1/BP6 (Bukit Panjang)
-DT2 (Cashew)
-DT3 (Hillview)
-DT4 (Beauty World)
-DT5 (King Albert Park)
-*DT6/NS21 (Newton)
-DT7 (Little India)
-DT8 (Rochor)
-DT9 (Bugis/Botanic Gardens area)
-DT10/TE11 (Stevens)
-DT11/NS21 (Newton)
-DT12/NE7 (Little India)
-DT13 (Downtown)
-DT14 (??? / Bugis region)
-DT15/CC4 (Promenade)
-DT16/CE1 (Bayfront)
-DT17 (Fort Canning)
-DT18 (Jalan Besar)
-DT19/NE4 (Chinatown)
-DT20 (Rochor)
-DT21 (Bayfront)
-DT22 (Bendemeer)
-DT23 (MacPherson)
-DT24 (Mattar)
-DT25 (Kaki Bukit)
-DT26 (Geylang Bahru / MacPherson)
-DT27 (Tai Seng)
-DT28 (Ubi)
-DT29 (Kaki Bukit)
-DT30 (Bedok Reservoir)
-DT31 (Tampines East)
-DT32/Tampines (EW2)
-DT33 (Tampines West)
-DT34 (Upper Changi)
-DT35/CG1 (Expo)
+*DT1/BP6:Bukit Panjang
+DT2:Cashew
+DT3:Hillview
+DT4:Beauty World
+DT5:King Albert Park
+*DT6/NS21:Newton
+DT7:Little India
+DT8:Rochor
+DT9:Botanic Gardens area
+*DT10/TE11:Stevens
+*DT11/NS21:Newton
+*DT12/NE7:Little India
+DT13:Downtown
+*DT14/EW12:Bugis
+*DT15/CC4:Promenade
+*DT16/CE1:Bayfront
+DT17:Fort Canning
+DT18:Jalan Besar
+*DT19/NE4:Chinatown
+DT20:Rochor
+DT21:Bayfront
+DT22:Bendemeer
+DT23:MacPherson
+DT24:Mattar
+DT25:Kaki Bukit
+DT26:MacPherson
+DT27:Tai Seng
+DT28:Ubi
+DT29:Kaki Bukit
+DT30:Bedok Reservoir
+DT31:Tampines East
+*DT32/EW2:Tampines
+DT33:Tampines West
+DT34:Upper Changi
+*DT35/CG1:Expo
 
-TE1 (Woodlands North)
-TE2/NS9 (Woodlands)
-TE3 (Woodlands South)
-TE4 (Springleaf)
-TE5 (Lentor)
-TE6 (Bright Hill)
-TE7 (Mayflower)
-TE8 (Upper Thomson)
-TE9/CC17 (Caldecott)
+TE1:Woodlands North
+*TE2/NS9:Woodlands
+TE3:Woodlands South
+TE4:Springleaf
+TE5:Lentor
+TE6:Bright Hill
+TE7:Mayflower
+TE8:Upper Thomson
+*TE9/CC17:Caldecott
 
-BP1/NS4 (Choa Chu Kang)
-BP2 (South View)
-BP3 (Keat Hong)
-BP4 (Teck Whye)
-BP5 (Phoenix)
-BP6/DT1 (Bukit Panjang)
-BP7 (Petir)
-BP8 (Pending)
-BP9 (Bangkit)
-BP10 (Fajar)
-BP11 (Segar)
-BP12 (Jelapang)
-BP13 (Senja)
+*BP1/NS4:Choa Chu Kang
+BP2:South View
+BP3:Keat Hong
+BP4:Teck Whye
+BP5:Phoenix
+*BP6/DT1:Bukit Panjang
+BP7:Petir
+BP8:Pending
+BP9:Bangkit
+BP10:Fajar
+BP11:Segar
+BP12:Jelapang
+BP13:Senja
 
-STC/NE16 (Sengkang)
-SE1 (Compassvale)
-SE2 (Rumbia)
-SE3 (Bakau)
-SE4 (Kangkar)
-SE5 (Ranggung)
-SW1 (Cheng Lim)
-SW2 (Farmway)
-SW3 (Kupang)
-SW4 (Thanggam)
-SW5 (Fernvale)
-SW6 (Layar)
-SW7 (Tongkang)
-SW8 (Renjong)
+*STC/NE16:Sengkang
+SE1:Compassvale
+SE2:Rumbia
+SE3:Bakau
+SE4:Kangkar
+SE5:Ranggung
+SW1:Cheng Lim
+SW2:Farmway
+SW3:Kupang
+SW4:Thanggam
+SW5:Fernvale
+SW6:Layar
+SW7:Tongkang
+SW8:Renjong
 
-STC/NE16 (Sengkang)
-PE1 (Cove)
-PE2 (Meridian)
-PE3 (Coral Edge)
-PE4 (Riviera)
-PE5 (Kadaloor)
-PE6 (Oasis)
-PE7 (Damai)
-PW1 (Sam Kee)
-PW2 (Teck Lee)
-PW3 (Punggol Point)
-PW4 (Samudera)
-PW5 (Nibong)
-PW6 (Sumang)
-PW7 (Soo Teck)
+*PTC/NE17:Punggol
+PE1:Cove
+PE2:Meridian
+PE3:Coral Edge
+PE4:Riviera
+PE5:Kadaloor
+PE6:Oasis
+PE7:Damai
+PW1:Sam Kee
+PW2:Teck Lee
+PW3:Punggol Point
+PW4:Samudera
+PW5:Nibong
+PW6:Sumang
+PW7:Soo Teck
 
-SE1 (HarbourFront)
-SE2 (Beach Station)
-SE3 (Sentosa Imbiah)
-SE4 (Sentosa Waterfront)
+*SE1/NE1/CC29:HarbourFront
+SE2:Beach Station
+SE3:Sentosa Imbiah
+SE4:Sentosa Waterfront
 
-+Line 1: North–South +Line (NSL)
++Line 1: North South Line, NSL
 NS28 NS27 2
 NS27 NS26 2
 NS26 NS25 2
@@ -237,7 +236,7 @@ NS4 NS3 3
 NS3 NS2 2
 NS2 NS1 3
 
-+Line 2: East–West +Line (EWL)
++Line 2: East West Line, EWL
 EW1 EW2 2
 EW2 EW3 2
 EW3 EW4 4
@@ -273,7 +272,7 @@ EW32 EW33 2
 EW4 CG1 3
 CG1 CG2 3
 
-+Line 3: North–East +Line (NEL)
++Line 3: North East Line, NEL
 NE1 NE2 2
 NE2 NE3 2
 NE3 NE4 3
@@ -291,7 +290,7 @@ NE14 NE15 2
 NE15 NE16 0
 NE16 NE17 3
 
-+Line 4: Circle +Line (CCL)
++Line 4: Circle Line, CCL
 CC1 CC2 2
 CC2 CC3 2
 CC3 CC4 2
@@ -322,7 +321,7 @@ CC27 CC28 3
 CC28 CC29 2
 CC29 CC1 2
 
-+Line 5: Downtown +Line (DTL)
++Line 5: Downtown Line, DTL
 DT1 DT2 2
 DT2 DT3 3
 DT3 DT4 2
@@ -358,7 +357,7 @@ DT32 DT33 2
 DT33 DT34 2
 DT34 DT35 3
 
-+Line 6: Thomson–East Coast +Line (TEL)
++Line 6: Thomson East Coast Line, TEL
 TE1 TE2 2
 TE2 TE3 2
 TE3 TE4 3
@@ -368,7 +367,7 @@ TE6 TE7 2
 TE7 TE8 2
 TE8 TE9 3
 
-+Line 7: Bukit Panjang LRT (BP LRT)
++Line 7: Bukit Panjang LRT, BPLRT
 BP1 BP2 2
 BP2 BP3 2
 BP3 BP4 2
@@ -382,7 +381,7 @@ BP10 BP11 2
 BP11 BP12 2
 BP12 BP13 2
 
-+Line 8: Sengkang LRT (SK LRT)
++Line 8: Sengkang LRT, SKLRT
 STC SE1 2
 SE1 SE2 2
 SE2 SE3 2
@@ -397,7 +396,7 @@ SW5 SW6 2
 SW6 SW7 2
 SW7 SW8 2
 
-+Line 9: Punggol LRT (PG LRT)
++Line 9: Punggol LRT, PGLRT
 STC PE1 2
 PE1 PE2 2
 PE2 PE3 2
@@ -413,7 +412,7 @@ PW4 PW5 2
 PW5 PW6 2
 PW6 PW7 2
 
-+Line 10: Sentosa Express (SE)
++Line 10: Sentosa Express, SE
 SE1 SE2 3
 SE2 SE3 3
 SE3 SE4 2

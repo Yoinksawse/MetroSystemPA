@@ -25,6 +25,22 @@ public class MyApplication extends Application {
         //mainLoader = fxmlLoader;
     }
 
+    public static void showAboutMe() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MyApplication.class.getResource("/com/example/georgebra.View/about-me.fxml"));
+            Scene myScene = new Scene(fxmlLoader.load(), 320, 480);
+            myScene.getStylesheets().add(MyApplication.class.getResource("/com/example/georgebra.View/style.css").toExternalForm());
+
+            Stage stage = new Stage();
+            stage.setTitle("About Programmer");
+            stage.getIcons().add(new Image(MyApplication.class.getResource("/com/example/georgebra.View/GrapherLogo.png").toExternalForm()));
+            stage.setScene(myScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         launch();
     }

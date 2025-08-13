@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -140,12 +139,11 @@
                         <RowConstraints maxHeight="64.333349609375" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Show Metro Map of:" textAlignment="CENTER" wrappingWidth="200.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Load Metro Map of:" textAlignment="CENTER" wrappingWidth="200.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <ComboBox fx:id="map_city_choice" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="172.0" promptText="Singapore" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER" />
                         <GridPane prefHeight="31.0" prefWidth="220.0" GridPane.rowIndex="4">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -155,8 +153,8 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ToggleButton fx:id="switch_devmode" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="94.0" text="Dev Mode" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
-                              <Button fx:id="switch_devmode1" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" text="About Me!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                              <ToggleButton fx:id="switch_devmode" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#switchMode" prefHeight="30.0" prefWidth="94.0" text="Dev Mode" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+                              <Button fx:id="open_infowindow_button" mnemonicParsing="false" onAction="#showAboutMe" prefHeight="34.0" prefWidth="95.0" text="About Me!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
                            </children>
                         </GridPane>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lines and Stations" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -174,7 +172,24 @@
                           </rowConstraints>
                            <children>
                               <TextArea fx:id="io_area" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="232.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <Button fx:id="updatemap_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="226.0" text="Update Map" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                              <Button fx:id="updatemap_button" mnemonicParsing="false" onAction="#updateMap" prefHeight="32.0" prefWidth="226.0" text="Update Map" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </GridPane>
+                        <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="217.0" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.4000015258789" minWidth="10.0" prefWidth="191.2000244140625" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.19998168945312" minWidth="10.0" prefWidth="45.5999755859375" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="map_city_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#Enter" prefHeight="34.0" prefWidth="177.0" promptText="SingaporeMetro" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                              <Button fx:id="loadmetrosystem" mnemonicParsing="false" prefHeight="34.0" prefWidth="30.0" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

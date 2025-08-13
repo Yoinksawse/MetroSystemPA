@@ -2,9 +2,10 @@ package com.example.georgebra.Model.StationTypes;
 
 import com.example.georgebra.Model.Drawable;
 import javafx.scene.Group;
-import javafx.util.Pair;
+import javafx.scene.control.Tooltip;
+import javafx.scene.text.Text;
 
-import java.sql.Array;
+import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -42,17 +43,46 @@ public class Interchange extends Station implements Drawable {
     */
 
     public Group draw() {
+        //clean UI
         currentStation.getChildren().clear();
 
         javafx.scene.shape.Circle stn = new javafx.scene.shape.Circle(x, y, 8.0);
+
+        String ids = "";
+        for (Pair<String, String> id: differentLinesInfo) ids += (id.getValue() + "/");
+        if (ids.length() >= 2) ids = ids.substring(0, ids.length() - 1);
+
+        Text stationID = new javafx.scene.text.Text(ids);
+        stationID.setX(x);
+        stationID.setY(y);
+
         currentStation.getChildren().add(stn);
+        currentStation.getChildren().add(stationID);
+
+        //mouse hover
+        Tooltip tooltip = new Tooltip(this.name);
+        Tooltip.install(currentStation, tooltip);
+
+        //mouse drag
+        final double[] offsetX = {0};
+        final double[] offsetY = {0};
+        currentStation.setOnMousePressed(e -> {
+            offsetX[0] = e.getSceneX() - currentStation.getLayoutX();
+            offsetY[0] = e.getSceneY() - currentStation.getLayoutY();
+        });
+        currentStation.setOnMouseDragged(e -> {
+            currentStation.setLayoutX(e.getSceneX() - offsetX[0]);
+            currentStation.setLayoutY(e.getSceneY() - offsetY[0]);
+        });
         return currentStation;
     }
 
-    public Group setHighlighted() {
-        //Clean UI
+    public Group setHighlighted(boolean highlighted) {
+        //clean UI
         currentStation.getChildren().clear();
 
+        if (highlighted) currentStation.setEffect(highlightShadow);
+        else currentStation.setEffect(null);
         return currentStation;
     }
 
@@ -86,7 +116,7 @@ public class Interchange extends Station implements Drawable {
 
     public void addLine(String lineName, String interchangeID) {
         if (lineName == null || lineName.isEmpty()) {
-            throw new IllegalArgumentException("Line name cannot be null or empty");
+            throw new IllegalArgumentException("MetroLine name cannot be null or empty");
         }
         if (interchangeID == null || interchangeID.isEmpty()) {
             throw new IllegalArgumentException("Interchange ID cannot be null or empty");

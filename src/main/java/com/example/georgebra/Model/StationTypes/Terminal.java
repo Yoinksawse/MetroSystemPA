@@ -2,6 +2,7 @@ package com.example.georgebra.Model.StationTypes;
 
 import com.example.georgebra.Model.Drawable;
 import javafx.scene.Group;
+import javafx.scene.control.Tooltip;
 
 public class Terminal extends Station implements Drawable {
     Group currentStation = new Group();
@@ -23,13 +24,31 @@ public class Terminal extends Station implements Drawable {
 
         javafx.scene.shape.Circle stn = new javafx.scene.shape.Circle(x, y, 8.0);
         currentStation.getChildren().add(stn);
+
+        //mouse hover
+        Tooltip tooltip = new Tooltip(this.name);
+        Tooltip.install(currentStation, tooltip);
+
+        //mouse drag
+        final double[] offsetX = {0};
+        final double[] offsetY = {0};
+        currentStation.setOnMousePressed(e -> {
+            offsetX[0] = e.getSceneX() - currentStation.getLayoutX();
+            offsetY[0] = e.getSceneY() - currentStation.getLayoutY();
+        });
+        currentStation.setOnMouseDragged(e -> {
+            currentStation.setLayoutX(e.getSceneX() - offsetX[0]);
+            currentStation.setLayoutY(e.getSceneY() - offsetY[0]);
+        });
         return currentStation;
     }
 
-    public Group setHighlighted() {
+    public Group setHighlighted(boolean highlighted) {
         //Clean UI
         currentStation.getChildren().clear();
 
+        if (highlighted) currentStation.setEffect(highlightShadow);
+        else currentStation.setEffect(null);
         return currentStation;
     }
 
