@@ -1,14 +1,11 @@
 package com.example.georgebra.Model.StationTypes;
 
-import com.example.georgebra.Model.Drawable;
 import com.example.georgebra.Model.LineTypes.MetroLine;
 import javafx.scene.Group;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 import java.util.MissingFormatArgumentException;
-import java.util.Objects;
 
 public abstract class Station implements Comparable<Station>{
     protected int stationNo; //3
@@ -23,7 +20,7 @@ public abstract class Station implements Comparable<Station>{
             new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
     int estimate;
 
-    public Station(double x, double y, String id, String name, String lineName , int stationNo) throws MissingFormatArgumentException{
+    public Station(double x, double y, String id, String lineName, String name, int stationNo) throws MissingFormatArgumentException{
         if (name.isEmpty() || lineName.isEmpty()) {
             throw new MissingFormatArgumentException("Provide a MetroLine name.");
         }
@@ -56,7 +53,7 @@ public abstract class Station implements Comparable<Station>{
     }
 
     public Station(Station other) {
-        this(other.getX(), other.getY(), other.getStationID(), other.getName(), other.getLineName(), other.getStationNo());
+        this(other.getX(), other.getY(), other.getStationID(), other.getLineName(), other.getName(), other.getStationNo());
     }
 
     //useless
@@ -116,7 +113,7 @@ public abstract class Station implements Comparable<Station>{
 
     @Override
     public String toString() {
-        return this.id + ":" + this.name;
+        return this.id + ":" + this.name + " " + this.x + " " + this.y;
     }
 
     @Override

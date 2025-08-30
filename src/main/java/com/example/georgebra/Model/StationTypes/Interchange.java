@@ -36,7 +36,7 @@ public class Interchange extends Station implements Drawable {
 
     /*
     public Interchange(Station other) {
-        super(other.getX(), other.getY(), other.getStationID(), other.getName(), other.getLineName(), other.getStationNo());
+        super(other.getX(), other.getY(), other.getStationID(), other.getLineName(), other.getName(), other.getStationNo());
         interchanges.add(this);
         interchangeNames.add(this.name);
     }

@@ -36,7 +36,7 @@ public class MyApplication extends Application {
             stage.getIcons().add(new Image(MyApplication.class.getResource("/com/example/georgebra.View/GrapherLogo.png").toExternalForm()));
             stage.setScene(myScene);
             stage.show();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

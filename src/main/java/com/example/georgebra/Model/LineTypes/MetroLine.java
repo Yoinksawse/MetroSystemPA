@@ -157,7 +157,7 @@ public abstract class MetroLine {
 
     public String toString() { //the adj list will only require station IDs
         //adds beginning root
-        String root = "+Line " + this.lineNo + ": " + this.lineName + ", " + this.lineID + "\n";
+        String root = "+" + this.lineNo + ":" + this.lineName + "," + this.lineID + "\n";
 
         //the adjacency list
         //HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);
@@ -172,7 +172,7 @@ public abstract class MetroLine {
                 int time = x.getValue();
                 if (!recorded.contains(v)) {
                     String vLineID = (v instanceof Interchange) ? findCurrentInterchangeID((Interchange) v) : v.getStationID();
-                    root += (uLineID + " " + vLineID + " " + time + "\n");
+                    root += (uLineID + " " + vLineID + " " + time +"\n");
                 }
             }
         }

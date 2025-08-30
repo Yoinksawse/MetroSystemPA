@@ -1,3 +1,14 @@
+-North South Line: NS
+-*East West Line: EW, CG
+-North East Line: NE
+-*Circle Line: CC, CE
+-Downtown Line: DT
+-Thomson East Coast Line: TE
+-Bukit Panjang LRT: BP
+-*Sengkang LRT: STC, SE, SW
+-*Punggol LRT: PTC, PE, PW
+-Sentosa Express: SE
+
 NS28:Marina South Pier
 *NS27/CE2/TE20:Marina Bay
 *NS26/EW14:Raffles Place
@@ -110,6 +121,8 @@ CC26:Pasir Panjang
 CC27:Labrador Park
 CC28:Telok Blangah
 CC29:HarbourFront
+CE1:Bayfront
+CE2:Marina Bay
 
 *DT1/BP6:Bukit Panjang
 DT2:Cashew
@@ -207,7 +220,7 @@ SE2:Beach Station
 SE3:Sentosa Imbiah
 SE4:Sentosa Waterfront
 
-+Line 1: North South Line, NSL
++1:North South Line,NSL
 NS28 NS27 2
 NS27 NS26 2
 NS26 NS25 2
@@ -236,7 +249,7 @@ NS4 NS3 3
 NS3 NS2 2
 NS2 NS1 3
 
-+Line 2: East West Line, EWL
++2:East West Line,EWL
 EW1 EW2 2
 EW2 EW3 2
 EW3 EW4 4
@@ -272,7 +285,7 @@ EW32 EW33 2
 EW4 CG1 3
 CG1 CG2 3
 
-+Line 3: North East Line, NEL
++3:North East Line,NEL
 NE1 NE2 2
 NE2 NE3 2
 NE3 NE4 3
@@ -290,7 +303,7 @@ NE14 NE15 2
 NE15 NE16 0
 NE16 NE17 3
 
-+Line 4: Circle Line, CCL
++4:Circle Line,CCL
 CC1 CC2 2
 CC2 CC3 2
 CC3 CC4 2
@@ -320,8 +333,10 @@ CC26 CC27 0
 CC27 CC28 3
 CC28 CC29 2
 CC29 CC1 2
+CC4 CE1 2
+CE1 CE2 1
 
-+Line 5: Downtown Line, DTL
++5:Downtown Line,DTL
 DT1 DT2 2
 DT2 DT3 3
 DT3 DT4 2
@@ -357,7 +372,7 @@ DT32 DT33 2
 DT33 DT34 2
 DT34 DT35 3
 
-+Line 6: Thomson East Coast Line, TEL
++6:Thomson East Coast Line,TEL
 TE1 TE2 2
 TE2 TE3 2
 TE3 TE4 3
@@ -367,7 +382,7 @@ TE6 TE7 2
 TE7 TE8 2
 TE8 TE9 3
 
-+Line 7: Bukit Panjang LRT, BPLRT
++7:Bukit Panjang LRT,BPLRT
 BP1 BP2 2
 BP2 BP3 2
 BP3 BP4 2
@@ -381,7 +396,7 @@ BP10 BP11 2
 BP11 BP12 2
 BP12 BP13 2
 
-+Line 8: Sengkang LRT, SKLRT
++8:Sengkang LRT,SKLRT
 STC SE1 2
 SE1 SE2 2
 SE2 SE3 2
@@ -396,15 +411,15 @@ SW5 SW6 2
 SW6 SW7 2
 SW7 SW8 2
 
-+Line 9: Punggol LRT, PGLRT
-STC PE1 2
++9:Punggol LRT,PGLRT
+PTC PE1 2
 PE1 PE2 2
 PE2 PE3 2
 PE3 PE4 2
 PE4 PE5 2
 PE5 PE6 2
 PE6 PE7 2
-STC PW1 2
+PTC PW1 2
 PW1 PW2 2
 PW2 PW3 2
 PW3 PW4 2
@@ -412,7 +427,7 @@ PW4 PW5 2
 PW5 PW6 2
 PW6 PW7 2
 
-+Line 10: Sentosa Express, SE
++10:Sentosa Express,SE
 SE1 SE2 3
 SE2 SE3 3
 SE3 SE4 2
