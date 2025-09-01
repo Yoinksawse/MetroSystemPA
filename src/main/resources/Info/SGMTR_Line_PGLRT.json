@@ -1,0 +1,138 @@
+{
+  "metroLines": [
+    {
+      "id": 9,
+      "name": "Punggol LRT",
+      "code": "PGLRT",
+      "hasInterchange": true,
+      "stationCodes": ["PTC", "PE", "PW"],
+      "colour": "808080",
+      "lineType": "LRT",
+      "stations": [
+        {
+          "id": "PTC",
+          "name": "Punggol",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Punggol LRT", "North East Line"],
+          "lineIDs": ["PTC", "NE17"]
+        },
+        {
+          "id": "PE1",
+          "name": "Cove",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PE2",
+          "name": "Meridian",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PE3",
+          "name": "Coral Edge",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PE4",
+          "name": "Riviera",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PE5",
+          "name": "Kadaloor",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PE6",
+          "name": "Oasis",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PE7",
+          "name": "Damai",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW1",
+          "name": "Sam Kee",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW2",
+          "name": "Teck Lee",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW3",
+          "name": "Punggol Point",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW4",
+          "name": "Samudera",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW5",
+          "name": "Nibong",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW6",
+          "name": "Sumang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "PW7",
+          "name": "Soo Teck",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        }
+      ],
+      "edges": [
+        {"from": "PTC", "to": "PE1", "time": 2},
+        {"from": "PE1", "to": "PE2", "time": 2},
+        {"from": "PE2", "to": "PE3", "time": 2},
+        {"from": "PE3", "to": "PE4", "time": 2},
+        {"from": "PE4", "to": "PE5", "time": 2},
+        {"from": "PE5", "to": "PE6", "time": 2},
+        {"from": "PE6", "to": "PE7", "time": 2},
+        {"from": "PTC", "to": "PW1", "time": 2},
+        {"from": "PW1", "to": "PW2", "time": 2},
+        {"from": "PW2", "to": "PW3", "time": 2},
+        {"from": "PW3", "to": "PW4", "time": 2},
+        {"from": "PW4", "to": "PW5", "time": 2},
+        {"from": "PW5", "to": "PW6", "time": 2},
+        {"from": "PW6", "to": "PW7", "time": 2}
+      ]
+    }
+  ]
+}

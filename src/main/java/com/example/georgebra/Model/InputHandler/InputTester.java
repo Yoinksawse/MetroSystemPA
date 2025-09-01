@@ -1,4 +1,6 @@
-package com.example.georgebra.Model;
+package com.example.georgebra.Model.InputHandler;
+
+import com.example.georgebra.Model.MetroSystem;
 
 import java.util.Scanner;
 

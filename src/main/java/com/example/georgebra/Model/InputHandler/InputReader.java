@@ -1,6 +1,7 @@
-package com.example.georgebra.Model;
+package com.example.georgebra.Model.InputHandler;
 
 import com.example.georgebra.Model.LineTypes.MetroLine;
+import com.example.georgebra.Model.MetroSystem;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.Model.StationTypes.SingleStation;
 import com.example.georgebra.Model.StationTypes.Station;
@@ -10,6 +11,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+
 public class InputReader {
     MetroSystem msys;
     String text;
@@ -18,17 +23,50 @@ public class InputReader {
         this.text = text;
     }
 
-    public void read() {
-        parseInput(text);
+    public MetroSystem getMetroSystem() {
+
+        return this.msys;
     }
 
-    public MetroSystem getMetroSystem() {
-        this.read();
-        return this.msys;
+    public MetroSystemLinesData parseMetroSystemJsonData(String jsonFileName) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String filePath = "src/main/resources/Info/" + jsonFileName + ".json";
+        try {
+            return mapper.readValue(new File(filePath), MetroSystemLinesData.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public MetroLineData parseMetroLineJsonData(String jsonFileName) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String filePath = "src/main/resources/Info/" + jsonFileName + ".json";
+        try {
+            return mapper.readValue(new File(filePath), MetroLineData.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public StationData parseStationJsonData(String jsonFileName) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String filePath = "src/main/resources/Info/" + jsonFileName + ".json";
+        try {
+            return mapper.readValue(new File(filePath), StationData.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void parseInput(String inputs) {
         //input stations
+
         //make id:station <stationname, x, y, interchangetruefalse> map
         HashMap<String, Station> idToStation = new HashMap<>();
         HashMap<String, String> idToLineName = new HashMap<>();

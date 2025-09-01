@@ -1,0 +1,280 @@
+{
+  "metroLines": [
+    {
+      "id": 3,
+      "name": "Circle Line",
+      "code": "CCL",
+      "hasInterchange": true,
+      "stationCodes": ["CC", "CE"],
+      "colour": "FFD300",
+      "lineType": "MRT",
+      "stations": [
+        {
+          "id": "CC1",
+          "name": "Dhoby Ghaut",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "North East Line", "Circle Line"],
+          "lineIDs": ["NS24", "NE6", "CC1"]
+        },
+        {
+          "id": "CC2",
+          "name": "Bras Basah",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC3",
+          "name": "Esplanade",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC4",
+          "name": "Promenade",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Downtown Line", "Circle Line"],
+          "lineIDs": ["DT15", "CC4"]
+        },
+        {
+          "id": "CC5",
+          "name": "Nicoll Highway",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC6",
+          "name": "Stadium",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC7",
+          "name": "Mountbatten",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC8",
+          "name": "Dakota",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC9",
+          "name": "Paya Lebar",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["East West Line", "Circle Line"],
+          "lineIDs": ["EW8", "CC9"]
+        },
+        {
+          "id": "CC10",
+          "name": "MacPherson",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Downtown Line", "Circle Line"],
+          "lineIDs": ["DT26", "CC10"]
+        },
+        {
+          "id": "CC11",
+          "name": "Tai Seng",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC12",
+          "name": "Bartley",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC13",
+          "name": "Serangoon",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North East Line", "Circle Line"],
+          "lineIDs": ["NE12", "CC13"]
+        },
+        {
+          "id": "CC14",
+          "name": "Lorong Chuan",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC15",
+          "name": "Bishan",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Circle Line"],
+          "lineIDs": ["NS17", "CC15"]
+        },
+        {
+          "id": "CC16",
+          "name": "Marymount",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC17",
+          "name": "Caldecott",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "Circle Line"],
+          "lineIDs": ["TE9", "CC17"]
+        },
+        {
+          "id": "CC19",
+          "name": "Botanic Gardens",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Downtown Line", "Circle Line"],
+          "lineIDs": ["DT9", "CC19"]
+        },
+        {
+          "id": "CC20",
+          "name": "Farrer Road",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC21",
+          "name": "Holland Village",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC22",
+          "name": "Buona Vista",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["East West Line", "Circle Line"],
+          "lineIDs": ["EW21", "CC22"]
+        },
+        {
+          "id": "CC23",
+          "name": "one-north",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC24",
+          "name": "Kent Ridge",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC25",
+          "name": "Haw Par Villa",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC26",
+          "name": "Pasir Panjang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC27",
+          "name": "Labrador Park",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC28",
+          "name": "Telok Blangah",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "CC29",
+          "name": "HarbourFront",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North East Line", "Circle Line", "Sentosa Express"],
+          "lineIDs": ["NE1", "CC29", "SX1"]
+        },
+        {
+          "id": "CE1",
+          "name": "Bayfront",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Downtown Line", "Circle Line"],
+          "lineIDs": ["DT16", "CE1"]
+        },
+        {
+          "id": "CE2",
+          "name": "Marina Bay",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Thomson-East Coast Line", "Circle Line"],
+          "lineIDs": ["NS27", "TE20", "CE2"]
+        }
+      ],
+      "edges": [
+        {"from": "CC1", "to": "CC2", "time": 2},
+        {"from": "CC2", "to": "CC3", "time": 2},
+        {"from": "CC3", "to": "CC4", "time": 2},
+        {"from": "CC4", "to": "CC5", "time": 2},
+        {"from": "CC5", "to": "CC6", "time": 2},
+        {"from": "CC6", "to": "CC7", "time": 2},
+        {"from": "CC7", "to": "CC8", "time": 2},
+        {"from": "CC8", "to": "CC9", "time": 2},
+        {"from": "CC9", "to": "CC10", "time": 2},
+        {"from": "CC10", "to": "CC11", "time": 2},
+        {"from": "CC11", "to": "CC12", "time": 2},
+        {"from": "CC12", "to": "CC13", "time": 2},
+        {"from": "CC13", "to": "CC14", "time": 2},
+        {"from": "CC14", "to": "CC15", "time": 2},
+        {"from": "CC15", "to": "CC16", "time": 2},
+        {"from": "CC16", "to": "CC17", "time": 2},
+        {"from": "CC17", "to": "CC19", "time": 3},
+        {"from": "CC19", "to": "CC20", "time": 2},
+        {"from": "CC20", "to": "CC21", "time": 2},
+        {"from": "CC21", "to": "CC22", "time": 2},
+        {"from": "CC22", "to": "CC23", "time": 2},
+        {"from": "CC23", "to": "CC24", "time": 2},
+        {"from": "CC24", "to": "CC25", "time": 2},
+        {"from": "CC25", "to": "CC26", "time": 2},
+        {"from": "CC26", "to": "CC27", "time": 2},
+        {"from": "CC27", "to": "CC28", "time": 2},
+        {"from": "CC28", "to": "CC29", "time": 2},
+        {"from": "CC4", "to": "CE1", "time": 2},
+        {"from": "CE1", "to": "CE2", "time": 2}
+      ]
+    }
+  ]
+}

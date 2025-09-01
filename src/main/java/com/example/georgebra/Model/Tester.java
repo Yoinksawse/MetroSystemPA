@@ -102,7 +102,7 @@ public class Tester {
     }
 
     public static void testEdgeCases() {
-        System.out.println("\n=== Testing Edge Cases ===");
+        System.out.println("\n=== Testing EdgeData Cases ===");
 
         MetroSystem testSystem = new MetroSystem("Test");
 

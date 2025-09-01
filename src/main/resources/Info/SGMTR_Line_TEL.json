@@ -1,0 +1,262 @@
+{
+  "metroLines": [
+    {
+      "id": 6,
+      "name": "Thomson-East Coast Line",
+      "code": "TEL",
+      "hasInterchange": true,
+      "stationCodes": ["TE"],
+      "colour": "9D5B25",
+      "lineType": "MRT",
+      "stations": [
+        {
+          "id": "TE1",
+          "name": "Woodlands North",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE2",
+          "name": "Woodlands",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "North South Line"],
+          "lineIDs": ["TE2", "NS9"]
+        },
+        {
+          "id": "TE3",
+          "name": "Woodlands South",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE4",
+          "name": "Springleaf",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE5",
+          "name": "Lentor",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE6",
+          "name": "Mayflower",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE7",
+          "name": "Bright Hill",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE8",
+          "name": "Upper Thomson",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE9",
+          "name": "Caldecott",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "Circle Line"],
+          "lineIDs": ["TE9", "CC17"]
+        },
+        {
+          "id": "TE11",
+          "name": "Stevens",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "Downtown Line"],
+          "lineIDs": ["TE11", "DT10"]
+        },
+        {
+          "id": "TE12",
+          "name": "Napier",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE13",
+          "name": "Orchard Boulevard",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE14",
+          "name": "Orchard",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "North South Line"],
+          "lineIDs": ["TE14", "NS22"]
+        },
+        {
+          "id": "TE15",
+          "name": "Great World",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE16",
+          "name": "Havelock",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE17",
+          "name": "Outram Park",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "East West Line", "North East Line"],
+          "lineIDs": ["TE17", "EW16", "NE3"]
+        },
+        {
+          "id": "TE18",
+          "name": "Maxwell",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE19",
+          "name": "Shenton Way",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE20",
+          "name": "Marina Bay",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "North South Line", "Circle Line"],
+          "lineIDs": ["TE20", "NS27", "CE2"]
+        },
+        {
+          "id": "TE22",
+          "name": "Gardens by the Bay",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE23",
+          "name": "Tanjong Rhu",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE24",
+          "name": "Katong Park",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE25",
+          "name": "Tanjong Katong",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE26",
+          "name": "Marine Parade",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE27",
+          "name": "Marine Terrace",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE28",
+          "name": "Siglap",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE29",
+          "name": "Bayshore",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE30",
+          "name": "Bedok South",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "TE31",
+          "name": "Sungei Bedok",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Thomson-East Coast Line", "Downtown Line"],
+          "lineIDs": ["TE31", "DT37"]
+        }
+      ],
+      "edges": [
+        {"from": "TE1", "to": "TE2", "time": 2},
+        {"from": "TE2", "to": "TE3", "time": 2},
+        {"from": "TE3", "to": "TE4", "time": 3},
+        {"from": "TE4", "to": "TE5", "time": 2},
+        {"from": "TE5", "to": "TE6", "time": 2},
+        {"from": "TE6", "to": "TE7", "time": 2},
+        {"from": "TE7", "to": "TE8", "time": 2},
+        {"from": "TE8", "to": "TE9", "time": 3},
+        {"from": "TE9", "to": "TE11", "time": 2},
+        {"from": "TE11", "to": "TE12", "time": 2},
+        {"from": "TE12", "to": "TE13", "time": 2},
+        {"from": "TE13", "to": "TE14", "time": 2},
+        {"from": "TE14", "to": "TE15", "time": 2},
+        {"from": "TE15", "to": "TE16", "time": 2},
+        {"from": "TE16", "to": "TE17", "time": 2},
+        {"from": "TE17", "to": "TE18", "time": 2},
+        {"from": "TE18", "to": "TE19", "time": 2},
+        {"from": "TE19", "to": "TE20", "time": 2},
+        {"from": "TE20", "to": "TE22", "time": 2},
+        {"from": "TE22", "to": "TE23", "time": 2},
+        {"from": "TE23", "to": "TE24", "time": 2},
+        {"from": "TE24", "to": "TE25", "time": 2},
+        {"from": "TE25", "to": "TE26", "time": 2},
+        {"from": "TE26", "to": "TE27", "time": 2},
+        {"from": "TE27", "to": "TE28", "time": 2},
+        {"from": "TE28", "to": "TE29", "time": 2},
+        {"from": "TE29", "to": "TE30", "time": 2},
+        {"from": "TE30", "to": "TE31", "time": 2}
+      ]
+    }
+  ]
+}

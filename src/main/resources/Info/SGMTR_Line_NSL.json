@@ -1,0 +1,260 @@
+{
+  "metroLines": [
+    {
+      "id": 1,
+      "name": "North South Line",
+      "code": "NSL",
+      "hasInterchange": true,
+      "stationCodes": ["NS"],
+      "colour": "D42E12",
+      "lineType": "MRT",
+      "stations": [
+        {
+          "id": "NS28",
+          "name": "Marina South Pier",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS27",
+          "name": "Marina Bay",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Circle Line", "Thomson-East Coast Line"],
+          "lineIDs": ["NS27", "CE2", "TE20"]
+        },
+        {
+          "id": "NS26",
+          "name": "Raffles Place",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "East West Line"],
+          "lineIDs": ["NS26", "EW14"]
+        },
+        {
+          "id": "NS25",
+          "name": "City Hall",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "East West Line"],
+          "lineIDs": ["NS25", "EW13"]
+        },
+        {
+          "id": "NS24",
+          "name": "Dhoby Ghaut",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "North East Line", "Circle Line"],
+          "lineIDs": ["NS24", "NE6", "CC1"]
+        },
+        {
+          "id": "NS23",
+          "name": "Somerset",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS22",
+          "name": "Orchard",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Thomson-East Coast Line"],
+          "lineIDs": ["NS22", "TE14"]
+        },
+        {
+          "id": "NS21",
+          "name": "Newton",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Downtown Line"],
+          "lineIDs": ["NS21", "DT11"]
+        },
+        {
+          "id": "NS20",
+          "name": "Novena",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS19",
+          "name": "Toa Payoh",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS18",
+          "name": "Braddell",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS17",
+          "name": "Bishan",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Circle Line"],
+          "lineIDs": ["NS17", "CC15"]
+        },
+        {
+          "id": "NS16",
+          "name": "Ang Mo Kio",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS15",
+          "name": "Yio Chu Kang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS14",
+          "name": "Khatib",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS13",
+          "name": "Yishun",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS12",
+          "name": "Canberra",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS11",
+          "name": "Sembawang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS10",
+          "name": "Admiralty",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS9",
+          "name": "Woodlands",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Thomson-East Coast Line"],
+          "lineIDs": ["NS9", "TE2"]
+        },
+        {
+          "id": "NS8",
+          "name": "Marsiling",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS7",
+          "name": "Kranji",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS6",
+          "name": "Sungei Kadut",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS5",
+          "name": "Yew Tee",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS4",
+          "name": "Choa Chu Kang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "Bukit Panjang LRT"],
+          "lineIDs": ["NS4", "BP1"]
+        },
+        {
+          "id": "NS3",
+          "name": "Bukit Gombak",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS2",
+          "name": "Bukit Batok",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "NS1",
+          "name": "Jurong East",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["North South Line", "East West Line"],
+          "lineIDs": ["NS1", "EW24"]
+        }
+      ],
+      "edges": [
+        {"from": "NS28", "to": "NS27", "time": 2},
+        {"from": "NS27", "to": "NS26", "time": 2},
+        {"from": "NS26", "to": "NS25", "time": 2},
+        {"from": "NS25", "to": "NS24", "time": 2},
+        {"from": "NS24", "to": "NS23", "time": 2},
+        {"from": "NS23", "to": "NS22", "time": 2},
+        {"from": "NS22", "to": "NS21", "time": 3},
+        {"from": "NS21", "to": "NS20", "time": 2},
+        {"from": "NS20", "to": "NS19", "time": 2},
+        {"from": "NS19", "to": "NS18", "time": 2},
+        {"from": "NS18", "to": "NS17", "time": 3},
+        {"from": "NS17", "to": "NS16", "time": 3},
+        {"from": "NS16", "to": "NS15", "time": 2},
+        {"from": "NS15", "to": "NS14", "time": 3},
+        {"from": "NS14", "to": "NS13", "time": 2},
+        {"from": "NS13", "to": "NS12", "time": 2},
+        {"from": "NS12", "to": "NS11", "time": 2},
+        {"from": "NS11", "to": "NS10", "time": 3},
+        {"from": "NS10", "to": "NS9", "time": 4},
+        {"from": "NS9", "to": "NS8", "time": 2},
+        {"from": "NS8", "to": "NS7", "time": 3},
+        {"from": "NS7", "to": "NS6", "time": 3},
+        {"from": "NS6", "to": "NS5", "time": 3},
+        {"from": "NS5", "to": "NS4", "time": 2},
+        {"from": "NS4", "to": "NS3", "time": 3},
+        {"from": "NS3", "to": "NS2", "time": 2},
+        {"from": "NS2", "to": "NS1", "time": 3}
+      ]
+    }
+  ]
+}

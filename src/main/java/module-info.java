@@ -2,7 +2,7 @@ module com.example.georgebra {
     requires javafx.controls;
     requires javafx.fxml;
     requires exp4j;
-    requires java.sql;
+    requires com.fasterxml.jackson.databind;
 
 
     opens com.example.georgebra to javafx.fxml;
@@ -11,4 +11,6 @@ module com.example.georgebra {
     opens com.example.georgebra.Controller to javafx.fxml;
     exports com.example.georgebra.Model;
     opens com.example.georgebra.Model to javafx.fxml;
+    exports com.example.georgebra.Model.InputHandler;
+    opens com.example.georgebra.Model.InputHandler to javafx.fxml;
 }

@@ -427,7 +427,7 @@ PW4 PW5 2
 PW5 PW6 2
 PW6 PW7 2
 
-+10:Sentosa Express,SE
-SE1 SE2 3
-SE2 SE3 3
-SE3 SE4 2
++10:Sentosa Express,SX
+SX1 SX2 3
+SX2 SX3 3
+SX3 SX4 2

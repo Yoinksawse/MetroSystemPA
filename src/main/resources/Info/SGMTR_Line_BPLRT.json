@@ -1,0 +1,124 @@
+{
+  "metroLines": [
+    {
+      "id": 8,
+      "name": "Bukit Panjang LRT",
+      "code": "BPL",
+      "hasInterchange": true,
+      "stationCodes": ["BP"],
+      "colour": "808080",
+      "lineType": "LRT",
+      "stations": [
+        {
+          "id": "BP1",
+          "name": "Choa Chu Kang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Bukit Panjang LRT", "North South Line"],
+          "lineIDs": ["BP1", "NS4"]
+        },
+        {
+          "id": "BP2",
+          "name": "South View",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP3",
+          "name": "Keat Hong",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP4",
+          "name": "Teck Whye",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP5",
+          "name": "Phoenix",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP6",
+          "name": "Bukit Panjang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Bukit Panjang LRT", "Downtown Line"],
+          "lineIDs": ["BP6", "DT1"]
+        },
+        {
+          "id": "BP7",
+          "name": "Petir",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP8",
+          "name": "Pending",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP9",
+          "name": "Bangkit",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP10",
+          "name": "Fajar",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP11",
+          "name": "Segar",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP12",
+          "name": "Jelapang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "BP13",
+          "name": "Senja",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        }
+      ],
+      "edges": [
+        {"from": "BP1", "to": "BP2", "time": 2},
+        {"from": "BP2", "to": "BP3", "time": 2},
+        {"from": "BP3", "to": "BP4", "time": 2},
+        {"from": "BP4", "to": "BP5", "time": 2},
+        {"from": "BP5", "to": "BP6", "time": 2},
+        {"from": "BP6", "to": "BP7", "time": 2},
+        {"from": "BP7", "to": "BP8", "time": 2},
+        {"from": "BP8", "to": "BP9", "time": 2},
+        {"from": "BP9", "to": "BP10", "time": 2},
+        {"from": "BP10", "to": "BP11", "time": 2},
+        {"from": "BP11", "to": "BP12", "time": 2},
+        {"from": "BP12", "to": "BP13", "time": 2}
+      ]
+    }
+  ]
+}

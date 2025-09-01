@@ -1,0 +1,130 @@
+{
+  "metroLines": [
+    {
+      "id": 8,
+      "name": "Sengkang LRT",
+      "code": "SKLRT",
+      "hasInterchange": true,
+      "stationCodes": ["STC", "SE", "SW"],
+      "colour": "808080",
+      "lineType": "LRT",
+      "stations": [
+        {
+          "id": "STC",
+          "name": "Sengkang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": true,
+          "lineNames": ["Sengkang LRT", "North East Line"],
+          "lineIDs": ["STC", "NE16"]
+        },
+        {
+          "id": "SE1",
+          "name": "Compassvale",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SE2",
+          "name": "Rumbia",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SE3",
+          "name": "Bakau",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SE4",
+          "name": "Kangkar",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SE5",
+          "name": "Ranggung",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW1",
+          "name": "Cheng Lim",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW2",
+          "name": "Farmway",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW3",
+          "name": "Kupang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW4",
+          "name": "Thanggam",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW5",
+          "name": "Fernvale",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW6",
+          "name": "Layar",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW7",
+          "name": "Tongkang",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        },
+        {
+          "id": "SW8",
+          "name": "Renjong",
+          "x": 0,
+          "y": 0,
+          "isInterchange": false
+        }
+      ],
+      "edges": [
+        {"from": "STC", "to": "SE1", "time": 2},
+        {"from": "SE1", "to": "SE2", "time": 2},
+        {"from": "SE2", "to": "SE3", "time": 2},
+        {"from": "SE3", "to": "SE4", "time": 2},
+        {"from": "SE4", "to": "SE5", "time": 2},
+        {"from": "STC", "to": "SW1", "time": 2},
+        {"from": "SW1", "to": "SW2", "time": 2},
+        {"from": "SW2", "to": "SW3", "time": 2},
+        {"from": "SW3", "to": "SW4", "time": 2},
+        {"from": "SW4", "to": "SW5", "time": 2},
+        {"from": "SW5", "to": "SW6", "time": 2},
+        {"from": "SW6", "to": "SW7", "time": 2},
+        {"from": "SW7", "to": "SW8", "time": 2}
+      ]
+    }
+  ]
+}
