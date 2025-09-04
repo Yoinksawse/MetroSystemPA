@@ -1,9 +1,15 @@
 package com.example.georgebra.Model.InputHandler;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
+import java.util.ArrayList;
 
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.NONE,
+        getterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY,
+        setterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY
+)
 public class StationData {
     @JsonProperty("id")
     private String id;
@@ -12,19 +18,19 @@ public class StationData {
     private String name;
 
     @JsonProperty("x")
-    private int x;
+    private double x;
 
     @JsonProperty("y")
-    private int y;
+    private double y;
 
     @JsonProperty("isInterchange")
     private boolean isInterchange;
 
     @JsonProperty("lineNames")
-    private List<String> lineNames;
+    private ArrayList<String> lineNames = new ArrayList<>();
 
     @JsonProperty("lineIDs")
-    private List<String> lineIDs;
+    private ArrayList<String> lineIDs = new ArrayList<>();;
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -32,19 +38,19 @@ public class StationData {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public int getX() { return x; }
-    public void setX(int x) { this.x = x; }
+    public double getX() { return x; }
+    public void setX(double x) { this.x = x; }
 
-    public int getY() { return y; }
-    public void setY(int y) { this.y = y; }
+    public double getY() { return y; }
+    public void setY(double y) { this.y = y; }
 
     public boolean isInterchange() { return isInterchange; }
     public void setInterchange(boolean interchange) { isInterchange = interchange; }
 
     //stuff for interchanges
-    public List<String> getLineNames() { return lineNames; }
-    public void setLineNames(List<String> lineNames) { this.lineNames = lineNames; }
+    public ArrayList<String> getLineNames() { return lineNames; }
+    public void setLineNames(ArrayList<String> lineNames) { this.lineNames = lineNames; }
 
-    public List<String> getLineIDs() { return lineIDs; }
-    public void setLineIDs(List<String> lineIDs) { this.lineIDs = lineIDs; }
+    public ArrayList<String> getLineIDs() { return lineIDs; }
+    public void setLineIDs(ArrayList<String> lineIDs) { this.lineIDs = lineIDs; }
 }

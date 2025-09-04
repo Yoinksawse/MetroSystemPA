@@ -12,10 +12,9 @@ import java.util.HashSet;
 public class LRTLine extends MetroLine implements Drawable {
     Group currentLine = new Group();
 
-    public LRTLine(String lineName, String lineID, int lineNo) {
-        super(lineName, lineID, lineNo, "A9A9A9");
+    public LRTLine(String lineName, String lineCode, int lineId) {
+        super(lineName, lineCode, lineId, "A9A9A9");
     }
-
 
     //useless
     public Group draw() {
@@ -71,6 +70,6 @@ public class LRTLine extends MetroLine implements Drawable {
     }
 
     public String toString() {
-        return "+LRT " + super.toString();
+        return "LRT " + super.toString();
     }
 }

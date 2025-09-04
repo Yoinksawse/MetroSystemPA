@@ -5,11 +5,13 @@ import javafx.scene.Group;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 
+import java.util.MissingFormatArgumentException;
+
 public class SingleStation extends Station implements Drawable {
     Group currentStation = new Group();
 
-    public SingleStation(double x, double y, String id, String lineName, String name, int stationNo) {
-        super(x, y, id, lineName, name, stationNo);
+    public SingleStation(double x, double y, String id, String lineName, String name) {
+        super(x, y, id, lineName, name);
     }
 
     /*

@@ -1,4 +1,4 @@
-package com.example.georgebra.Model;
+package com.example.georgebra.Model.TesterClasses;
 
 import com.example.georgebra.Model.*;
 import com.example.georgebra.Model.LineTypes.*;
@@ -19,26 +19,26 @@ public class Tester {
         System.out.println("=== Testing Station Classes ===");
 
         // Test SingleStation
-        SingleStation jurongEast = new SingleStation(100, 100, "NS1", "Jurong East", "North South MetroLine", 1);
+        SingleStation jurongEast = new SingleStation(100, 100, "NS1", "Jurong East", "North South MetroLine");
         System.out.println("Created SingleStation: " + jurongEast);
 
         // Test Interchange creation
         ArrayList<Pair<String, String>> rafflesLines = new ArrayList<>();
         rafflesLines.add(new Pair<>("North South MetroLine", "NS26"));
         rafflesLines.add(new Pair<>("East West MetroLine", "EW14"));
-        Interchange rafflesPlace = new Interchange(300, 200, rafflesLines, "Raffles Place", 26);
+        Interchange rafflesPlace = new Interchange(300, 200, rafflesLines, "Raffles Place");
         System.out.println("Created Interchange: " + rafflesPlace);
 
         // Test Interchange merging
         ArrayList<Pair<String, String>> circleLineInfo = new ArrayList<>();
         circleLineInfo.add(new Pair<>("Circle MetroLine", "CC1"));
-        Interchange rafflesPlaceCC = new Interchange(300, 200, circleLineInfo, "Raffles Place", 26);
+        Interchange rafflesPlaceCC = new Interchange(300, 200, circleLineInfo, "Raffles Place");
         Interchange merged = Interchange.checkExistenceAndMergeLines(rafflesPlaceCC);
         System.out.println("Merged Interchange lines: " + merged.getDifferentLinesInfo());
 
         // Test Station exceptions
         try {
-            new SingleStation(0, 0, "", "Test", "MetroLine", 0);
+            new SingleStation(0, 0, "", "Test", "MetroLine");
         } catch (Exception e) {
             System.out.println("Caught expected exception: " + e.getMessage());
         }
@@ -48,11 +48,11 @@ public class Tester {
         System.out.println("\n=== Testing MetroLine Classes ===");
 
         // Create MRT line
-        MRTLine northSouthLine = new MRTLine("North South MetroLine", "NS", 1);
+        MRTLine northSouthLine = new MRTLine("North South MetroLine", "NS", 1, "FF0000");
 
         // Add stations
-        SingleStation jurongEast = new SingleStation(100, 100, "NS1", "Jurong East", "North South MetroLine", 1);
-        SingleStation bukitBatok = new SingleStation(120, 120, "NS2", "Bukit Batok", "North South MetroLine", 2);
+        SingleStation jurongEast = new SingleStation(100, 100, "NS1", "Jurong East", "North South MetroLine");
+        SingleStation bukitBatok = new SingleStation(120, 120, "NS2", "Bukit Batok", "North South MetroLine");
 
         //northSouthLine.addStation(jurongEast);
         //northSouthLine.addStation(bukitBatok);
@@ -62,7 +62,7 @@ public class Tester {
 
         // Test line exceptions
         try {
-            new MRTLine("", "NS", 1);
+            new MRTLine("", "NS", 1, "00FF00");
         } catch (Exception e) {
             System.out.println("Caught expected exception: " + e.getMessage());
         }
@@ -74,20 +74,20 @@ public class Tester {
         MetroSystem singaporeMRT = new MetroSystem("Singapore");
 
         // Create North South MetroLine
-        MRTLine northSouthLine = new MRTLine("North South MetroLine", "NS", 1);
-        SingleStation jurongEast = new SingleStation(100, 100, "NS1", "Jurong East", "North South MetroLine", 1);
-        SingleStation bukitBatok = new SingleStation(120, 120, "NS2", "Bukit Batok", "North South MetroLine", 2);
+        MRTLine northSouthLine = new MRTLine("North South MetroLine", "NS", 1, "00F000");
+        SingleStation jurongEast = new SingleStation(100, 100, "NS1", "Jurong East", "North South MetroLine");
+        SingleStation bukitBatok = new SingleStation(120, 120, "NS2", "Bukit Batok", "North South MetroLine");
         northSouthLine.addEdge(jurongEast, bukitBatok, 3);
 
         // Create East West MetroLine
-        MRTLine eastWestLine = new MRTLine("East West MetroLine", "EW", 2);
-        SingleStation pasirRis = new SingleStation(200, 100, "EW1", "Pasir Ris", "East West MetroLine", 1);
+        MRTLine eastWestLine = new MRTLine("East West MetroLine", "EW", 2, "0000FF");
+        SingleStation pasirRis = new SingleStation(200, 100, "EW1", "Pasir Ris", "East West MetroLine");
 
         // Create interchange
         ArrayList<Pair<String, String>> rafflesLines = new ArrayList<>();
         rafflesLines.add(new Pair<>("North South MetroLine", "NS26"));
         rafflesLines.add(new Pair<>("East West MetroLine", "EW14"));
-        Interchange rafflesPlace = new Interchange(300, 200, rafflesLines, "Raffles Place", 26);
+        Interchange rafflesPlace = new Interchange(300, 200, rafflesLines, "Raffles Place");
 
         eastWestLine.addEdge(pasirRis, rafflesPlace, 4);
         northSouthLine.addEdge(bukitBatok, rafflesPlace, 2);
@@ -115,8 +115,8 @@ public class Tester {
         }
 
         // Test invalid connections
-        SingleStation s1 = new SingleStation(0, 0, "T1", "Test 1", "Test MetroLine", 1);
-        SingleStation s2 = new SingleStation(10, 10, "T2", "Test 2", "Test MetroLine", 2);
+        SingleStation s1 = new SingleStation(0, 0, "T1", "Test 1", "Test MetroLine");
+        SingleStation s2 = new SingleStation(10, 10, "T2", "Test 2", "Test MetroLine");
         testSystem.addEdge(s1, s2, 3);
         System.out.println("Added test connection between " + s1 + " and " + s2);
 
@@ -172,50 +172,50 @@ BL7 BL6 1
         MetroSystem metro = new MetroSystem("Dijkstra Test System");
 
         // Create 3 lines
-        MRTLine redLine = new MRTLine("Red MetroLine", "RL", 1);
-        MRTLine greenLine = new MRTLine("Green MetroLine", "GL", 2);
-        MRTLine blueLine = new MRTLine("Blue MetroLine", "BL", 3);
+        MRTLine redLine = new MRTLine("Red MetroLine", "RL", 1, "0FF000");
+        MRTLine greenLine = new MRTLine("Green MetroLine", "GL", 2, "00000F");
+        MRTLine blueLine = new MRTLine("Blue MetroLine", "BL", 3, "000FFF");
 
         // FIRST CREATE INTERCHANGES (the hub stations)
         // Central Hub connects Red MetroLine and Green MetroLine
         ArrayList<Pair<String, String>> interchange1Lines = new ArrayList<>();
         interchange1Lines.add(new Pair<>("Red MetroLine", "RL4"));
         interchange1Lines.add(new Pair<>("Green MetroLine", "GL4"));
-        Interchange centralHub = new Interchange(160, 260, interchange1Lines, "Central Hub", 4);
+        Interchange centralHub = new Interchange(160, 260, interchange1Lines, "Central Hub");
 
         // West Hub connects Green MetroLine and Blue MetroLine
         ArrayList<Pair<String, String>> interchange2Lines = new ArrayList<>();
         interchange2Lines.add(new Pair<>("Green MetroLine", "GL2"));
         interchange2Lines.add(new Pair<>("Blue MetroLine", "BL5"));
-        Interchange westHub = new Interchange(320, 320, interchange2Lines, "West Hub", 5);
+        Interchange westHub = new Interchange(320, 320, interchange2Lines, "West Hub");
 
         // NOW CREATE SINGLE STATIONS, CONNECTING TO INTERCHANGES WHERE NEEDED
         // Red MetroLine Stations
-        SingleStation r1 = new SingleStation(100, 100, "RL1", "Red A", "Red MetroLine", 1);
-        SingleStation r2 = new SingleStation(120, 120, "RL2", "Red B", "Red MetroLine", 2);
-        SingleStation r3 = new SingleStation(140, 140, "RL3", "Red C", "Red MetroLine", 3);
+        SingleStation r1 = new SingleStation(100, 100, "RL1", "Red A", "Red MetroLine");
+        SingleStation r2 = new SingleStation(120, 120, "RL2", "Red B", "Red MetroLine");
+        SingleStation r3 = new SingleStation(140, 140, "RL3", "Red C", "Red MetroLine");
         // r4 is replaced by centralHub (RL4)
-        SingleStation r5 = new SingleStation(180, 180, "RL5", "Red E", "Red MetroLine", 5);
-        SingleStation r6 = new SingleStation(200, 200, "RL6", "Red F", "Red MetroLine", 6);
-        SingleStation r7 = new SingleStation(220, 220, "RL7", "Red G", "Red MetroLine", 7);
+        SingleStation r5 = new SingleStation(180, 180, "RL5", "Red E", "Red MetroLine");
+        SingleStation r6 = new SingleStation(200, 200, "RL6", "Red F", "Red MetroLine");
+        SingleStation r7 = new SingleStation(220, 220, "RL7", "Red G", "Red MetroLine");
 
         // Green MetroLine Stations
-        SingleStation g1 = new SingleStation(100, 300, "GL1", "Green A", "Green MetroLine", 1);
+        SingleStation g1 = new SingleStation(100, 300, "GL1", "Green A", "Green MetroLine");
         // g2 is replaced by westHub (GL2)
-        SingleStation g3 = new SingleStation(140, 340, "GL3", "Green C", "Green MetroLine", 3);
+        SingleStation g3 = new SingleStation(140, 340, "GL3", "Green C", "Green MetroLine");
         // g4 is replaced by centralHub (GL4)
-        SingleStation g5 = new SingleStation(180, 380, "GL5", "Green E", "Green MetroLine", 5);
-        SingleStation g6 = new SingleStation(200, 400, "GL6", "Green F", "Green MetroLine", 6);
-        SingleStation g7 = new SingleStation(220, 420, "GL7", "Green G", "Green MetroLine", 7);
+        SingleStation g5 = new SingleStation(180, 380, "GL5", "Green E", "Green MetroLine");
+        SingleStation g6 = new SingleStation(200, 400, "GL6", "Green F", "Green MetroLine");
+        SingleStation g7 = new SingleStation(220, 420, "GL7", "Green G", "Green MetroLine");
 
         // Blue MetroLine Stations
-        SingleStation b1 = new SingleStation(300, 100, "BL1", "Blue A", "Blue MetroLine", 1);
-        SingleStation b2 = new SingleStation(320, 120, "BL2", "Blue B", "Blue MetroLine", 2);
-        SingleStation b3 = new SingleStation(340, 140, "BL3", "Blue C", "Blue MetroLine", 3);
-        SingleStation b4 = new SingleStation(360, 160, "BL4", "Blue D", "Blue MetroLine", 4);
+        SingleStation b1 = new SingleStation(300, 100, "BL1", "Blue A", "Blue MetroLine");
+        SingleStation b2 = new SingleStation(320, 120, "BL2", "Blue B", "Blue MetroLine");
+        SingleStation b3 = new SingleStation(340, 140, "BL3", "Blue C", "Blue MetroLine");
+        SingleStation b4 = new SingleStation(360, 160, "BL4", "Blue D", "Blue MetroLine");
         // b5 is replaced by westHub (BL5)
-        SingleStation b6 = new SingleStation(400, 200, "BL6", "Blue F", "Blue MetroLine", 6);
-        SingleStation b7 = new SingleStation(420, 220, "BL7", "Blue G", "Blue MetroLine", 7);
+        SingleStation b6 = new SingleStation(400, 200, "BL6", "Blue F", "Blue MetroLine");
+        SingleStation b7 = new SingleStation(420, 220, "BL7", "Blue G", "Blue MetroLine");
 
         // BUILD THE LINES WITH PROPER CONNECTIONS
         // Red MetroLine

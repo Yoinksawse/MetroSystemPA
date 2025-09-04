@@ -1,0 +1,15 @@
+{
+  "cityName": "Singapore",
+  "metroLines": [
+    "CCL",
+    "DTL",
+    "EWL",
+    "NSL",
+    "NEL",
+    "TEL",
+    "BPLRT",
+    "PGLRT",
+    "SKLRT",
+    "SX"
+  ]
+}

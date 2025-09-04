@@ -7,20 +7,22 @@ import javafx.scene.paint.Color;
 
 import java.util.MissingFormatArgumentException;
 
-public abstract class Station implements Comparable<Station>{
-    protected int stationNo; //3
+public abstract class Station { //implements Comparable<Station>{
+    //protected int stationNo; //3
     protected final String id; //NE3    Must have at least 2 letters, 1st denoting line, 2nd denoting station
     protected final String name; //Outram Park
-    protected final String lineName; //North East MetroLine
     protected double x = 0;
     protected double y = 0;
+
+    protected final String lineName; //North East MetroLine
+
     protected boolean selected;
     protected boolean dragging;
     public final DropShadow highlightShadow =
             new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
     int estimate;
 
-    public Station(double x, double y, String id, String lineName, String name, int stationNo) throws MissingFormatArgumentException{
+    public Station(double x, double y, String id, String lineName, String name) throws MissingFormatArgumentException{
         if (name.isEmpty() || lineName.isEmpty()) {
             throw new MissingFormatArgumentException("Provide a MetroLine name.");
         }
@@ -31,7 +33,7 @@ public abstract class Station implements Comparable<Station>{
         this.id = id;
         this.name = name;
         this.lineName = lineName;
-        this.stationNo = stationNo;
+        //this.stationNo = stationNo;
         this.x = x;
         this.y = y;
         this.selected = false;
@@ -39,22 +41,24 @@ public abstract class Station implements Comparable<Station>{
     }
 
     //specialised for interchange: will have empty id
-    public Station(double x, double y, String name, int stationNo) throws MissingFormatArgumentException {
+    public Station(double x, double y, String name) throws MissingFormatArgumentException {
         if (name.isEmpty()) throw new MissingFormatArgumentException("Provide a MetroLine name.");
 
         this.id = "";
         this.name = name;
         this.lineName = "";
-        this.stationNo = stationNo;
+        //this.stationNo = stationNo;
         this.x = x;
         this.y = y;
         this.selected = false;
         this.dragging = false;
     }
 
+   /*
     public Station(Station other) {
-        this(other.getX(), other.getY(), other.getStationID(), other.getLineName(), other.getName(), other.getStationNo());
+        this(other.getX(), other.getY(), other.getStationID(), other.getLineName(), other.getName());
     }
+    */
 
     //useless
     public abstract Group draw();
@@ -91,9 +95,6 @@ public abstract class Station implements Comparable<Station>{
         }
         return this.id;
     }
-    public int getStationNo() {
-        return this.stationNo;
-    }
     public String getName() {
         return this.name;
     }
@@ -113,11 +114,14 @@ public abstract class Station implements Comparable<Station>{
 
     @Override
     public String toString() {
-        return this.id + ":" + this.name + " " + this.x + " " + this.y;
+        return this.id + ": " + this.name + " " + this.x + " " + this.y;
     }
 
+    /*
     @Override
     public int compareTo(Station other) { //sort in ascending order for max heap pq
         return Integer.compare(this.estimate, other.estimate);
     }
+
+     */
 }

@@ -1,10 +1,15 @@
 package com.example.georgebra.Model.InputHandler;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
-import java.util.List;
 
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.NONE,
+        getterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY,
+        setterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY
+)
 public class MetroLineData {
     @JsonProperty("id")
     private int id;
@@ -15,17 +20,23 @@ public class MetroLineData {
     @JsonProperty("code")
     private String code;
 
-    @JsonProperty("isInterchange")
-    private boolean isInterchange;
+    @JsonProperty("hasInterchange")
+    private boolean hasInterchange;
 
     @JsonProperty("stationCodes")
-    private List<String> stationCodes = new ArrayList<>();
+    private ArrayList<String> stationCodes = new ArrayList<>();
+
+    @JsonProperty("colour")
+    private String colour;
+
+    @JsonProperty("lineType")
+    private String lineType;
 
     @JsonProperty("stations")
-    private List<StationData> stations = new ArrayList<>();
+    private ArrayList<StationData> stations = new ArrayList<>();
 
     @JsonProperty("edges")
-    private List<EdgeData> edges = new ArrayList<>();
+    private ArrayList<EdgeData> edges = new ArrayList<>();
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -36,15 +47,21 @@ public class MetroLineData {
     public String getCode() { return code; }
     public void setCode(String code) { this.code = code; }
 
-    public boolean isInterchange() { return isInterchange; }
-    public void setInterchange(boolean interchange) { isInterchange = interchange; }
+    public String getColour() { return colour; }
+    public void setColour(String colourRGB) { this.colour = colourRGB; }
 
-    public List<String> getStationCodes() { return stationCodes; }
-    public void setStationCodes(List<String> stationCodes) { this.stationCodes = stationCodes; }
+    public String getLineType() { return lineType; }
+    public void setLineType(String lineType) { this.lineType = lineType; }
 
-    public List<StationData> getStations() { return stations; }
-    public void setStations(List<StationData> stations) { this.stations = stations; }
+    public boolean hasInterchange() { return hasInterchange; }
+    public void setHasInterchange(boolean hasInterchange) { this.hasInterchange = hasInterchange; }
 
-    public List<EdgeData> getEdges() { return edges; }
-    public void setEdges(List<EdgeData> edges) { this.edges = edges; }
+    public ArrayList<String> getStationCodes() { return stationCodes; }
+    public void setStationCodes(ArrayList<String> stationCodes) { this.stationCodes = stationCodes; }
+
+    public ArrayList<StationData> getStations() { return stations; }
+    public void setStations(ArrayList<StationData> stations) { this.stations = stations; }
+
+    public ArrayList<EdgeData> getEdges() { return edges; }
+    public void setEdges(ArrayList<EdgeData> edges) { this.edges = edges; }
 }

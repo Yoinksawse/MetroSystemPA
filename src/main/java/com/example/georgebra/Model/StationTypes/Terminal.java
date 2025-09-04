@@ -8,8 +8,7 @@ public class Terminal extends Station implements Drawable {
     Group currentStation = new Group();
 
     public Terminal(double x, double y, String id, String lineName, String name, int stationNo) {
-        super(x, y, id, lineName, name, stationNo);
-
+        super(x, y, id, lineName, name);
     }
 
     /*

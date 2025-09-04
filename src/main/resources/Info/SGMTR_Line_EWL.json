@@ -1,316 +1,312 @@
 {
-  "metroLines": [
+  "id": 2,
+  "name": "East West Line",
+  "code": "EWL",
+  "hasInterchange": true,
+  "stationCodes": ["EW", "CG"],
+  "colour": "009645",
+  "lineType": "MRT",
+  "stations": [
     {
-      "id": 2,
-      "name": "East West Line",
-      "code": "EWL",
-      "hasInterchange": true,
-      "stationCodes": ["EW", "CG"],
-      "colour": "009645",
-      "lineType": "MRT",
-      "stations": [
-        {
-          "id": "EW1",
-          "name": "Pasir Ris",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW2",
-          "name": "Tampines",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Downtown Line"],
-          "lineIDs": ["EW2", "DT32"]
-        },
-        {
-          "id": "EW3",
-          "name": "Simei",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW4",
-          "name": "Tanah Merah",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "East West Line"],
-          "lineIDs": ["EW4", "CG0"]
-        },
-        {
-          "id": "EW5",
-          "name": "Bedok",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW6",
-          "name": "Kembangan",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW7",
-          "name": "Eunos",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW8",
-          "name": "Paya Lebar",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Circle Line"],
-          "lineIDs": ["EW8", "CC9"]
-        },
-        {
-          "id": "EW9",
-          "name": "Aljunied",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW10",
-          "name": "Kallang",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW11",
-          "name": "Lavender",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW12",
-          "name": "Bugis",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Downtown Line"],
-          "lineIDs": ["EW12", "DT14"]
-        },
-        {
-          "id": "EW13",
-          "name": "City Hall",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["North South Line", "East West Line"],
-          "lineIDs": ["NS25", "EW13"]
-        },
-        {
-          "id": "EW14",
-          "name": "Raffles Place",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "North South Line"],
-          "lineIDs": ["EW14", "NS26"]
-        },
-        {
-          "id": "EW15",
-          "name": "Tanjong Pagar",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW16",
-          "name": "Outram Park",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "North East Line", "Thomson-East Coast Line"],
-          "lineIDs": ["EW16", "NE3", "TE17"]
-        },
-        {
-          "id": "EW17",
-          "name": "Tiong Bahru",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW18",
-          "name": "Redhill",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW19",
-          "name": "Queenstown",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW20",
-          "name": "Commonwealth",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW21",
-          "name": "Buona Vista",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Circle Line"],
-          "lineIDs": ["EW21", "CC22"]
-        },
-        {
-          "id": "EW22",
-          "name": "Dover",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW23",
-          "name": "Clementi",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW24",
-          "name": "Jurong East",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["North South Line", "East West Line"],
-          "lineIDs": ["NS1", "EW24"]
-        },
-        {
-          "id": "EW25",
-          "name": "Chinese Garden",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW26",
-          "name": "Lakeside",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW27",
-          "name": "Boon Lay",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW28",
-          "name": "Pioneer",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW29",
-          "name": "Joo Koon",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW30",
-          "name": "Gul Circle",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW31",
-          "name": "Tuas Crescent",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW32",
-          "name": "Tuas West Road",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "EW33",
-          "name": "Tuas Link",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "CG1",
-          "name": "Expo",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Downtown Line"],
-          "lineIDs": ["CG1", "DT35"]
-        },
-        {
-          "id": "CG2",
-          "name": "Changi Airport",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        }
-      ],
-      "edges": [
-        {"from": "EW1", "to": "EW2", "time": 2},
-        {"from": "EW2", "to": "EW3", "time": 2},
-        {"from": "EW3", "to": "EW4", "time": 4},
-        {"from": "EW4", "to": "EW5", "time": 3},
-        {"from": "EW5", "to": "EW6", "time": 2},
-        {"from": "EW6", "to": "EW7", "time": 3},
-        {"from": "EW7", "to": "EW8", "time": 3},
-        {"from": "EW8", "to": "EW9", "time": 2},
-        {"from": "EW9", "to": "EW10", "time": 3},
-        {"from": "EW10", "to": "EW11", "time": 2},
-        {"from": "EW11", "to": "EW12", "time": 3},
-        {"from": "EW12", "to": "EW13", "time": 1},
-        {"from": "EW13", "to": "EW14", "time": 1},
-        {"from": "EW14", "to": "EW15", "time": 2},
-        {"from": "EW15", "to": "EW16", "time": 3},
-        {"from": "EW16", "to": "EW17", "time": 2},
-        {"from": "EW17", "to": "EW18", "time": 2},
-        {"from": "EW18", "to": "EW19", "time": 3},
-        {"from": "EW19", "to": "EW20", "time": 2},
-        {"from": "EW20", "to": "EW21", "time": 3},
-        {"from": "EW21", "to": "EW22", "time": 2},
-        {"from": "EW22", "to": "EW23", "time": 3},
-        {"from": "EW23", "to": "EW24", "time": 2},
-        {"from": "EW24", "to": "EW25", "time": 3},
-        {"from": "EW25", "to": "EW26", "time": 2},
-        {"from": "EW26", "to": "EW27", "time": 3},
-        {"from": "EW27", "to": "EW28", "time": 2},
-        {"from": "EW28", "to": "EW29", "time": 3},
-        {"from": "EW29", "to": "EW30", "time": 2},
-        {"from": "EW30", "to": "EW31", "time": 3},
-        {"from": "EW31", "to": "EW32", "time": 2},
-        {"from": "EW32", "to": "EW33", "time": 2},
-        {"from": "EW4", "to": "CG1", "time": 3},
-        {"from": "CG1", "to": "CG2", "time": 3}
-      ]
+      "id": "EW1",
+      "name": "Pasir Ris",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW2",
+      "name": "Tampines",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Downtown Line"],
+      "lineIDs": ["EW2", "DT32"]
+    },
+    {
+      "id": "EW3",
+      "name": "Simei",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW4",
+      "name": "Tanah Merah",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "East West Line"],
+      "lineIDs": ["EW4", "CG0"]
+    },
+    {
+      "id": "EW5",
+      "name": "Bedok",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW6",
+      "name": "Kembangan",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW7",
+      "name": "Eunos",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW8",
+      "name": "Paya Lebar",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Circle Line"],
+      "lineIDs": ["EW8", "CC9"]
+    },
+    {
+      "id": "EW9",
+      "name": "Aljunied",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW10",
+      "name": "Kallang",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW11",
+      "name": "Lavender",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW12",
+      "name": "Bugis",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Downtown Line"],
+      "lineIDs": ["EW12", "DT14"]
+    },
+    {
+      "id": "EW13",
+      "name": "City Hall",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["North South Line", "East West Line"],
+      "lineIDs": ["NS25", "EW13"]
+    },
+    {
+      "id": "EW14",
+      "name": "Raffles Place",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "North South Line"],
+      "lineIDs": ["EW14", "NS26"]
+    },
+    {
+      "id": "EW15",
+      "name": "Tanjong Pagar",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW16",
+      "name": "Outram Park",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "North East Line", "Thomson-East Coast Line"],
+      "lineIDs": ["EW16", "NE3", "TE17"]
+    },
+    {
+      "id": "EW17",
+      "name": "Tiong Bahru",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW18",
+      "name": "Redhill",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW19",
+      "name": "Queenstown",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW20",
+      "name": "Commonwealth",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW21",
+      "name": "Buona Vista",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Circle Line"],
+      "lineIDs": ["EW21", "CC22"]
+    },
+    {
+      "id": "EW22",
+      "name": "Dover",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW23",
+      "name": "Clementi",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW24",
+      "name": "Jurong East",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["North South Line", "East West Line"],
+      "lineIDs": ["NS1", "EW24"]
+    },
+    {
+      "id": "EW25",
+      "name": "Chinese Garden",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW26",
+      "name": "Lakeside",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW27",
+      "name": "Boon Lay",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW28",
+      "name": "Pioneer",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW29",
+      "name": "Joo Koon",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW30",
+      "name": "Gul Circle",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW31",
+      "name": "Tuas Crescent",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW32",
+      "name": "Tuas West Road",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "EW33",
+      "name": "Tuas Link",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "CG1",
+      "name": "Expo",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Downtown Line"],
+      "lineIDs": ["CG1", "DT35"]
+    },
+    {
+      "id": "CG2",
+      "name": "Changi Airport",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
     }
+  ],
+  "edges": [
+    {"from": "EW1", "to": "EW2", "time": 3},
+    {"from": "EW2", "to": "EW3", "time": 3},
+    {"from": "EW3", "to": "EW4", "time": 3},
+    {"from": "EW4", "to": "EW5", "time": 3},
+    {"from": "EW5", "to": "EW6", "time": 3},
+    {"from": "EW6", "to": "EW7", "time": 2},
+    {"from": "EW7", "to": "EW8", "time": 2},
+    {"from": "EW8", "to": "EW9", "time": 3},
+    {"from": "EW9", "to": "EW10", "time": 2},
+    {"from": "EW10", "to": "EW11", "time": 3},
+    {"from": "EW11", "to": "EW12", "time": 2},
+    {"from": "EW12", "to": "EW13", "time": 2},
+    {"from": "EW13", "to": "EW14", "time": 3},
+    {"from": "EW14", "to": "EW15", "time": 2},
+    {"from": "EW15", "to": "EW16", "time": 2},
+    {"from": "EW16", "to": "EW17", "time": 3},
+    {"from": "EW17", "to": "EW18", "time": 3},
+    {"from": "EW18", "to": "EW19", "time": 2},
+    {"from": "EW19", "to": "EW20", "time": 3},
+    {"from": "EW20", "to": "EW21", "time": 2},
+    {"from": "EW21", "to": "EW22", "time": 3},
+    {"from": "EW22", "to": "EW23", "time": 2},
+    {"from": "EW23", "to": "EW24", "time": 5},
+    {"from": "EW24", "to": "EW25", "time": 2},
+    {"from": "EW25", "to": "EW26", "time": 3},
+    {"from": "EW26", "to": "EW27", "time": 2},
+    {"from": "EW27", "to": "EW28", "time": 3},
+    {"from": "EW28", "to": "EW29", "time": 3},
+    {"from": "EW29", "to": "EW30", "time": 3},
+    {"from": "EW30", "to": "EW31", "time": 3},
+    {"from": "EW31", "to": "EW32", "time": 2},
+    {"from": "EW32", "to": "EW33", "time": 2},
+    {"from": "EW4", "to": "CG1", "time": 2},
+    {"from": "CG1", "to": "CG2", "time": 6}
   ]
 }

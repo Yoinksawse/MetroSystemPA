@@ -1,50 +1,46 @@
 {
-  "metroLines": [
+  "id": 10,
+  "name": "Sentosa Express",
+  "code": "SX",
+  "hasInterchange": true,
+  "stationCodes": ["SX"],
+  "colour": "000000",
+  "lineType": "Tourism",
+  "stations": [
     {
-      "id": 10,
-      "name": "Sentosa Express",
-      "code": "SX",
-      "hasInterchange": true,
-      "stationCodes": ["SX"],
-      "colour": "000000",
-      "lineType": "Tourism",
-      "stations": [
-        {
-          "id": "SX1",
-          "name": "HarbourFront",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Sentosa Express", "North East Line", "Circle Line"],
-          "lineIDs": ["SX1", "NE1", "CC29"]
-        },
-        {
-          "id": "SX2",
-          "name": "Beach Station",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "SX3",
-          "name": "Sentosa Imbiah",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "SX4",
-          "name": "Sentosa Waterfront",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        }
-      ],
-      "edges": [
-        {"from": "SX1", "to": "SX2", "time": 3},
-        {"from": "SX2", "to": "SX3", "time": 3},
-        {"from": "SX3", "to": "SX4", "time": 2}
-      ]
+      "id": "SX1",
+      "name": "HarbourFront",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Sentosa Express", "North East Line", "Circle Line"],
+      "lineIDs": ["SX1", "NE1", "CC29"]
+    },
+    {
+      "id": "SX2",
+      "name": "Beach Station",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "SX3",
+      "name": "Sentosa Imbiah",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "SX4",
+      "name": "Sentosa Waterfront",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
     }
+  ],
+  "edges": [
+    {"from": "SX1", "to": "SX2", "time": 3},
+    {"from": "SX2", "to": "SX3", "time": 3},
+    {"from": "SX3", "to": "SX4", "time": 2}
   ]
 }

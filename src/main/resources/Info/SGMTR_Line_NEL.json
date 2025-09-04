@@ -1,160 +1,156 @@
 {
-  "metroLines": [
+  "id": 5,
+  "name": "North East Line",
+  "code": "NEL",
+  "hasInterchange": true,
+  "stationCodes": ["NE"],
+  "colour": "A50077",
+  "lineType": "MRT",
+  "stations": [
     {
-      "id": 5,
-      "name": "North East Line",
-      "code": "NEL",
-      "hasInterchange": true,
-      "stationCodes": ["NE"],
-      "colour": "A50077",
-      "lineType": "MRT",
-      "stations": [
-        {
-          "id": "NE1",
-          "name": "HarbourFront",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Circle Line", "North East Line", "Sentosa Express"],
-          "lineIDs": ["CC29", "NE1", "SX1"]
-        },
-        {
-          "id": "NE3",
-          "name": "Outram Park",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Thomson-East Coast Line", "North East Line"],
-          "lineIDs": ["EW16", "TE17", "NE3"]
-        },
-        {
-          "id": "NE4",
-          "name": "Chinatown",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Downtown Line", "North East Line"],
-          "lineIDs": ["DT19", "NE4"]
-        },
-        {
-          "id": "NE5",
-          "name": "Clarke Quay",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE6",
-          "name": "Dhoby Ghaut",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["North South Line", "Circle Line", "North East Line"],
-          "lineIDs": ["NS24", "CC1", "NE6"]
-        },
-        {
-          "id": "NE7",
-          "name": "Little India",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Downtown Line", "North East Line"],
-          "lineIDs": ["DT12", "NE7"]
-        },
-        {
-          "id": "NE8",
-          "name": "Farrer Park",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE9",
-          "name": "Boon Keng",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE10",
-          "name": "Potong Pasir",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE11",
-          "name": "Woodleigh",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE12",
-          "name": "Serangoon",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Circle Line", "North East Line"],
-          "lineIDs": ["CC13", "NE12"]
-        },
-        {
-          "id": "NE13",
-          "name": "Kovan",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE14",
-          "name": "Hougang",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE15",
-          "name": "Buangkok",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "NE16",
-          "name": "Sengkang",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Sengkang LRT", "North East Line"],
-          "lineIDs": ["STC", "NE16"]
-        },
-        {
-          "id": "NE17",
-          "name": "Punggol",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Punggol LRT", "North East Line"],
-          "lineIDs": ["PTC", "NE17"]
-        }
-      ],
-      "edges": [
-        {"from": "NE1", "to": "NE3", "time": 2},
-        {"from": "NE3", "to": "NE4", "time": 3},
-        {"from": "NE4", "to": "NE5", "time": 3},
-        {"from": "NE5", "to": "NE6", "time": 2},
-        {"from": "NE6", "to": "NE7", "time": 2},
-        {"from": "NE7", "to": "NE8", "time": 1},
-        {"from": "NE8", "to": "NE9", "time": 2},
-        {"from": "NE9", "to": "NE10", "time": 2},
-        {"from": "NE10", "to": "NE11", "time": 3},
-        {"from": "NE11", "to": "NE12", "time": 2},
-        {"from": "NE12", "to": "NE13", "time": 2},
-        {"from": "NE13", "to": "NE14", "time": 3},
-        {"from": "NE14", "to": "NE15", "time": 2},
-        {"from": "NE15", "to": "NE16", "time": 0},
-        {"from": "NE16", "to": "NE17", "time": 3}
-      ]
+      "id": "NE1",
+      "name": "HarbourFront",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Circle Line", "North East Line", "Sentosa Express"],
+      "lineIDs": ["CC29", "NE1", "SX1"]
+    },
+    {
+      "id": "NE3",
+      "name": "Outram Park",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Thomson-East Coast Line", "North East Line"],
+      "lineIDs": ["EW16", "TE17", "NE3"]
+    },
+    {
+      "id": "NE4",
+      "name": "Chinatown",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Downtown Line", "North East Line"],
+      "lineIDs": ["DT19", "NE4"]
+    },
+    {
+      "id": "NE5",
+      "name": "Clarke Quay",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE6",
+      "name": "Dhoby Ghaut",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["North South Line", "Circle Line", "North East Line"],
+      "lineIDs": ["NS24", "CC1", "NE6"]
+    },
+    {
+      "id": "NE7",
+      "name": "Little India",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Downtown Line", "North East Line"],
+      "lineIDs": ["DT12", "NE7"]
+    },
+    {
+      "id": "NE8",
+      "name": "Farrer Park",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE9",
+      "name": "Boon Keng",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE10",
+      "name": "Potong Pasir",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE11",
+      "name": "Woodleigh",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE12",
+      "name": "Serangoon",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Circle Line", "North East Line"],
+      "lineIDs": ["CC13", "NE12"]
+    },
+    {
+      "id": "NE13",
+      "name": "Kovan",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE14",
+      "name": "Hougang",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE15",
+      "name": "Buangkok",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "NE16",
+      "name": "Sengkang",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Sengkang LRT", "North East Line"],
+      "lineIDs": ["STC", "NE16"]
+    },
+    {
+      "id": "NE17",
+      "name": "Punggol",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Punggol LRT", "North East Line"],
+      "lineIDs": ["PTC", "NE17"]
     }
+  ],
+  "edges": [
+    {"from": "NE1", "to": "NE3", "time": 2},
+    {"from": "NE3", "to": "NE4", "time": 3},
+    {"from": "NE4", "to": "NE5", "time": 3},
+    {"from": "NE5", "to": "NE6", "time": 2},
+    {"from": "NE6", "to": "NE7", "time": 2},
+    {"from": "NE7", "to": "NE8", "time": 1},
+    {"from": "NE8", "to": "NE9", "time": 2},
+    {"from": "NE9", "to": "NE10", "time": 2},
+    {"from": "NE10", "to": "NE11", "time": 3},
+    {"from": "NE11", "to": "NE12", "time": 2},
+    {"from": "NE12", "to": "NE13", "time": 2},
+    {"from": "NE13", "to": "NE14", "time": 3},
+    {"from": "NE14", "to": "NE15", "time": 2},
+    {"from": "NE15", "to": "NE16", "time": 2},
+    {"from": "NE16", "to": "NE17", "time": 3}
   ]
 }

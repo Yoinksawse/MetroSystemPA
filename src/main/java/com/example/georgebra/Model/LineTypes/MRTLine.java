@@ -11,8 +11,8 @@ import java.util.HashSet;
 public class MRTLine extends MetroLine implements Drawable {
     Group currentLine = new Group();
 
-    public MRTLine(String lineName, String lineID, int lineNo) {
-        super(lineName, lineID, lineNo, "A9A9A9");
+    public MRTLine(String lineName, String lineCode, int lineId, String lineColour) {
+        super(lineName, lineCode, lineId, lineColour);
     }
 
     //useless
@@ -69,6 +69,6 @@ public class MRTLine extends MetroLine implements Drawable {
     }
 
     public String toString() {
-        return "+MRT " + super.toString();
+        return "MRT " + super.toString();
     }
 }

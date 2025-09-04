@@ -13,8 +13,8 @@ import java.util.HashSet;
 public class TourismLine extends MetroLine implements Drawable { //such as SentosaLine
     Group currentLine = new Group();
 
-    public TourismLine(String lineName, String lineID, int lineNo) {
-        super(lineName, lineID, lineNo, "000000");
+    public TourismLine(String lineName, String lineCode, int lineId) {
+        super(lineName, lineCode, lineId, "000000");
     }
 
     //useless
@@ -71,6 +71,6 @@ public class TourismLine extends MetroLine implements Drawable { //such as Sento
     }
 
     public String toString() {
-        return "+Tourism " + super.toString();
+        return "Tourism " + super.toString();
     }
 }

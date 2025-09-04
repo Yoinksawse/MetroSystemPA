@@ -18,14 +18,14 @@ public class Interchange extends Station implements Drawable {
     //^ above hashset contains entries: (name of one line the interchange is in, id of interchange in that line)
 
     //primary constructor
-    public Interchange(double x, double y, ArrayList<Pair<String, String>> otherDifferentLinesInfo, String name, int stationNo) throws IllegalArgumentException {
+    public Interchange(double x, double y, ArrayList<Pair<String, String>> otherDifferentLinesInfo, String name) throws IllegalArgumentException {
         //Pass  first line name to super, but store all lines
-        super(x, y, name, stationNo);
+        super(x, y, name);
 
         for (Pair<String, String> lineInfo: otherDifferentLinesInfo) {
             String id = lineInfo.getValue();
-            if (id.isEmpty() || !Character.isDigit(id.charAt(id.length() - 1)) || !Character.isLetter(id.charAt(0))) {
-                throw new IllegalArgumentException("Invalid Station ID.");
+            if (id.isEmpty()) { // || !Character.isDigit(id.charAt(id.length() - 1)) || !Character.isLetter(id.charAt(0))) {
+                throw new IllegalArgumentException("Invalid Station ID: " + id);
             }
         }
 
@@ -137,6 +137,6 @@ public class Interchange extends Station implements Drawable {
             ids += (id.getValue() + "/");
         }
         if (ids.length() >= 2) ids = ids.substring(0, ids.length() - 1);
-        return "*" + ids + " (" + this.name + ")";
+        return "*" + ids + ": " + this.name + " " + this.x + " " + this.y;
     }
 }

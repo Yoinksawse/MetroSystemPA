@@ -2,6 +2,7 @@ package com.example.georgebra.Model;
 
 import com.example.georgebra.Model.LineTypes.MetroLine;
 import com.example.georgebra.Model.StationTypes.Interchange;
+import com.example.georgebra.Model.StationTypes.SingleStation;
 import com.example.georgebra.Model.StationTypes.Station;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -80,7 +81,7 @@ public class MetroSystem implements Drawable{
        return currentSystem;
     }
 
-    private Station addStation(Station station) {
+    public Station addStation(Station station) {
         for (Station s : stationList) {
             if (s.getName().equals(station.getName())) {
                 return null;
@@ -227,12 +228,35 @@ public class MetroSystem implements Drawable{
         return new ArrayList<>(this.metroLineList);
     }
 
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
     //init data structures
     boolean visited[] = new boolean[1005];
-    PriorityQueue<Station> unmarked = new PriorityQueue<>();
+    PriorityQueue<Station> unmarked = new PriorityQueue<>(
+            Comparator.comparingInt(Station::getEstimate)
+    );
     HashMap<Station, Station> prevMap = new HashMap<>();
 
     //initialisation
+    /*
+    public ArrayList<Station> dijkstra(String Uname, String Vname) {
+        boolean Uclear = false;
+        boolean Vclear = false;
+        for (Station s: stationList) {
+            if (s.getName().equals(Uname)) Uclear = true;
+            if (s.getName().equals(Vname)) Vclear = true;
+        }
+
+        return dijkstra(u, v);
+    }
+     */
+
     public ArrayList<Station> dijkstra(Station u, Station v) {
         //clear prev data
         prevMap.clear();
@@ -254,12 +278,12 @@ public class MetroSystem implements Drawable{
         }
         System.out.println();
         */
-        ///*
+        /*
         for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
         System.out.println();
-        //*/
+        */
         //System.out.println(v);
         //System.out.println(stationIndexMap.get(v));
         /*
@@ -276,6 +300,9 @@ public class MetroSystem implements Drawable{
             //System.out.println(Arrays.toString(unmarked.toArray()));
             Station cur = unmarked.poll();
 
+            System.out.println(cur);
+            System.out.println(stationIndexMap.get(cur));
+            System.out.println(stationIndexMap);
 
             if (visited[stationIndexMap.get(cur)]) continue;
             visited[stationIndexMap.get(cur)] = true;
@@ -286,7 +313,7 @@ public class MetroSystem implements Drawable{
                 Station nxt = edge.getKey();
                 int weight = edge.getValue();
 
-                int newTime = cur.getEstimate() + weight;
+                int newTime = cur.getEstimate() + weight + ((nxt instanceof Interchange) ? 5 : 0);
                 if (newTime < nxt.getEstimate()) {
                     //System.out.println(cur + " -> " + nxt + ": " + newTime + " " + nxt.getEstimate());
                     nxt.setEstimate(newTime);
@@ -314,7 +341,7 @@ public class MetroSystem implements Drawable{
     public String toString() {
         String systemString = ""; //=== " + this.cityName + " Metro ===\n";
         for (Station s: stationList) {
-            systemString += (s + " " + s.getX() + " " + s.getY() + "\n");
+            systemString += (s + "\n");
         }
 
         for (MetroLine line: this.metroLineList) {
@@ -324,11 +351,13 @@ public class MetroSystem implements Drawable{
         return systemString;
     }
 
-    //useless crap
+    //useless
+    /*
     public void removeEdge(Station u, Station v) {
 
     }
     public void removeStation(Station x) {
 
     }
+     */
 }

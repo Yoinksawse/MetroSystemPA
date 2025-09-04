@@ -1,336 +1,332 @@
 {
-  "metroLines": [
+  "id": 4,
+  "name": "Downtown Line",
+  "code": "DTL",
+  "hasInterchange": true,
+  "stationCodes": ["DT"],
+  "colour": "005EC4",
+  "lineType": "MRT",
+  "stations": [
     {
-      "id": 4,
-      "name": "Downtown Line",
-      "code": "DTL",
-      "hasInterchange": true,
-      "stationCodes": ["DT"],
-      "colour": "005EC4",
-      "lineType": "MRT",
-      "stations": [
-        {
-          "id": "DT1",
-          "name": "Bukit Panjang",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Bukit Panjang LRT", "Downtown Line"],
-          "lineIDs": ["BP6", "DT1"]
-        },
-        {
-          "id": "DT2",
-          "name": "Cashew",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT3",
-          "name": "Hillview",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT4",
-          "name": "Hume",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT5",
-          "name": "Beauty World",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT6",
-          "name": "King Albert Park",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT7",
-          "name": "Sixth Avenue",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT8",
-          "name": "Tan Kah Kee",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT9",
-          "name": "Botanic Gardens",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Circle Line", "Downtown Line"],
-          "lineIDs": ["CC19", "DT9"]
-        },
-        {
-          "id": "DT10",
-          "name": "Stevens",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Thomson-East Coast Line", "Downtown Line"],
-          "lineIDs": ["TE11", "DT10"]
-        },
-        {
-          "id": "DT11",
-          "name": "Newton",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["North South Line", "Downtown Line"],
-          "lineIDs": ["NS21", "DT11"]
-        },
-        {
-          "id": "DT12",
-          "name": "Little India",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["North East Line", "Downtown Line"],
-          "lineIDs": ["NE7", "DT12"]
-        },
-        {
-          "id": "DT13",
-          "name": "Rochor",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT14",
-          "name": "Bugis",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Downtown Line"],
-          "lineIDs": ["EW12", "DT14"]
-        },
-        {
-          "id": "DT15",
-          "name": "Promenade",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Circle Line", "Downtown Line"],
-          "lineIDs": ["CC4", "DT15"]
-        },
-        {
-          "id": "DT16",
-          "name": "Bayfront",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Circle Line", "Downtown Line"],
-          "lineIDs": ["CE1", "DT16"]
-        },
-        {
-          "id": "DT17",
-          "name": "Downtown",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT18",
-          "name": "Telok Ayer",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT19",
-          "name": "Chinatown",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["North East Line", "Downtown Line"],
-          "lineIDs": ["NE4", "DT19"]
-        },
-        {
-          "id": "DT20",
-          "name": "Fort Canning",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT21",
-          "name": "Bencoolen",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT22",
-          "name": "Jalan Basar",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT23",
-          "name": "Benemeer",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT24",
-          "name": "Geylang Bahru",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT25",
-          "name": "Matter",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT26",
-          "name": "MacPherson",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Circle Line", "Downtown Line"],
-          "lineIDs": ["CC10", "DT26"]
-        },
-        {
-          "id": "DT27",
-          "name": "Ubi",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT28",
-          "name": "Kaki Bukit",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT29",
-          "name": "Bedok North",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT30",
-          "name": "Bedok Reservoir",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT31",
-          "name": "Tampines West",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT32",
-          "name": "Tampines",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["East West Line", "Downtown Line"],
-          "lineIDs": ["EW2", "DT32"]
-        },
-        {
-          "id": "DT33",
-          "name": "Tampines East",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT34",
-          "name": "Upper Changi",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT35",
-          "name": "Expo",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Changi Airport Line", "Downtown Line"],
-          "lineIDs": ["CG1", "DT35"]
-        },
-        {
-          "id": "DT36",
-          "name": "Xilin",
-          "x": 0,
-          "y": 0,
-          "isInterchange": false
-        },
-        {
-          "id": "DT37",
-          "name": "Sungei Bedok",
-          "x": 0,
-          "y": 0,
-          "isInterchange": true,
-          "lineNames": ["Thomson-East Coast Line", "Downtown Line"],
-          "lineIDs": ["TE31", "DT37"]
-        }
-      ],
-      "edges": [
-        {"from": "DT1", "to": "DT2", "time": 2},
-        {"from": "DT2", "to": "DT3", "time": 3},
-        {"from": "DT3", "to": "DT4", "time": 2},
-        {"from": "DT4", "to": "DT5", "time": 2},
-        {"from": "DT5", "to": "DT6", "time": 3},
-        {"from": "DT6", "to": "DT7", "time": 2},
-        {"from": "DT7", "to": "DT8", "time": 2},
-        {"from": "DT8", "to": "DT9", "time": 3},
-        {"from": "DT9", "to": "DT10", "time": 3},
-        {"from": "DT10", "to": "DT11", "time": 4},
-        {"from": "DT11", "to": "DT12", "time": 3},
-        {"from": "DT12", "to": "DT13", "time": 3},
-        {"from": "DT13", "to": "DT14", "time": 2},
-        {"from": "DT14", "to": "DT15", "time": 2},
-        {"from": "DT15", "to": "DT16", "time": 1},
-        {"from": "DT16", "to": "DT17", "time": 3},
-        {"from": "DT17", "to": "DT18", "time": 2},
-        {"from": "DT18", "to": "DT19", "time": 3},
-        {"from": "DT19", "to": "DT20", "time": 0},
-        {"from": "DT20", "to": "DT21", "time": 3},
-        {"from": "DT21", "to": "DT22", "time": 2},
-        {"from": "DT22", "to": "DT23", "time": 2},
-        {"from": "DT23", "to": "DT24", "time": 2},
-        {"from": "DT24", "to": "DT25", "time": 2},
-        {"from": "DT25", "to": "DT26", "time": 3},
-        {"from": "DT26", "to": "DT27", "time": 2},
-        {"from": "DT27", "to": "DT28", "time": 2},
-        {"from": "DT28", "to": "DT29", "time": 2},
-        {"from": "DT29", "to": "DT30", "time": 2},
-        {"from": "DT30", "to": "DT31", "time": 2},
-        {"from": "DT31", "to": "DT32", "time": 1},
-        {"from": "DT32", "to": "DT33", "time": 2},
-        {"from": "DT33", "to": "DT34", "time": 2},
-        {"from": "DT34", "to": "DT35", "time": 3}
-      ]
+      "id": "DT1",
+      "name": "Bukit Panjang",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Bukit Panjang LRT", "Downtown Line"],
+      "lineIDs": ["BP6", "DT1"]
+    },
+    {
+      "id": "DT2",
+      "name": "Cashew",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT3",
+      "name": "Hillview",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT4",
+      "name": "Hume",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT5",
+      "name": "Beauty World",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT6",
+      "name": "King Albert Park",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT7",
+      "name": "Sixth Avenue",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT8",
+      "name": "Tan Kah Kee",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT9",
+      "name": "Botanic Gardens",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Circle Line", "Downtown Line"],
+      "lineIDs": ["CC19", "DT9"]
+    },
+    {
+      "id": "DT10",
+      "name": "Stevens",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Thomson-East Coast Line", "Downtown Line"],
+      "lineIDs": ["TE11", "DT10"]
+    },
+    {
+      "id": "DT11",
+      "name": "Newton",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["North South Line", "Downtown Line"],
+      "lineIDs": ["NS21", "DT11"]
+    },
+    {
+      "id": "DT12",
+      "name": "Little India",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["North East Line", "Downtown Line"],
+      "lineIDs": ["NE7", "DT12"]
+    },
+    {
+      "id": "DT13",
+      "name": "Rochor",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT14",
+      "name": "Bugis",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Downtown Line"],
+      "lineIDs": ["EW12", "DT14"]
+    },
+    {
+      "id": "DT15",
+      "name": "Promenade",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Circle Line", "Downtown Line"],
+      "lineIDs": ["CC4", "DT15"]
+    },
+    {
+      "id": "DT16",
+      "name": "Bayfront",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Circle Line", "Downtown Line"],
+      "lineIDs": ["CE1", "DT16"]
+    },
+    {
+      "id": "DT17",
+      "name": "Downtown",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT18",
+      "name": "Telok Ayer",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT19",
+      "name": "Chinatown",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["North East Line", "Downtown Line"],
+      "lineIDs": ["NE4", "DT19"]
+    },
+    {
+      "id": "DT20",
+      "name": "Fort Canning",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT21",
+      "name": "Bencoolen",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT22",
+      "name": "Jalan Basar",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT23",
+      "name": "Benemeer",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT24",
+      "name": "Geylang Bahru",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT25",
+      "name": "Mattar",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT26",
+      "name": "MacPherson",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Circle Line", "Downtown Line"],
+      "lineIDs": ["CC10", "DT26"]
+    },
+    {
+      "id": "DT27",
+      "name": "Ubi",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT28",
+      "name": "Kaki Bukit",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT29",
+      "name": "Bedok North",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT30",
+      "name": "Bedok Reservoir",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT31",
+      "name": "Tampines West",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT32",
+      "name": "Tampines",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["East West Line", "Downtown Line"],
+      "lineIDs": ["EW2", "DT32"]
+    },
+    {
+      "id": "DT33",
+      "name": "Tampines East",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT34",
+      "name": "Upper Changi",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT35",
+      "name": "Expo",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Changi Airport Line", "Downtown Line"],
+      "lineIDs": ["CG1", "DT35"]
+    },
+    {
+      "id": "DT36",
+      "name": "Xilin",
+      "x": 0,
+      "y": 0,
+      "isInterchange": false
+    },
+    {
+      "id": "DT37",
+      "name": "Sungei Bedok",
+      "x": 0,
+      "y": 0,
+      "isInterchange": true,
+      "lineNames": ["Thomson-East Coast Line", "Downtown Line"],
+      "lineIDs": ["TE31", "DT37"]
     }
+  ],
+  "edges": [
+    {"from": "DT1", "to": "DT2", "time": 2},
+    {"from": "DT2", "to": "DT3", "time": 3},
+    {"from": "DT3", "to": "DT4", "time": 2},
+    {"from": "DT4", "to": "DT5", "time": 2},
+    {"from": "DT5", "to": "DT6", "time": 3},
+    {"from": "DT6", "to": "DT7", "time": 2},
+    {"from": "DT7", "to": "DT8", "time": 2},
+    {"from": "DT8", "to": "DT9", "time": 3},
+    {"from": "DT9", "to": "DT10", "time": 3},
+    {"from": "DT10", "to": "DT11", "time": 4},
+    {"from": "DT11", "to": "DT12", "time": 3},
+    {"from": "DT12", "to": "DT13", "time": 3},
+    {"from": "DT13", "to": "DT14", "time": 2},
+    {"from": "DT14", "to": "DT15", "time": 2},
+    {"from": "DT15", "to": "DT16", "time": 1},
+    {"from": "DT16", "to": "DT17", "time": 3},
+    {"from": "DT17", "to": "DT18", "time": 2},
+    {"from": "DT18", "to": "DT19", "time": 3},
+    {"from": "DT19", "to": "DT20", "time": 2},
+    {"from": "DT20", "to": "DT21", "time": 3},
+    {"from": "DT21", "to": "DT22", "time": 2},
+    {"from": "DT22", "to": "DT23", "time": 2},
+    {"from": "DT23", "to": "DT24", "time": 2},
+    {"from": "DT24", "to": "DT25", "time": 2},
+    {"from": "DT25", "to": "DT26", "time": 3},
+    {"from": "DT26", "to": "DT27", "time": 2},
+    {"from": "DT27", "to": "DT28", "time": 2},
+    {"from": "DT28", "to": "DT29", "time": 2},
+    {"from": "DT29", "to": "DT30", "time": 2},
+    {"from": "DT30", "to": "DT31", "time": 2},
+    {"from": "DT31", "to": "DT32", "time": 1},
+    {"from": "DT32", "to": "DT33", "time": 2},
+    {"from": "DT33", "to": "DT34", "time": 2},
+    {"from": "DT34", "to": "DT35", "time": 3}
   ]
 }
