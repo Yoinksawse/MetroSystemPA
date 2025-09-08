@@ -2,7 +2,6 @@ package com.example.georgebra.Model;
 
 import com.example.georgebra.Model.LineTypes.MetroLine;
 import com.example.georgebra.Model.StationTypes.Interchange;
-import com.example.georgebra.Model.StationTypes.SingleStation;
 import com.example.georgebra.Model.StationTypes.Station;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -11,6 +10,8 @@ import javafx.util.Pair;
 import java.util.PriorityQueue;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MetroSystem implements Drawable{
     //private ArrayList<Pair<Station, ArrayList<Station>>> adjList; //keeping the pair with station just in case
@@ -83,7 +84,7 @@ public class MetroSystem implements Drawable{
 
     public Station addStation(Station station) {
         for (Station s : stationList) {
-            if (s.getName().equals(station.getName())) {
+            if (s.getName().equalsIgnoreCase(station.getName())) {
                 return null;
             }
         }
@@ -100,7 +101,7 @@ public class MetroSystem implements Drawable{
         boolean containStation = false;
         for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
             Station s = entry.getKey();
-            if (s.getName().equals(station.getName())) {
+            if (s.getName().equalsIgnoreCase(station.getName())) {
                 containStation = true;
                 break;
             }
@@ -120,14 +121,14 @@ public class MetroSystem implements Drawable{
         boolean containV = false;
         for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
             Station s = entry.getKey();
-            if (u.getName().equals(s.getName())) {
+            if (u.getName().equalsIgnoreCase(s.getName())) {
                 containU = true;
                 break;
             }
         }
         for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
             Station s = entry.getKey();
-            if (v.getName().equals(s.getName())) {
+            if (v.getName().equalsIgnoreCase(s.getName())) {
                 containV = true;
                 break;
             }
@@ -146,13 +147,13 @@ public class MetroSystem implements Drawable{
         if (u instanceof Interchange) {
             for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
                 Station s = entry.getKey();
-                if (u.getName().equals(s.getName())) newU = s;
+                if (u.getName().equalsIgnoreCase(s.getName())) newU = s;
             }
         }
         if (v instanceof Interchange) {
             for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
                 Station s = entry.getKey();
-                if (v.getName().equals(s.getName())) newV = s;
+                if (v.getName().equalsIgnoreCase(s.getName())) newV = s;
             }
         }
         adjListSystem[stationIndexMap.get(newU)].add(new Pair<Station, Integer>(newV, weight));
@@ -173,7 +174,7 @@ public class MetroSystem implements Drawable{
                 //find the instance of the same interchange currently in system!
                 Interchange actualU = null;
                 for (Station s: this.stationList) {
-                    if (s instanceof Interchange && s.getName().equals(u.getName())) {
+                    if (s instanceof Interchange && s.getName().equalsIgnoreCase(u.getName())) {
                         actualU = (Interchange) s;
                     }
                 }
@@ -188,7 +189,7 @@ public class MetroSystem implements Drawable{
 
                     boolean recordedContains = false;
                     for (Station s: recorded) {
-                        if (s.getName().equals(v.getName())) {
+                        if (s.getName().equalsIgnoreCase(v.getName())) {
                             recordedContains = true;
                             break;
                         }
@@ -208,7 +209,7 @@ public class MetroSystem implements Drawable{
 
                     boolean recordedContains = false;
                     for (Station s: recorded) {
-                        if (s.getName().equals(v.getName())) {
+                        if (s.getName().equalsIgnoreCase(v.getName())) {
                             recordedContains = true;
                             break;
                         }
@@ -244,18 +245,25 @@ public class MetroSystem implements Drawable{
     HashMap<Station, Station> prevMap = new HashMap<>();
 
     //initialisation
-    /*
-    public ArrayList<Station> dijkstra(String Uname, String Vname) {
-        boolean Uclear = false;
-        boolean Vclear = false;
-        for (Station s: stationList) {
-            if (s.getName().equals(Uname)) Uclear = true;
-            if (s.getName().equals(Vname)) Vclear = true;
-        }
+    public ArrayList<Station> dijkstra(String UStr, String VStr) {
+        UStr = UStr.trim(); VStr = VStr.trim();
+        Station u = null, v = null;
+        Pattern containDigit = Pattern.compile("[0-9]+");
+        Matcher matcherU = containDigit.matcher(UStr);
+        Matcher matcherV = containDigit.matcher(VStr);
 
-        return dijkstra(u, v);
+        if (!matcherU.find() && !matcherV.find()) { //Station names do not contain digits
+            u = findStationFromName(UStr);
+            v = findStationFromName(VStr);
+        }
+        else { //If digits found in both, input is for station IDs; try to find them.
+            u = indexStationMap.get(UStr);
+            v = indexStationMap.get(VStr);
+        } //null ret by get() if not found
+
+        if (u != null && v != null) return dijkstra(u, v);
+        else throw new IllegalArgumentException("Invalid station names:" + ((u == null) ? UStr : "") + " " + ((v == null) ? VStr : ""));
     }
-     */
 
     public ArrayList<Station> dijkstra(Station u, Station v) {
         //clear prev data
@@ -266,54 +274,58 @@ public class MetroSystem implements Drawable{
         u.setEstimate(0);           //starting node has time 0
 
         for (Station s: stationList) {
-            if (!s.getName().equals(u.getName())) {  //for all stations except the starting station,
+            if (!s.getName().equalsIgnoreCase(u.getName())) {  //for all stations except the starting station,
                 s.setEstimate(Integer.MAX_VALUE); //set estimates
             }
         }
 
-        //TODO BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST BEGIN TEST
-        /*
-        for (Map.Entry<Integer, Station> entry: indexStationMap.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        }
-        System.out.println();
-        */
-        /*
-        for (Map.Entry<Station, Integer> entry: stationIndexMap.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        }
-        System.out.println();
-        */
-        //System.out.println(v);
-        //System.out.println(stationIndexMap.get(v));
-        /*
-        for (int i = 0; i < stationList.size(); i++) {
-            for (Pair<Station, Integer> edge: adjListSystem[i]) {
-                System.out.println(i + " " + indexStationMap.get(i) + " -> " + edge.getKey() + " " + edge.getValue());
-            }
-        }
-         */
-        //TODO END TEST END TEST END TEST END TEST END TEST END TEST END TEST END TEST
-
+        Station prev = null;
         //pseudo bfs
         while (!unmarked.isEmpty()){
             //System.out.println(Arrays.toString(unmarked.toArray()));
             Station cur = unmarked.poll();
 
-            System.out.println(cur);
-            System.out.println(stationIndexMap.get(cur));
-            System.out.println(stationIndexMap);
+            System.out.print(cur.getName() + ", ");
+            //System.out.println(stationIndexMap.get(cur));
+            //System.out.println(stationIndexMap);
 
             if (visited[stationIndexMap.get(cur)]) continue;
             visited[stationIndexMap.get(cur)] = true;
-            if (cur.getName().equals(v.getName())) break;
+            if (cur.getName().equalsIgnoreCase(v.getName())) break;
 
             //update estimate of all adj nodes
             for (Pair<Station, Integer> edge: adjListSystem[stationIndexMap.get(cur)]) { //visit them
                 Station nxt = edge.getKey();
                 int weight = edge.getValue();
+                int newTime = cur.getEstimate() + weight;
 
-                int newTime = cur.getEstimate() + weight + ((nxt instanceof Interchange) ? 5 : 0);
+                //there is possible line change
+                if (prev != null) {
+                    //prev stn lines
+                    HashSet<String> prevLineNames = new HashSet<>();
+                    if (prev instanceof Interchange) {
+                        ArrayList<Pair<String, String>> interchangeLinesInfo = ((Interchange) prev).getDifferentLinesInfo();
+                        for (Pair<String, String> pss: interchangeLinesInfo) prevLineNames.add(pss.getKey().toLowerCase());
+                    }
+                    else prevLineNames.add(prev.getLineName().toLowerCase());
+
+                    //nxt stn lines
+                    HashSet<String> nxtLineNames = new HashSet<>();
+                    if (nxt instanceof Interchange) {
+                        ArrayList<Pair<String, String>> interchangeLinesInfo = ((Interchange) nxt).getDifferentLinesInfo();
+                        for (Pair<String, String> pss: interchangeLinesInfo) nxtLineNames.add(pss.getKey().toLowerCase());
+                    }
+                    else nxtLineNames.add(nxt.getLineName().toLowerCase());
+
+                    //prev and nxt encounter ABSOLUTE line change; estimate waiting time + transfer time = 5min haha
+                    if (Collections.disjoint(prevLineNames, nxtLineNames)) newTime += 5;
+
+                    //System.out.println(cur);
+                    //System.out.println(prevLineNames);
+                    //System.out.println(nxtLineNames);
+                    //System.out.println();
+                }
+
                 if (newTime < nxt.getEstimate()) {
                     //System.out.println(cur + " -> " + nxt + ": " + newTime + " " + nxt.getEstimate());
                     nxt.setEstimate(newTime);
@@ -321,6 +333,7 @@ public class MetroSystem implements Drawable{
                     unmarked.add(nxt);
                 }
             }
+            prev = cur;
         }
 
         //reconstruction from end node
@@ -337,6 +350,13 @@ public class MetroSystem implements Drawable{
     }
 
     //utils
+    public Station findStationFromName(String name) {
+        for (Station s: stationList) {
+            if (s.getName().equalsIgnoreCase(name)) return s;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         String systemString = ""; //=== " + this.cityName + " Metro ===\n";

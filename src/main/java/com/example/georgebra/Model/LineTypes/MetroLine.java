@@ -68,13 +68,13 @@ public abstract class MetroLine {
         boolean containU = false;
         boolean containV = false;
         for (Station s: stationList) {
-            if (u.getName().equals(s.getName())) {
+            if (u.getName().equalsIgnoreCase(s.getName())) {
                 containU = true;
                 break;
             }
         }
         for (Station s: stationList) {
-            if (v.getName().equals(s.getName())) {
+            if (v.getName().equalsIgnoreCase(s.getName())) {
                 containV = true;
                 break;
             }
@@ -148,12 +148,13 @@ public abstract class MetroLine {
         for (Pair<String, String> pss: tempDifferentLinesInfo) {
             String curLineName = pss.getKey();
             String curLineInterchangeID = pss.getValue();
-            if (curLineName.equals(this.lineName)) {
+            if (curLineName.equalsIgnoreCase(this.lineName)) {
                 return curLineInterchangeID;
             }
         }
 
-        throw new IllegalArgumentException("Interchange " + x.getName() + " is not in MetroLine" + this.lineCode);
+        return null;
+        //throw new IllegalArgumentException("Interchange " + x.getName() + " is not in MetroLine" + this.lineCode);
     }
 
     public String toString() { //the adj list will only require station IDs

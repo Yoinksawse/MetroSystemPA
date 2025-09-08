@@ -90,7 +90,7 @@ public class Interchange extends Station implements Drawable {
     public static Interchange checkExistenceAndMergeLines(Interchange other) {
         //find existing
         for (Interchange existing: interchanges) {
-            if (existing.getName().equals(other.getName())) { //it already has an "instance" somewhere
+            if (existing.getName().equalsIgnoreCase(other.getName())) { //it already has an "instance" somewhere
                 ArrayList<Pair<String, String>> xDifferentLinesInfo = other.getDifferentLinesInfo();
 
                 for (int j = 0; j < xDifferentLinesInfo.size(); j++) {
@@ -124,11 +124,6 @@ public class Interchange extends Station implements Drawable {
 
         this.differentLinesInfo.add(new Pair<String, String>(lineName, interchangeID));
         this.lineCnt++;
-    }
-
-    //I ASSERT STRONGLY THAT A DEVELOPER'S TROLLING WILL HAVE NO IMPACT ON THE APPLICATION'S INPUT HANDLING
-    public boolean equals (Interchange other) {
-        return this.name.equals(other.name);
     }
 
     public String toString() {

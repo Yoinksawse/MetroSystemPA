@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import java.nio.file.Files;
 import javafx.util.Pair;
 
+import javax.naming.directory.InvalidAttributesException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +41,7 @@ public class IOHandler {
     private final Pattern lineIDPattern = Pattern.compile("^[A-Z]{1,10}$");
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public IOHandler(String systemID) throws InputMismatchException, InvalidAlgorithmParameterException {
+    public IOHandler(String systemID) throws InputMismatchException, InvalidAlgorithmParameterException, InvalidAttributesException {
         this.systemID = systemID.toUpperCase();
 
         Matcher matcher = systemIDPattern.matcher(systemID);
@@ -53,7 +54,7 @@ public class IOHandler {
     }
     //TODO: add tooltip to the getfile input area, showing available system IDs.
 
-    public MetroSystem getMetroSystem() throws InvalidAlgorithmParameterException{
+    public MetroSystem getMetroSystem() throws InvalidAlgorithmParameterException, InvalidAttributesException {
         //if(this.msys != null) return this.msys;
         //get ready base data for metrosystem
         this.msys = new MetroSystem(systemName);
@@ -69,9 +70,9 @@ public class IOHandler {
             int lineId = lineData.getId();
             String lineColour = lineData.getColour();
 
-            if (lineData.getLineType().equals("MRT")) newLine = new MRTLine(lineName, lineCode, lineId, lineColour);
-            else if (lineData.getLineType().equals("LRT")) newLine = new LRTLine(lineName, lineCode, lineId);
-            else if (lineData.getLineType().equals("Tourism")) newLine = new TourismLine(lineName, lineCode, lineId);
+            if (lineData.getLineType().equalsIgnoreCase("MRT")) newLine = new MRTLine(lineName, lineCode, lineId, lineColour);
+            else if (lineData.getLineType().equalsIgnoreCase("LRT")) newLine = new LRTLine(lineName, lineCode, lineId);
+            else if (lineData.getLineType().equalsIgnoreCase("Tourism")) newLine = new TourismLine(lineName, lineCode, lineId);
             else {
                 throw new MissingFormatArgumentException("A MetroLine must be classified as one of: MRT/LRT/Tourism Line.");
             }
@@ -85,6 +86,12 @@ public class IOHandler {
                 double x = stationData.getX();
                 double y = stationData.getY();
                 String stationName = stationData.getName();
+
+                Pattern containDigit = Pattern.compile("[0-9]+");
+                Matcher matcher = containDigit.matcher(stationName);
+                if (matcher.find()) throw new InvalidAttributesException("Station Names must not contain digits; " +
+                        "If necessary, replace digits with words (e.g. Heathrow Terminal 4 -> Heathrow Terminal Four)");
+
                 if (stationData.isInterchange()) {
                     ArrayList<Pair<String, String>> otherDifferentLinesInfo = new ArrayList<>();
                     ArrayList<String> lineIDs = stationData.getLineIDs();

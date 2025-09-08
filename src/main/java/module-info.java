@@ -5,6 +5,7 @@ module com.example.georgebra {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.annotation;
+    requires java.naming;
 
 
     opens com.example.georgebra to javafx.fxml;

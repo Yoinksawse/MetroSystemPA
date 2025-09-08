@@ -7,32 +7,20 @@ import com.example.georgebra.Model.StationTypes.Station;
 import java.util.ArrayList;
 
 public class InputTester {
-    private static Station Utest;
-    private static Station Vtest;
-
-    private static Station UAtest;
-    private static Station VAtest;
-
-    private static Station UBtest;
-    private static Station VBtest;
-
-    private static Station UCtest;
-    private static Station VCtest;
     //Tester class
     public static void main(String[] args) {
         try {
             IOHandler ioHandler = new IOHandler("SG");
             MetroSystem msys = ioHandler.getMetroSystem();
-
             //System.out.println(msys);
 
-            //ArrayList<Station> shortestPath = msys.dijkstra(Utest, Vtest); printPath(shortestPath); System.out.println();
+            ArrayList<Station> shortestPathA = msys.dijkstra("Kembangan", "Tan Kah Kee"); printPath(shortestPathA);
+            //ArrayList<Station> shortestPathB = msys.dijkstra("Bugis", "Tan Kah Kee"); printPath(shortestPathB);
+            //ArrayList<Station> shortestPathC = msys.dijkstra("Rochor ", "Promenade"); printPath(shortestPathC);
+            //ArrayList<Station> shortestPathD = msys.dijkstra("Rochor ", "Lavender"); printPath(shortestPathD);
+            ArrayList<Station> shortestPathE = msys.dijkstra("City Hall", "Bugis"); printPath(shortestPathE);
+            ArrayList<Station> shortestPathF = msys.dijkstra("Kembangan", "Bugis"); printPath(shortestPathF);
 
-            ArrayList<Station> shortestPathA = msys.dijkstra(UAtest, VAtest); printPath(shortestPathA); System.out.println();
-
-            //ArrayList<Station> shortestPathB = msys.dijkstra(UBtest, VBtest); printPath(shortestPathA); System.out.println();
-
-            //ArrayList<Station> shortestPathC = msys.dijkstra(UCtest, VCtest); printPath(shortestPathA);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,8 +35,6 @@ public class InputTester {
         System.out.println("Path found (" + (path.size()-1) + " stops):");
         for (int i = 0; i < path.size(); i++) {
             Station s = path.get(i);
-
-            //if (s instanceof Interchange) exchangeTime += 5;
 
             System.out.print(s.getName());
             if (i < path.size()-1) {
@@ -67,5 +53,7 @@ public class InputTester {
             int totalTime = path.get(path.size()-1).getEstimate();
             System.out.println("Total travel time: " + totalTime + " minutes");
         }
+
+        System.out.println();
     }
 }
