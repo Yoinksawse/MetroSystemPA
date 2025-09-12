@@ -1,13 +1,10 @@
 package com.example.georgebra.Model.StationTypes;
 
-import com.example.georgebra.Model.Drawable;
 import javafx.scene.Group;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 
-import java.util.MissingFormatArgumentException;
-
-public class SingleStation extends Station implements Drawable {
+public class SingleStation extends Station {
     Group currentStation = new Group();
 
     public SingleStation(double x, double y, String id, String lineName, String name) {
@@ -21,6 +18,7 @@ public class SingleStation extends Station implements Drawable {
     }
      */
 
+    /*
     public Group draw() {
         currentStation.getChildren().clear();
 
@@ -59,6 +57,7 @@ public class SingleStation extends Station implements Drawable {
         else currentStation.setEffect(null);
         return currentStation;
     }
+     */
 
     public String toString() {
         return super.toString();

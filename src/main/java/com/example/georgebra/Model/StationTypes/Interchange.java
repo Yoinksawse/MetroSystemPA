@@ -1,18 +1,19 @@
 package com.example.georgebra.Model.StationTypes;
 
-import com.example.georgebra.Model.Drawable;
 import javafx.scene.Group;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 
 import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 
-public class Interchange extends Station implements Drawable {
+public class Interchange extends Station {
     Group currentStation = new Group();
     private int lineCnt = 0;
-    private static ArrayList<Interchange> interchanges = new ArrayList<>();
+    public static ArrayList<Interchange> interchanges = new ArrayList<>();
     private static HashSet<String> interchangeNames = new HashSet<>();
     private HashSet<Pair<String, String>> differentLinesInfo = new HashSet<>();
     //^ above hashset contains entries: (name of one line the interchange is in, id of interchange in that line)
@@ -42,6 +43,9 @@ public class Interchange extends Station implements Drawable {
     }
     */
 
+
+
+    /*
     public Group draw() {
         //clean UI
         currentStation.getChildren().clear();
@@ -85,25 +89,21 @@ public class Interchange extends Station implements Drawable {
         else currentStation.setEffect(null);
         return currentStation;
     }
+     */
 
     //check if the interchange already exists, if it does, add the lines to existing interchange
-    public static Interchange checkExistenceAndMergeLines(Interchange other) {
+    public static void mergeInterchangesLineData(Interchange other) {
         //find existing
         for (Interchange existing: interchanges) {
             if (existing.getName().equalsIgnoreCase(other.getName())) { //it already has an "instance" somewhere
                 ArrayList<Pair<String, String>> xDifferentLinesInfo = other.getDifferentLinesInfo();
-
-                for (int j = 0; j < xDifferentLinesInfo.size(); j++) {
-                    existing.addLine(xDifferentLinesInfo.get(j).getKey(), xDifferentLinesInfo.get(j).getValue());
+                for (Pair<String, String> stringStringPair : xDifferentLinesInfo) {
+                    existing.addLine(stringStringPair.getKey(), stringStringPair.getValue());
                 }
-                return existing; //the existing one
             }
         }
 
-        //it does not have an "instance" anywhere: record it i guess?
-        Interchange.interchanges.add(other);
-        Interchange.interchangeNames.add(other.getName());
-        return null; //not a duplicate
+        throw new NoSuchElementException("HELLO! Your interchange does not have a match.");
     }
 
     public static ArrayList<Interchange> getInterchanges() {
@@ -122,8 +122,15 @@ public class Interchange extends Station implements Drawable {
             throw new IllegalArgumentException("Interchange ID cannot be null or empty");
         }
 
-        this.differentLinesInfo.add(new Pair<String, String>(lineName, interchangeID));
-        this.lineCnt++;
+        boolean alreadyContains = false;
+        for (Pair<String, String> pss: this.differentLinesInfo) {
+            if (pss.getKey().equalsIgnoreCase(lineName)) alreadyContains = true;
+        }
+
+        if (!alreadyContains) {
+            this.differentLinesInfo.add(new Pair<>(lineName, interchangeID));
+            this.lineCnt++;
+        }
     }
 
     public String toString() {

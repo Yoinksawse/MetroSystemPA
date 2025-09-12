@@ -20,7 +20,6 @@ public abstract class Station { //implements Comparable<Station>{
     protected boolean dragging;
     public final DropShadow highlightShadow =
             new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
-    int estimate;
 
     public Station(double x, double y, String id, String lineName, String name) throws MissingFormatArgumentException{
         if (name.isEmpty() || lineName.isEmpty()) {
@@ -60,14 +59,13 @@ public abstract class Station { //implements Comparable<Station>{
     }
     */
 
+    /*
     //useless
     public abstract Group draw();
     public abstract Group setHighlighted(boolean highlighted);
     //javafx.scene.shape.Circle stn = new javafx.scene.shape.Circle(x, y, 8.0);
+     */
 
-    public void setEstimate(int x) {
-        this.estimate = x;
-    }
     public void setX(double x) {
         this.x = x;
     }
@@ -84,10 +82,7 @@ public abstract class Station { //implements Comparable<Station>{
 
     //TODO
     public String getStationLineColour() {
-        return MetroLine.lineNameToColour.get(this.lineName);
-    }
-    public int getEstimate() {
-        return this.estimate;
+        return MetroLine.lineNameToColourMap.get(this.lineName);
     }
     public String getStationID() {
         if (this.id.isEmpty() && this instanceof Interchange) {
@@ -116,12 +111,4 @@ public abstract class Station { //implements Comparable<Station>{
     public String toString() {
         return this.id + ": " + this.name + " " + this.x + " " + this.y;
     }
-
-    /*
-    @Override
-    public int compareTo(Station other) { //sort in ascending order for max heap pq
-        return Integer.compare(this.estimate, other.estimate);
-    }
-
-     */
 }

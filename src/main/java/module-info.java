@@ -6,6 +6,7 @@ module com.example.georgebra {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.annotation;
     requires java.naming;
+    requires java.management;
 
 
     opens com.example.georgebra to javafx.fxml;
@@ -18,6 +19,8 @@ module com.example.georgebra {
     opens com.example.georgebra.Model.InputHandler to javafx.fxml, com.fasterxml.jackson.databind;
     exports com.example.georgebra.Model.TesterClasses;
     opens com.example.georgebra.Model.TesterClasses to javafx.fxml;
+    exports com.example.georgebra.Model.GraphTheoryHandler;
+    opens com.example.georgebra.Model.GraphTheoryHandler to com.fasterxml.jackson.databind, javafx.fxml;
 }
 
 

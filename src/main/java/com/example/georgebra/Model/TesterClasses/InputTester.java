@@ -14,12 +14,12 @@ public class InputTester {
             MetroSystem msys = ioHandler.getMetroSystem();
             //System.out.println(msys);
 
-            ArrayList<Station> shortestPathA = msys.dijkstra("Kembangan", "Tan Kah Kee"); printPath(shortestPathA);
+            //ArrayList<Station> shortestPathA = msys.dijkstra("Kembangan", "Tan Kah Kee"); printPath(shortestPathA);
             //ArrayList<Station> shortestPathB = msys.dijkstra("Bugis", "Tan Kah Kee"); printPath(shortestPathB);
             //ArrayList<Station> shortestPathC = msys.dijkstra("Rochor ", "Promenade"); printPath(shortestPathC);
             //ArrayList<Station> shortestPathD = msys.dijkstra("Rochor ", "Lavender"); printPath(shortestPathD);
-            ArrayList<Station> shortestPathE = msys.dijkstra("City Hall", "Bugis"); printPath(shortestPathE);
-            ArrayList<Station> shortestPathF = msys.dijkstra("Kembangan", "Bugis"); printPath(shortestPathF);
+            //ArrayList<Station> shortestPathE = msys.dijkstra("City Hall", "Bugis"); printPath(shortestPathE);
+            //ArrayList<Station> shortestPathF = msys.dijkstra("Kembangan", "Bugis"); printPath(shortestPathF);
 
         } catch (Exception e) {
             e.printStackTrace();

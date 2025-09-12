@@ -33,8 +33,6 @@ public class Tester {
         ArrayList<Pair<String, String>> circleLineInfo = new ArrayList<>();
         circleLineInfo.add(new Pair<>("Circle MetroLine", "CC1"));
         Interchange rafflesPlaceCC = new Interchange(300, 200, circleLineInfo, "Raffles Place");
-        Interchange merged = Interchange.checkExistenceAndMergeLines(rafflesPlaceCC);
-        System.out.println("Merged Interchange lines: " + merged.getDifferentLinesInfo());
 
         // Test Station exceptions
         try {
@@ -262,8 +260,8 @@ BL7 BL6 1
 
         // Test 3: Path requiring two interchanges
         System.out.println("\nTest 3: Blue A to Green G (via West Hub and Central Hub)");
-        ArrayList<Station> path3 = metro.dijkstra(b1, g7);
-        printPath(path3);
+        //ArrayList<Station> path3 = metro.dijkstra(b1, g7);
+        //printPath(path3);
 
 //        // Test 4: No path exists
 //        System.out.println("\nTest 4: Blue A to Red G (no connection)");

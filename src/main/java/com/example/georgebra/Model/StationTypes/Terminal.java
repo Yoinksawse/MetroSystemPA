@@ -1,10 +1,9 @@
 package com.example.georgebra.Model.StationTypes;
 
-import com.example.georgebra.Model.Drawable;
 import javafx.scene.Group;
 import javafx.scene.control.Tooltip;
 
-public class Terminal extends Station implements Drawable {
+public class Terminal extends Station {
     Group currentStation = new Group();
 
     public Terminal(double x, double y, String id, String lineName, String name, int stationNo) {
@@ -18,6 +17,7 @@ public class Terminal extends Station implements Drawable {
     }
      */
 
+    /*
     public Group draw() {
         currentStation.getChildren().clear();
 
@@ -50,6 +50,7 @@ public class Terminal extends Station implements Drawable {
         else currentStation.setEffect(null);
         return currentStation;
     }
+     */
 
     public String toString() {
         return super.toString() + "[Terminal]";
