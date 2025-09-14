@@ -41,6 +41,7 @@
   "edges": [
     {"from": "SX1", "to": "SX2", "time": 3},
     {"from": "SX2", "to": "SX3", "time": 3},
-    {"from": "SX3", "to": "SX4", "time": 2}
+    {
+      "from": "SX3", "to": "SX4", "time": 2}
   ]
 }

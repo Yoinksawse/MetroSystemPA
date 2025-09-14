@@ -90,7 +90,7 @@ public abstract class MetroLine {
                 stationNameToStationMap.put(newStation.getName(), newStation);
 
                 //add all ids, including repeats (its map anyway)
-                for (Pair<String, String> pss : ((Interchange) newStation).getDifferentLinesInfo()) {
+                for (Pair<String, String> pss : ((Interchange) newStation).getAllLinesInfo()) {
                     String id = pss.getValue(); //possible id of interchange
                     idToStationNameMap.put(id, newStation.getName());
                 }
@@ -207,7 +207,7 @@ public abstract class MetroLine {
 
     //utils
     public String findCurrentInterchangeID(Interchange x) throws IllegalArgumentException{
-        ArrayList<Pair<String, String>> tempDifferentLinesInfo = ((Interchange) x).getDifferentLinesInfo();
+        ArrayList<Pair<String, String>> tempDifferentLinesInfo = ((Interchange) x).getAllLinesInfo();
         for (Pair<String, String> pss: tempDifferentLinesInfo) {
             String curLineName = pss.getKey();
             String curLineInterchangeID = pss.getValue();
@@ -223,6 +223,8 @@ public abstract class MetroLine {
     public String toString() { //the adj list will only require station IDs
         //adds beginning root
         String root = "Line" + this.lineId + ": " + this.lineName + ", " + this.lineCode + "\n";
+
+
 
         //the adjacency list
         //HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);

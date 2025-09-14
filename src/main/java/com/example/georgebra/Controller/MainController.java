@@ -126,7 +126,7 @@ public class MainController {
         io_area.setDisable(true);
 
         mapContainer.getChildren().clear();
-        mapContainer.getChildren().add(msys.draw());
+        //mapContainer.getChildren().add(msys.draw());
 
         final double[] mouseAnchor = new double[2];
         final double[] initialTranslate = new double[2];

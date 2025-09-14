@@ -3,6 +3,7 @@ package com.example.georgebra.Model.TesterClasses;
 import com.example.georgebra.Model.IOHandler;
 import com.example.georgebra.Model.MetroSystem;
 import com.example.georgebra.Model.StationTypes.Station;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 
@@ -14,19 +15,19 @@ public class InputTester {
             MetroSystem msys = ioHandler.getMetroSystem();
             //System.out.println(msys);
 
-            //ArrayList<Station> shortestPathA = msys.dijkstra("Kembangan", "Tan Kah Kee"); printPath(shortestPathA);
-            //ArrayList<Station> shortestPathB = msys.dijkstra("Bugis", "Tan Kah Kee"); printPath(shortestPathB);
-            //ArrayList<Station> shortestPathC = msys.dijkstra("Rochor ", "Promenade"); printPath(shortestPathC);
-            //ArrayList<Station> shortestPathD = msys.dijkstra("Rochor ", "Lavender"); printPath(shortestPathD);
-            //ArrayList<Station> shortestPathE = msys.dijkstra("City Hall", "Bugis"); printPath(shortestPathE);
-            //ArrayList<Station> shortestPathF = msys.dijkstra("Kembangan", "Bugis"); printPath(shortestPathF);
+            //Pair<ArrayList<Station>, Integer> shortestPathA = msys.genShortestPath("Kembangan", "Tan Kah Kee"); printPath(shortestPathA.getKey(), shortestPathA.getValue());
+            Pair<ArrayList<Station>, Integer> shortestPathB = msys.genShortestPath("Bugis", "Tan Kah Kee"); printPath(shortestPathB.getKey(), shortestPathB.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathC = msys.genShortestPath("Rochor ", "Promenade"); printPath(shortestPathC.getKey(), shortestPathC.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathD = msys.genShortestPath("Rochor ", "Lavender"); printPath(shortestPathD.getKey(), shortestPathD.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathE = msys.genShortestPath("City Hall", "Bugis"); printPath(shortestPathE.getKey(), shortestPathE.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathF = msys.genShortestPath("Kembangan", "Bugis"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void printPath(ArrayList<Station> path) {
+    private static void printPath(ArrayList<Station> path, int time) {
         if (path.isEmpty()) {
             System.out.println("No path exists!");
             return;
@@ -49,10 +50,7 @@ public class InputTester {
         System.out.println();
 
         // Calculate total time (simplified without edge lookup)
-        if (path.size() > 1) {
-            int totalTime = path.get(path.size()-1).getEstimate();
-            System.out.println("Total travel time: " + totalTime + " minutes");
-        }
+        if (path.size() > 1) System.out.println("Total travel time: " + time + " minutes");
 
         System.out.println();
     }

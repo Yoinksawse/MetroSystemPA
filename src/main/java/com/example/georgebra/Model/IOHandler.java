@@ -50,11 +50,14 @@ public class IOHandler {
 
         //prepare data fields
         this.readJson();
-        this.msys = this.getMetroSystem();
+        this.msys = this.generateMetroSystem();
     }
     //TODO: add tooltip to the getfile input area, showing available system IDs.
 
-    public MetroSystem getMetroSystem() throws InvalidAlgorithmParameterException, InvalidAttributesException {
+    public MetroSystem getMetroSystem() {
+        return this.msys;
+    }
+    public MetroSystem generateMetroSystem() throws InvalidAlgorithmParameterException, InvalidAttributesException {
         //if(this.msys != null) return this.msys;
         //get ready base data for metrosystem
         this.msys = new MetroSystem(systemName);

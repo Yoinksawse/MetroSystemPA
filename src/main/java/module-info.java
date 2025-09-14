@@ -7,6 +7,7 @@ module com.example.georgebra {
     requires com.fasterxml.jackson.annotation;
     requires java.naming;
     requires java.management;
+    requires jdk.unsupported.desktop;
 
 
     opens com.example.georgebra to javafx.fxml;
