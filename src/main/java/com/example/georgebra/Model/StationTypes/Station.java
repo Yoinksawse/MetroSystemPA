@@ -30,8 +30,8 @@ public abstract class Station { //implements Comparable<Station>{
         }
 
         this.id = id;
-        this.name = name;
-        this.lineName = lineName;
+        this.name = name.toLowerCase();
+        this.lineName = lineName.toLowerCase(); //standard format
         //this.stationNo = stationNo;
         this.x = x;
         this.y = y;
@@ -44,7 +44,7 @@ public abstract class Station { //implements Comparable<Station>{
         if (name.isEmpty()) throw new MissingFormatArgumentException("Provide a MetroLine name.");
 
         this.id = "";
-        this.name = name;
+        this.name = name.toLowerCase(); //Standard Format
         this.lineName = "";
         //this.stationNo = stationNo;
         this.x = x;
@@ -80,13 +80,12 @@ public abstract class Station { //implements Comparable<Station>{
         this.selected = true;
     }
 
-    //TODO
     public String getStationLineColour() {
         return MetroLine.lineNameToColourMap.get(this.lineName);
     }
     public String getStationID() {
         if (this.id.isEmpty() && this instanceof Interchange) {
-            throw new UnsupportedOperationException("Station is Interchange: use getInterchangeIDs() instead");
+            throw new UnsupportedOperationException("Station is Interchange: use getAllLinesInfo");
         }
         return this.id;
     }
@@ -94,9 +93,8 @@ public abstract class Station { //implements Comparable<Station>{
         return this.name;
     }
     public String getLineName() {
-        if (this instanceof Interchange) {
-            throw new UnsupportedOperationException("Station is Interchange: use getLineNames() instead");
-        }
+        //TODO
+        if (this instanceof Interchange) return (String) ((Interchange)this).getAllLinesInfo().keySet().toArray()[0];
         return this.lineName;
     }
 

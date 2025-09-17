@@ -96,11 +96,11 @@ public class IOHandler {
                         "If necessary, replace digits with words (e.g. Heathrow Terminal 4 -> Heathrow Terminal Four)");
 
                 if (stationData.isInterchange()) {
-                    ArrayList<Pair<String, String>> otherDifferentLinesInfo = new ArrayList<>();
+                    HashMap<String, String> otherDifferentLinesInfo = new HashMap<>();
                     ArrayList<String> lineIDs = stationData.getLineIDs();
                     ArrayList<String> lineNames = stationData.getLineNames();
                     for (int i = 0; i < lineIDs.size(); i++) {
-                        otherDifferentLinesInfo.add(new Pair<>(lineNames.get(i), lineIDs.get(i)));
+                        otherDifferentLinesInfo.put(lineNames.get(i), lineIDs.get(i));
                     }
                     newStation = new Interchange(x, y, otherDifferentLinesInfo, stationName);
 

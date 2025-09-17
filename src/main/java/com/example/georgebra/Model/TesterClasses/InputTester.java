@@ -16,11 +16,12 @@ public class InputTester {
             //System.out.println(msys);
 
             //Pair<ArrayList<Station>, Integer> shortestPathA = msys.genShortestPath("Kembangan", "Tan Kah Kee"); printPath(shortestPathA.getKey(), shortestPathA.getValue());
-            Pair<ArrayList<Station>, Integer> shortestPathB = msys.genShortestPath("Bugis", "Tan Kah Kee"); printPath(shortestPathB.getKey(), shortestPathB.getValue());
-            //Pair<ArrayList<Station>, Integer> shortestPathC = msys.genShortestPath("Rochor ", "Promenade"); printPath(shortestPathC.getKey(), shortestPathC.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathB = msys.genShortestPath("Bugis", "Tan Kah Kee"); printPath(shortestPathB.getKey(), shortestPathB.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathC = msys.genShortestPath("Rochor ", "esplanade"); printPath(shortestPathC.getKey(), shortestPathC.getValue());
             //Pair<ArrayList<Station>, Integer> shortestPathD = msys.genShortestPath("Rochor ", "Lavender"); printPath(shortestPathD.getKey(), shortestPathD.getValue());
             //Pair<ArrayList<Station>, Integer> shortestPathE = msys.genShortestPath("City Hall", "Bugis"); printPath(shortestPathE.getKey(), shortestPathE.getValue());
-            //Pair<ArrayList<Station>, Integer> shortestPathF = msys.genShortestPath("Kembangan", "Bugis"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
+            Pair<ArrayList<Station>, Integer> shortestPathF = msys.genShortestPath("tuas link", "punggol point"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
+            Pair<ArrayList<Station>, Integer> shortestPathG = msys.genShortestPath("tuas link", "wooDlands noRth"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,6 +30,7 @@ public class InputTester {
 
     private static void printPath(ArrayList<Station> path, int time) {
         if (path.isEmpty()) {
+            System.out.println();
             System.out.println("No path exists!");
             return;
         }

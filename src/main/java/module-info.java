@@ -22,6 +22,10 @@ module com.example.georgebra {
     opens com.example.georgebra.Model.TesterClasses to javafx.fxml;
     exports com.example.georgebra.Model.GraphTheoryHandler;
     opens com.example.georgebra.Model.GraphTheoryHandler to com.fasterxml.jackson.databind, javafx.fxml;
+    exports com.example.georgebra.Model.StationTypes;
+    exports com.example.georgebra.Model.LineTypes;
+
+
 }
 
 

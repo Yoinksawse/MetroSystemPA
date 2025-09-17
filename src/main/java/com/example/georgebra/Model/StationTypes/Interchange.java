@@ -5,35 +5,31 @@ import javafx.scene.Group;
 
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Interchange extends Station {
     Group currentStation = new Group();
     private int lineCnt = 0;
     public static ArrayList<Interchange> interchanges = new ArrayList<>();
     private static HashSet<String> interchangeNames = new HashSet<>();
-    private HashSet<Pair<String, String>> allLinesInfo = new HashSet<>();
+    private HashMap<String, String> allLinesInfo = new HashMap<>();
+    //^ above hashset contains entries: (name of one line the interchange is in, id of interchange in that line)
     GraphHandler exchangeGraph = new GraphHandler();
     private HashMap<String,Integer> lineCodeToIndexMiniMap = new HashMap<>();
     private HashMap<Integer,String> indexToLineCodeMiniMap = new HashMap<>();
-    //^ above hashset contains entries: (name of one line the interchange is in, id of interchange in that line)
-
     //primary constructor
-    public Interchange(double x, double y, ArrayList<Pair<String, String>> otherallLinesInfo, String name) throws IllegalArgumentException {
+    public Interchange(double x, double y, HashMap<String, String> otherallLinesInfo, String name) throws IllegalArgumentException {
         //Pass  first line name to super, but store all lines
         super(x, y, name);
 
-        for (Pair<String, String> lineInfo: otherallLinesInfo) {
+        for (Map.Entry<String, String> lineInfo: otherallLinesInfo.entrySet()) { //TODO
             String id = lineInfo.getValue();
             if (id.isEmpty()) { // || !Character.isDigit(id.charAt(id.length() - 1)) || !Character.isLetter(id.charAt(0))) {
                 throw new IllegalArgumentException("Invalid Station ID: " + id);
             }
         }
 
-        this.allLinesInfo = new HashSet<>(otherallLinesInfo);
+        this.allLinesInfo = new HashMap<>(otherallLinesInfo); //TODO
         //this.updateExchangeGraph();
 
         interchanges.add(this);
@@ -68,24 +64,22 @@ public class Interchange extends Station {
         //find existing
         for (Interchange existing: interchanges) {
             if (existing.getName().equalsIgnoreCase(other.getName())) { //it already has an "instance" somewhere
-                ArrayList<Pair<String, String>> xAllLinesInfo = other.getAllLinesInfo();
-                for (Pair<String, String> stringStringPair : xAllLinesInfo) {
+                HashMap<String, String> xAllLinesInfo = other.getAllLinesInfo();
+                for (Map.Entry<String, String> stringStringPair : xAllLinesInfo.entrySet()) {
                     existing.addLine(stringStringPair.getKey(), stringStringPair.getValue());
                     //existing.updateExchangeGraph();
                 }
             }
         }
-
-
-        throw new NoSuchElementException("HELLO! Your interchange does not have a match.");
+        //throw new NoSuchElementException("HELLO! Your interchange does not have a match.");
     }
 
     public static ArrayList<Interchange> getInterchanges() {
         return new ArrayList<>(interchanges);
     }
 
-    public ArrayList<Pair<String, String>> getAllLinesInfo() {
-        return new ArrayList<>(allLinesInfo);
+    public HashMap<String, String> getAllLinesInfo() {
+        return new HashMap<>(allLinesInfo);
     }
 
     public void addLine(String lineName, String interchangeID) {
@@ -97,12 +91,12 @@ public class Interchange extends Station {
         }
 
         boolean alreadyContains = false;
-        for (Pair<String, String> pss: this.allLinesInfo) {
+        for (Map.Entry<String, String> pss: this.allLinesInfo.entrySet()) {
             if (pss.getKey().equalsIgnoreCase(lineName)) alreadyContains = true;
         }
 
         if (!alreadyContains) {
-            this.allLinesInfo.add(new Pair<>(lineName, interchangeID));
+            this.allLinesInfo.put(lineName, interchangeID);
             this.lineCnt++;
         }
 
@@ -111,7 +105,7 @@ public class Interchange extends Station {
 
     public String toString() {
         String ids = "";
-        for (Pair<String, String> id: allLinesInfo) {
+        for (Map.Entry<String, String> id: allLinesInfo.entrySet()) {
             ids += (id.getValue() + "/");
         }
         if (ids.length() >= 2) ids = ids.substring(0, ids.length() - 1);

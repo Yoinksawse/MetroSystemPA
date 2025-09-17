@@ -17,16 +17,18 @@ public class MetroSystem{
     GraphHandler graph;
     //Group currentSystem = new Group();
 
-    private ArrayList<Station> stationList = new ArrayList<>();
+    private HashSet<Station> stationList = new HashSet<>();
     private HashSet<Interchange> interchanges = new HashSet<>();
     private ArrayList<MetroLine> metroLineList = new ArrayList<>();
     private HashMap<String, Station> stationNameToStationMap = new HashMap<>();
-    private HashMap<String, Integer> stationNameToIndexMap = new HashMap<>();
+    private HashMap<String, HashMap<String,Integer>> stationNameToIndexesMap = new HashMap<>();
+    //stationName, <LineName, nodeindexesfortheline>>
     private HashMap<Integer, String> indexToStationNameMap = new HashMap<>(); //indexes for adjlist
     private HashMap<String, String> idToStationNameMap = new HashMap<>();
     //TODO: DONT FORGET TO READ THIS IMPORTANT NOTE: ID REFERS TO "NS13", index REFERS TO AN INTEGER FOR THE UTILITY OF THIS CLASS
     //private HashMap<String,ArrayList<Integer>> interchangeGraphReferences = new HashMap<>();
-    private HashMap<String,HashSet<Integer>> interchangeGraphReferences = new HashMap<>();
+    private HashMap<String,HashMap<Integer, String>> interchangeGraphReferences = new HashMap<>();
+    //<interchangeName, <<theGraphReference, lineOfThisIndex>>
 
     public MetroSystem(String cityName) {
         this(cityName, 3);
@@ -37,9 +39,7 @@ public class MetroSystem{
         graph = new GraphHandler();
     }
 
-    public void addStation(Station newStation) {
-        //boolean containStation = false;
-        //singling out repeat non-interchange stations (no need to add)
+    private void addStation(Station newStation) { //this method avoids handling graphs
         for (Station s : stationList) {
             if (s.getName().equalsIgnoreCase(newStation.getName()) && !(s instanceof Interchange)) {
                 return; //containStation = true
@@ -47,51 +47,41 @@ public class MetroSystem{
         }
 
         if (newStation instanceof Interchange) {
-            //merging interchange if necessary
-            boolean targetAdded = false;
-            for (Interchange I: interchanges) {
-                if (I.getName().equalsIgnoreCase(newStation.getName())) {
-                    targetAdded = true;
-                    break;
-                }
-            }
-
-            if (targetAdded) Interchange.mergeInterchangesLineData((Interchange) newStation);
-            else { //newstation hasnt been added yet
-                int newIndex = stationList.size();
-                graph.addNode(newIndex);
-
-                stationNameToIndexMap.put(newStation.getName(), newIndex);
-                indexToStationNameMap.put(newIndex, newStation.getName());
-                stationNameToStationMap.put(newStation.getName(), newStation);
-
-                //add all ids, including repeats (its map anyway)
-                for (Pair<String, String> pss : ((Interchange) newStation).getAllLinesInfo()) {
-                    String id = pss.getValue(); //possible id of interchange
-                    idToStationNameMap.put(id, newStation.getName());
-                }
+            //Interchange.mergeInterchangesLineData((Interchange) newStation);
+            for (Map.Entry<String,String> entry: ((Interchange) newStation).getAllLinesInfo().entrySet()) {
+                idToStationNameMap.put(entry.getValue(), newStation.getName());
             }
         }
         else {
-            //merging normal station
-            stationList.add(newStation);
-
-            int newIndex = stationList.size();
-            graph.addNode(newIndex);
-
-            stationNameToIndexMap.put(newStation.getName(), newIndex);
-            indexToStationNameMap.put(newIndex, newStation.getName());
-            stationNameToStationMap.put(newStation.getName(), newStation);
             idToStationNameMap.put(newStation.getStationID(), newStation.getName());
+        }
+        stationList.add(newStation);
+        stationNameToStationMap.put(newStation.getName(), newStation);
+    }
+
+    //TODO
+    public void addStation(Station newStation, HashMap<String,Integer> newGraphIndexes) {
+        this.addStation(newStation);
+        //handling graphing
+        for (Map.Entry<String,Integer> lineInfoEntry: newGraphIndexes.entrySet()) {
+            if (lineInfoEntry.getValue() < graph.getNodeCnt()) return; //invalid operation, node will overlap
+        }
+
+        HashMap<String, Integer> existingIndexes = stationNameToIndexesMap.get(newStation.getName());
+        newGraphIndexes.putAll(newGraphIndexes);
+        stationNameToIndexesMap.put(newStation.getName(), newGraphIndexes);
+        for (Map.Entry<String,Integer> lineInfoEntry: newGraphIndexes.entrySet()) {
+            indexToStationNameMap.put(lineInfoEntry.getValue(), newStation.getName());
         }
     }
 
     public void addEdge(Station u, Station v, int weight) {
+        if (u == null || v == null) return;
         Station newU = u, newV = v; //newU, newV will eventually refer to an existing station/a newly added station for edge adding
-        addStation(u); addStation(v);
+        addStation(u); addStation(v); //TODO?
 
         if (u instanceof Interchange) {
-            for (Map.Entry<String, Integer> stationNameToIndexEntry: stationNameToIndexMap.entrySet()) {
+            for (Map.Entry<String, HashMap<String,Integer>> stationNameToIndexEntry: stationNameToIndexesMap.entrySet()) {
                 String sName = stationNameToIndexEntry.getKey();
                 if (u.getName().equalsIgnoreCase(sName)) {
                     //u is existing interchange, edge vertex needs to refer to existing station/interchange obj
@@ -100,7 +90,7 @@ public class MetroSystem{
             }
         }
         if (v instanceof Interchange) {
-            for (Map.Entry<String, Integer> stationNameToIndexEntry: stationNameToIndexMap.entrySet()) {
+            for (Map.Entry<String, HashMap<String,Integer>> stationNameToIndexEntry: stationNameToIndexesMap.entrySet()) {
                 String sName = stationNameToIndexEntry.getKey();
                 if (v.getName().equalsIgnoreCase(sName)) {
                     //v is existing interchange, edge vertex needs to refer to existing station/interchange obj
@@ -108,109 +98,121 @@ public class MetroSystem{
                 }
             }
         }
-        graph.addEdge(stationNameToIndexMap.get(newU.getName()), stationNameToIndexMap.get(newV.getName()), weight);
-        graph.addEdge(stationNameToIndexMap.get(newV.getName()), stationNameToIndexMap.get(newU.getName()), weight);
+
+        HashMap<String,Integer> lineIndexesU = stationNameToIndexesMap.get(newU.getName());
+        HashMap<String,Integer> lineIndexesV = stationNameToIndexesMap.get(newV.getName());
+
+        for (Map.Entry<String,Integer> lineIndexEntryU: lineIndexesU.entrySet()) {
+            for (Map.Entry<String,Integer> lineIndexEntryV: lineIndexesV.entrySet()) {
+                graph.addEdge(lineIndexEntryU.getValue(), lineIndexEntryV.getValue(), weight);
+            }
+        }
     }
 
     public void addLine(MetroLine newMetroLine) {
         metroLineList.add(newMetroLine);
         int newNodeOffset = this.graph.getNodeCnt();
-        HashMap<String,String> idToStationNameMapLine = newMetroLine.getIdToStationNameMap();
-        HashMap<Integer,String> indexToStationNameMapLine = newMetroLine.getIndexToStationNameMap();
-        HashMap<String,Station> stationNameToStationMapLine = newMetroLine.getStationNameToStationMap();
+        HashSet<Station> lineStations = newMetroLine.getStationList();
+        HashMap<String, String> idToStationNameMapLine = newMetroLine.getIdToStationNameMap();
+        HashMap<Integer, String> indexToStationNameMapLine = newMetroLine.getIndexToStationNameMap();
+        HashMap<String, Station> stationNameToStationMapLine = newMetroLine.getStationNameToStationMap();
         HashMap<String, Integer> stationNameToIndexMapLine = newMetroLine.getStationNameToIndexMap();
 
         //1. merge index-stationname (ok)
-        for (Map.Entry<Integer,String> entry: indexToStationNameMapLine.entrySet()) {
+        for (Map.Entry<Integer, String> entry : indexToStationNameMapLine.entrySet()) {
             int otherIndex = entry.getKey();
             //Station s = stationNameToStationMapLine.get(entry.getValue());
             this.indexToStationNameMap.put(otherIndex + newNodeOffset, entry.getValue());
-
-            //alpis.put(otherIndex + newNodeOffset, entry.getValue());
-            //System.out.println("newNodeOffset: " + newNodeOffset);
-            //System.out.println("otherIndex: " + otherIndex);
-            //System.out.println("newIndex: " + (otherIndex + newNodeOffset));
         }
-        //System.out.println(newNodeOffset);
-        //System.out.println(this.graph);
-        //System.out.println(this.indexToStationNameMap);
-        //System.out.println("Alpis:" + alpis);
-
-        HashMap<String, Integer> alpsi = new HashMap<>(); //TODO:testing
 
         //2. merge stationName-Index (ok)
-        for (Map.Entry<Integer,String> entry: indexToStationNameMapLine.entrySet()) {
-            String stationName = entry.getValue();
+        //there are no duplicates, so it is safe to add
+        for (Map.Entry<String, Integer> entry : stationNameToIndexMapLine.entrySet()) {
+            //System.out.println(entry); //TODO
+            String newStationName = entry.getKey();
+            Station newStation = stationNameToStationMapLine.get(newStationName);
+            int oldIndex = entry.getValue();
+            //newStations have not been added to this map yet
+            if (newStation instanceof Interchange && stationNameToStationMapLine.containsKey(newStationName)) {
+                HashMap<String, String> newAllLinesInfo = ((Interchange) newStation).getAllLinesInfo();
+                HashMap<String, Integer> mp = stationNameToIndexesMap.get(newStationName);
+                if (mp == null) mp = new HashMap<>();
+                boolean interchangeFirstOccurrenceAlreadyRecoreded = false;
+                for (Map.Entry<String, String> lineInfo : newAllLinesInfo.entrySet()) {
+                    if (mp.containsKey(lineInfo.getKey().trim())) {
+                        interchangeFirstOccurrenceAlreadyRecoreded = true;
+                    }
+                }
 
-            if (stationNameToIndexMap.get(stationName) == null) {
-                alpsi.put(stationName, newNodeOffset + entry.getKey());
-                this.stationNameToIndexMap.put(stationName, entry.getKey() + newNodeOffset);
+                if (interchangeFirstOccurrenceAlreadyRecoreded) {
+                    //System.out.println(oldIndex + newNodeOffset);
+
+                    stationNameToIndexesMap.get(newStationName).put(newMetroLine.getLineName(), oldIndex + newNodeOffset);
+                } else {
+                    HashMap<String, Integer> newEntry = new HashMap<>();
+                    newEntry.put(newMetroLine.getLineName(), oldIndex + newNodeOffset);
+                    stationNameToIndexesMap.put(newStationName, newEntry);
+                }
+            }
+            else { //merging singleStation
+                HashMap<String, Integer> mp = stationNameToIndexesMap.get(newStationName);
+                if (mp == null) mp = new HashMap<>();
+                mp.put(newStationName, oldIndex + newNodeOffset);
+                stationNameToIndexesMap.put(newStationName, mp);
             }
         }
 
-        //System.out.println(this.stationNameToIndexMap);
-        //System.out.println("Alpsi:" + alpsi);
-
-        //TODO: CONTINUE CONTINUE CONTINUE
         //3. merge graph
         //get all nodes (ok?)
         GraphHandler graphLine = newMetroLine.getGraphHandler();
         ArrayList<Integer> graphNodesLine = new ArrayList<>(graphLine.getNodes());
         ArrayList<Integer> graphNodesSystem = new ArrayList<>(this.graph.getNodes());
-        //System.out.println(graphNodesLine);
-        //System.out.println(graphNodesSystem);
 
-        //System.out.println("stationNameToIndexMapLine: " + stationNameToIndexMapLine); //TODO
         //create interchangeReferences map
-        for (Integer otherNd: graphNodesLine) {
+        for (Integer otherNd : graphNodesLine) {
             String stationName = indexToStationNameMapLine.get(otherNd);
-            //System.out.println(otherNd.INDEX + " " + stationName); //TODO
             Station newStation = stationNameToStationMapLine.get(stationName);
+
+            //TODO TODO TODO TODO TODO TODO
+            //System.out.println(stationName + " in " + newMetroLine.getLineName() + ", lineIndex: " + otherNd + ", newIndex: " + (otherNd + newNodeOffset)); //TODO
+
             if (newStation instanceof Interchange) {
-                HashSet<Integer> interchangeReferences = interchangeGraphReferences.get((newStation.getName()));
-                if (interchangeReferences == null) {
-                    interchangeReferences = new HashSet<>();
-                    interchangeGraphReferences.put(newStation.getName(), interchangeReferences);
-                }
-                interchangeReferences.add(otherNd + newNodeOffset);// + newNodeOffset);
+                HashMap<Integer, String> interchangeReferences = interchangeGraphReferences.computeIfAbsent(newStation.getName(), k -> new HashMap<>());
+                interchangeReferences.put(otherNd + newNodeOffset, newMetroLine.getLineName());// + newNodeOffset);
                 //gives resultant interchange node reference after graphs be merged
             }
         }
 
-        //System.out.println(interchangeGraphReferences); //TODO
-
-        for (Integer thisNd: graphNodesSystem) {
+        for (Integer thisNd : graphNodesSystem) {
             String stationName = indexToStationNameMap.get(thisNd);
-            //System.out.println(thisNd.INDEX + " " + stationName); //TODO
             Station newStation = stationNameToStationMap.get(stationName);
             if (newStation instanceof Interchange) {
-                HashSet<Integer> interchangeReferences = interchangeGraphReferences.get((newStation.getName()));
+                HashMap<Integer, String> interchangeReferences = interchangeGraphReferences.get((newStation.getName()));
                 if (interchangeReferences == null) {
-                    interchangeReferences = new HashSet<>();
+                    interchangeReferences = new HashMap<>();
                     interchangeGraphReferences.put(newStation.getName(), interchangeReferences);
                 }
-                if (stationName.equalsIgnoreCase("Botanic Gardens")) {
-                    System.out.println("Botanic gardens in this current system index: " + thisNd);
-                }
-                interchangeReferences.add(thisNd);// + newNodeOffset);?
+                interchangeReferences.put(thisNd, newMetroLine.getLineName());// + newNodeOffset);?
                 //gives resultant interchange node reference after graphs be merged
                 // (equal to before, since this.graph remain unchanged)
             }
         }
 
-        //System.out.println(interchangeGraphReferences); //TODO
+        //System.out.println("interchangeGraphReferences: " + interchangeGraphReferences); //TODO
 
-        //officially merge graph
+        //officially merge graph (after creating interchangeGraphReferences to preserve past state)
         this.graph.mergeGraphHandler(newMetroLine.getGraphHandler(), newNodeOffset);
 
-        /*
-        //web interchange transfers
-        ArrayList<Pair<String, Pair<Integer,Integer>>> apspii = new ArrayList<>(); //TODO
+        //4. web interchange transfers
+        //ArrayList<Pair<String, Pair<Integer,Integer>>> apspii = new ArrayList<>(); //TODO
+        //interchangeGraphReferences: <interchangeName, <<theGraphReference, lineOfThisIndex>>
 
-        for (Map.Entry<String,HashSet<Integer>> entry: interchangeGraphReferences.entrySet()) {
-            ArrayList<Integer> curInterchangeNodes = new ArrayList<>(entry.getValue());
+        HashSet<Pair<Integer, Integer>> newHiddenEdges = new HashSet<>();
+        for (Map.Entry<String, HashMap<Integer,String>> entry: interchangeGraphReferences.entrySet()) {
+            //entry is an interchange's info
+            ArrayList<Integer> curInterchangeNodes = new ArrayList<>(entry.getValue().keySet());
             //generate complete graph to represent free exchange within interchange
-            HashSet<Pair<Integer, Integer>> newHiddenEdges = new HashSet<>();
+            //HashSet<Pair<Integer, Integer>> newHiddenEdges = new HashSet<>();
             for (int i = 0; i < curInterchangeNodes.size(); i++) {
                 for (int j = i + 1; j < curInterchangeNodes.size(); j++) {
                     //hiddenedge is within station: 3min transfer
@@ -219,7 +221,7 @@ public class MetroSystem{
                         newHiddenEdges.add(new Pair<>(nodeIndexI, nodeIndexJ));
 
                         //testing
-                        apspii.add(new Pair<>(entry.getKey(), new Pair<>(nodeIndexI, nodeIndexJ)));
+                        //apspii.add(new Pair<>(entry.getKey(), new Pair<>(nodeIndexI, nodeIndexJ)));
                         //System.out.println(entry.getKey() + " " + i + " " + j);
                         //System.out.println(indexToStationNameMapLine.get(i));
                         //Interchange s = (Interchange) stationNameToStationMapLine.get(indexToStationNameMapLine.get(i));
@@ -229,41 +231,29 @@ public class MetroSystem{
             }
             //System.out.println(newHiddenEdges); //TODO
 
-            for (Pair<Integer, Integer> pii: newHiddenEdges) {
-                graph.addHiddenEdge(pii.getKey(), pii.getValue(), EXCHANGE_TIME);
-            }
-            //TODO System.out.println(curInterchangeNodes);
+//            for (Pair<Integer, Integer> pii: newHiddenEdges) {
+//                graph.addEdge(pii.getKey(), pii.getValue(), EXCHANGE_TIME);
+//            }
         }
 
-        System.out.println("stationNameToIndexMap: " + stationNameToIndexMap); //TODO
-        System.out.println("stationNameToIndexMapLine: " + stationNameToIndexMapLine); //TODO
-        //System.out.println(graph);
-        //System.out.println();
-        System.out.println(interchangeGraphReferences); //TODO
-        System.out.println("aspspii: " + apspii);
-        //System.out.println(graph);
-        System.out.println(); System.out.println(); //TODO TODO
-
-        */
-
-        //4. merge id-StationName (ok)
-        this.idToStationNameMap.putAll(idToStationNameMapLine);
-
-        //5. merge stations & stationname-station (in addStation)
-        for (Map.Entry<String,Station> entry: stationNameToStationMapLine.entrySet()) {
-            this.addStation(entry.getValue());
+        //System.out.println(newHiddenEdges);
+        for (Pair<Integer, Integer> pii: newHiddenEdges) {
+            graph.addEdge(pii.getKey(), pii.getValue(), EXCHANGE_TIME);
         }
 
-        //TODO
-        //System.out.println(interchangeGraphReferences);
+        //5. merge stations
+        //System.out.println(lineStations);
+        for (Station lineStation : lineStations) {
+            //System.out.println(lineStation.getName());
+            this.addStation(lineStation);
+        }
+
+        //System.out.println(idToStationNameMap);
         //System.out.println(indexToStationNameMap);
-        //System.out.println(stationNameToIndexMap);
-
-        //System.out.println(graphLine);
-        //System.out.println();
-        //System.out.println(graph);
-
+        //System.out.println(stationNameToIndexesMap);
+        //System.out.println(stationNameToStationMap);
     }
+
 
     public ArrayList<Station> getStationList() {
         return new ArrayList<>(this.stationList);
@@ -290,34 +280,45 @@ public class MetroSystem{
         Matcher matcherV = containDigit.matcher(VStr);
 
         if (!matcherU.find() && !matcherV.find()) { //Station names do not contain digits
-            u = stationNameToStationMap.get(UStr);
-            v = stationNameToStationMap.get(VStr);
-            //System.out.println(stationNameToIndexMap);
+            u = stationNameToStationMap.get(UStr.toLowerCase()); //Standard Format);
+            v = stationNameToStationMap.get(VStr.toLowerCase()); //Standard Format);
+            //System.out.println(stationNameToIndexesMap);
             //System.out.println(indexToStationNameMap);
         }
         else { //If digits found in both, input is for station IDs; try to find them.
             String uName = idToStationNameMap.get(UStr);
             String vName = idToStationNameMap.get(VStr);
-            u = stationNameToStationMap.get(uName);
-            v = stationNameToStationMap.get(vName);
+            System.out.println(uName);
+            System.out.println(vName);
+            u = stationNameToStationMap.get(uName.toLowerCase()); //Standard Format
+            v = stationNameToStationMap.get(vName.toLowerCase()); //Standard Format
         } //null ret by get() if not found
 
         ArrayList<Integer> shortestPathGraphNodes;
-        int time = 0;
+        int time = 0, firstStationIndex = 0;
         if (u != null && v != null) {
-            int uIndex = stationNameToIndexMap.get(u.getName());
-            int vIndex = stationNameToIndexMap.get(v.getName());
+            HashMap<String,Integer> uIndexes = stationNameToIndexesMap.get(u.getName().toLowerCase()); //Standard Format
+            HashMap<String,Integer> vIndexes = stationNameToIndexesMap.get(v.getName().toLowerCase()); //Standard Format
+            int uIndex = (Integer) uIndexes.values().toArray()[0]; //get any index
+            int vIndex = (Integer) vIndexes.values().toArray()[0];
+            //System.out.println(uIndex + " " + vIndex + ", " + u.getName() + " " + v.getName());
             shortestPathGraphNodes = graph.dijkstra(uIndex, vIndex);
+            firstStationIndex = uIndex;
+            //System.out.println(shortestPathGraphNodes);
+            //System.out.println(stationNameToIndexesMap);
             time = graph.getShortestDistance(vIndex); //valid shortly after running the algo
         }
         else throw new IllegalArgumentException("Invalid station names:" + ((u == null) ? UStr : "") + " " + ((v == null) ? VStr : ""));
 
-        //TODO: verify if this does not mess up the generated path
         ArrayList<Station> shortestPath = new ArrayList<>();
         String prevStnName = "";
+        String firstStationName = indexToStationNameMap.get(firstStationIndex);
         for (Integer stationGraphNode : shortestPathGraphNodes) {
             String stationName = indexToStationNameMap.get(stationGraphNode);
-            if (stationName.equalsIgnoreCase(prevStnName)) continue;
+            if (stationName.equalsIgnoreCase(prevStnName)) {
+                if (stationName.equalsIgnoreCase(firstStationName)) time -= 3;
+                continue;
+            }
             shortestPath.add(stationNameToStationMap.get(stationName));
             prevStnName = stationName;
         }
@@ -361,7 +362,7 @@ public class MetroSystem{
         //Clean UI
         currentSystem.getChildren().clear();
 
-        int stationCnt = stationNameToIndexMap.size();
+        int stationCnt = stationNameToIndexesMap.size();
         HashSet<String> visitedU = new HashSet<>();
         for (int i = 0; i < stationCnt; i++) {
             visitedU.add(indexToStationNameMap.get(i));

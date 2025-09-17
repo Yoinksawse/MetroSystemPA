@@ -18,7 +18,7 @@ public abstract class MetroLine {
     protected final String lineName; //DOWNTOWN LINE!!!!!!
     protected String lineColour; //in hex
     private GraphHandler graph;
-    protected ArrayList<Station> stationList;
+    protected HashSet<Station> stationList;
     private HashSet<Interchange> interchanges;
 
     protected HashMap<String,Integer> stationNameToIndexMap = new HashMap<>();
@@ -40,14 +40,14 @@ public abstract class MetroLine {
         if (!colourRGBMatcher.find()) throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
 
         this.lineId = lineId; //doesnt need form verification; can be any unsigned int (preparedness for large scale future metro expansion)
-        this.lineCode = lineCode; //doesnt need form verification; can be of any form
-        this.lineName = lineName; //doesnt need form verification; can be in chinese/japanese/american/african/british so no need verification
+        this.lineCode = lineCode; //doesnt need form verification; can be of any form, even chinese; if you input rubbish that's your issue
+        this.lineName = lineName.toLowerCase(); //Standard Format; //doesnt need form verification; can be in chinese/japanese/american/african/british so no need verification
         this.lineColour = colour; //verified!
 
         lineNameToColourMap.put(this.lineName, this.lineColour);
 
         graph = new GraphHandler();
-        stationList = new ArrayList<>();
+        stationList = new HashSet<>();
         interchanges = new HashSet<>();
     }
     public MetroLine(MetroLine other) {
@@ -66,46 +66,49 @@ public abstract class MetroLine {
         //singling out repeat non-interchange stations (no need to add)
         for (Station s : stationList) {
             if (s.getName().equalsIgnoreCase(newStation.getName()) && !(s instanceof Interchange)) {
+                //System.out.println(s + " " + newStation);
+                //System.out.println("NIQUSIBA");
                 return; //containStation = true
             }
         }
 
         if (newStation instanceof Interchange) {
             //merging interchange if necessary
-            boolean targetAdded = false;
-            for (Interchange I: interchanges) {
-                if (I.getName().equalsIgnoreCase(newStation.getName())) {
-                    targetAdded = true;
-                    break;
-                }
-            }
 
-            if (targetAdded) Interchange.mergeInterchangesLineData((Interchange) newStation);
+            if (indexToStationNameMap.containsValue(newStation.getName())){
+                Interchange.mergeInterchangesLineData((Interchange) newStation);
+            }
             else { //newstation hasnt been added yet
-                int newIndex = stationList.size();
+                stationList.add(newStation);
+                int newIndex = graph.getNodeCnt();
+                //if (newStation.getName().equalsIgnoreCase("CALDECOTT")) System.out.println(newIndex); //TODO TODO TODO
+
                 graph.addNode(newIndex);
 
                 stationNameToIndexMap.put(newStation.getName(), newIndex);
                 indexToStationNameMap.put(newIndex, newStation.getName());
+                //System.out.println(newIndex + " " + newStation.getName());
                 stationNameToStationMap.put(newStation.getName(), newStation);
 
                 //add all ids, including repeats (its map anyway)
-                for (Pair<String, String> pss : ((Interchange) newStation).getAllLinesInfo()) {
+                for (Map.Entry<String, String> pss : ((Interchange) newStation).getAllLinesInfo().entrySet()) {
                     String id = pss.getValue(); //possible id of interchange
                     idToStationNameMap.put(id, newStation.getName());
                 }
+                interchanges.add((Interchange) newStation);
             }
         }
         else {
             //merging normal station
             stationList.add(newStation);
 
-            int newIndex = stationList.size();
+            int newIndex = graph.getNodeCnt();
             graph.addNode(newIndex);
 
             stationNameToIndexMap.put(newStation.getName(), newIndex);
             indexToStationNameMap.put(newIndex, newStation.getName());
             stationNameToStationMap.put(newStation.getName(), newStation);
+            //System.out.println(newIndex + " " + newStation.getName());
             idToStationNameMap.put(newStation.getStationID(), newStation.getName());
         }
     }
@@ -171,8 +174,8 @@ public abstract class MetroLine {
     public String getLineColour() {
         return this.lineColour;
     }
-    public ArrayList<Station> getStationList() {
-        return new ArrayList<Station>(this.stationList);
+    public HashSet<Station> getStationList() {
+        return new HashSet<Station>(this.stationList);
     }
     public GraphHandler getGraphHandler() {
         return this.graph;
@@ -194,21 +197,20 @@ public abstract class MetroLine {
         return new HashMap<String,String>(this.idToStationNameMap);
     }
 
-    public ArrayList<Pair<Integer, Integer>>[] getAdjListLine() {
+    public HashSet<Pair<Integer, Integer>>[] getAdjListLine() {
         return this.graph.getAdjList();
     }
 
 
     /*
-    //TODO: draws
     public abstract Group draw();
     public abstract Group setHighlighted(boolean highlighted);
      */
 
     //utils
     public String findCurrentInterchangeID(Interchange x) throws IllegalArgumentException{
-        ArrayList<Pair<String, String>> tempDifferentLinesInfo = ((Interchange) x).getAllLinesInfo();
-        for (Pair<String, String> pss: tempDifferentLinesInfo) {
+        HashMap<String, String> tempDifferentLinesInfo = ((Interchange) x).getAllLinesInfo();
+        for (Map.Entry<String, String> pss: tempDifferentLinesInfo.entrySet()) {
             String curLineName = pss.getKey();
             String curLineInterchangeID = pss.getValue();
             if (curLineName.equalsIgnoreCase(this.lineName)) {
@@ -224,18 +226,18 @@ public abstract class MetroLine {
         //adds beginning root
         String root = "Line" + this.lineId + ": " + this.lineName + ", " + this.lineCode + "\n";
 
-
-
         //the adjacency list
         //HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);
         HashSet<Station> recorded = new HashSet<>();
+        //System.out.println("indexToStationNameMap: " + indexToStationNameMap);
         for (int i = 0; i < indexToStationNameMap.size(); i++) {
             String uName = indexToStationNameMap.get(i);
             Station u = stationNameToStationMap.get(uName);
+            //System.out.println(uName);
             String uLineID = (u instanceof Interchange) ? findCurrentInterchangeID((Interchange) u) : u.getStationID();
             recorded.add(u);
 
-            ArrayList<Pair<Integer, Integer>>[] adjListLine = graph.getAdjList();
+            HashSet<Pair<Integer, Integer>>[] adjListLine = graph.getAdjList();
             for (Pair<Integer, Integer> x: adjListLine[i]) {
                 int destinationIndex = x.getKey();
                 String destinationName = indexToStationNameMap.get(destinationIndex);

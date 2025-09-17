@@ -20,23 +20,24 @@ public class GraphHandler {
         duplicateInterchangesCnt = 0;
     }
 
-    public void addNode(int nodeNo) {
-        if (graphNodes.size() - duplicateInterchangesCnt + 1 > MAXN){
+    public void addNode(int node) {
+        /*
+        if (graphNodes.size() - duplicateInterchangesCnt + 1 > MAXN || node >= MAXN){
             throw new IllegalStateException("Graph capacity exceeded (no existing metroSystem with more than 500 stations)");
         }
-        graphNodes.add(nodeNo);
+         */
+        graphNodes.add(node);
     }
 
     public void addEdge(int u, int v, int weight) {
         if (u >= MAXN || v >= MAXN || u < 0 || v < 0) return;
-        boolean uIsNew = !graphNodes.contains(u);
-        boolean vIsNew = !graphNodes.contains(v);
-
+        boolean uAlreadyExistsBeforeAddingNode = graphNodes.contains(u);
+        boolean vAlreadyExistsBeforeAddingNode = graphNodes.contains(v);
         addNode(u); addNode(v);
         adjList[u].add(new Pair<>(v, weight));
         adjList[v].add(new Pair<>(u, weight));
-        if (uIsNew) duplicateInterchangesCnt++;
-        if (vIsNew) duplicateInterchangesCnt++;
+        if (uAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
+        if (vAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
     }
 
     //for transfer within interchanges
@@ -46,13 +47,16 @@ public class GraphHandler {
     }
      */
 
-    public ArrayList<Pair<Integer, Integer>>[] getAdjList() {
+    public HashSet<Pair<Integer, Integer>>[] getAdjList() {
+        /*
         ArrayList<Pair<Integer, Integer>>[] deepCopyAdjList;
         deepCopyAdjList = new ArrayList[MAXN];
         for (int i = 0; i < adjList.length; i++) {
             deepCopyAdjList[i] = new ArrayList<>(this.adjList[i]);
         }
         return deepCopyAdjList;
+         */
+        return this.adjList;
     }
 
     public int getNodeCnt() {
@@ -72,32 +76,24 @@ public class GraphHandler {
     }
 
     public void mergeGraphHandler(GraphHandler other, int newNodeOffset) {
-        ArrayList<Pair<Integer, Integer>> otherAdjList[] = other.getAdjList();
-        //HashSet<GraphNode> otherGraphNodes = other.getNodes();
+        HashSet<Pair<Integer, Integer>> otherAdjList[] = other.getAdjList();
         HashSet<Integer> otherGraphNodes = other.getNodes();
 
-
-        //for (GraphNode otherNode : other.getNodes()) {
-        for (Integer otherNode : other.getNodes()) {
-            int newIndex = newNodeOffset + otherNode;
-            this.addNode(newIndex);
-        }
-
-        //for (GraphNode fromGraphNode : otherGraphNodes) {
-        for (Integer fromNode : otherGraphNodes) {
-            for (Pair<Integer,Integer> entry: otherAdjList[fromNode]) {
+        for (Integer node : otherGraphNodes) {
+            this.addNode(newNodeOffset + node);
+            for (Pair<Integer,Integer> entry: otherAdjList[node]) {
                 int toNode = entry.getKey();
                 int weight = entry.getValue();
 
-                this.addEdge(newNodeOffset + fromNode, newNodeOffset + toNode, weight);
+                this.addEdge(newNodeOffset + node, newNodeOffset + toNode, weight);
             }
         }
     }
 
-
     private int[] dist;
     public ArrayList<Integer> dijkstra(int u, int v) {
-        if (graphNodes.contains(u) || graphNodes.contains(v)) throw new IllegalArgumentException("Nodes u and v don't exist");
+        if (!graphNodes.contains(u)) throw new IllegalArgumentException("Node u (" + u + ") doesn't exist");
+        if (!graphNodes.contains(v)) throw new IllegalArgumentException("Node v (" + v + ") doesn't exist");
 
         //prevmap for path reconstruction
         HashMap<Integer, Integer> prevMap = new HashMap<>();
@@ -114,14 +110,9 @@ public class GraphHandler {
             int currentDist = current.getKey();
             int currentNode = current.getValue();
 
-            // Skip if this is an outdated entry (we found a better path already)
-            if (currentDist != dist[currentNode]) {
-                continue;
-            }
+            if (currentDist != dist[currentNode]) continue; //skip outdated node
 
             visited[currentNode] = true;
-
-            // Early termination if we reached the target
             if (currentNode == v) break;
 
             for (Pair<Integer, Integer> edge : adjList[currentNode]) {
