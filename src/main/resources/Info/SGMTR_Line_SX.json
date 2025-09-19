@@ -4,7 +4,7 @@
   "code": "SX",
   "hasInterchange": true,
   "stationCodes": ["SX"],
-  "colour": "000000",
+  "colour": "#000000",
   "lineType": "Tourism",
   "stations": [
     {

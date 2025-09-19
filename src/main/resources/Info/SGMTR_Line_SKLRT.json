@@ -4,7 +4,7 @@
   "code": "SKLRT",
   "hasInterchange": true,
   "stationCodes": ["STC", "SE", "SW"],
-  "colour": "808080",
+  "colour": "#808080",
   "lineType": "LRT",
   "stations": [
     {

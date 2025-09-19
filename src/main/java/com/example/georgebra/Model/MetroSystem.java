@@ -12,10 +12,9 @@ import java.util.regex.Pattern;
 
 public class MetroSystem{
     private String cityName;
-    int EXCHANGE_TIME;
+    int exchangeTime;
     private final int MAXN = 505;
     GraphHandler graph;
-    //Group currentSystem = new Group();
 
     private HashSet<Station> stationList = new HashSet<>();
     private HashSet<Interchange> interchanges = new HashSet<>();
@@ -25,7 +24,7 @@ public class MetroSystem{
     //stationName, <LineName, nodeindexesfortheline>>
     private HashMap<Integer, String> indexToStationNameMap = new HashMap<>(); //indexes for adjlist
     private HashMap<String, String> idToStationNameMap = new HashMap<>();
-    //TODO: DONT FORGET TO READ THIS IMPORTANT NOTE: ID REFERS TO "NS13", index REFERS TO AN INTEGER FOR THE UTILITY OF THIS CLASS
+    //ID REFERS TO "NS13", index REFERS TO AN INTEGER FOR THE UTILITY OF THIS CLASS
     //private HashMap<String,ArrayList<Integer>> interchangeGraphReferences = new HashMap<>();
     private HashMap<String,HashMap<Integer, String>> interchangeGraphReferences = new HashMap<>();
     //<interchangeName, <<theGraphReference, lineOfThisIndex>>
@@ -35,7 +34,7 @@ public class MetroSystem{
     }
     public MetroSystem(String cityName, int averageExchangeTime) {
         this.cityName = cityName;
-        this.EXCHANGE_TIME = averageExchangeTime;
+        this.exchangeTime = averageExchangeTime;
         graph = new GraphHandler();
     }
 
@@ -59,7 +58,6 @@ public class MetroSystem{
         stationNameToStationMap.put(newStation.getName(), newStation);
     }
 
-    //TODO
     public void addStation(Station newStation, HashMap<String,Integer> newGraphIndexes) {
         this.addStation(newStation);
         //handling graphing
@@ -78,7 +76,7 @@ public class MetroSystem{
     public void addEdge(Station u, Station v, int weight) {
         if (u == null || v == null) return;
         Station newU = u, newV = v; //newU, newV will eventually refer to an existing station/a newly added station for edge adding
-        addStation(u); addStation(v); //TODO?
+        addStation(u); addStation(v);
 
         if (u instanceof Interchange) {
             for (Map.Entry<String, HashMap<String,Integer>> stationNameToIndexEntry: stationNameToIndexesMap.entrySet()) {
@@ -128,7 +126,6 @@ public class MetroSystem{
         //2. merge stationName-Index (ok)
         //there are no duplicates, so it is safe to add
         for (Map.Entry<String, Integer> entry : stationNameToIndexMapLine.entrySet()) {
-            //System.out.println(entry); //TODO
             String newStationName = entry.getKey();
             Station newStation = stationNameToStationMapLine.get(newStationName);
             int oldIndex = entry.getValue();
@@ -173,9 +170,6 @@ public class MetroSystem{
             String stationName = indexToStationNameMapLine.get(otherNd);
             Station newStation = stationNameToStationMapLine.get(stationName);
 
-            //TODO TODO TODO TODO TODO TODO
-            //System.out.println(stationName + " in " + newMetroLine.getLineName() + ", lineIndex: " + otherNd + ", newIndex: " + (otherNd + newNodeOffset)); //TODO
-
             if (newStation instanceof Interchange) {
                 HashMap<Integer, String> interchangeReferences = interchangeGraphReferences.computeIfAbsent(newStation.getName(), k -> new HashMap<>());
                 interchangeReferences.put(otherNd + newNodeOffset, newMetroLine.getLineName());// + newNodeOffset);
@@ -198,13 +192,10 @@ public class MetroSystem{
             }
         }
 
-        //System.out.println("interchangeGraphReferences: " + interchangeGraphReferences); //TODO
-
         //officially merge graph (after creating interchangeGraphReferences to preserve past state)
         this.graph.mergeGraphHandler(newMetroLine.getGraphHandler(), newNodeOffset);
 
         //4. web interchange transfers
-        //ArrayList<Pair<String, Pair<Integer,Integer>>> apspii = new ArrayList<>(); //TODO
         //interchangeGraphReferences: <interchangeName, <<theGraphReference, lineOfThisIndex>>
 
         HashSet<Pair<Integer, Integer>> newHiddenEdges = new HashSet<>();
@@ -212,33 +203,20 @@ public class MetroSystem{
             //entry is an interchange's info
             ArrayList<Integer> curInterchangeNodes = new ArrayList<>(entry.getValue().keySet());
             //generate complete graph to represent free exchange within interchange
-            //HashSet<Pair<Integer, Integer>> newHiddenEdges = new HashSet<>();
             for (int i = 0; i < curInterchangeNodes.size(); i++) {
                 for (int j = i + 1; j < curInterchangeNodes.size(); j++) {
                     //hiddenedge is within station: 3min transfer
                     int nodeIndexI = curInterchangeNodes.get(i), nodeIndexJ = curInterchangeNodes.get(j);
                     if (nodeIndexI != nodeIndexJ) {
                         newHiddenEdges.add(new Pair<>(nodeIndexI, nodeIndexJ));
-
-                        //testing
-                        //apspii.add(new Pair<>(entry.getKey(), new Pair<>(nodeIndexI, nodeIndexJ)));
-                        //System.out.println(entry.getKey() + " " + i + " " + j);
-                        //System.out.println(indexToStationNameMapLine.get(i));
-                        //Interchange s = (Interchange) stationNameToStationMapLine.get(indexToStationNameMapLine.get(i));
-                        //TODO System.out.println(entry.getKey() + " " + newMetroLine.findCurrentInterchangeID(s) + " " + i + " " + j + " " + EXCHANGE_TIME);
                     }
                 }
             }
-            //System.out.println(newHiddenEdges); //TODO
-
-//            for (Pair<Integer, Integer> pii: newHiddenEdges) {
-//                graph.addEdge(pii.getKey(), pii.getValue(), EXCHANGE_TIME);
-//            }
         }
 
         //System.out.println(newHiddenEdges);
         for (Pair<Integer, Integer> pii: newHiddenEdges) {
-            graph.addEdge(pii.getKey(), pii.getValue(), EXCHANGE_TIME);
+            graph.addEdge(pii.getKey(), pii.getValue(), exchangeTime);
         }
 
         //5. merge stations
@@ -247,13 +225,7 @@ public class MetroSystem{
             //System.out.println(lineStation.getName());
             this.addStation(lineStation);
         }
-
-        //System.out.println(idToStationNameMap);
-        //System.out.println(indexToStationNameMap);
-        //System.out.println(stationNameToIndexesMap);
-        //System.out.println(stationNameToStationMap);
     }
-
 
     public ArrayList<Station> getStationList() {
         return new ArrayList<>(this.stationList);
@@ -267,8 +239,39 @@ public class MetroSystem{
         return cityName;
     }
 
+    /*
+    public HashMap<String, HashMap<String, Integer>> getStationNameToIndexesMap() {
+        return this.stationNameToIndexesMap;
+    }
+     */
+
+    public HashMap<Integer,String> getIndexToStationNameMap() {
+        return this.indexToStationNameMap;
+    }
+
+    public HashMap<String, Station> stationNameToStationMap() { //TODO
+        return this.stationNameToStationMap;
+    }
+
+    public HashMap<String, String> getMetroLineNameToColourMap() {
+        return MetroLine.getLineNameToColourMap();
+    }
+
+    public GraphHandler getGraph() {
+        return graph;
+    }
+
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    //TODO
+    public Pair<ArrayList<Station>, Integer> genLeastExchangePath(String UStr, String VStr, int originalExchangeTime) {
+        Pair<ArrayList<Station>,Integer> shortestPath = this.genShortestPath(UStr, VStr);
+        int time = shortestPath.getValue(), exchanges = time / 10000;
+        time = (time % 10000) + exchanges * originalExchangeTime;
+
+        return new Pair<>(shortestPath.getKey(), time);
     }
 
     //utils
@@ -288,8 +291,8 @@ public class MetroSystem{
         else { //If digits found in both, input is for station IDs; try to find them.
             String uName = idToStationNameMap.get(UStr);
             String vName = idToStationNameMap.get(VStr);
-            System.out.println(uName);
-            System.out.println(vName);
+            //System.out.println(uName);
+            //System.out.println(vName);
             u = stationNameToStationMap.get(uName.toLowerCase()); //Standard Format
             v = stationNameToStationMap.get(vName.toLowerCase()); //Standard Format
         } //null ret by get() if not found
@@ -325,15 +328,9 @@ public class MetroSystem{
         return new Pair<>(shortestPath, time);
     }
 
-    /*
-    public ArrayList<Station> genShortestPath(Station u, Station v) {
-        return this.genShortestPath(u.getName(), v.getName());
-    }
-     */
-
     @Override
     public String toString() {
-        String systemString = ""; //=== " + this.cityName + " Metro ===\n";
+        String systemString = "=== " + this.cityName + " Metro ===\n";
         for (Station s: stationList) {
             systemString += (s + "\n");
         }
@@ -344,65 +341,4 @@ public class MetroSystem{
 
         return systemString;
     }
-
-    //useless
-    /*
-    public void removeEdge(Station u, Station v) {
-
-    }
-    public void removeStation(Station x) {
-
-    }
-     */
 }
-
-
-    /*
-    public Group draw() {
-        //Clean UI
-        currentSystem.getChildren().clear();
-
-        int stationCnt = stationNameToIndexesMap.size();
-        HashSet<String> visitedU = new HashSet<>();
-        for (int i = 0; i < stationCnt; i++) {
-            visitedU.add(indexToStationNameMap.get(i));
-            for (Pair<Integer, Integer> destinationIdAndTime: adjListSystem[i]) {
-                //prevent creation of repeats
-                String entryName = indexToStationNameMap.get(destinationIdAndTime.getKey());
-                if (visitedU.contains(entryName)) continue;
-
-                //create nodes
-                Station u = stationNameToStationMap.get(indexToStationNameMap.get(i));
-                Station v = stationNameToStationMap.get(entryName);
-
-                Line edgeLine = new Line(u.getX(), u.getY(), v.getX(), v.getY());
-                edgeLine.setStrokeWidth(10);
-                Color colour = Color.web(u.getStationLineColour());
-                edgeLine.setFill(colour);
-
-                //group nodes
-                Group UGroup = u.draw();
-                Group VGroup = v.draw();
-
-                Group edge = new Group();
-                edge.getChildren().add(edgeLine);
-
-                //add bindings
-                edgeLine.startXProperty().bindBidirectional(UGroup.layoutXProperty());
-                edgeLine.startYProperty().bindBidirectional(UGroup.layoutYProperty());
-                edgeLine.endXProperty().bindBidirectional(VGroup.layoutXProperty());
-                edgeLine.endYProperty().bindBidirectional(VGroup.layoutYProperty());
-
-                //package up
-                currentSystem.getChildren().add(UGroup);
-                currentSystem.getChildren().add(VGroup);
-                currentSystem.getChildren().add(edge);
-            }
-        }
-        return currentSystem;
-    }
-
-    public Group setHighlighted(boolean highlighted) {
-       return currentSystem;
-    }
-     */

@@ -1,6 +1,6 @@
 package com.example.georgebra.Model.TesterClasses;
 
-import com.example.georgebra.Model.IOHandler;
+import com.example.georgebra.Model.InputHandler.IOHandler;
 import com.example.georgebra.Model.MetroSystem;
 import com.example.georgebra.Model.StationTypes.Station;
 import javafx.util.Pair;
@@ -21,7 +21,7 @@ public class InputTester {
             //Pair<ArrayList<Station>, Integer> shortestPathD = msys.genShortestPath("Rochor ", "Lavender"); printPath(shortestPathD.getKey(), shortestPathD.getValue());
             //Pair<ArrayList<Station>, Integer> shortestPathE = msys.genShortestPath("City Hall", "Bugis"); printPath(shortestPathE.getKey(), shortestPathE.getValue());
             Pair<ArrayList<Station>, Integer> shortestPathF = msys.genShortestPath("tuas link", "punggol point"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
-            Pair<ArrayList<Station>, Integer> shortestPathG = msys.genShortestPath("tuas link", "wooDlands noRth"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
+            //Pair<ArrayList<Station>, Integer> shortestPathG = msys.genShortestPath("tuas link", "wooDlands noRth"); printPath(shortestPathF.getKey(), shortestPathF.getValue());
 
         } catch (Exception e) {
             e.printStackTrace();

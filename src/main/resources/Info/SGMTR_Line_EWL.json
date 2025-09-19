@@ -4,7 +4,7 @@
   "code": "EWL",
   "hasInterchange": true,
   "stationCodes": ["EW", "CG"],
-  "colour": "009645",
+  "colour": "#009645",
   "lineType": "MRT",
   "stations": [
     {

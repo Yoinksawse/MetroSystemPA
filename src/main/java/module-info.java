@@ -8,6 +8,7 @@ module com.example.georgebra {
     requires java.naming;
     requires java.management;
     requires jdk.unsupported.desktop;
+    requires jdk.compiler;
 
 
     opens com.example.georgebra to javafx.fxml;

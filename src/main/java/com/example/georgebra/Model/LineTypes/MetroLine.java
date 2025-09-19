@@ -35,16 +35,23 @@ public abstract class MetroLine {
         if (lineName.isEmpty() || lineCode.isEmpty()) throw new MissingFormatArgumentException("Provide a MetroLine name.");
         if (lineId < 0) throw new IllegalArgumentException("Invalid MetroLine number.");
 
-        Pattern colourRGBPattern = Pattern.compile("^[a-fA-F0-9]{6}$");
-        Matcher colourRGBMatcher = colourRGBPattern.matcher(colour);
-        if (!colourRGBMatcher.find()) throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
+        if (!colour.matches("^#?[a-fA-F0-9]{6}$")) {
+            throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
+        }
+
+        //Pattern colourRGBPattern = Pattern.compile("#[a-fA-F0-9]{6}");
+        //Matcher colourRGBMatcher = colourRGBPattern.matcher(colour);
+        //if (colour.charAt(0) != '#') colour = "#" + colour;
+        //System.out.println(colour); //TODO
+        //if (!colourRGBMatcher.matches()) throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
 
         this.lineId = lineId; //doesnt need form verification; can be any unsigned int (preparedness for large scale future metro expansion)
         this.lineCode = lineCode; //doesnt need form verification; can be of any form, even chinese; if you input rubbish that's your issue
         this.lineName = lineName.toLowerCase(); //Standard Format; //doesnt need form verification; can be in chinese/japanese/american/african/british so no need verification
         this.lineColour = colour; //verified!
+        //System.out.println(this.lineColour);
 
-        lineNameToColourMap.put(this.lineName, this.lineColour);
+        lineNameToColourMap.put(this.lineName.toLowerCase(), this.lineColour); //lowercase is standard input
 
         graph = new GraphHandler();
         stationList = new HashSet<>();
@@ -81,7 +88,6 @@ public abstract class MetroLine {
             else { //newstation hasnt been added yet
                 stationList.add(newStation);
                 int newIndex = graph.getNodeCnt();
-                //if (newStation.getName().equalsIgnoreCase("CALDECOTT")) System.out.println(newIndex); //TODO TODO TODO
 
                 graph.addNode(newIndex);
 
@@ -195,6 +201,10 @@ public abstract class MetroLine {
 
     public HashMap<String, String> getIdToStationNameMap() {
         return new HashMap<String,String>(this.idToStationNameMap);
+    }
+
+    public static HashMap<String, String> getLineNameToColourMap() {
+        return new HashMap<>(MetroLine.lineNameToColourMap);
     }
 
     public HashSet<Pair<Integer, Integer>>[] getAdjListLine() {

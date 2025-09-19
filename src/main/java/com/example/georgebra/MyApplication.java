@@ -15,7 +15,7 @@ public class MyApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1540, 780);
         scene.getStylesheets().add(getClass().getResource("/com/example/georgebra.View/style.css").toExternalForm());
 
-        stage.setTitle("Georgebra MRT Route Planner");
+        stage.setTitle("GeorGebra MRT Route Planner");
         stage.getIcons().add(new Image(getClass().getResource("/com/example/georgebra.View/GrapherLogo.png").toExternalForm()));
         stage.setScene(scene);
         stage.setMinWidth(1300);

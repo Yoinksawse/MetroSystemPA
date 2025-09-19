@@ -4,7 +4,7 @@
   "code": "NSL",
   "hasInterchange": true,
   "stationCodes": ["NS"],
-  "colour": "D42E12",
+  "colour": "#D42E12",
   "lineType": "MRT",
   "stations": [
     {

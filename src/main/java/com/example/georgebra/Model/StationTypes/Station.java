@@ -1,13 +1,9 @@
 package com.example.georgebra.Model.StationTypes;
 
 import com.example.georgebra.Model.LineTypes.MetroLine;
-import javafx.scene.Group;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
-
 import java.util.MissingFormatArgumentException;
 
-public abstract class Station { //implements Comparable<Station>{
+public abstract class Station {
     //protected int stationNo; //3
     protected final String id; //NE3    Must have at least 2 letters, 1st denoting line, 2nd denoting station
     protected final String name; //Outram Park
@@ -15,11 +11,6 @@ public abstract class Station { //implements Comparable<Station>{
     protected double y = 0;
 
     protected final String lineName; //North East MetroLine
-
-    protected boolean selected;
-    protected boolean dragging;
-    public final DropShadow highlightShadow =
-            new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
 
     public Station(double x, double y, String id, String lineName, String name) throws MissingFormatArgumentException{
         if (name.isEmpty() || lineName.isEmpty()) {
@@ -35,8 +26,6 @@ public abstract class Station { //implements Comparable<Station>{
         //this.stationNo = stationNo;
         this.x = x;
         this.y = y;
-        this.selected = false;
-        this.dragging = false;
     }
 
     //specialised for interchange: will have empty id
@@ -49,22 +38,7 @@ public abstract class Station { //implements Comparable<Station>{
         //this.stationNo = stationNo;
         this.x = x;
         this.y = y;
-        this.selected = false;
-        this.dragging = false;
     }
-
-   /*
-    public Station(Station other) {
-        this(other.getX(), other.getY(), other.getStationID(), other.getLineName(), other.getName());
-    }
-    */
-
-    /*
-    //useless
-    public abstract Group draw();
-    public abstract Group setHighlighted(boolean highlighted);
-    //javafx.scene.shape.Circle stn = new javafx.scene.shape.Circle(x, y, 8.0);
-     */
 
     public void setX(double x) {
         this.x = x;
@@ -72,15 +46,11 @@ public abstract class Station { //implements Comparable<Station>{
     public void setY(double y) {
         this.y = y;
     }
-    public void setSelected(boolean tf) {
-        this.selected = tf;
-    }
-    public void setDragging(boolean tf) {
-        this.dragging = tf;
-        this.selected = true;
-    }
 
     public String getStationLineColour() {
+        if (this instanceof Interchange) {
+            
+        }
         return MetroLine.lineNameToColourMap.get(this.lineName);
     }
     public String getStationID() {
@@ -93,7 +63,6 @@ public abstract class Station { //implements Comparable<Station>{
         return this.name;
     }
     public String getLineName() {
-        //TODO
         if (this instanceof Interchange) return (String) ((Interchange)this).getAllLinesInfo().keySet().toArray()[0];
         return this.lineName;
     }

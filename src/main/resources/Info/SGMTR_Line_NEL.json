@@ -4,7 +4,7 @@
   "code": "NEL",
   "hasInterchange": true,
   "stationCodes": ["NE"],
-  "colour": "A50077",
+  "colour": "#A50077",
   "lineType": "MRT",
   "stations": [
     {

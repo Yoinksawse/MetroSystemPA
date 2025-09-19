@@ -1,26 +1,18 @@
-package com.example.georgebra.Model;
-
-import com.example.georgebra.Model.InputHandler.*;
+package com.example.georgebra.Model.InputHandler;
 
 import com.example.georgebra.Model.LineTypes.LRTLine;
 import com.example.georgebra.Model.LineTypes.MRTLine;
 import com.example.georgebra.Model.LineTypes.MetroLine;
 import com.example.georgebra.Model.LineTypes.TourismLine;
+import com.example.georgebra.Model.MetroSystem;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.Model.StationTypes.SingleStation;
 import com.example.georgebra.Model.StationTypes.Station;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import java.nio.file.Files;
-import javafx.util.Pair;
 
 import javax.naming.directory.InvalidAttributesException;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,16 +25,18 @@ public class IOHandler {
     private MetroSystem msys;
     private String systemID;
     private String systemName;
+    private int exchangeTime;
     private ArrayList<String> metroLineIDs = new ArrayList<>();
     private ArrayList<MetroLineData> metroLineDataList = new ArrayList<>();
-    private InterchangesData interchangesData;
 
-    private final Pattern systemIDPattern = Pattern.compile("^[A-Z]{1,10}$");
-    private final Pattern lineIDPattern = Pattern.compile("^[A-Z]{1,10}$");
+    private final Pattern systemIDPattern = Pattern.compile("^[a-zA-Z]{1,10}$");
+    private final Pattern lineIDPattern = Pattern.compile("^[a-zA-Z]{1,10}$");
     private final ObjectMapper mapper = new ObjectMapper();
 
     public IOHandler(String systemID) throws InputMismatchException, InvalidAlgorithmParameterException, InvalidAttributesException {
-        this.systemID = systemID.toUpperCase();
+        systemID = systemID.toUpperCase();
+        this.systemID = systemID;
+        this.exchangeTime = 3;
 
         Matcher matcher = systemIDPattern.matcher(systemID);
         if (!matcher.find()) throw new InputMismatchException("System ID must have 1-10 word characters.");
@@ -60,7 +54,7 @@ public class IOHandler {
     public MetroSystem generateMetroSystem() throws InvalidAlgorithmParameterException, InvalidAttributesException {
         //if(this.msys != null) return this.msys;
         //get ready base data for metrosystem
-        this.msys = new MetroSystem(systemName);
+        this.msys = new MetroSystem(systemName, exchangeTime);
 
         //create stations + lines + stuff -> msys and return
         for (MetroLineData lineData: metroLineDataList) { //iterate lines
@@ -138,6 +132,13 @@ public class IOHandler {
         return this.msys;
     }
 
+    public void setExchangeTime(int exchangeTime) {
+        this.exchangeTime = exchangeTime;
+    }
+    public int getExchangeTime() {
+        return this.exchangeTime;
+    }
+
     //output
     /*
     public void writeMetroSystem() {
@@ -160,6 +161,32 @@ public class IOHandler {
 
         //interchangesData = this.parseInterchangesJsonData(systemID);
     }
+
+    /*
+    public void writeMetroSystemJsonData(String jsonFileName) {
+        String filePath = "/Info/" + jsonFileName + ".json";
+        try {
+            InputStream in = getClass().getResourceAsStream(filePath);
+            if (in == null) throw new IllegalStateException("File not found: " + filePath);
+            return mapper.readValue(in, MetroSystemData.class);
+        } catch (IOException e) {
+            //e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void writeMetroLineJsonData(String jsonFileName) {
+        String filePath = "/Info/" + this.systemID + "_Line_" + jsonFileName + ".json";
+        try {
+            InputStream in = getClass().getResourceAsStream(filePath);
+            if (in == null) throw new IllegalStateException("File not found: " + filePath);
+            return mapper.readValue(in, MetroLineData.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    */
 
     public MetroSystemData parseMetroSystemJsonData(String jsonFileName) {
         String filePath = "/Info/" + jsonFileName + ".json";

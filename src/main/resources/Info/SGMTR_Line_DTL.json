@@ -4,7 +4,7 @@
   "code": "DTL",
   "hasInterchange": true,
   "stationCodes": ["DT"],
-  "colour": "005EC4",
+  "colour": "#005EC4",
   "lineType": "MRT",
   "stations": [
     {
