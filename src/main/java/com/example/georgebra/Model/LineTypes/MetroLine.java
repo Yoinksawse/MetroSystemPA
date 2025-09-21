@@ -1,19 +1,17 @@
 package com.example.georgebra.Model.LineTypes;
 
 import com.example.georgebra.Model.GraphTheoryHandler.GraphHandler;
+import com.example.georgebra.Model.Interfaces.Graphable;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.Model.StationTypes.Station;
-import javafx.scene.Group;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
-import javafx.util.Pair;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class MetroLine {
-    protected final int lineId; //a single number
+public abstract class MetroLine implements Graphable {
     protected final String lineCode; //e.g. DTL
     protected final String lineName; //DOWNTOWN LINE!!!!!!
     protected String lineColour; //in hex
@@ -26,14 +24,15 @@ public abstract class MetroLine {
     protected HashMap<String,Station> stationNameToStationMap = new HashMap<>();
     private HashMap<String, String> idToStationNameMap = new HashMap<>();
 
+    public final static Pattern lineCodePattern = Pattern.compile("^[a-zA-Z]{1,10}$");
     public static HashMap<String, String> lineNameToColourMap = new HashMap<>();
 
     public final DropShadow highlightShadow =
             new DropShadow(20, Color.rgb(255, 255, 150, 0.8));
 
-    public MetroLine(String lineName, String lineCode, int lineId, String colour) throws MissingFormatArgumentException{
+    public MetroLine(String lineName, String lineCode, String colour) throws MissingFormatArgumentException{
         if (lineName.isEmpty() || lineCode.isEmpty()) throw new MissingFormatArgumentException("Provide a MetroLine name.");
-        if (lineId < 0) throw new IllegalArgumentException("Invalid MetroLine number.");
+        //if (lineId < 0) throw new IllegalArgumentException("Invalid MetroLine number.");
 
         if (!colour.matches("^#?[a-fA-F0-9]{6}$")) {
             throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
@@ -45,7 +44,7 @@ public abstract class MetroLine {
         //System.out.println(colour); //TODO
         //if (!colourRGBMatcher.matches()) throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
 
-        this.lineId = lineId; //doesnt need form verification; can be any unsigned int (preparedness for large scale future metro expansion)
+        //this.lineId = lineId; //doesnt need form verification; can be any unsigned int (preparedness for large scale future metro expansion)
         this.lineCode = lineCode; //doesnt need form verification; can be of any form, even chinese; if you input rubbish that's your issue
         this.lineName = lineName.toLowerCase(); //Standard Format; //doesnt need form verification; can be in chinese/japanese/american/african/british so no need verification
         this.lineColour = colour; //verified!
@@ -58,7 +57,7 @@ public abstract class MetroLine {
         interchanges = new HashSet<>();
     }
     public MetroLine(MetroLine other) {
-        this(other.getLineName(), other.getLineCode(), other.getLineId(), other.getLineColour());
+        this(other.getLineName(), other.getLineCode(), other.getLineColour());
         this.stationList = other.getStationList();
         this.stationNameToStationMap = other.getStationNameToStationMap();
         this.stationNameToIndexMap = other.getStationNameToIndexMap();
@@ -122,7 +121,7 @@ public abstract class MetroLine {
     public void removeStation(Station x) throws IllegalArgumentException {
         if (stationList.contains(x)) {
             stationNameToIndexMap.remove(x.getName());
-            stationNameToStationMap.remove(x.getName());
+            getStationNameToStationMap.remove(x.getName());
             stationList.remove(x);
         }
         else throw new IllegalArgumentException(x + " does not exist.");
@@ -168,9 +167,6 @@ public abstract class MetroLine {
         this.lineColour = colour; // HEX
     }
 
-    public int getLineId() {
-        return this.lineId;
-    }
     public String getLineCode() {
         return this.lineCode;
     }
@@ -207,15 +203,9 @@ public abstract class MetroLine {
         return new HashMap<>(MetroLine.lineNameToColourMap);
     }
 
-    public HashSet<Pair<Integer, Integer>>[] getAdjListLine() {
+    public HashMap<Integer, Integer>[] getAdjList() {
         return this.graph.getAdjList();
     }
-
-
-    /*
-    public abstract Group draw();
-    public abstract Group setHighlighted(boolean highlighted);
-     */
 
     //utils
     public String findCurrentInterchangeID(Interchange x) throws IllegalArgumentException{
@@ -234,7 +224,7 @@ public abstract class MetroLine {
 
     public String toString() { //the adj list will only require station IDs
         //adds beginning root
-        String root = "Line" + this.lineId + ": " + this.lineName + ", " + this.lineCode + "\n";
+        String root = "Line: " + this.lineName + ", " + this.lineCode + "\n";
 
         //the adjacency list
         //HashMap<Integer,Station> indexStationMap = reverseStationIndexMap(this);
@@ -247,8 +237,8 @@ public abstract class MetroLine {
             String uLineID = (u instanceof Interchange) ? findCurrentInterchangeID((Interchange) u) : u.getStationID();
             recorded.add(u);
 
-            HashSet<Pair<Integer, Integer>>[] adjListLine = graph.getAdjList();
-            for (Pair<Integer, Integer> x: adjListLine[i]) {
+            HashMap<Integer, Integer>[] adjListLine = graph.getAdjList();
+            for (Map.Entry<Integer, Integer> x: adjListLine[i].entrySet()) {
                 int destinationIndex = x.getKey();
                 String destinationName = indexToStationNameMap.get(destinationIndex);
                 Station v = stationNameToStationMap.get(destinationName);

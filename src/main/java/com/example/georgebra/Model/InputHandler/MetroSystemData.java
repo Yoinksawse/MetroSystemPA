@@ -9,7 +9,7 @@ import java.util.ArrayList;
 //or
 //[metroID]_Interchanges.json
 
-//SGMTR.json will contain: list of strings for all line IDs
+//SINGAPOREMTR.json will contain: list of strings for all line IDs
 
 @JsonAutoDetect(
         fieldVisibility = JsonAutoDetect.Visibility.NONE,
@@ -22,7 +22,10 @@ public class MetroSystemData {
     //private List<MetroLineData> metroLineDataList;
 
     @JsonProperty("cityName")
-    private String cityName; //e.g. SGMTR
+    private String cityName; //e.g. singapore
+
+    @JsonProperty("systemID")
+    private String systemID; //e.g. SG
 
     @JsonProperty("metroLines")
     //references to system Line and system Interchange Json
@@ -31,6 +34,9 @@ public class MetroSystemData {
 
     public String getCityName() { return this.cityName;}
     public void setCityName(String cityName) {this.cityName = cityName;}
+
+    public String getSystemID() { return this.systemID;}
+    public void setSystemID(String systemID) {this.systemID = systemID;}
 
     public ArrayList<String> getMetroLineIDs() { return metroLineIDs; }
     public void setMetroLineIDs(ArrayList<String> metroLineIDs) { this.metroLineIDs = metroLineIDs; }

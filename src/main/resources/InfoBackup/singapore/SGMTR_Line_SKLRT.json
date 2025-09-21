@@ -1,9 +1,6 @@
 {
-  "id": 8,
   "name": "Sengkang LRT",
   "code": "SKLRT",
-  "hasInterchange": true,
-  "stationCodes": ["STC", "SE", "SW"],
   "colour": "#808080",
   "lineType": "LRT",
   "stations": [

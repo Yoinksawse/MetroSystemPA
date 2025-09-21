@@ -1,9 +1,6 @@
 {
-  "id": 6,
   "name": "Thomson-East Coast Line",
   "code": "TEL",
-  "hasInterchange": true,
-  "stationCodes": ["TE"],
   "colour": "#9D5B25",
   "lineType": "MRT",
   "stations": [

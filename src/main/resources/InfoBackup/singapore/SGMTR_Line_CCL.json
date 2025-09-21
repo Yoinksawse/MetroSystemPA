@@ -1,9 +1,6 @@
 {
-  "id": 3,
   "name": "Circle Line",
   "code": "CCL",
-  "hasInterchange": true,
-  "stationCodes": ["CC", "CE"],
   "colour": "#FFD300",
   "lineType": "MRT",
   "stations": [

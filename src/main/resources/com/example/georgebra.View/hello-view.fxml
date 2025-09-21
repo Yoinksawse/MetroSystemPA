@@ -39,7 +39,7 @@
               </rowConstraints>
                <children>
                   <StackPane fx:id="map_container" prefHeight="558.0" prefWidth="1010.0" />
-                  <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1000.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1000.0" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                     <items>
                         <AnchorPane prefHeight="110.0" prefWidth="6.0" />
                         <GridPane prefHeight="110.0" prefWidth="202.0">
@@ -95,7 +95,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ToggleButton fx:id="switch_devmode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#switchMode" prefHeight="35.0" prefWidth="220.0" text="Toggle Map User/Planner Mode" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <ToggleButton fx:id="switch_devmode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#switchMode" prefHeight="35.0" prefWidth="220.0" text="Switch To Editing Mode" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                        </children>
                                     </GridPane>
                                     <GridPane prefHeight="38.0" prefWidth="236.0">
@@ -107,8 +107,8 @@
                                           <RowConstraints maxHeight="49.59997558593749" minHeight="10.0" prefHeight="44.79998779296874" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Button fx:id="open_infowindow_button" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showAboutMe" prefHeight="35.0" prefWidth="105.0" text="About Me!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" text="How To Use Me!" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                          <Button fx:id="open_infowindow_button" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showAboutMe" prefHeight="35.0" prefWidth="105.0" text="More Info" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" text="Settings" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -137,45 +137,33 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Text>
-                                    <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="230.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                                    <GridPane maxHeight="-Infinity" prefHeight="23.0" prefWidth="218.0" GridPane.rowIndex="3">
                                       <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.4000015258789" minWidth="10.0" prefWidth="185.86669921875" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.19998168945312" minWidth="10.0" prefWidth="43.733300781249994" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <TextField fx:id="map_city_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="172.0" promptText="Type &quot;[XX]MTR&quot;! (e.g. SGMTR)" text="sgmtr" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-                                             <font>
-                                                <Font size="11.0" />
-                                             </font>
-                                          </TextField>
-                                          <Button fx:id="loadmetrosystem_button" mnemonicParsing="false" onAction="#getInput" prefHeight="34.0" prefWidth="25.0" text="+" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                          <Button fx:id="clearmap_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clearMap" prefHeight="35.0" prefWidth="105.0" text="Clear Map" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+                                          <Button fx:id="save_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveFile" prefHeight="35.0" prefWidth="105.0" text="Save" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
                                        </children>
                                     </GridPane>
-                                    <GridPane maxHeight="-Infinity" prefHeight="23.0" prefWidth="218.0" GridPane.rowIndex="2">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Button fx:id="updatemap_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#displayMap" prefHeight="35.0" prefWidth="105.0" text="Refresh Map" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
-                                          <Button fx:id="clearmap_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clearMap" prefHeight="35.0" prefWidth="105.0" text="Clear Map" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
-                                       </children>
-                                    </GridPane>
-                                    <Button fx:id="save_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#writeJson" prefHeight="35.0" prefWidth="105.0" text="Save" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
+                                    <Button fx:id="loadmetrosystem_button" mnemonicParsing="false" onAction="#getInput" prefHeight="34.0" prefWidth="174.0" text="Load/Refresh Data" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
+                                    <TextField fx:id="map_city_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#getInput" prefHeight="34.0" prefWidth="172.0" promptText="Enter City Name!" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </TextField>
                                  </children>
                               </GridPane>
                            </items>
@@ -195,12 +183,12 @@
                                   <RowConstraints maxHeight="145.2000183105469" minHeight="10.0" prefHeight="47.466638183593744" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField fx:id="from_station_input_area" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Starting Station" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                    <TextField fx:id="from_station_input_field" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Starting Station" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="to_station_input_area" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Destination Station" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                    <TextField fx:id="to_station_input_field" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Destination Station" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -215,7 +203,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fastest Route Finder" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Find Fastest Route" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -229,9 +217,9 @@
                               </GridPane>
                            </items>
                         </ToolBar>
-                        <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="204.0" prefWidth="236.0" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <ToolBar fx:id="selectedstation_infobox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="204.0" prefWidth="236.0" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <items>
-                              <GridPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="219.0">
+                              <GridPane maxHeight="-Infinity" maxWidth="220.0" minWidth="-Infinity" prefHeight="184.0" prefWidth="220.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>

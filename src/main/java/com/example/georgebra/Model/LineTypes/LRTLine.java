@@ -2,8 +2,8 @@ package com.example.georgebra.Model.LineTypes;
 
 public class LRTLine extends MetroLine {
 
-    public LRTLine(String lineName, String lineCode, int lineId) {
-        super(lineName, lineCode, lineId, "#A9A9A9");
+    public LRTLine(String lineName, String lineCode) {
+        super(lineName, lineCode, "#A9A9A9");
     }
 
     public String toString() {

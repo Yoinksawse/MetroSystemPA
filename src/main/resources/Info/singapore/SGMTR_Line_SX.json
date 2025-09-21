@@ -1,0 +1,72 @@
+{
+  "name" : "sentosa express",
+  "code" : "SX",
+  "colour" : "#000000",
+  "lineType" : "Tourism",
+  "stations" : [ {
+    "id" : "SX3",
+    "name" : "sentosa imbiah",
+    "x" : -720.0,
+    "y" : 420.0,
+    "textX" : 14.399999999999977,
+    "textY" : 12.800000000000011,
+    "isInterchange" : false,
+    "lineNames" : [ "sentosa express" ],
+    "lineIDs" : [ "SX3" ]
+  }, {
+    "id" : "",
+    "name" : "harbourfront",
+    "x" : -660.0,
+    "y" : 300.0,
+    "textX" : 19.200000000000045,
+    "textY" : 11.199999999999989,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "circle line", "sentosa express" ],
+    "lineIDs" : [ "NE1", "CC29", "SX1" ]
+  }, {
+    "id" : "SX2",
+    "name" : "beach station",
+    "x" : -690.0,
+    "y" : 360.0,
+    "textX" : 13.599999999999909,
+    "textY" : 17.59999999999991,
+    "isInterchange" : false,
+    "lineNames" : [ "sentosa express" ],
+    "lineIDs" : [ "SX2" ]
+  }, {
+    "id" : "SX4",
+    "name" : "sentosa waterfront",
+    "x" : -750.0,
+    "y" : 480.0,
+    "textX" : 14.399999999999977,
+    "textY" : 12.800000000000011,
+    "isInterchange" : false,
+    "lineNames" : [ "sentosa express" ],
+    "lineIDs" : [ "SX4" ]
+  } ],
+  "edges" : [ {
+    "from" : "SX1",
+    "to" : "SX2",
+    "time" : 3
+  }, {
+    "from" : "SX2",
+    "to" : "SX1",
+    "time" : 3
+  }, {
+    "from" : "SX2",
+    "to" : "SX3",
+    "time" : 3
+  }, {
+    "from" : "SX3",
+    "to" : "SX2",
+    "time" : 3
+  }, {
+    "from" : "SX3",
+    "to" : "SX4",
+    "time" : 2
+  }, {
+    "from" : "SX4",
+    "to" : "SX3",
+    "time" : 2
+  } ]
+}

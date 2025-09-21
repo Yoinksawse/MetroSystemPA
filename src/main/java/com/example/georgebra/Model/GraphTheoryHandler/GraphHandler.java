@@ -6,15 +6,15 @@ import java.util.*;
 
 public class GraphHandler {
     private final int MAXN = 505;
-    private HashSet<Pair<Integer, Integer>> adjList[];
+    private HashMap<Integer, Integer> adjList[];
     private HashSet<Integer> graphNodes = new HashSet<>();
     //private HashMap<Integer, GraphNode> indexToNode = new HashMap<>();
     private int duplicateInterchangesCnt; //specially created class field to assist with interchange; TODO: find a way to remove/rename
     public GraphHandler() {
         //initialisation
-        this.adjList = new HashSet[MAXN];
+        this.adjList = new HashMap[MAXN];
         for (int i = 0; i < adjList.length; i++) {
-            adjList[i] = new HashSet<>();
+            adjList[i] = new HashMap<>();
         }
 
         duplicateInterchangesCnt = 0;
@@ -34,28 +34,13 @@ public class GraphHandler {
         boolean uAlreadyExistsBeforeAddingNode = graphNodes.contains(u);
         boolean vAlreadyExistsBeforeAddingNode = graphNodes.contains(v);
         addNode(u); addNode(v);
-        adjList[u].add(new Pair<>(v, weight));
-        adjList[v].add(new Pair<>(u, weight));
+        adjList[u].put(v, weight);
+        adjList[v].put(u, weight);
         if (uAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
         if (vAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
     }
 
-    //for transfer within interchanges
-    // TODO: deprecated; no need for labelling hidden edges; just strike out repeat stations in final path of stations (in msys)
-    /*
-    public void addHiddenEdge(int u, int v, int weight) {
-    }
-     */
-
-    public HashSet<Pair<Integer, Integer>>[] getAdjList() {
-        /*
-        ArrayList<Pair<Integer, Integer>>[] deepCopyAdjList;
-        deepCopyAdjList = new ArrayList[MAXN];
-        for (int i = 0; i < adjList.length; i++) {
-            deepCopyAdjList[i] = new ArrayList<>(this.adjList[i]);
-        }
-        return deepCopyAdjList;
-         */
+    public HashMap<Integer,Integer>[] getAdjList() {
         return this.adjList;
     }
 
@@ -76,12 +61,12 @@ public class GraphHandler {
     }
 
     public void mergeGraphHandler(GraphHandler other, int newNodeOffset) {
-        HashSet<Pair<Integer, Integer>> otherAdjList[] = other.getAdjList();
+        HashMap<Integer,Integer> otherAdjList[] = other.getAdjList();
         HashSet<Integer> otherGraphNodes = other.getNodes();
 
         for (Integer node : otherGraphNodes) {
             this.addNode(newNodeOffset + node);
-            for (Pair<Integer,Integer> entry: otherAdjList[node]) {
+            for (Map.Entry<Integer,Integer> entry: otherAdjList[node].entrySet()) {
                 int toNode = entry.getKey();
                 int weight = entry.getValue();
 
@@ -115,7 +100,7 @@ public class GraphHandler {
             visited[currentNode] = true;
             if (currentNode == v) break;
 
-            for (Pair<Integer, Integer> edge : adjList[currentNode]) {
+            for (Map.Entry<Integer,Integer> edge : adjList[currentNode].entrySet()) {
                 int neighbor = edge.getKey();
                 int weight = edge.getValue();
 
@@ -153,7 +138,7 @@ public class GraphHandler {
     public String toString() {
         String finalString = "";
         for (int i = 0; i < graphNodes.size(); i++) {
-            for (Pair<Integer, Integer> pii: adjList[i]) {
+            for (Map.Entry<Integer, Integer> pii: adjList[i].entrySet()) {
                 finalString += (i + " " + pii.getKey() + " " + pii.getValue() + "\n");
             }
         }

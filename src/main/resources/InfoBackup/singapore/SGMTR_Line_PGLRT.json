@@ -1,9 +1,6 @@
 {
-  "id": 9,
   "name": "Punggol LRT",
   "code": "PGLRT",
-  "hasInterchange": true,
-  "stationCodes": ["PTC", "PE", "PW"],
   "colour": "#808080",
   "lineType": "LRT",
   "stations": [

@@ -1,3 +1,21 @@
 .DropShadow {
     -fx-effect: dropshadow(gaussian, rgba(255,255,150,0.8), 20, 0.5, 0, 0);
 }
+
+.notPathStation { /*red*/
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, #FFFFFF, #BBBBBB);
+    -fx-effect: dropshadow(gaussian, rgba(255, 69, 42, 0.5), 5, 0.5, 0, 0);
+}
+
+.pathStation { /*green<->white*/
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, #7FFFD4, #228B22);
+    -fx-effect: dropshadow(gaussian, rgba(77, 141, 106, 1), 5, 0.5, 0, 0);
+}
+
+.invalidTextBox {
+    -fx-effect: dropshadow(gaussian, rgba(230, 0, 0, 0.7), 5, 0.5, 0, 0);
+}
+
+.validTextBox {
+    -fx-effect: dropshadow(gaussian, rgba(73,224,72, 0.7), 5, 0.5, 0, 0);
+}

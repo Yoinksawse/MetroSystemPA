@@ -1,0 +1,288 @@
+{
+  "name" : "north east line",
+  "code" : "NEL",
+  "colour" : "#A50077",
+  "lineType" : "MRT",
+  "stations" : [ {
+    "id" : "NE9",
+    "name" : "boon keng",
+    "x" : -420.0,
+    "y" : -240.0,
+    "textX" : 0.0,
+    "textY" : 0.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE9" ]
+  }, {
+    "id" : "",
+    "name" : "harbourfront",
+    "x" : -660.0,
+    "y" : 300.0,
+    "textX" : 19.200000000000045,
+    "textY" : 11.199999999999989,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "circle line", "sentosa express" ],
+    "lineIDs" : [ "NE1", "CC29", "SX1" ]
+  }, {
+    "id" : "",
+    "name" : "dhoby ghaut",
+    "x" : -510.0,
+    "y" : -60.0,
+    "textX" : 18.399999999999977,
+    "textY" : -8.0,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "north south line", "circle line" ],
+    "lineIDs" : [ "NE6", "NS24", "CC1" ]
+  }, {
+    "id" : "NE13",
+    "name" : "kovan",
+    "x" : -270.0,
+    "y" : -450.0,
+    "textX" : 12.0,
+    "textY" : 19.19999999999999,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE13" ]
+  }, {
+    "id" : "",
+    "name" : "punggol",
+    "x" : 0.0,
+    "y" : -720.0,
+    "textX" : 19.199999999999932,
+    "textY" : 3.200000000000017,
+    "isInterchange" : true,
+    "lineNames" : [ "punggol lrt", "north east line" ],
+    "lineIDs" : [ "PTC", "NE17" ]
+  }, {
+    "id" : "",
+    "name" : "sengkang",
+    "x" : -120.0,
+    "y" : -600.0,
+    "textX" : -28.0,
+    "textY" : 18.399999999999977,
+    "isInterchange" : true,
+    "lineNames" : [ "sengkang lrt", "north east line" ],
+    "lineIDs" : [ "STC", "NE16" ]
+  }, {
+    "id" : "",
+    "name" : "serangoon",
+    "x" : -300.0,
+    "y" : -420.0,
+    "textX" : -28.0,
+    "textY" : 23.19999999999999,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "circle line" ],
+    "lineIDs" : [ "NE12", "CC13" ]
+  }, {
+    "id" : "",
+    "name" : "chinatown",
+    "x" : -600.0,
+    "y" : 60.0,
+    "textX" : 17.600000000000023,
+    "textY" : -8.799999999999955,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "downtown line" ],
+    "lineIDs" : [ "NE4", "DT19" ]
+  }, {
+    "id" : "NE15",
+    "name" : "buangkok",
+    "x" : -210.0,
+    "y" : -510.0,
+    "textX" : 8.799999999999955,
+    "textY" : 17.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE15" ]
+  }, {
+    "id" : "",
+    "name" : "little india",
+    "x" : -480.0,
+    "y" : -120.0,
+    "textX" : 16.000000000000114,
+    "textY" : -20.000000000000057,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "downtown line" ],
+    "lineIDs" : [ "NE7", "DT12" ]
+  }, {
+    "id" : "NE10",
+    "name" : "potong pasir",
+    "x" : -390.0,
+    "y" : -300.0,
+    "textX" : 0.0,
+    "textY" : 0.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE10" ]
+  }, {
+    "id" : "",
+    "name" : "outram park",
+    "x" : -660.0,
+    "y" : 120.0,
+    "textX" : -88.80000000000007,
+    "textY" : 9.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north east line", "east west line" ],
+    "lineIDs" : [ "TE17", "NE3", "EW16" ]
+  }, {
+    "id" : "NE5",
+    "name" : "clarke quay",
+    "x" : -540.0,
+    "y" : 0.0,
+    "textX" : 10.399999999999977,
+    "textY" : 12.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE5" ]
+  }, {
+    "id" : "NE8",
+    "name" : "farrer park",
+    "x" : -450.0,
+    "y" : -180.0,
+    "textX" : 14.399999999999864,
+    "textY" : 12.800000000000011,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE8" ]
+  }, {
+    "id" : "NE14",
+    "name" : "hougang",
+    "x" : -240.0,
+    "y" : -480.0,
+    "textX" : 14.400000000000091,
+    "textY" : 16.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE14" ]
+  }, {
+    "id" : "NE11",
+    "name" : "woodleigh",
+    "x" : -360.0,
+    "y" : -360.0,
+    "textX" : 12.799999999999955,
+    "textY" : 17.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "north east line" ],
+    "lineIDs" : [ "NE11" ]
+  } ],
+  "edges" : [ {
+    "from" : "NE1",
+    "to" : "NE3",
+    "time" : 2
+  }, {
+    "from" : "NE3",
+    "to" : "NE1",
+    "time" : 2
+  }, {
+    "from" : "NE3",
+    "to" : "NE4",
+    "time" : 3
+  }, {
+    "from" : "NE4",
+    "to" : "NE3",
+    "time" : 3
+  }, {
+    "from" : "NE4",
+    "to" : "NE5",
+    "time" : 3
+  }, {
+    "from" : "NE5",
+    "to" : "NE4",
+    "time" : 3
+  }, {
+    "from" : "NE5",
+    "to" : "NE6",
+    "time" : 2
+  }, {
+    "from" : "NE6",
+    "to" : "NE5",
+    "time" : 2
+  }, {
+    "from" : "NE6",
+    "to" : "NE7",
+    "time" : 2
+  }, {
+    "from" : "NE7",
+    "to" : "NE6",
+    "time" : 2
+  }, {
+    "from" : "NE7",
+    "to" : "NE8",
+    "time" : 1
+  }, {
+    "from" : "NE8",
+    "to" : "NE7",
+    "time" : 1
+  }, {
+    "from" : "NE8",
+    "to" : "NE9",
+    "time" : 2
+  }, {
+    "from" : "NE9",
+    "to" : "NE8",
+    "time" : 2
+  }, {
+    "from" : "NE9",
+    "to" : "NE10",
+    "time" : 2
+  }, {
+    "from" : "NE10",
+    "to" : "NE9",
+    "time" : 2
+  }, {
+    "from" : "NE10",
+    "to" : "NE11",
+    "time" : 3
+  }, {
+    "from" : "NE11",
+    "to" : "NE10",
+    "time" : 3
+  }, {
+    "from" : "NE11",
+    "to" : "NE12",
+    "time" : 2
+  }, {
+    "from" : "NE12",
+    "to" : "NE11",
+    "time" : 2
+  }, {
+    "from" : "NE12",
+    "to" : "NE13",
+    "time" : 2
+  }, {
+    "from" : "NE13",
+    "to" : "NE12",
+    "time" : 2
+  }, {
+    "from" : "NE13",
+    "to" : "NE14",
+    "time" : 3
+  }, {
+    "from" : "NE14",
+    "to" : "NE13",
+    "time" : 3
+  }, {
+    "from" : "NE14",
+    "to" : "NE15",
+    "time" : 2
+  }, {
+    "from" : "NE15",
+    "to" : "NE14",
+    "time" : 2
+  }, {
+    "from" : "NE15",
+    "to" : "NE16",
+    "time" : 2
+  }, {
+    "from" : "NE16",
+    "to" : "NE15",
+    "time" : 2
+  }, {
+    "from" : "NE16",
+    "to" : "NE17",
+    "time" : 3
+  }, {
+    "from" : "NE17",
+    "to" : "NE16",
+    "time" : 3
+  } ]
+}

@@ -1,9 +1,6 @@
 {
-  "id": 10,
   "name": "Sentosa Express",
   "code": "SX",
-  "hasInterchange": true,
-  "stationCodes": ["SX"],
   "colour": "#000000",
   "lineType": "Tourism",
   "stations": [

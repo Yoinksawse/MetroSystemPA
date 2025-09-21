@@ -1,0 +1,242 @@
+{
+  "name" : "bukit panjang lrt",
+  "code" : "BPLRT",
+  "colour" : "#A9A9A9",
+  "lineType" : "LRT",
+  "stations" : [ {
+    "id" : "BP5",
+    "name" : "phoenix",
+    "x" : -1040.0,
+    "y" : -620.0,
+    "textX" : -24.0,
+    "textY" : 16.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP5" ]
+  }, {
+    "id" : "BP11",
+    "name" : "segar",
+    "x" : -1080.0,
+    "y" : -750.0,
+    "textX" : 14.399999999999977,
+    "textY" : 10.400000000000006,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP11" ]
+  }, {
+    "id" : "BP4",
+    "name" : "teck whye",
+    "x" : -1100.0,
+    "y" : -620.0,
+    "textX" : -80.79999999999995,
+    "textY" : -16.000000000000057,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP4" ]
+  }, {
+    "id" : "BP7",
+    "name" : "petir",
+    "x" : -960.0,
+    "y" : -690.0,
+    "textX" : 12.0,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP7" ]
+  }, {
+    "id" : "BP9",
+    "name" : "bangkit",
+    "x" : -990.0,
+    "y" : -780.0,
+    "textX" : 14.399999999999977,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP9" ]
+  }, {
+    "id" : "BP2",
+    "name" : "south view",
+    "x" : -1140.0,
+    "y" : -510.0,
+    "textX" : 13.600000000000023,
+    "textY" : 8.000000000000057,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP2" ]
+  }, {
+    "id" : "BP3",
+    "name" : "keat hong",
+    "x" : -1140.0,
+    "y" : -560.0,
+    "textX" : 14.399999999999977,
+    "textY" : 9.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP3" ]
+  }, {
+    "id" : "",
+    "name" : "choa chu kang",
+    "x" : -1200.0,
+    "y" : -480.0,
+    "textX" : 15.199999999999932,
+    "textY" : 11.199999999999989,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "bukit panjang lrt" ],
+    "lineIDs" : [ "NS4", "BP1" ]
+  }, {
+    "id" : "",
+    "name" : "bukit panjang",
+    "x" : -990.0,
+    "y" : -660.0,
+    "textX" : 19.199999999999932,
+    "textY" : -3.1999999999999886,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "bukit panjang lrt" ],
+    "lineIDs" : [ "DT1", "BP6" ]
+  }, {
+    "id" : "BP13",
+    "name" : "senja",
+    "x" : -1050.0,
+    "y" : -660.0,
+    "textX" : 13.599999999999909,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP13" ]
+  }, {
+    "id" : "BP8",
+    "name" : "pending",
+    "x" : -960.0,
+    "y" : -750.0,
+    "textX" : 13.600000000000023,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP8" ]
+  }, {
+    "id" : "BP10",
+    "name" : "fajar",
+    "x" : -1050.0,
+    "y" : -780.0,
+    "textX" : 12.800000000000068,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP10" ]
+  }, {
+    "id" : "BP12",
+    "name" : "jelapang",
+    "x" : -1080.0,
+    "y" : -690.0,
+    "textX" : 14.399999999999977,
+    "textY" : -26.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP12" ]
+  } ],
+  "edges" : [ {
+    "from" : "BP1",
+    "to" : "BP2",
+    "time" : 2
+  }, {
+    "from" : "BP2",
+    "to" : "BP1",
+    "time" : 2
+  }, {
+    "from" : "BP2",
+    "to" : "BP3",
+    "time" : 2
+  }, {
+    "from" : "BP3",
+    "to" : "BP2",
+    "time" : 2
+  }, {
+    "from" : "BP3",
+    "to" : "BP4",
+    "time" : 2
+  }, {
+    "from" : "BP4",
+    "to" : "BP3",
+    "time" : 2
+  }, {
+    "from" : "BP4",
+    "to" : "BP5",
+    "time" : 2
+  }, {
+    "from" : "BP5",
+    "to" : "BP4",
+    "time" : 2
+  }, {
+    "from" : "BP5",
+    "to" : "BP6",
+    "time" : 2
+  }, {
+    "from" : "BP6",
+    "to" : "BP5",
+    "time" : 2
+  }, {
+    "from" : "BP6",
+    "to" : "BP7",
+    "time" : 2
+  }, {
+    "from" : "BP6",
+    "to" : "BP13",
+    "time" : 2
+  }, {
+    "from" : "BP7",
+    "to" : "BP6",
+    "time" : 2
+  }, {
+    "from" : "BP7",
+    "to" : "BP8",
+    "time" : 2
+  }, {
+    "from" : "BP13",
+    "to" : "BP6",
+    "time" : 2
+  }, {
+    "from" : "BP13",
+    "to" : "BP12",
+    "time" : 2
+  }, {
+    "from" : "BP8",
+    "to" : "BP7",
+    "time" : 2
+  }, {
+    "from" : "BP8",
+    "to" : "BP9",
+    "time" : 2
+  }, {
+    "from" : "BP12",
+    "to" : "BP13",
+    "time" : 2
+  }, {
+    "from" : "BP12",
+    "to" : "BP11",
+    "time" : 2
+  }, {
+    "from" : "BP9",
+    "to" : "BP8",
+    "time" : 2
+  }, {
+    "from" : "BP9",
+    "to" : "BP10",
+    "time" : 2
+  }, {
+    "from" : "BP11",
+    "to" : "BP12",
+    "time" : 2
+  }, {
+    "from" : "BP11",
+    "to" : "BP10",
+    "time" : 2
+  }, {
+    "from" : "BP10",
+    "to" : "BP9",
+    "time" : 2
+  }, {
+    "from" : "BP10",
+    "to" : "BP11",
+    "time" : 2
+  } ]
+}

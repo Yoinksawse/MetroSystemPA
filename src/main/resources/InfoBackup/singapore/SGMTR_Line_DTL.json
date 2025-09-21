@@ -1,9 +1,6 @@
 {
-  "id": 4,
   "name": "Downtown Line",
   "code": "DTL",
-  "hasInterchange": true,
-  "stationCodes": ["DT"],
   "colour": "#005EC4",
   "lineType": "MRT",
   "stations": [

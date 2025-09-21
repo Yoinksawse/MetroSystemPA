@@ -1,6 +1,7 @@
 package com.example.georgebra.Model;
 
 import com.example.georgebra.Model.GraphTheoryHandler.GraphHandler;
+import com.example.georgebra.Model.Interfaces.Graphable;
 import com.example.georgebra.Model.LineTypes.MetroLine;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.Model.StationTypes.Station;
@@ -10,11 +11,12 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MetroSystem{
-    private String cityName;
-    int exchangeTime;
+public class MetroSystem implements Graphable {
     private final int MAXN = 505;
-    GraphHandler graph;
+    private String cityName;
+    private String systemID;
+    public int exchangeTime;
+    private GraphHandler graph;
 
     private HashSet<Station> stationList = new HashSet<>();
     private HashSet<Interchange> interchanges = new HashSet<>();
@@ -28,17 +30,19 @@ public class MetroSystem{
     //private HashMap<String,ArrayList<Integer>> interchangeGraphReferences = new HashMap<>();
     private HashMap<String,HashMap<Integer, String>> interchangeGraphReferences = new HashMap<>();
     //<interchangeName, <<theGraphReference, lineOfThisIndex>>
+    public final static Pattern systemIDPattern = Pattern.compile("^[a-zA-Z]{1,10}$");
 
-    public MetroSystem(String cityName) {
-        this(cityName, 3);
+    public MetroSystem(String cityName, String systemID) {
+        this(cityName, 3, systemID);
     }
-    public MetroSystem(String cityName, int averageExchangeTime) {
+    public MetroSystem(String cityName, int averageExchangeTime, String systemID) {
+        this.systemID = systemID;
         this.cityName = cityName;
         this.exchangeTime = averageExchangeTime;
         graph = new GraphHandler();
     }
 
-    private void addStation(Station newStation) { //this method avoids handling graphs
+    public void addStation(Station newStation) { //this method avoids handling graphs
         for (Station s : stationList) {
             if (s.getName().equalsIgnoreCase(newStation.getName()) && !(s instanceof Interchange)) {
                 return; //containStation = true
@@ -105,6 +109,11 @@ public class MetroSystem{
                 graph.addEdge(lineIndexEntryU.getValue(), lineIndexEntryV.getValue(), weight);
             }
         }
+    }
+
+    @Override
+    public GraphHandler getGraphHandler() {
+        return this.graph;
     }
 
     public void addLine(MetroLine newMetroLine) {
@@ -227,8 +236,8 @@ public class MetroSystem{
         }
     }
 
-    public ArrayList<Station> getStationList() {
-        return new ArrayList<>(this.stationList);
+    public HashSet<Station> getStationList() {
+        return new HashSet<>(this.stationList);
     }
 
     public ArrayList<MetroLine> getLineList() {
@@ -239,17 +248,22 @@ public class MetroSystem{
         return cityName;
     }
 
-    /*
-    public HashMap<String, HashMap<String, Integer>> getStationNameToIndexesMap() {
-        return this.stationNameToIndexesMap;
-    }
-     */
-
     public HashMap<Integer,String> getIndexToStationNameMap() {
         return this.indexToStationNameMap;
     }
 
-    public HashMap<String, Station> stationNameToStationMap() { //TODO
+    @Override
+    public HashMap<String, String> getIdToStationNameMap() {
+        return this.idToStationNameMap;
+    }
+
+
+    @Override
+    public Station getStationByName(String name) {
+        return Graphable.super.getStationByName(name);
+    }
+
+    public HashMap<String, Station> getStationNameToStationMap() {
         return this.stationNameToStationMap;
     }
 
@@ -257,12 +271,20 @@ public class MetroSystem{
         return MetroLine.getLineNameToColourMap();
     }
 
-    public GraphHandler getGraph() {
-        return graph;
-    }
-
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public void setSystemID(String systemID) {
+        Matcher matcher = systemIDPattern.matcher(systemID);
+        if (!matcher.find()) throw new InputMismatchException("System ID must have 1-10 word characters.");
+        if (!systemID.endsWith("MTR")) this.systemID += "MTR";
+
+        this.systemID = systemID;
+    }
+
+    public String getSystemID() {
+        return this.systemID;
     }
 
     //TODO

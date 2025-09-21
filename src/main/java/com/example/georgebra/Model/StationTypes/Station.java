@@ -9,6 +9,8 @@ public abstract class Station {
     protected final String name; //Outram Park
     protected double x = 0;
     protected double y = 0;
+    protected double textX = 0;
+    protected double textY = 0;
 
     protected final String lineName; //North East MetroLine
 
@@ -46,6 +48,8 @@ public abstract class Station {
     public void setY(double y) {
         this.y = y;
     }
+    public void setTextX(double x) {this.textX = x;}
+    public void setTextY(double y) {this.textY = y;}
 
     public String getStationLineColour() {
         if (this instanceof Interchange) {
@@ -73,9 +77,24 @@ public abstract class Station {
     public double getY() {
         return this.y;
     }
+    public double getTextX() {return this.textX;}
+    public double getTextY() {return this.textY;}
 
     @Override
     public String toString() {
         return this.id + ": " + this.name + " " + this.x + " " + this.y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Station)) return false;
+        Station other = (Station) obj;
+        return this.name.equalsIgnoreCase(other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.toLowerCase().hashCode();
     }
 }

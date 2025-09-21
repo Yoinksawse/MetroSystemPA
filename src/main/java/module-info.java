@@ -9,6 +9,8 @@ module com.example.georgebra {
     requires java.management;
     requires jdk.unsupported.desktop;
     requires jdk.compiler;
+    requires java.sql;
+    requires org.apache.commons.io;
 
 
     opens com.example.georgebra to javafx.fxml;
@@ -25,6 +27,8 @@ module com.example.georgebra {
     opens com.example.georgebra.Model.GraphTheoryHandler to com.fasterxml.jackson.databind, javafx.fxml;
     exports com.example.georgebra.Model.StationTypes;
     exports com.example.georgebra.Model.LineTypes;
+    exports com.example.georgebra.Model.Interfaces;
+    opens com.example.georgebra.Model.Interfaces to com.fasterxml.jackson.databind, javafx.fxml;
 
 
 }

@@ -1,0 +1,268 @@
+{
+  "name" : "sengkang lrt",
+  "code" : "SKLRT",
+  "colour" : "#A9A9A9",
+  "lineType" : "LRT",
+  "stations" : [ {
+    "id" : "SE1",
+    "name" : "compassvale",
+    "x" : -30.0,
+    "y" : -600.0,
+    "textX" : -4.0,
+    "textY" : 18.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SE1" ]
+  }, {
+    "id" : "SE3",
+    "name" : "bakau",
+    "x" : 0.0,
+    "y" : -480.0,
+    "textX" : 13.600000000000023,
+    "textY" : 11.199999999999932,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SE3" ]
+  }, {
+    "id" : "SW6",
+    "name" : "layar",
+    "x" : -180.0,
+    "y" : -750.0,
+    "textX" : 14.400000000000091,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW6" ]
+  }, {
+    "id" : "SW1",
+    "name" : "cheng lim",
+    "x" : -210.0,
+    "y" : -600.0,
+    "textX" : -73.59999999999991,
+    "textY" : 8.0,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW1" ]
+  }, {
+    "id" : "SW7",
+    "name" : "tongkang",
+    "x" : -150.0,
+    "y" : -720.0,
+    "textX" : 13.599999999999909,
+    "textY" : -22.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW7" ]
+  }, {
+    "id" : "SW4",
+    "name" : "thanggam",
+    "x" : -270.0,
+    "y" : -720.0,
+    "textX" : 13.599999999999909,
+    "textY" : 10.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW4" ]
+  }, {
+    "id" : "SE4",
+    "name" : "kangkar",
+    "x" : -60.0,
+    "y" : -450.0,
+    "textX" : -55.200000000000045,
+    "textY" : 17.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SE4" ]
+  }, {
+    "id" : "",
+    "name" : "sengkang",
+    "x" : -120.0,
+    "y" : -600.0,
+    "textX" : -28.0,
+    "textY" : 18.399999999999977,
+    "isInterchange" : true,
+    "lineNames" : [ "sengkang lrt", "north east line" ],
+    "lineIDs" : [ "STC", "NE16" ]
+  }, {
+    "id" : "SW3",
+    "name" : "kupang",
+    "x" : -270.0,
+    "y" : -660.0,
+    "textX" : -68.79999999999995,
+    "textY" : -15.200000000000045,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW3" ]
+  }, {
+    "id" : "SE2",
+    "name" : "rumbia",
+    "x" : 30.0,
+    "y" : -540.0,
+    "textX" : 14.399999999999977,
+    "textY" : 9.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SE2" ]
+  }, {
+    "id" : "SW8",
+    "name" : "renjong",
+    "x" : -120.0,
+    "y" : -690.0,
+    "textX" : 12.800000000000068,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW8" ]
+  }, {
+    "id" : "SE5",
+    "name" : "ranggung",
+    "x" : -120.0,
+    "y" : -510.0,
+    "textX" : -12.800000000000068,
+    "textY" : 16.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SE5" ]
+  }, {
+    "id" : "SW2",
+    "name" : "farmway",
+    "x" : -240.0,
+    "y" : -630.0,
+    "textX" : -72.80000000000007,
+    "textY" : 0.0,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW2" ]
+  }, {
+    "id" : "SW5",
+    "name" : "fernvale",
+    "x" : -240.0,
+    "y" : -750.0,
+    "textX" : -70.39999999999998,
+    "textY" : -12.0,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW5" ]
+  } ],
+  "edges" : [ {
+    "from" : "STC",
+    "to" : "SE1",
+    "time" : 2
+  }, {
+    "from" : "STC",
+    "to" : "SW8",
+    "time" : 2
+  }, {
+    "from" : "STC",
+    "to" : "SE5",
+    "time" : 2
+  }, {
+    "from" : "STC",
+    "to" : "SW1",
+    "time" : 2
+  }, {
+    "from" : "SE1",
+    "to" : "STC",
+    "time" : 2
+  }, {
+    "from" : "SE1",
+    "to" : "SE2",
+    "time" : 2
+  }, {
+    "from" : "SW8",
+    "to" : "STC",
+    "time" : 2
+  }, {
+    "from" : "SW8",
+    "to" : "SW7",
+    "time" : 2
+  }, {
+    "from" : "SE5",
+    "to" : "STC",
+    "time" : 2
+  }, {
+    "from" : "SE5",
+    "to" : "SE4",
+    "time" : 2
+  }, {
+    "from" : "SW1",
+    "to" : "STC",
+    "time" : 2
+  }, {
+    "from" : "SW1",
+    "to" : "SW2",
+    "time" : 2
+  }, {
+    "from" : "SE2",
+    "to" : "SE1",
+    "time" : 2
+  }, {
+    "from" : "SE2",
+    "to" : "SE3",
+    "time" : 2
+  }, {
+    "from" : "SW7",
+    "to" : "SW8",
+    "time" : 2
+  }, {
+    "from" : "SW7",
+    "to" : "SW6",
+    "time" : 2
+  }, {
+    "from" : "SE4",
+    "to" : "SE5",
+    "time" : 2
+  }, {
+    "from" : "SE4",
+    "to" : "SE3",
+    "time" : 2
+  }, {
+    "from" : "SW2",
+    "to" : "SW1",
+    "time" : 2
+  }, {
+    "from" : "SW2",
+    "to" : "SW3",
+    "time" : 2
+  }, {
+    "from" : "SE3",
+    "to" : "SE2",
+    "time" : 2
+  }, {
+    "from" : "SE3",
+    "to" : "SE4",
+    "time" : 2
+  }, {
+    "from" : "SW6",
+    "to" : "SW7",
+    "time" : 2
+  }, {
+    "from" : "SW6",
+    "to" : "SW5",
+    "time" : 2
+  }, {
+    "from" : "SW3",
+    "to" : "SW2",
+    "time" : 2
+  }, {
+    "from" : "SW3",
+    "to" : "SW4",
+    "time" : 2
+  }, {
+    "from" : "SW5",
+    "to" : "SW6",
+    "time" : 2
+  }, {
+    "from" : "SW5",
+    "to" : "SW4",
+    "time" : 2
+  }, {
+    "from" : "SW4",
+    "to" : "SW3",
+    "time" : 2
+  }, {
+    "from" : "SW4",
+    "to" : "SW5",
+    "time" : 2
+  } ]
+}

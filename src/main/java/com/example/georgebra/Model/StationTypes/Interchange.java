@@ -21,7 +21,10 @@ public class Interchange extends Station {
             //this.allLinesInfo.put(lineInfo.getKey().toLowerCase(), id);
         }
 
-        this.allLinesInfo = new HashMap<>(otherAllLinesInfo);
+        this.allLinesInfo = new HashMap<>();
+        for (Map.Entry<String, String> id: otherAllLinesInfo.entrySet()) {
+            allLinesInfo.put(id.getKey().toLowerCase(), id.getValue());
+        }
 
         interchanges.add(this);
         interchangeNames.add(this.name);

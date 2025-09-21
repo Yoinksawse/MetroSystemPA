@@ -1,9 +1,6 @@
 {
-  "id": 8,
   "name": "Bukit Panjang LRT",
   "code": "BPL",
-  "hasInterchange": true,
-  "stationCodes": ["BP"],
   "colour": "#808080",
   "lineType": "LRT",
   "stations": [

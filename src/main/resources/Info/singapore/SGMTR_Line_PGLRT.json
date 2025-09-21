@@ -1,0 +1,286 @@
+{
+  "name" : "punggol lrt",
+  "code" : "PGLRT",
+  "colour" : "#A9A9A9",
+  "lineType" : "LRT",
+  "stations" : [ {
+    "id" : "PE1",
+    "name" : "cove",
+    "x" : 20.0,
+    "y" : -660.0,
+    "textX" : 12.800000000000068,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE1" ]
+  }, {
+    "id" : "PW3",
+    "name" : "punggol point",
+    "x" : -90.0,
+    "y" : -840.0,
+    "textX" : 13.600000000000023,
+    "textY" : 12.800000000000011,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW3" ]
+  }, {
+    "id" : "PE3",
+    "name" : "coral edge",
+    "x" : 120.0,
+    "y" : -600.0,
+    "textX" : 5.599999999999909,
+    "textY" : 18.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE3" ]
+  }, {
+    "id" : "PE5",
+    "name" : "kadaloor",
+    "x" : 180.0,
+    "y" : -700.0,
+    "textX" : 10.400000000000091,
+    "textY" : 10.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE5" ]
+  }, {
+    "id" : "PW5",
+    "name" : "nibong",
+    "x" : 0.0,
+    "y" : -870.0,
+    "textX" : 12.0,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW5" ]
+  }, {
+    "id" : "PW7",
+    "name" : "soo teck",
+    "x" : 30.0,
+    "y" : -780.0,
+    "textX" : 10.399999999999977,
+    "textY" : -29.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW7" ]
+  }, {
+    "id" : "PE6",
+    "name" : "oasis",
+    "x" : 120.0,
+    "y" : -740.0,
+    "textX" : 14.399999999999977,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE6" ]
+  }, {
+    "id" : "PE2",
+    "name" : "meridian",
+    "x" : 60.0,
+    "y" : -620.0,
+    "textX" : 13.600000000000023,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE2" ]
+  }, {
+    "id" : "PW2",
+    "name" : "teck lee",
+    "x" : -90.0,
+    "y" : -780.0,
+    "textX" : 14.400000000000091,
+    "textY" : -24.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW2" ]
+  }, {
+    "id" : "PW1",
+    "name" : "sam kee",
+    "x" : -60.0,
+    "y" : -750.0,
+    "textX" : 14.399999999999977,
+    "textY" : -26.400000000000006,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW1" ]
+  }, {
+    "id" : "PW6",
+    "name" : "sumang",
+    "x" : 30.0,
+    "y" : -840.0,
+    "textX" : 12.0,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW6" ]
+  }, {
+    "id" : "PE7",
+    "name" : "damai",
+    "x" : 60.0,
+    "y" : -740.0,
+    "textX" : 13.600000000000023,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE7" ]
+  }, {
+    "id" : "PE4",
+    "name" : "riviera",
+    "x" : 180.0,
+    "y" : -640.0,
+    "textX" : 14.399999999999977,
+    "textY" : 6.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE4" ]
+  }, {
+    "id" : "PW4",
+    "name" : "samudera",
+    "x" : -60.0,
+    "y" : -870.0,
+    "textX" : -79.20000000000005,
+    "textY" : -24.0,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW4" ]
+  }, {
+    "id" : "",
+    "name" : "punggol",
+    "x" : 0.0,
+    "y" : -720.0,
+    "textX" : 19.199999999999932,
+    "textY" : 3.200000000000017,
+    "isInterchange" : true,
+    "lineNames" : [ "punggol lrt", "north east line" ],
+    "lineIDs" : [ "PTC", "NE17" ]
+  } ],
+  "edges" : [ {
+    "from" : "PTC",
+    "to" : "PE1",
+    "time" : 2
+  }, {
+    "from" : "PTC",
+    "to" : "PW1",
+    "time" : 2
+  }, {
+    "from" : "PTC",
+    "to" : "PE7",
+    "time" : 2
+  }, {
+    "from" : "PTC",
+    "to" : "PW7",
+    "time" : 2
+  }, {
+    "from" : "PE1",
+    "to" : "PTC",
+    "time" : 2
+  }, {
+    "from" : "PE1",
+    "to" : "PE2",
+    "time" : 2
+  }, {
+    "from" : "PW1",
+    "to" : "PTC",
+    "time" : 2
+  }, {
+    "from" : "PW1",
+    "to" : "PW2",
+    "time" : 2
+  }, {
+    "from" : "PE7",
+    "to" : "PTC",
+    "time" : 2
+  }, {
+    "from" : "PE7",
+    "to" : "PE6",
+    "time" : 2
+  }, {
+    "from" : "PW7",
+    "to" : "PTC",
+    "time" : 2
+  }, {
+    "from" : "PW7",
+    "to" : "PW6",
+    "time" : 2
+  }, {
+    "from" : "PE2",
+    "to" : "PE1",
+    "time" : 2
+  }, {
+    "from" : "PE2",
+    "to" : "PE3",
+    "time" : 2
+  }, {
+    "from" : "PW2",
+    "to" : "PW1",
+    "time" : 2
+  }, {
+    "from" : "PW2",
+    "to" : "PW3",
+    "time" : 2
+  }, {
+    "from" : "PE6",
+    "to" : "PE7",
+    "time" : 2
+  }, {
+    "from" : "PE6",
+    "to" : "PE5",
+    "time" : 2
+  }, {
+    "from" : "PW6",
+    "to" : "PW7",
+    "time" : 2
+  }, {
+    "from" : "PW6",
+    "to" : "PW5",
+    "time" : 2
+  }, {
+    "from" : "PE3",
+    "to" : "PE2",
+    "time" : 2
+  }, {
+    "from" : "PE3",
+    "to" : "PE4",
+    "time" : 2
+  }, {
+    "from" : "PW3",
+    "to" : "PW2",
+    "time" : 2
+  }, {
+    "from" : "PW3",
+    "to" : "PW4",
+    "time" : 2
+  }, {
+    "from" : "PE5",
+    "to" : "PE6",
+    "time" : 2
+  }, {
+    "from" : "PE5",
+    "to" : "PE4",
+    "time" : 2
+  }, {
+    "from" : "PW5",
+    "to" : "PW6",
+    "time" : 2
+  }, {
+    "from" : "PW5",
+    "to" : "PW4",
+    "time" : 2
+  }, {
+    "from" : "PE4",
+    "to" : "PE3",
+    "time" : 2
+  }, {
+    "from" : "PE4",
+    "to" : "PE5",
+    "time" : 2
+  }, {
+    "from" : "PW4",
+    "to" : "PW3",
+    "time" : 2
+  }, {
+    "from" : "PW4",
+    "to" : "PW5",
+    "time" : 2
+  } ]
+}

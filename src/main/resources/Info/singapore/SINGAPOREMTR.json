@@ -1,0 +1,5 @@
+{
+  "cityName" : "Singapore",
+  "systemID" : "SGMTR",
+  "metroLines" : [ "CCL", "DTL", "EWL", "NSL", "NEL", "TEL", "BPLRT", "PGLRT", "SKLRT", "SX" ]
+}
