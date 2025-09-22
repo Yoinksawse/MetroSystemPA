@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToolBar?>
@@ -42,24 +41,6 @@
                   <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1000.0" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                     <items>
                         <AnchorPane prefHeight="110.0" prefWidth="6.0" />
-                        <GridPane prefHeight="110.0" prefWidth="202.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="36.66673583984375" minHeight="10.0" prefHeight="36.66673583984375" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="48.06668701171875" minHeight="10.0" prefHeight="28.733365631103524" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="47.39999618530274" minHeight="10.0" prefHeight="45.26663436889649" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <CheckBox fx:id="displayedgeweight_checkbox" mnemonicParsing="false" text="Display Timing" GridPane.rowIndex="1" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Options">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </GridPane>
                     </items>
                   </ToolBar>
                </children>
@@ -108,7 +89,7 @@
                                       </rowConstraints>
                                        <children>
                                           <Button fx:id="open_infowindow_button" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showAboutMe" prefHeight="35.0" prefWidth="105.0" text="More Info" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                                          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="105.0" text="Settings" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                          <Button fx:id="showsettings_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showSettings" prefHeight="35.0" prefWidth="105.0" text="Settings" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -132,7 +113,7 @@
                                     <RowConstraints maxHeight="109.59998168945316" minHeight="10.0" prefHeight="41.200048828125006" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Show Metro Map of City:" textAlignment="CENTER" wrappingWidth="207.4666748046875" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                    <Text fx:id="textD" strokeType="OUTSIDE" strokeWidth="0.0" text="Show Metro Map of City:" textAlignment="CENTER" wrappingWidth="207.4666748046875" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -203,7 +184,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Find Fastest Route" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <Text fx:id="textC" strokeType="OUTSIDE" strokeWidth="0.0" text="Find Fastest Route" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -231,7 +212,7 @@
                                     <RowConstraints maxHeight="101.60001220703126" minHeight="10.0" prefHeight="49.400010681152324" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Station Selected:" wrappingWidth="211.4403305053711" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                    <Text fx:id="textA" strokeType="OUTSIDE" strokeWidth="0.0" text=" Station Selected:" wrappingWidth="211.4403305053711" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
@@ -241,7 +222,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </TextField>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Line of Selected Station:" wrappingWidth="217.55369567871094" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                    <Text fx:id="textB" strokeType="OUTSIDE" strokeWidth="0.0" text=" Line of Selected Station:" wrappingWidth="217.55369567871094" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                        <font>
                                           <Font size="13.0" />
                                        </font>

@@ -41,7 +41,7 @@ public abstract class MetroLine implements Graphable {
         //Pattern colourRGBPattern = Pattern.compile("#[a-fA-F0-9]{6}");
         //Matcher colourRGBMatcher = colourRGBPattern.matcher(colour);
         //if (colour.charAt(0) != '#') colour = "#" + colour;
-        //System.out.println(colour); //TODO
+        //System.out.println(colour);
         //if (!colourRGBMatcher.matches()) throw new IllegalArgumentException("Invalid colour code: Use RGB HEX");
 
         //this.lineId = lineId; //doesnt need form verification; can be any unsigned int (preparedness for large scale future metro expansion)
@@ -221,6 +221,9 @@ public abstract class MetroLine implements Graphable {
         return null;
         //throw new IllegalArgumentException("Interchange " + x.getName() + " is not in MetroLine" + this.lineCode);
     }
+
+    public abstract int getDefaultHeadwaySeconds();
+    public abstract boolean serviceStopped(Station station, java.time.LocalTime timeOfDay); //TODO
 
     public String toString() { //the adj list will only require station IDs
         //adds beginning root
