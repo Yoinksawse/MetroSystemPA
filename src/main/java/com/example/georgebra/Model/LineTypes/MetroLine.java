@@ -225,6 +225,8 @@ public abstract class MetroLine implements Graphable {
     public abstract int getDefaultHeadwaySeconds();
     public abstract boolean serviceStopped(Station station, java.time.LocalTime timeOfDay); //TODO
 
+    public abstract String getLineType();
+
     public String toString() { //the adj list will only require station IDs
         //adds beginning root
         String root = "Line: " + this.lineName + ", " + this.lineCode + "\n";

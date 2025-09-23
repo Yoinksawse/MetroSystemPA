@@ -127,6 +127,8 @@ public class GraphHandler {
         }
 
         Collections.reverse(path);
+
+        //System.out.println(path);
         return path;
     }
 

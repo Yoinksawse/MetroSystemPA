@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 public class MetroSystem implements Graphable {
     private final int MAXN = 505;
+    private final int HEAVY_EDGE_WEIGHT = 10000;
     private String cityName;
     private String systemID;
     public int exchangeTime;
@@ -288,16 +289,22 @@ public class MetroSystem implements Graphable {
     }
 
     //TODO
-    public Pair<ArrayList<Station>, Integer> genLeastExchangePath(String UStr, String VStr, int originalExchangeTime) {
-        Pair<ArrayList<Station>,Integer> shortestPath = this.genShortestPath(UStr, VStr);
-        int time = shortestPath.getValue(), exchanges = time / 10000;
-        time = (time % 10000) + exchanges * originalExchangeTime;
+    public Pair<ArrayList<Station>, Integer> genLeastExchangePath(String UStr, String VStr, int originalExchangeTime) throws IllegalArgumentException {
+        Pair<ArrayList<Station>,Integer> shortestPath;
+        try {
+            shortestPath = this.genShortestPath(UStr, VStr);
+        }
+        catch (IllegalArgumentException e) {
+            throw e; //I don't have the GUI components here to show error in alertbox; so sadly have throw
+        }
+        int time = shortestPath.getValue(), exchanges = time / HEAVY_EDGE_WEIGHT;
+        time = (time % HEAVY_EDGE_WEIGHT) + exchanges * originalExchangeTime;
 
         return new Pair<>(shortestPath.getKey(), time);
     }
 
     //utils
-    public Pair<ArrayList<Station>, Integer> genShortestPath(String UStr, String VStr) {
+    public Pair<ArrayList<Station>, Integer> genShortestPath(String UStr, String VStr) throws IllegalArgumentException{
         UStr = UStr.trim(); VStr = VStr.trim();
         Station u = null, v = null;
         Pattern containDigit = Pattern.compile("[0-9]+");
@@ -333,7 +340,7 @@ public class MetroSystem implements Graphable {
             //System.out.println(stationNameToIndexesMap);
             time = graph.getShortestDistance(vIndex); //valid shortly after running the algo
         }
-        else throw new IllegalArgumentException("Invalid station names:" + ((u == null) ? UStr : "") + " " + ((v == null) ? VStr : ""));
+        else throw new IllegalArgumentException("Invalid station names: " + ((u == null) ? UStr : "") + " " + ((v == null) ? VStr : ""));
 
         ArrayList<Station> shortestPath = new ArrayList<>();
         String prevStnName = "";

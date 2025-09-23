@@ -19,6 +19,11 @@ public class MRTLine extends MetroLine {
         return true;
     } // all stops
 
+    @Override
+    public String getLineType() {
+        return "MRT";
+    }
+
     public String toString() {
         return "MRT " + super.toString();
     }

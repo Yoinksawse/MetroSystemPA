@@ -19,6 +19,11 @@ public class TourismLine extends MetroLine { //such as SentosaLine
         return true;
     } // all stops
 
+    @Override
+    public String getLineType() {
+        return "Tourism";
+    }
+
     public String toString() {
         return "Tourism " + super.toString();
     }

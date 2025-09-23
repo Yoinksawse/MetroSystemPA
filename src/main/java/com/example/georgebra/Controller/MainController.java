@@ -8,6 +8,8 @@ import com.example.georgebra.Model.StationTypes.SingleStation;
 import com.example.georgebra.Model.StationTypes.Station;
 import com.example.georgebra.Model.StationTypes.Interchange;
 import com.example.georgebra.MyApplication;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.scene.control.Alert.*;
 import javafx.animation.Animation;
 import javafx.animation.FillTransition;
@@ -20,14 +22,15 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.util.Pair;
 import javafx.scene.shape.Line;
 
 import javax.naming.directory.InvalidAttributesException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.*;
@@ -44,7 +47,6 @@ public class MainController {
     public Button open_infowindow_button;
     public Button loadmetrosystem_button;
     public Button save_button;
-    public Button showsettings_button;
     public TextField from_station_input_field;
     public TextField to_station_input_field;
     public TextField search_area;
@@ -53,16 +55,20 @@ public class MainController {
     public ToggleButton switch_devmode;
     public Text selectedstation_field;
     public Text selectedline_field;
+    public Text fastestroutetime_textfield;
     public ToolBar selectedstation_infobox;
     public Text textA;
     public Text textB;
     public Text textC;
     public Text textD;
+    public CheckBox darkmode_checkbox;
+    public CheckBox displayedgeweight_checkbox;
 
     //inside fields
     private StackPane mapContainer;
     private boolean devMode = false;
     private boolean isMapShown = false;
+    private boolean showEdgeWeight = false;
     private MetroSystem msys;
     private String systemID;
     private String cityName;
@@ -76,8 +82,11 @@ public class MainController {
     private String vName;
     private HashMap<String,String> lineNameToColourMap;
     private HashMap<String,Boolean> orientHorizontallyMap;
+    private HashMap<String, Group> stationNameToCurrentGroupMap;
     private Pair<ArrayList<Station>, Integer> bestPathThis;
     private Station searchedStation;
+    private HashMap<String, FillTransition> stationNameToFillTransitionMap;
+    private int averageExchangeTime;
 
     public final DropShadow highlightShadow =
             new DropShadow(30, Color.rgb(255, 125, 125, 0.99));
@@ -89,28 +98,64 @@ public class MainController {
     private final double gridSize = 20.0;
 
     //TODO 1: ABSTRACT CLASS NEED ABSTRACT METHODSSSS
-    //TODO 2: Implement actual graph editing e.g. addstations etc
 
     public void initialize() {
         //clear & update some data
         searchedStation = null;
+        //searchedStationGroup = null;
         mapContainer = map_container;
         displayingShortestPath = false;
         displayingLeastExchangePath = false;
+        showEdgeWeight = displayedgeweight_checkbox.isSelected();
+        stationNameToCurrentGroupMap = new HashMap<>();
+        stationNameToFillTransitionMap = new HashMap<>();
         uName = null;
         vName = null;
+        showEdgeWeight = false;
+        mapContainer.setMinHeight(3000);
+        mapContainer.setMinWidth(3000);
+        mapContainer.setMaxHeight(8888);
+        mapContainer.setMaxWidth(8888);
 
         //get ready some basic eventhandling that will follow all the way
         mapContainer.setOnMouseClicked(e -> {
             if (msys != null && searchedStation != null) {
+                mapContainer.requestFocus();
                 clearStationInfo();
             }
-            e.consume();
+            //e.consume();
         });
-        from_station_input_field.setOnAction(e -> {
+        compute_fastest_button.setOnMouseClicked(e -> {
             boolean stationExists = validateStationExistence(from_station_input_field.getText());
             if (!stationExists) {
                 showAlert("Invalid Station Name; Does not exist", AlertType.ERROR);
+                return;
+            }
+
+            to_station_input_field.requestFocus();
+            to_station_input_field.positionCaret(0);
+            e.consume();
+        });
+        compute_leastexchange_button.setOnMouseClicked(e -> {
+            boolean stationExists = validateStationExistence(from_station_input_field.getText());
+            if (!stationExists) {
+                showAlert("Invalid Station Name; Does not exist", AlertType.ERROR);
+                return;
+            }
+
+            to_station_input_field.requestFocus();
+            to_station_input_field.positionCaret(0);
+            e.consume();
+        });
+
+        from_station_input_field.setOnAction(e -> {
+            //if (!e.equals(KeyEvent.VK_ENTER)) return;
+            boolean stationExists = validateStationExistence(from_station_input_field.getText());
+            if (!stationExists) {
+                System.out.println(e);
+                System.out.println(e + "??");
+                showAlert("Invalid Station Name; Does not exist", AlertType.ERROR);
+                return;
             }
 
             to_station_input_field.requestFocus();
@@ -118,9 +163,12 @@ public class MainController {
             e.consume();
         });
         to_station_input_field.setOnAction(e -> {
+            //if (!e.equals(KeyEvent.VK_ENTER) || !to_station_input_field.isFocused()) return;
             boolean stationExists = validateStationExistence(to_station_input_field.getText());
             if (!stationExists) {
+                System.out.println(e + "??");
                 showAlert("Invalid Station Name; Does not exist", AlertType.ERROR);
+                return;
             }
 
             displayShortestPath();
@@ -154,6 +202,40 @@ public class MainController {
             validateAndHandleTo();
         });
 
+        displayedgeweight_checkbox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
+            if (isSelected) {
+                showEdgeWeight = true;
+                displayMap(showEdgeWeight);
+            }
+            if (!isSelected) {
+                showEdgeWeight = false;
+                displayMap(showEdgeWeight);
+            }
+        });
+
+        darkmode_checkbox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
+            if (isSelected) {
+                MyApplication.setDarkMode();
+                selectedstation_field.setFill(Color.WHITESMOKE);
+                selectedline_field.setFill(Color.WHITESMOKE);
+                fastestroutetime_textfield.setFill(Color.WHITESMOKE);
+                textA.setFill(Color.WHITESMOKE);
+                textB.setFill(Color.WHITESMOKE);
+                textC.setFill(Color.WHITESMOKE);
+                textD.setFill(Color.WHITESMOKE);
+            }
+            else {
+                MyApplication.setLightMode();
+                selectedstation_field.setFill(Color.BLACK);
+                selectedline_field.setFill(Color.BLACK);
+                fastestroutetime_textfield.setFill(Color.BLACK);
+                textA.setFill(Color.BLACK);
+                textB.setFill(Color.BLACK);
+                textC.setFill(Color.BLACK);
+                textD.setFill(Color.BLACK);
+            }
+        });
+
         //setting initial access rights
         {
             map_city_choice.clear();
@@ -173,6 +255,8 @@ public class MainController {
             search_area.setDisable(true);
             to_station_input_field.setDisable(true);
             clearmap_button.setDisable(true);
+            displayedgeweight_checkbox.setDisable(true);
+            displayedgeweight_checkbox.setDisable(false);
         }
 
         //set helping tooltips
@@ -234,6 +318,8 @@ public class MainController {
         try {
             ioHandler = new IOHandler(cityName);
             this.msys = ioHandler.getMetroSystem();
+
+            averageExchangeTime = ioHandler.getExchangeTime();
         }
         catch (InvalidAlgorithmParameterException | InvalidAttributesException e) {
             System.out.println("Input Exception! \n" + e);
@@ -246,25 +332,36 @@ public class MainController {
         }
 
         if (this.msys != null) {
-            clearmap_button.setDisable(false);
-            compute_fastest_button.setDisable(false);
-            compute_leastexchange_button.setDisable(false);
+            clearPath();
 
-            lineNameToColourMap = MetroLine.getLineNameToColourMap();//msys.getMetroLineNameToColourMap();
-            //System.out.println(MetroLine.getLineNameToColourMap());
-            //System.out.println(lineNameToColourMap);
-            orientHorizontallyMap = new HashMap<>();
-            for (Station s: msys.getStationList()) {
-                if (s instanceof Interchange) {
-                    orientHorizontallyMap.put(s.getName(), false);
-                }
+            if (devMode) {
+                unshow_route.setDisable(true);
+                compute_fastest_button.setDisable(true);
+                compute_leastexchange_button.setDisable(true);
+                from_station_input_field.setDisable(true);
+                to_station_input_field.setDisable(true);
+            }
+            else {
+                unshow_route.setDisable(false);
+                compute_fastest_button.setDisable(false);
+                compute_leastexchange_button.setDisable(false);
+                from_station_input_field.setDisable(false);
+                to_station_input_field.setDisable(false);
             }
 
-            search_area.setOnAction(e -> {
-                showSearchedStation();
+            lineNameToColourMap = MetroLine.getLineNameToColourMap();//msys.getMetroLineNameToColourMap();
+
+            search_area.setOnKeyReleased(e -> {
+                String searchedText = search_area.getText().trim().toLowerCase();
+                if (searchedText.isBlank()) {
+                    clearStationInfo();
+                    return;
+                }
+                showSearchedStations();
             });
 
-            displayMap();
+            displayMap(showEdgeWeight);
+            isMapShown = true;
         }
         /*
         else {
@@ -316,7 +413,7 @@ public class MainController {
             compute_fastest_button.setDisable(!isMapShown);
             compute_leastexchange_button.setDisable(!isMapShown);
             unshow_route.setDisable(!displayingShortestPath);
-            search_area.setDisable(msys != null);
+            search_area.setDisable(msys == null);
             to_station_input_field.setDisable(!isMapShown);
 
             mapContainer.getProperties().remove("preventStationEditFilter");
@@ -344,7 +441,7 @@ public class MainController {
             compute_fastest_button.setDisable(true);
             compute_leastexchange_button.setDisable(true);
             unshow_route.setDisable(true);
-            search_area.setDisable(msys != null);
+            search_area.setDisable(msys == null);
             to_station_input_field.setDisable(true);
 
             if (displayingShortestPath || displayingLeastExchangePath) clearPath();
@@ -360,11 +457,6 @@ public class MainController {
     }
 
     @FXML
-    protected void showSettings() {
-        MyApplication.showSettings();
-    }
-
-    @FXML
     protected void clearMap() {
         isMapShown = false;
         displayingShortestPath = false;
@@ -372,16 +464,21 @@ public class MainController {
         map_city_choice.clear();
         clearmap_button.setDisable(true);
         msys = null;
+        isMapShown = false;
 
         mapContainer.getChildren().clear();
         from_station_input_field.clear();
         to_station_input_field.clear();
+        fastestroutetime_textfield.setText("");
+
+        stationNameToCurrentGroupMap = new HashMap<>();
     }
 
     @FXML
     protected void clearPath() {
         displayingShortestPath = false;
         displayingLeastExchangePath = false;
+        bestPathThis = null;
 
         from_station_input_field.getStyleClass().removeAll("invalidTextBox");
         from_station_input_field.getStyleClass().removeAll("validTextBox");
@@ -389,15 +486,31 @@ public class MainController {
         to_station_input_field.getStyleClass().removeAll("validTextBox");
         from_station_input_field.clear();
         to_station_input_field.clear();
-        bestPathThis = null;
-        displayMap();
+        fastestroutetime_textfield.setText("");
+
+        if (isMapShown) {
+            displayMap(showEdgeWeight);
+        }
     }
 
     @FXML
     protected void displayShortestPath() {
+        saveFile();
         displayingShortestPath = true;
         isMapShown = true;
-        displayMap();
+        String uStr = from_station_input_field.getText();
+        String vStr = to_station_input_field.getText();
+        int prevExchangeTime = this.ioHandler.getExchangeTime();
+        try {
+            bestPathThis = msys.genShortestPath(uStr, vStr);
+        }
+        catch (IllegalArgumentException e) {
+            showAlert(e.toString(), AlertType.ERROR);
+            return;
+        }
+        displayMap(showEdgeWeight);
+
+        fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
         unshow_route.setDisable(false);
         clearmap_button.setDisable(false);
     }
@@ -411,12 +524,23 @@ public class MainController {
         try {
             this.ioHandler.setExchangeTime(10000);
             this.msys = ioHandler.generateMetroSystem();
+            String uStr = from_station_input_field.getText();
+            String vStr = to_station_input_field.getText();
+            try {
+                bestPathThis = msys.genLeastExchangePath(uStr, vStr, prevExchangeTime);
+            }
+            catch (IllegalArgumentException e) {
+                showAlert(e.toString(), AlertType.ERROR);
+                return;
+            }
 
-            displayMap();
+            displayMap(showEdgeWeight);
             unshow_route.setDisable(false);
 
             this.ioHandler.setExchangeTime(prevExchangeTime);
             this.msys = ioHandler.generateMetroSystem();
+
+            fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
         }
         catch (InvalidAlgorithmParameterException | InvalidAttributesException e) {
             showAlert("Input Exception \n" + e, AlertType.ERROR);
@@ -427,12 +551,14 @@ public class MainController {
     }
 
     @FXML
-    protected void displayMap() {
+    protected void displayMap(boolean showEdgeWeight) {
         if (ioHandler == null) {
             //this should not happen though
             showAlert("Map has not been loaded yet", AlertType.ERROR);
         }
         isMapShown = true;
+
+        //TODO: if Showedgeweight
 
         from_station_input_field.setDisable(false);
         search_area.setDisable(false);
@@ -443,11 +569,32 @@ public class MainController {
         Pair<ArrayList<Station>, Integer> path = null;
 
         msys = (msys == null) ? ioHandler.getMetroSystem() : this.msys;
-        if (displayingLeastExchangePath) path = msys.genLeastExchangePath(uName, vName, ioHandler.getExchangeTime());
-        else if (displayingShortestPath) path = msys.genShortestPath(uName, vName);
+        if (displayingLeastExchangePath) {
+            try {
+                path = msys.genLeastExchangePath(uName, vName, averageExchangeTime);
+            }
+            catch (IllegalArgumentException e) {
+                showAlert(e.toString(), AlertType.ERROR);
+                return;
+            }
+        }
+        else if (displayingShortestPath) {
+            try {
+                path = msys.genShortestPath(uName, vName);
+            }
+            catch (IllegalArgumentException e) {
+                showAlert(e.toString(), AlertType.ERROR);
+                return;
+            }
+        }
+        if (path != null) bestPathThis = path;
+
+        if (bestPathThis != null) {
+            this.fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
+        }
 
         mapContainer.getChildren().clear();
-        mapContainer.getChildren().add(drawMetroSystem(path, searchedStation));
+        mapContainer.getChildren().add(drawMetroSystem(path, searchedStation, showEdgeWeight));
 
         final double[] mouseAnchor = new double[2];
         final double[] initialTranslate = new double[2];
@@ -475,6 +622,9 @@ public class MainController {
         double stationWidth = 12.0;
         String stationIDText = "";
         Circle stn = new Circle(0, 0, stationWidth); //0 0 within its group's position
+        stn.setUserData(s);
+        createFillTransition(stn, searched);
+        setCircleColour(stn, highlighted);
 
         if (s instanceof Interchange) {
             HashMap<String,String> allLinesInfo = ((Interchange) s).getAllLinesInfo();
@@ -486,16 +636,6 @@ public class MainController {
         else if (s instanceof SingleStation){ //s instanceof SingleStation
             stn.setStrokeWidth(2);
             stationIDText = s.getStationID();
-        }
-
-        setCircleColour(stn, highlighted);
-        if (searched) {
-            FillTransition ft = new FillTransition(Duration.seconds(0.5), stn);
-            ft.setFromValue(Color.web("#4D8D6A"));
-            ft.setToValue(Color.WHITESMOKE);
-            ft.setCycleCount(Animation.INDEFINITE);
-            ft.setAutoReverse(true);
-            ft.play();
         }
 
         //handle text
@@ -528,8 +668,8 @@ public class MainController {
             if (this.devMode) {
                 offsetX[0] = e.getSceneX() - stationGroup.getLayoutX();
                 offsetY[0] = e.getSceneY() - stationGroup.getLayoutY();
-                e.consume();
             }
+            e.consume();
         });
         stationGroup.setOnMouseDragged(e -> {
             if (this.devMode) {
@@ -547,6 +687,7 @@ public class MainController {
                     station.setY(newY);
                 }
             }
+            e.consume();
         });
         stationGroup.setOnMouseReleased(e -> {
             if (!dragged[0]) return;
@@ -564,9 +705,8 @@ public class MainController {
                 station.setX(newX);
                 station.setY(newY);
             }
-            e.consume();
-
             dragged[0] = false;
+            e.consume();
         });
 
         //mouse drag for tooltip
@@ -608,27 +748,42 @@ public class MainController {
             e.consume();
         });
 
+        stationGroup.setOnMouseClicked(e -> {
+            if (devMode || !e.getEventType().equals(MouseEvent.MOUSE_CLICKED)) return;
+            Station searchedStationLocal = (Station) ((Group) e.getSource()).getUserData();
+            if (searchedStationLocal == null) throw new IllegalStateException("A station must exist in a group");
+            clearStationInfo();
+            showSearchedStation(searchedStationLocal);
+            e.consume();
+        });
+
+        stationNameToCurrentGroupMap.put(s.getName(), stationGroup);
+
         if (highlighted) {
             stationGroup.setEffect(highlightShadow);
             return stationGroup;
         }
-
-        stationGroup.setOnMouseClicked(e -> {
-            if (devMode) return;
-            if (!e.getEventType().equals(MouseEvent.MOUSE_CLICKED)) return;
-            Station searchedStationLocal = (Station) ((Group) e.getSource()).getUserData();
-            if (searchedStationLocal == null) throw new IllegalStateException("A station must exist in a group");
-            showSearchedStation(searchedStationLocal);
-            e.consume();
-        });
         return stationGroup;
     }
 
+    private void createFillTransition(Circle stn, boolean initiallyBlinking) {
+        FillTransition ft = new FillTransition(Duration.seconds(0.5), stn);
+        ft.setFromValue(Color.web("#4D8D6A"));
+        ft.setToValue(Color.WHITESMOKE);
+        ft.setCycleCount(Animation.INDEFINITE);
+        ft.setAutoReverse(true);
+
+        if (initiallyBlinking) ft.play();
+
+        String stationName = ((Station) stn.getUserData()).getName();
+        stationNameToFillTransitionMap.put(stationName, ft);
+    }
+
     @FXML
-    protected Group drawEdge(Station u, Station v, Group UGroup, Group VGroup) {
-        if (u == null || v == null || UGroup == null || VGroup == null) throw new IllegalArgumentException("Troll off.");
+    protected Group drawEdge(Station u, Station v, Group UGroup, Group VGroup, Integer edgeWeight) {
+        if (u == null || v == null || UGroup == null || VGroup == null) throw new IllegalArgumentException("Stop Trolling");
+        if (edgeWeight != null && edgeWeight > 10000) edgeWeight = edgeWeight % 10000;
         Group finalEdge = new Group();
-        HashMap<Integer, Line> lines = new HashMap<>();
 
         int counter = 0;
         Line edgeLine = new Line(u.getX(), u.getY(), v.getX(), v.getY());
@@ -646,6 +801,12 @@ public class MainController {
 
         HashSet<String> commonLines = new HashSet<>(allLinesInfoU.keySet());
         commonLines.retainAll(allLinesInfoV.keySet());
+
+        HashMap<String, String> metroLineNameToTypeMap = new HashMap<>();
+        ArrayList<MetroLine> mLines = msys.getLineList();
+        for (MetroLine ml: mLines) {
+            metroLineNameToTypeMap.put(ml.getLineName().trim().toLowerCase(), ml.getLineType());
+        }
 
         ArrayList<String> colours = new ArrayList<>();
         for (String lineStr: commonLines) {
@@ -703,14 +864,49 @@ public class MainController {
                 line.endYProperty().bind(VGroup.layoutYProperty().add(perpY * offset + 1));
 
                 finalEdge.getChildren().add(line);
+                line.toBack();
             }
+        }
+
+        if (showEdgeWeight) {
+            double midX = (u.getX() + v.getX()) / 2.0;
+            double midY = (u.getY() + v.getY()) / 2.0;
+
+            double dx = v.getX() - u.getX();
+            double dy = v.getY() - u.getY();
+            double length = Math.sqrt(dx * dx + dy * dy);
+
+            double offsetX = 0;
+            double offsetY = 0;
+
+            if (length > 0) {
+                dx /= length;
+                dy /= length;
+                offsetX = -dy;
+                offsetY = dx;
+            }
+
+            Text timeLabel = new Text(edgeWeight.toString());
+            timeLabel.setFill(Color.WHITE);
+            timeLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 12; -fx-stroke: black; -fx-stroke-width: 0.5;");
+
+            timeLabel.xProperty().bind(UGroup.layoutXProperty()
+                    .add(VGroup.layoutXProperty())
+                    .divide(2)
+            );
+            timeLabel.yProperty().bind(UGroup.layoutYProperty()
+                    .add(VGroup.layoutYProperty())
+                    .divide(2)
+            );
+            finalEdge.getChildren().add(timeLabel);
+            timeLabel.toFront();
         }
 
         return finalEdge;
     }
 
     @FXML
-    protected Group drawMetroSystem(Pair<ArrayList<Station>, Integer> bestPath, Station searched) {
+    protected Group drawMetroSystem(Pair<ArrayList<Station>, Integer> bestPath, Station searched, boolean showEdgeWeight) {
         //clean UI
         currentSystem.getChildren().clear();
         this.bestPathThis = bestPath;
@@ -809,6 +1005,8 @@ public class MainController {
         for (Station s: stations) visited.put(stationToLocalIndexMap.get(s), false);
         visited.put(stationToLocalIndexMap.get(q.peek()), true);
 
+        HashSet<Pair<Station, Station>> edges = new HashSet<>();
+
         while (!q.isEmpty()) {
             String curStnName = q.poll();
             Station curStn = stationNameToStationMap.get(curStnName);
@@ -817,6 +1015,7 @@ public class MainController {
 
             for (Map.Entry<Integer, Integer> entry: adjListLocal[curStnLocalIndex].entrySet()) {
                 int nxtIndex = entry.getKey();
+                Integer nxtTime = (showEdgeWeight) ? entry.getValue() : null;
                 String nxtStnName = localIndexToStationNameMap.get(nxtIndex);
                 Station nxtStn = stationNameToStationMap.get(nxtStnName);
 
@@ -826,10 +1025,16 @@ public class MainController {
                 }
 
                 Group nxtGroup = stationGroups.get(nxtStnName);
+                Pair<Station, Station> edgePair1 = new Pair<>(curStn, nxtStn);
+                Pair<Station, Station> edgePair2 = new Pair<>(nxtStn, curStn);
+                if (!edges.contains(edgePair1) && !edges.contains(edgePair2)) {
+                    edges.add(edgePair1);
+                    edges.add(edgePair2);
 
-                Group edgeGroup = drawEdge(curStn, nxtStn, curGroup, nxtGroup);
-                currentSystem.getChildren().add(edgeGroup);
-                edgeGroup.toBack();
+                    Group edgeGroup = drawEdge(curStn, nxtStn, curGroup, nxtGroup, nxtTime);
+                    currentSystem.getChildren().add(edgeGroup);
+                    edgeGroup.toBack();
+                }
             }
         }
 
@@ -848,7 +1053,7 @@ public class MainController {
 
         if (!(msys.getStationList().contains(s))) {
             showAlert("Station not found!", AlertType.WARNING);
-            //System.out.println("what");
+            System.out.println("what");
             return;
         }
 
@@ -858,14 +1063,28 @@ public class MainController {
 
         searchedStation = s;
         showStationInfo(s);
-        displayMap();
+
+        stationNameToFillTransitionMap.get(s.getName()).play();
     }
-    private void showSearchedStation() {
+    private void showSearchedStations() {
         if (msys == null) return;
-        String stationName = search_area.getText();
+        String stationName = search_area.getText().trim().toLowerCase();
         HashMap<String, Station> stationNameToStationMap = msys.getStationNameToStationMap();
-        Station s = stationNameToStationMap.get(stationName.trim().toLowerCase());
-        this.showSearchedStation(s);
+
+        for (String searchedName: stationNameToStationMap.keySet()) {
+            if (searchedName.toLowerCase().startsWith(stationName.toLowerCase())) {
+                showSearchedStation(stationNameToStationMap.get(searchedName));
+            }
+            else {
+                stationNameToFillTransitionMap.get(searchedName).stop();
+                List<Node> nodes = stationNameToCurrentGroupMap.get(searchedName).getChildren();
+                for (Node node: nodes) {
+                    if (node instanceof Circle) {
+                        setCircleColour(((Circle) node), false);
+                    }
+                }
+            }
+        }
     }
 
     public void showStationInfo(Station s) {
@@ -910,7 +1129,39 @@ public class MainController {
             selectedstation_field.setText("");
             selectedline_field.setText("");
             searchedStation = null;
-            displayMap();
+
+            /*
+            Group stationGroup = stationNameToCurrentGroupMap.get(searchedStation.getName());
+            //System.out.println(stationNameToCurrentGroupMap);
+
+            for (FillTransition ft: stationNameToFillTransitionMap.values()) {
+                ft.stop();
+                ft.getShape().getUserData();
+            }
+
+            Circle stnCircle = null;
+            try {stnCircle = (Circle) stationNameToFillTransitionMap.get(searchedStation.getName()).getShape();}
+            catch (IllegalFormatConversionException e) {
+                System.err.println("filltransition does not have a circle??");
+                return;
+            }
+             */
+
+            ArrayList<Node> nodes = new ArrayList<>();
+            for (FillTransition ft: stationNameToFillTransitionMap.values()) {
+                ft.stop();
+                Circle stn = (Circle) ft.getShape();
+                setCircleColour(stn, false);
+            }
+
+            /*
+            if (displayingLeastExchangePath) {
+                displayLeastExchangePath();
+            }
+            if (displayingShortestPath) {
+                displayShortestPath();
+            }
+             */
         }
     }
 

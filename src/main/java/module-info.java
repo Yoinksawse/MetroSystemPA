@@ -11,6 +11,7 @@ module com.example.georgebra {
     requires jdk.compiler;
     requires java.sql;
     requires org.apache.commons.io;
+    requires javafx.media;
 
 
     opens com.example.georgebra to javafx.fxml;

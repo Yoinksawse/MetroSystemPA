@@ -71,7 +71,7 @@
 .dark-theme .button {
     -fx-background-color: #444;
     -fx-text-fill: #f0f0f0;
-    -fx-border-color: #666;
+    -fx-border-color: #EEEEEE;
     -fx-border-width: 1px;
     -fx-background-radius: 5px;
 }
@@ -94,13 +94,13 @@
     -fx-background-color: #3a3a3a;
     -fx-text-fill: #f0f0f0;
     -fx-prompt-text-fill: #aaaaaa;
-    -fx-border-color: #555;
+    -fx-border-color: #EEEEEE;
     -fx-border-radius: 4px;
 }
 
 .dark-theme .text-field:focused,
 .dark-theme .combo-box:focused {
-    -fx-border-color: #888;
+    -fx-border-color: #EEEEEE;
     -fx-effect: dropshadow(gaussian, rgba(120,120,255,0.4), 6, 0.4, 0, 0);
 }
 

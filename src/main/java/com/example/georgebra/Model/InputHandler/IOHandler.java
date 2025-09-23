@@ -23,6 +23,10 @@ import java.net.URL;
 import java.nio.file.*;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -40,6 +44,7 @@ public class IOHandler {
     private HashMap<String, Pair<Double,Double>> stationNameToTextCoordinates = new HashMap<>();
 
     private final ObjectMapper mapper = new ObjectMapper();
+    private static Pattern containDigit = Pattern.compile("[0-9]+");
 
     public IOHandler(String systemName) throws IllegalStateException, InvalidAlgorithmParameterException, InvalidAttributesException {
         this.systemName = systemName.toLowerCase();
@@ -112,7 +117,6 @@ public class IOHandler {
                 double textY = metroStationData.getTextY();
                 String stationName = metroStationData.getName();
 
-                Pattern containDigit = Pattern.compile("[0-9]+");
                 Matcher matcher = containDigit.matcher(stationName);
                 if (matcher.find()) throw new InvalidAttributesException("Station Names must not contain digits; " +
                         "If necessary, replace digits with words (e.g. Heathrow Terminal 4 -> Heathrow Terminal Four)");
@@ -176,6 +180,9 @@ public class IOHandler {
 
     //i/o methods
     private void readJson() {
+        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        List<Future<MetroLineData>> futures = new ArrayList<>();
+
         //1. get metro system and use the info to access other files; form data objects
         MetroSystemData metroSystemData = parseMetroSystemJsonData();
         if (metroSystemData == null) {
@@ -192,16 +199,30 @@ public class IOHandler {
         if (!systemID.endsWith("MTR")) this.systemID += "MTR";
 
         for (String lineID : metroLineIDs) {
-            Matcher lineMatcher = MetroLine.lineCodePattern.matcher(lineID);
-            if (!lineMatcher.find()) throw new InputMismatchException("Line ID must have 1-10 word characters.");
+            //Matcher lineMatcher = MetroLine.lineCodePattern.matcher(lineID);
+            //if (!lineMatcher.find()) throw new InputMismatchException("Line ID must have 1-10 word characters.");
 
-            MetroLineData mld = parseMetroLineJsonData(lineID);
+            futures.add(executor.submit(() -> parseMetroLineJsonData(lineID)));
+        }
+
+        metroLineDataList.clear();
+        for (Future<MetroLineData> f : futures) {
+            MetroLineData mld;
+            try {
+                mld = f.get();
+            }
+            catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+
             if (mld == null) {
                 String fileName = systemName.toUpperCase() + ((!systemName.toUpperCase().endsWith("MTR")) ? ".json" : "MTR.json");
                 throw new IllegalStateException("File not found in classpath or filesystem:\n" + fileName);
             }
             else metroLineDataList.add(mld);
         }
+
+        executor.shutdown();
     }
     public void writeJson(Object data, String fileName) {
         //include path if needed (e.g. "...Info/Singapore/SX.json" "Info/Singapore/SX.json)
@@ -367,8 +388,9 @@ public class IOHandler {
             }
         }
 
+        System.out.println("Fell back to classpath");
+
         //System.err.println("reading " + relativePath + " failed"); //TODO: copying files out of jar + classpath
-        //try classpath
         try (InputStream in = getClass().getResourceAsStream("/" + relativePath)) {
             if (in != null) {
                 return mapper.readValue(in, MetroSystemData.class);
@@ -392,6 +414,8 @@ public class IOHandler {
                 e.printStackTrace();
             }
         }
+
+        System.out.println("Fell back to classpath");
 
         //try class
         try (InputStream in = getClass().getResourceAsStream("/" + relativePath)) {
