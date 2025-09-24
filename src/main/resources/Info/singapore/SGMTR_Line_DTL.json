@@ -4,45 +4,95 @@
   "colour" : "#005EC4",
   "lineType" : "MRT",
   "stations" : [ {
+    "id" : "",
+    "name" : "tampines",
+    "x" : 200.0,
+    "y" : -340.0,
+    "textX" : 17.59999999999991,
+    "textY" : -29.599999999999966,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "east west line" ],
+    "lineIDs" : [ "DT32", "EW2" ]
+  }, {
+    "id" : "",
+    "name" : "bugis",
+    "x" : -320.0,
+    "y" : 60.0,
+    "textX" : 18.40000000000009,
+    "textY" : 4.800000000000011,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "east west line" ],
+    "lineIDs" : [ "DT14", "EW12" ]
+  }, {
+    "id" : "",
+    "name" : "chinatown",
+    "x" : -600.0,
+    "y" : 60.0,
+    "textX" : -23.199999999999932,
+    "textY" : 16.80000000000001,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "downtown line" ],
+    "lineIDs" : [ "NE4", "DT19" ]
+  }, {
+    "id" : "DT25",
+    "name" : "mattar",
+    "x" : -160.0,
+    "y" : -160.0,
+    "textX" : 14.399999999999977,
+    "textY" : 12.800000000000011,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT25" ]
+  }, {
     "id" : "DT21",
     "name" : "bencoolen",
-    "x" : -390.0,
-    "y" : -30.0,
+    "x" : -420.0,
+    "y" : -40.0,
     "textX" : -31.200000000000045,
     "textY" : 15.199999999999989,
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
     "lineIDs" : [ "DT21" ]
   }, {
-    "id" : "DT30",
-    "name" : "bedok reservoir",
-    "x" : 80.0,
-    "y" : -320.0,
-    "textX" : -36.00000000000023,
-    "textY" : 20.799999999999955,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT30" ]
-  }, {
     "id" : "DT23",
     "name" : "bendemeer",
-    "x" : -300.0,
-    "y" : -120.0,
+    "x" : -280.0,
+    "y" : -80.0,
     "textX" : 14.400000000000091,
     "textY" : 10.399999999999977,
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
     "lineIDs" : [ "DT23" ]
   }, {
-    "id" : "DT34",
-    "name" : "upper changi",
+    "id" : "",
+    "name" : "newton",
+    "x" : -560.0,
+    "y" : -240.0,
+    "textX" : -23.199999999999932,
+    "textY" : 18.400000000000034,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "downtown line" ],
+    "lineIDs" : [ "NS21", "DT11" ]
+  }, {
+    "id" : "DT18",
+    "name" : "telok ayer",
+    "x" : -520.0,
+    "y" : 120.0,
+    "textX" : -31.199999999999932,
+    "textY" : 18.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT18" ]
+  }, {
+    "id" : "DT33",
+    "name" : "tampines east",
     "x" : 260.0,
-    "y" : -260.0,
-    "textX" : 13.600000000000136,
+    "y" : -320.0,
+    "textX" : 12.799999999999955,
     "textY" : -29.600000000000023,
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT34" ]
+    "lineIDs" : [ "DT33" ]
   }, {
     "id" : "DT4",
     "name" : "hume",
@@ -54,15 +104,25 @@
     "lineNames" : [ "downtown line" ],
     "lineIDs" : [ "DT4" ]
   }, {
-    "id" : "",
-    "name" : "bugis",
-    "x" : -300.0,
-    "y" : 0.0,
-    "textX" : 18.40000000000009,
-    "textY" : 4.800000000000011,
-    "isInterchange" : true,
-    "lineNames" : [ "downtown line", "east west line" ],
-    "lineIDs" : [ "DT14", "EW12" ]
+    "id" : "DT24",
+    "name" : "geylang bahru",
+    "x" : -220.0,
+    "y" : -120.0,
+    "textX" : 13.600000000000023,
+    "textY" : 12.0,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT24" ]
+  }, {
+    "id" : "DT28",
+    "name" : "kaki bukit",
+    "x" : -20.0,
+    "y" : -280.0,
+    "textX" : 5.600000000000136,
+    "textY" : 16.0,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT28" ]
   }, {
     "id" : "DT13",
     "name" : "rochor",
@@ -74,35 +134,15 @@
     "lineNames" : [ "downtown line" ],
     "lineIDs" : [ "DT13" ]
   }, {
-    "id" : "DT25",
-    "name" : "mattar",
-    "x" : -180.0,
-    "y" : -180.0,
-    "textX" : 14.399999999999977,
-    "textY" : 12.800000000000011,
+    "id" : "DT2",
+    "name" : "cashew",
+    "x" : -990.0,
+    "y" : -600.0,
+    "textX" : 13.599999999999909,
+    "textY" : -29.599999999999966,
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT25" ]
-  }, {
-    "id" : "",
-    "name" : "promenade",
-    "x" : -210.0,
-    "y" : 240.0,
-    "textX" : -29.600000000000023,
-    "textY" : 16.80000000000001,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "downtown line" ],
-    "lineIDs" : [ "CC4", "DT15" ]
-  }, {
-    "id" : "DT29",
-    "name" : "bedok north",
-    "x" : 20.0,
-    "y" : -300.0,
-    "textX" : -88.79999999999995,
-    "textY" : -23.999999999999986,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT29" ]
+    "lineIDs" : [ "DT2" ]
   }, {
     "id" : "DT6",
     "name" : "king albert park",
@@ -113,6 +153,96 @@
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
     "lineIDs" : [ "DT6" ]
+  }, {
+    "id" : "DT31",
+    "name" : "tampines west",
+    "x" : 140.0,
+    "y" : -340.0,
+    "textX" : -42.399999999999864,
+    "textY" : 19.99999999999997,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT31" ]
+  }, {
+    "id" : "",
+    "name" : "expo",
+    "x" : 260.0,
+    "y" : -200.0,
+    "textX" : -2.3999999999998636,
+    "textY" : 20.800000000000068,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "east west line" ],
+    "lineIDs" : [ "DT35", "CG1" ]
+  }, {
+    "id" : "",
+    "name" : "macpherson",
+    "x" : -100.0,
+    "y" : -220.0,
+    "textX" : -34.39999999999998,
+    "textY" : 20.80000000000001,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "downtown line" ],
+    "lineIDs" : [ "CC10", "DT26" ]
+  }, {
+    "id" : "DT30",
+    "name" : "bedok reservoir",
+    "x" : 80.0,
+    "y" : -320.0,
+    "textX" : -36.00000000000023,
+    "textY" : 20.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT30" ]
+  }, {
+    "id" : "DT5",
+    "name" : "beauty world",
+    "x" : -990.0,
+    "y" : -420.0,
+    "textX" : 13.599999999999909,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT5" ]
+  }, {
+    "id" : "",
+    "name" : "bukit panjang",
+    "x" : -990.0,
+    "y" : -660.0,
+    "textX" : 19.199999999999932,
+    "textY" : -3.1999999999999886,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "bukit panjang lrt" ],
+    "lineIDs" : [ "DT1", "BP6" ]
+  }, {
+    "id" : "DT17",
+    "name" : "downtown",
+    "x" : -400.0,
+    "y" : 180.0,
+    "textX" : -25.59999999999991,
+    "textY" : 15.999999999999943,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT17" ]
+  }, {
+    "id" : "DT22",
+    "name" : "jalan besar",
+    "x" : -330.0,
+    "y" : -60.0,
+    "textX" : -30.40000000000009,
+    "textY" : 17.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT22" ]
+  }, {
+    "id" : "DT20",
+    "name" : "fort canning",
+    "x" : -600.0,
+    "y" : -30.0,
+    "textX" : -40.80000000000007,
+    "textY" : 20.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT20" ]
   }, {
     "id" : "DT8",
     "name" : "tan kah kee",
@@ -125,114 +255,44 @@
     "lineIDs" : [ "DT8" ]
   }, {
     "id" : "",
-    "name" : "tampines",
-    "x" : 200.0,
-    "y" : -340.0,
-    "textX" : 17.59999999999991,
-    "textY" : -29.599999999999966,
-    "isInterchange" : true,
-    "lineNames" : [ "downtown line", "east west line" ],
-    "lineIDs" : [ "DT32", "EW2" ]
-  }, {
-    "id" : "",
-    "name" : "chinatown",
-    "x" : -600.0,
-    "y" : 60.0,
-    "textX" : 17.600000000000023,
-    "textY" : -8.799999999999955,
-    "isInterchange" : true,
-    "lineNames" : [ "north east line", "downtown line" ],
-    "lineIDs" : [ "NE4", "DT19" ]
-  }, {
-    "id" : "DT20",
-    "name" : "fort canning",
-    "x" : -600.0,
-    "y" : -30.0,
-    "textX" : -40.80000000000007,
-    "textY" : 20.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT20" ]
-  }, {
-    "id" : "DT31",
-    "name" : "tampines west",
-    "x" : 140.0,
-    "y" : -340.0,
-    "textX" : -42.399999999999864,
-    "textY" : 19.99999999999997,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT31" ]
-  }, {
-    "id" : "DT3",
-    "name" : "hillview",
-    "x" : -990.0,
-    "y" : -540.0,
-    "textX" : 14.399999999999977,
-    "textY" : -29.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT3" ]
-  }, {
-    "id" : "DT5",
-    "name" : "beauty world",
-    "x" : -990.0,
-    "y" : -420.0,
-    "textX" : 13.599999999999909,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT5" ]
-  }, {
-    "id" : "DT33",
-    "name" : "tampines east",
-    "x" : 260.0,
-    "y" : -320.0,
-    "textX" : 12.799999999999955,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT33" ]
-  }, {
-    "id" : "",
     "name" : "bayfront",
-    "x" : -300.0,
-    "y" : 270.0,
-    "textX" : -12.0,
-    "textY" : -39.19999999999999,
+    "x" : -320.0,
+    "y" : 260.0,
+    "textX" : 11.999999999999886,
+    "textY" : 9.600000000000023,
     "isInterchange" : true,
     "lineNames" : [ "circle line", "downtown line" ],
     "lineIDs" : [ "CE1", "DT16" ]
   }, {
     "id" : "",
-    "name" : "bukit panjang",
-    "x" : -990.0,
-    "y" : -660.0,
-    "textX" : 19.199999999999932,
-    "textY" : -3.1999999999999886,
+    "name" : "promenade",
+    "x" : -240.0,
+    "y" : 220.0,
+    "textX" : -29.600000000000023,
+    "textY" : 16.80000000000001,
     "isInterchange" : true,
-    "lineNames" : [ "downtown line", "bukit panjang lrt" ],
-    "lineIDs" : [ "DT1", "BP6" ]
+    "lineNames" : [ "circle line", "downtown line" ],
+    "lineIDs" : [ "CC4", "DT15" ]
   }, {
-    "id" : "",
-    "name" : "little india",
-    "x" : -480.0,
-    "y" : -120.0,
-    "textX" : 16.000000000000114,
-    "textY" : -20.000000000000057,
-    "isInterchange" : true,
-    "lineNames" : [ "north east line", "downtown line" ],
-    "lineIDs" : [ "NE7", "DT12" ]
-  }, {
-    "id" : "",
-    "name" : "expo",
+    "id" : "DT34",
+    "name" : "upper changi",
     "x" : 260.0,
-    "y" : -200.0,
-    "textX" : -2.3999999999998636,
-    "textY" : 20.800000000000068,
-    "isInterchange" : true,
-    "lineNames" : [ "changi airport line", "downtown line", "east west line" ],
-    "lineIDs" : [ "CG1", "DT35", "CG1" ]
+    "y" : -260.0,
+    "textX" : 13.600000000000136,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT34" ]
+  }, {
+    "id" : "DT7",
+    "name" : "sixth avenue",
+    "x" : -900.0,
+    "y" : -390.0,
+    "textX" : -34.39999999999998,
+    "textY" : -29.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "downtown line" ],
+    "lineIDs" : [ "DT7" ]
   }, {
     "id" : "",
     "name" : "botanic gardens",
@@ -244,79 +304,19 @@
     "lineNames" : [ "circle line", "downtown line" ],
     "lineIDs" : [ "CC19", "DT9" ]
   }, {
-    "id" : "DT18",
-    "name" : "telok ayer",
-    "x" : -510.0,
-    "y" : 120.0,
-    "textX" : -79.20000000000005,
-    "textY" : -13.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT18" ]
-  }, {
-    "id" : "DT24",
-    "name" : "geylang bahru",
-    "x" : -240.0,
-    "y" : -150.0,
-    "textX" : 13.600000000000023,
-    "textY" : 12.0,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT24" ]
-  }, {
-    "id" : "",
-    "name" : "macpherson",
-    "x" : -100.0,
-    "y" : -220.0,
-    "textX" : -34.39999999999998,
-    "textY" : 20.80000000000001,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "downtown line" ],
-    "lineIDs" : [ "CC10", "DT26" ]
-  }, {
-    "id" : "DT17",
-    "name" : "downtown",
-    "x" : -420.0,
-    "y" : 180.0,
-    "textX" : 12.0,
-    "textY" : -29.60000000000008,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT17" ]
-  }, {
-    "id" : "DT2",
-    "name" : "cashew",
+    "id" : "DT3",
+    "name" : "hillview",
     "x" : -990.0,
-    "y" : -600.0,
-    "textX" : 13.599999999999909,
+    "y" : -540.0,
+    "textX" : 14.399999999999977,
     "textY" : -29.599999999999966,
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT2" ]
-  }, {
-    "id" : "DT22",
-    "name" : "jalan besar",
-    "x" : -330.0,
-    "y" : -60.0,
-    "textX" : -30.40000000000009,
-    "textY" : 17.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT22" ]
-  }, {
-    "id" : "DT28",
-    "name" : "kaki bukit",
-    "x" : -20.0,
-    "y" : -280.0,
-    "textX" : 5.600000000000136,
-    "textY" : 16.0,
-    "isInterchange" : false,
-    "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT28" ]
+    "lineIDs" : [ "DT3" ]
   }, {
     "id" : "",
     "name" : "stevens",
-    "x" : -690.0,
+    "x" : -680.0,
     "y" : -360.0,
     "textX" : 18.40000000000009,
     "textY" : -27.19999999999999,
@@ -334,25 +334,25 @@
     "lineNames" : [ "downtown line" ],
     "lineIDs" : [ "DT27" ]
   }, {
-    "id" : "DT7",
-    "name" : "sixth avenue",
-    "x" : -900.0,
-    "y" : -390.0,
-    "textX" : -34.39999999999998,
-    "textY" : -29.599999999999966,
+    "id" : "",
+    "name" : "little india",
+    "x" : -480.0,
+    "y" : -120.0,
+    "textX" : 16.000000000000114,
+    "textY" : -20.000000000000057,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "downtown line" ],
+    "lineIDs" : [ "NE7", "DT12" ]
+  }, {
+    "id" : "DT29",
+    "name" : "bedok north",
+    "x" : 20.0,
+    "y" : -300.0,
+    "textX" : -88.79999999999995,
+    "textY" : -23.999999999999986,
     "isInterchange" : false,
     "lineNames" : [ "downtown line" ],
-    "lineIDs" : [ "DT7" ]
-  }, {
-    "id" : "",
-    "name" : "newton",
-    "x" : -600.0,
-    "y" : -300.0,
-    "textX" : -22.399999999999977,
-    "textY" : -38.39999999999998,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "downtown line" ],
-    "lineIDs" : [ "NS21", "DT11" ]
+    "lineIDs" : [ "DT29" ]
   } ],
   "edges" : [ {
     "from" : "DT1",

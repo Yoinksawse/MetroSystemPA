@@ -4,55 +4,235 @@
   "colour" : "#9D5B25",
   "lineType" : "MRT",
   "stations" : [ {
-    "id" : "TE6",
-    "name" : "mayflower",
-    "x" : -810.0,
-    "y" : -630.0,
-    "textX" : 14.400000000000091,
-    "textY" : -28.0,
+    "id" : "TE25",
+    "name" : "tanjong katong",
+    "x" : 0.0,
+    "y" : 160.0,
+    "textX" : 8.0,
+    "textY" : 15.200000000000045,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE6" ]
+    "lineIDs" : [ "TE25" ]
+  }, {
+    "id" : "TE15",
+    "name" : "great world",
+    "x" : -680.0,
+    "y" : -80.0,
+    "textX" : -87.20000000000005,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE15" ]
+  }, {
+    "id" : "TE16",
+    "name" : "havelock",
+    "x" : -680.0,
+    "y" : 0.0,
+    "textX" : -23.200000000000045,
+    "textY" : 17.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE16" ]
+  }, {
+    "id" : "TE30",
+    "name" : "bedok south",
+    "x" : 200.0,
+    "y" : -40.0,
+    "textX" : 3.199999999999818,
+    "textY" : 20.0,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE30" ]
   }, {
     "id" : "TE19",
     "name" : "shenton way",
-    "x" : -510.0,
-    "y" : 240.0,
-    "textX" : -63.200000000000045,
-    "textY" : 17.599999999999966,
+    "x" : -520.0,
+    "y" : 260.0,
+    "textX" : -37.600000000000136,
+    "textY" : 16.799999999999955,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
     "lineIDs" : [ "TE19" ]
   }, {
-    "id" : "TE7",
-    "name" : "bright hill",
-    "x" : -750.0,
-    "y" : -570.0,
-    "textX" : 12.799999999999955,
-    "textY" : -29.599999999999966,
+    "id" : "TE22",
+    "name" : "gardens by the bay",
+    "x" : -180.0,
+    "y" : 300.0,
+    "textX" : -36.0,
+    "textY" : 16.0,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE7" ]
+    "lineIDs" : [ "TE22" ]
+  }, {
+    "id" : "",
+    "name" : "outram park",
+    "x" : -660.0,
+    "y" : 120.0,
+    "textX" : -88.80000000000007,
+    "textY" : 9.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north east line", "east west line" ],
+    "lineIDs" : [ "TE17", "NE3", "EW16" ]
+  }, {
+    "id" : "TE27",
+    "name" : "marine terrace",
+    "x" : 80.0,
+    "y" : 80.0,
+    "textX" : 5.600000000000136,
+    "textY" : 16.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE27" ]
+  }, {
+    "id" : "",
+    "name" : "woodlands",
+    "x" : -920.0,
+    "y" : -860.0,
+    "textX" : 19.200000000000045,
+    "textY" : -32.79999999999998,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north south line" ],
+    "lineIDs" : [ "TE2", "NS9" ]
+  }, {
+    "id" : "TE3",
+    "name" : "woodlands south",
+    "x" : -900.0,
+    "y" : -800.0,
+    "textX" : 14.399999999999977,
+    "textY" : -27.19999999999999,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE3" ]
+  }, {
+    "id" : "TE1",
+    "name" : "woodlands north",
+    "x" : -960.0,
+    "y" : -940.0,
+    "textX" : 14.399999999999977,
+    "textY" : -26.400000000000006,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE1" ]
+  }, {
+    "id" : "TE8",
+    "name" : "upper thomson",
+    "x" : -720.0,
+    "y" : -480.0,
+    "textX" : 13.600000000000136,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE8" ]
+  }, {
+    "id" : "TE12",
+    "name" : "napier",
+    "x" : -680.0,
+    "y" : -300.0,
+    "textX" : -59.200000000000045,
+    "textY" : -22.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE12" ]
+  }, {
+    "id" : "TE4",
+    "name" : "springleaf",
+    "x" : -880.0,
+    "y" : -740.0,
+    "textX" : 14.399999999999977,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE4" ]
+  }, {
+    "id" : "TE28",
+    "name" : "siglap",
+    "x" : 120.0,
+    "y" : 40.0,
+    "textX" : 14.399999999999864,
+    "textY" : 15.199999999999989,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE28" ]
+  }, {
+    "id" : "",
+    "name" : "sungei bedok",
+    "x" : 240.0,
+    "y" : -80.0,
+    "textX" : 6.399999999999864,
+    "textY" : 19.200000000000017,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "downtown line" ],
+    "lineIDs" : [ "TE31", "DT37" ]
+  }, {
+    "id" : "TE23",
+    "name" : "tanjong rhu",
+    "x" : -80.0,
+    "y" : 240.0,
+    "textX" : 14.400000000000318,
+    "textY" : 15.199999999999989,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE23" ]
+  }, {
+    "id" : "TE5",
+    "name" : "lentor",
+    "x" : -860.0,
+    "y" : -680.0,
+    "textX" : 11.200000000000045,
+    "textY" : -27.19999999999999,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE5" ]
+  }, {
+    "id" : "TE18",
+    "name" : "maxwell",
+    "x" : -580.0,
+    "y" : 160.0,
+    "textX" : -21.600000000000136,
+    "textY" : 17.60000000000008,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE18" ]
   }, {
     "id" : "",
     "name" : "orchard",
-    "x" : -690.0,
-    "y" : -180.0,
+    "x" : -680.0,
+    "y" : -160.0,
     "textX" : -70.39999999999998,
     "textY" : -9.600000000000023,
     "isInterchange" : true,
     "lineNames" : [ "thomson-east coast line", "north south line" ],
     "lineIDs" : [ "TE14", "NS22" ]
   }, {
-    "id" : "TE1",
-    "name" : "woodlands north",
-    "x" : -960.0,
-    "y" : -930.0,
-    "textX" : 14.399999999999977,
-    "textY" : -26.400000000000006,
+    "id" : "",
+    "name" : "caldecott",
+    "x" : -680.0,
+    "y" : -420.0,
+    "textX" : -80.79999999999995,
+    "textY" : -27.200000000000045,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "circle line" ],
+    "lineIDs" : [ "TE9", "CC17" ]
+  }, {
+    "id" : "TE24",
+    "name" : "katong park",
+    "x" : -40.0,
+    "y" : 200.0,
+    "textX" : 14.400000000000091,
+    "textY" : 16.0,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE1" ]
+    "lineIDs" : [ "TE24" ]
+  }, {
+    "id" : "TE6",
+    "name" : "mayflower",
+    "x" : -820.0,
+    "y" : -620.0,
+    "textX" : 14.400000000000091,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE6" ]
   }, {
     "id" : "",
     "name" : "marina bay",
@@ -66,47 +246,17 @@
   }, {
     "id" : "TE29",
     "name" : "bayshore",
-    "x" : 120.0,
-    "y" : 30.0,
+    "x" : 160.0,
+    "y" : 0.0,
     "textX" : 13.599999999999909,
     "textY" : 16.0,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
     "lineIDs" : [ "TE29" ]
   }, {
-    "id" : "TE8",
-    "name" : "upper thomson",
-    "x" : -690.0,
-    "y" : -510.0,
-    "textX" : 13.600000000000136,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE8" ]
-  }, {
-    "id" : "TE28",
-    "name" : "siglap",
-    "x" : 90.0,
-    "y" : 60.0,
-    "textX" : 14.399999999999864,
-    "textY" : 15.199999999999989,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE28" ]
-  }, {
-    "id" : "",
-    "name" : "woodlands",
-    "x" : -930.0,
-    "y" : -870.0,
-    "textX" : 19.200000000000045,
-    "textY" : -32.79999999999998,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "north south line" ],
-    "lineIDs" : [ "TE2", "NS9" ]
-  }, {
     "id" : "",
     "name" : "stevens",
-    "x" : -690.0,
+    "x" : -680.0,
     "y" : -360.0,
     "textX" : 18.40000000000009,
     "textY" : -27.19999999999999,
@@ -114,185 +264,35 @@
     "lineNames" : [ "thomson-east coast line", "downtown line" ],
     "lineIDs" : [ "TE11", "DT10" ]
   }, {
-    "id" : "TE30",
-    "name" : "bedok south",
-    "x" : 150.0,
-    "y" : 0.0,
-    "textX" : 3.199999999999818,
-    "textY" : 20.0,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE30" ]
-  }, {
-    "id" : "TE22",
-    "name" : "gardens by the bay",
-    "x" : -180.0,
-    "y" : 300.0,
-    "textX" : -36.0,
-    "textY" : 16.0,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE22" ]
-  }, {
-    "id" : "TE15",
-    "name" : "great world",
-    "x" : -690.0,
-    "y" : -90.0,
-    "textX" : -87.20000000000005,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE15" ]
-  }, {
-    "id" : "TE24",
-    "name" : "katong park",
-    "x" : -30.0,
-    "y" : 180.0,
-    "textX" : 14.400000000000091,
-    "textY" : 16.0,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE24" ]
-  }, {
-    "id" : "TE3",
-    "name" : "woodlands south",
-    "x" : -900.0,
-    "y" : -810.0,
-    "textX" : 14.399999999999977,
-    "textY" : -27.19999999999999,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE3" ]
-  }, {
-    "id" : "TE16",
-    "name" : "havelock",
-    "x" : -690.0,
-    "y" : 0.0,
-    "textX" : -23.200000000000045,
-    "textY" : 17.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE16" ]
-  }, {
     "id" : "TE13",
     "name" : "orchard boulevard",
-    "x" : -690.0,
+    "x" : -680.0,
     "y" : -240.0,
-    "textX" : 14.400000000000091,
-    "textY" : 9.600000000000023,
+    "textX" : -61.600000000000136,
+    "textY" : 20.000000000000114,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
     "lineIDs" : [ "TE13" ]
   }, {
+    "id" : "TE7",
+    "name" : "bright hill",
+    "x" : -780.0,
+    "y" : -560.0,
+    "textX" : 12.799999999999955,
+    "textY" : -29.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "thomson-east coast line" ],
+    "lineIDs" : [ "TE7" ]
+  }, {
     "id" : "TE26",
     "name" : "marine parade",
-    "x" : 30.0,
+    "x" : 40.0,
     "y" : 120.0,
     "textX" : 7.2000000000000455,
     "textY" : 19.200000000000045,
     "isInterchange" : false,
     "lineNames" : [ "thomson-east coast line" ],
     "lineIDs" : [ "TE26" ]
-  }, {
-    "id" : "TE12",
-    "name" : "napier",
-    "x" : -690.0,
-    "y" : -300.0,
-    "textX" : -59.200000000000045,
-    "textY" : -22.399999999999977,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE12" ]
-  }, {
-    "id" : "TE5",
-    "name" : "lentor",
-    "x" : -840.0,
-    "y" : -690.0,
-    "textX" : 11.200000000000045,
-    "textY" : -27.19999999999999,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE5" ]
-  }, {
-    "id" : "TE18",
-    "name" : "maxwell",
-    "x" : -570.0,
-    "y" : 180.0,
-    "textX" : 14.399999999999977,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE18" ]
-  }, {
-    "id" : "TE23",
-    "name" : "tanjong rhu",
-    "x" : -60.0,
-    "y" : 210.0,
-    "textX" : 14.400000000000318,
-    "textY" : 15.199999999999989,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE23" ]
-  }, {
-    "id" : "TE27",
-    "name" : "marine terrace",
-    "x" : 60.0,
-    "y" : 90.0,
-    "textX" : 5.600000000000136,
-    "textY" : 16.799999999999955,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE27" ]
-  }, {
-    "id" : "",
-    "name" : "sungei bedok",
-    "x" : 180.0,
-    "y" : -30.0,
-    "textX" : 6.399999999999864,
-    "textY" : 19.200000000000017,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "downtown line" ],
-    "lineIDs" : [ "TE31", "DT37" ]
-  }, {
-    "id" : "TE4",
-    "name" : "springleaf",
-    "x" : -870.0,
-    "y" : -750.0,
-    "textX" : 14.399999999999977,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE4" ]
-  }, {
-    "id" : "",
-    "name" : "caldecott",
-    "x" : -690.0,
-    "y" : -420.0,
-    "textX" : -80.79999999999995,
-    "textY" : -27.200000000000045,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "circle line" ],
-    "lineIDs" : [ "TE9", "CC17" ]
-  }, {
-    "id" : "",
-    "name" : "outram park",
-    "x" : -660.0,
-    "y" : 120.0,
-    "textX" : -88.80000000000007,
-    "textY" : 9.600000000000023,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "north east line", "east west line" ],
-    "lineIDs" : [ "TE17", "NE3", "EW16" ]
-  }, {
-    "id" : "TE25",
-    "name" : "tanjong katong",
-    "x" : 0.0,
-    "y" : 150.0,
-    "textX" : 8.0,
-    "textY" : 15.200000000000045,
-    "isInterchange" : false,
-    "lineNames" : [ "thomson-east coast line" ],
-    "lineIDs" : [ "TE25" ]
   } ],
   "edges" : [ {
     "from" : "TE1",

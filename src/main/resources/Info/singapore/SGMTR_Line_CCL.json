@@ -4,136 +4,6 @@
   "colour" : "#FFD300",
   "lineType" : "MRT",
   "stations" : [ {
-    "id" : "CC23",
-    "name" : "one-north",
-    "x" : -960.0,
-    "y" : -90.0,
-    "textX" : 14.399999999999977,
-    "textY" : 11.199999999999989,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC23" ]
-  }, {
-    "id" : "CC16",
-    "name" : "marymount",
-    "x" : -600.0,
-    "y" : -450.0,
-    "textX" : -27.200000000000045,
-    "textY" : 20.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC16" ]
-  }, {
-    "id" : "",
-    "name" : "bayfront",
-    "x" : -300.0,
-    "y" : 270.0,
-    "textX" : -12.0,
-    "textY" : -39.19999999999999,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "downtown line" ],
-    "lineIDs" : [ "CE1", "DT16" ]
-  }, {
-    "id" : "CC27",
-    "name" : "labrador park",
-    "x" : -840.0,
-    "y" : 210.0,
-    "textX" : 12.799999999999955,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC27" ]
-  }, {
-    "id" : "",
-    "name" : "caldecott",
-    "x" : -690.0,
-    "y" : -420.0,
-    "textX" : -80.79999999999995,
-    "textY" : -27.200000000000045,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "circle line" ],
-    "lineIDs" : [ "TE9", "CC17" ]
-  }, {
-    "id" : "",
-    "name" : "paya lebar",
-    "x" : -60.0,
-    "y" : -120.0,
-    "textX" : -27.200000000000045,
-    "textY" : 20.0,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "east west line" ],
-    "lineIDs" : [ "CC9", "EW8" ]
-  }, {
-    "id" : "",
-    "name" : "bishan",
-    "x" : -480.0,
-    "y" : -480.0,
-    "textX" : 19.200000000000045,
-    "textY" : -29.600000000000023,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "circle line" ],
-    "lineIDs" : [ "NS17", "CC15" ]
-  }, {
-    "id" : "",
-    "name" : "buona vista",
-    "x" : -960.0,
-    "y" : -150.0,
-    "textX" : -7.2000000000000455,
-    "textY" : -37.60000000000002,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "east west line" ],
-    "lineIDs" : [ "CC22", "EW21" ]
-  }, {
-    "id" : "",
-    "name" : "macpherson",
-    "x" : -100.0,
-    "y" : -220.0,
-    "textX" : -34.39999999999998,
-    "textY" : 20.80000000000001,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "downtown line" ],
-    "lineIDs" : [ "CC10", "DT26" ]
-  }, {
-    "id" : "CC7",
-    "name" : "mountbatten",
-    "x" : -90.0,
-    "y" : 60.0,
-    "textX" : 13.600000000000023,
-    "textY" : 21.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC7" ]
-  }, {
-    "id" : "",
-    "name" : "marina bay",
-    "x" : -420.0,
-    "y" : 300.0,
-    "textX" : 11.200000000000045,
-    "textY" : 14.399999999999977,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "north south line", "circle line" ],
-    "lineIDs" : [ "TE20", "NS27", "CE2" ]
-  }, {
-    "id" : "CC11",
-    "name" : "tai seng",
-    "x" : -150.0,
-    "y" : -300.0,
-    "textX" : -51.19999999999993,
-    "textY" : 18.399999999999977,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC11" ]
-  }, {
-    "id" : "CC20",
-    "name" : "farrer road",
-    "x" : -840.0,
-    "y" : -300.0,
-    "textX" : -88.79999999999995,
-    "textY" : -16.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC20" ]
-  }, {
     "id" : "",
     "name" : "serangoon",
     "x" : -300.0,
@@ -145,19 +15,59 @@
     "lineIDs" : [ "NE12", "CC13" ]
   }, {
     "id" : "",
-    "name" : "dhoby ghaut",
-    "x" : -510.0,
-    "y" : -60.0,
-    "textX" : 18.399999999999977,
-    "textY" : -8.0,
+    "name" : "buona vista",
+    "x" : -960.0,
+    "y" : -150.0,
+    "textX" : -7.2000000000000455,
+    "textY" : -37.60000000000002,
     "isInterchange" : true,
-    "lineNames" : [ "north east line", "north south line", "circle line" ],
-    "lineIDs" : [ "NE6", "NS24", "CC1" ]
+    "lineNames" : [ "circle line", "east west line" ],
+    "lineIDs" : [ "CC22", "EW21" ]
+  }, {
+    "id" : "CC28",
+    "name" : "telok blangah",
+    "x" : -760.0,
+    "y" : 280.0,
+    "textX" : -48.0,
+    "textY" : 23.19999999999999,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC28" ]
+  }, {
+    "id" : "CC20",
+    "name" : "farrer road",
+    "x" : -840.0,
+    "y" : -300.0,
+    "textX" : -88.79999999999995,
+    "textY" : -16.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC20" ]
+  }, {
+    "id" : "CC23",
+    "name" : "one-north",
+    "x" : -980.0,
+    "y" : -80.0,
+    "textX" : 14.399999999999977,
+    "textY" : 11.199999999999989,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC23" ]
+  }, {
+    "id" : "CC27",
+    "name" : "labrador park",
+    "x" : -840.0,
+    "y" : 240.0,
+    "textX" : 12.799999999999955,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC27" ]
   }, {
     "id" : "CC25",
     "name" : "haw par villa",
-    "x" : -930.0,
-    "y" : 90.0,
+    "x" : -960.0,
+    "y" : 80.0,
     "textX" : 13.600000000000023,
     "textY" : -25.599999999999966,
     "isInterchange" : false,
@@ -167,62 +77,22 @@
     "id" : "CC6",
     "name" : "stadium",
     "x" : -120.0,
-    "y" : 120.0,
+    "y" : 100.0,
     "textX" : 12.799999999999955,
     "textY" : 16.799999999999955,
     "isInterchange" : false,
     "lineNames" : [ "circle line" ],
     "lineIDs" : [ "CC6" ]
   }, {
-    "id" : "CC8",
-    "name" : "dakota",
-    "x" : -60.0,
-    "y" : -30.0,
+    "id" : "CC7",
+    "name" : "mountbatten",
+    "x" : -100.0,
+    "y" : 40.0,
     "textX" : 13.600000000000023,
-    "textY" : 12.0,
+    "textY" : 21.599999999999966,
     "isInterchange" : false,
     "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC8" ]
-  }, {
-    "id" : "CC28",
-    "name" : "telok blangah",
-    "x" : -750.0,
-    "y" : 270.0,
-    "textX" : -48.0,
-    "textY" : 23.19999999999999,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC28" ]
-  }, {
-    "id" : "",
-    "name" : "promenade",
-    "x" : -210.0,
-    "y" : 240.0,
-    "textX" : -29.600000000000023,
-    "textY" : 16.80000000000001,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "downtown line" ],
-    "lineIDs" : [ "CC4", "DT15" ]
-  }, {
-    "id" : "CC24",
-    "name" : "kent ridge",
-    "x" : -960.0,
-    "y" : 0.0,
-    "textX" : 12.800000000000068,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC24" ]
-  }, {
-    "id" : "CC26",
-    "name" : "pasir panjang",
-    "x" : -900.0,
-    "y" : 150.0,
-    "textX" : 10.400000000000091,
-    "textY" : -28.799999999999955,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC26" ]
+    "lineIDs" : [ "CC7" ]
   }, {
     "id" : "CC12",
     "name" : "bartley",
@@ -234,25 +104,75 @@
     "lineNames" : [ "circle line" ],
     "lineIDs" : [ "CC12" ]
   }, {
-    "id" : "",
-    "name" : "botanic gardens",
-    "x" : -780.0,
-    "y" : -360.0,
-    "textX" : -32.80000000000007,
-    "textY" : -36.80000000000007,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "downtown line" ],
-    "lineIDs" : [ "CC19", "DT9" ]
-  }, {
     "id" : "CC3",
     "name" : "esplanade",
-    "x" : -300.0,
+    "x" : -340.0,
     "y" : 120.0,
-    "textX" : -28.0,
-    "textY" : 22.399999999999977,
+    "textX" : -20.799999999999955,
+    "textY" : 21.59999999999991,
     "isInterchange" : false,
     "lineNames" : [ "circle line" ],
     "lineIDs" : [ "CC3" ]
+  }, {
+    "id" : "CC2",
+    "name" : "bras basah",
+    "x" : -420.0,
+    "y" : 20.0,
+    "textX" : -28.0,
+    "textY" : 19.200000000000045,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC2" ]
+  }, {
+    "id" : "",
+    "name" : "macpherson",
+    "x" : -100.0,
+    "y" : -220.0,
+    "textX" : -34.39999999999998,
+    "textY" : 20.80000000000001,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "downtown line" ],
+    "lineIDs" : [ "CC10", "DT26" ]
+  }, {
+    "id" : "CC8",
+    "name" : "dakota",
+    "x" : -80.0,
+    "y" : -40.0,
+    "textX" : 13.600000000000023,
+    "textY" : 12.0,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC8" ]
+  }, {
+    "id" : "",
+    "name" : "paya lebar",
+    "x" : -80.0,
+    "y" : -120.0,
+    "textX" : 11.199999999999818,
+    "textY" : 14.400000000000034,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "east west line" ],
+    "lineIDs" : [ "CC9", "EW8" ]
+  }, {
+    "id" : "CC11",
+    "name" : "tai seng",
+    "x" : -150.0,
+    "y" : -300.0,
+    "textX" : -51.19999999999993,
+    "textY" : 18.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC11" ]
+  }, {
+    "id" : "CC26",
+    "name" : "pasir panjang",
+    "x" : -920.0,
+    "y" : 160.0,
+    "textX" : 10.400000000000091,
+    "textY" : -28.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC26" ]
   }, {
     "id" : "CC14",
     "name" : "lorong chuan",
@@ -264,35 +184,85 @@
     "lineNames" : [ "circle line" ],
     "lineIDs" : [ "CC14" ]
   }, {
-    "id" : "CC2",
-    "name" : "bras basah",
-    "x" : -390.0,
-    "y" : 30.0,
-    "textX" : -29.59999999999991,
-    "textY" : 20.0,
-    "isInterchange" : false,
-    "lineNames" : [ "circle line" ],
-    "lineIDs" : [ "CC2" ]
-  }, {
     "id" : "CC5",
     "name" : "nicoll highway",
-    "x" : -150.0,
-    "y" : 180.0,
+    "x" : -160.0,
+    "y" : 160.0,
     "textX" : -40.80000000000007,
     "textY" : 20.800000000000068,
     "isInterchange" : false,
     "lineNames" : [ "circle line" ],
     "lineIDs" : [ "CC5" ]
   }, {
+    "id" : "",
+    "name" : "bishan",
+    "x" : -480.0,
+    "y" : -460.0,
+    "textX" : 19.200000000000045,
+    "textY" : -29.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "circle line" ],
+    "lineIDs" : [ "NS17", "CC15" ]
+  }, {
     "id" : "CC21",
     "name" : "holland village",
     "x" : -900.0,
     "y" : -240.0,
     "textX" : 13.600000000000023,
-    "textY" : 16.0,
+    "textY" : -28.799999999999955,
     "isInterchange" : false,
     "lineNames" : [ "circle line" ],
     "lineIDs" : [ "CC21" ]
+  }, {
+    "id" : "",
+    "name" : "bayfront",
+    "x" : -320.0,
+    "y" : 260.0,
+    "textX" : 11.999999999999886,
+    "textY" : 9.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "downtown line" ],
+    "lineIDs" : [ "CE1", "DT16" ]
+  }, {
+    "id" : "CC24",
+    "name" : "kent ridge",
+    "x" : -980.0,
+    "y" : 0.0,
+    "textX" : 12.800000000000068,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC24" ]
+  }, {
+    "id" : "",
+    "name" : "promenade",
+    "x" : -240.0,
+    "y" : 220.0,
+    "textX" : -29.600000000000023,
+    "textY" : 16.80000000000001,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "downtown line" ],
+    "lineIDs" : [ "CC4", "DT15" ]
+  }, {
+    "id" : "CC16",
+    "name" : "marymount",
+    "x" : -580.0,
+    "y" : -460.0,
+    "textX" : -27.200000000000045,
+    "textY" : 20.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "circle line" ],
+    "lineIDs" : [ "CC16" ]
+  }, {
+    "id" : "",
+    "name" : "dhoby ghaut",
+    "x" : -510.0,
+    "y" : -60.0,
+    "textX" : 18.399999999999977,
+    "textY" : -8.0,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "north south line", "circle line" ],
+    "lineIDs" : [ "NE6", "NS24", "CC1" ]
   }, {
     "id" : "",
     "name" : "harbourfront",
@@ -303,6 +273,36 @@
     "isInterchange" : true,
     "lineNames" : [ "north east line", "circle line", "sentosa express" ],
     "lineIDs" : [ "NE1", "CC29", "SX1" ]
+  }, {
+    "id" : "",
+    "name" : "caldecott",
+    "x" : -680.0,
+    "y" : -420.0,
+    "textX" : -80.79999999999995,
+    "textY" : -27.200000000000045,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "circle line" ],
+    "lineIDs" : [ "TE9", "CC17" ]
+  }, {
+    "id" : "",
+    "name" : "botanic gardens",
+    "x" : -780.0,
+    "y" : -360.0,
+    "textX" : -32.80000000000007,
+    "textY" : -36.80000000000007,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "downtown line" ],
+    "lineIDs" : [ "CC19", "DT9" ]
+  }, {
+    "id" : "",
+    "name" : "marina bay",
+    "x" : -420.0,
+    "y" : 300.0,
+    "textX" : 11.200000000000045,
+    "textY" : 14.399999999999977,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north south line", "circle line" ],
+    "lineIDs" : [ "TE20", "NS27", "CE2" ]
   } ],
   "edges" : [ {
     "from" : "CC1",

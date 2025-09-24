@@ -1,0 +1,158 @@
+.DropShadow {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,150,0.8), 20, 0.5, 0, 0);
+}
+
+.notPathStation { /* red */
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, #FFFFFF, #BBBBBB);
+    -fx-effect: dropshadow(gaussian, rgba(255, 69, 42, 0.5), 5, 0.5, 0, 0);
+}
+
+.pathStation { /* green <-> white */
+    -fx-fill: linear-gradient(from 0% 0% to 100% 100%, #7FFFD4, #228B22);
+    -fx-effect: dropshadow(gaussian, rgba(77, 141, 106, 1), 5, 0.5, 0, 0);
+}
+
+.invalidTextBox {
+    -fx-effect: dropshadow(gaussian, rgba(230, 0, 0, 0.7), 5, 0.5, 0, 0);
+}
+
+.validTextBox {
+    -fx-effect: dropshadow(gaussian, rgba(73,224,72, 0.7), 5, 0.5, 0, 0);
+}
+
+/*light (default)*/
+.root {
+    -fx-base: #ececec;
+    -fx-background-color: #f4f4f4;
+    -fx-text-fill: black;
+}
+
+.button, .toggle-button {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: black;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #555;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #555;
+}
+
+.label {
+    -fx-text-fill: black;
+}
+
+.text-field, .combo-box, .list-view, .table-view {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: #666;
+    -fx-border-color: #aaa;
+    -fx-border-radius: 4px;
+}
+
+.menu-bar, .menu-item {
+    -fx-background-color: #ececec;
+    -fx-text-fill: black;
+}
+
+/*dark*/
+.dark-theme {
+    -fx-base: #2B2B2B;
+    -fx-background-color: #2B2B2B;
+    -fx-text-fill: #f0f0f0;
+}
+
+.dark-theme .text {
+    -fx-fill: white;
+}
+
+.dark-theme .header-text {
+    -fx-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.dark-theme .button, .dark-theme .toggle-button {
+    -fx-background-color: #444;
+    -fx-text-fill: #f0f0f0;
+    -fx-border-color: #EEEEEE;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+}
+
+.dark-theme .button:hover {
+    -fx-background-color: #666;
+}
+
+.dark-theme .label,
+.dark-theme .labeled {
+    -fx-text-fill: #f0f0f0;
+    -fx-background-color: transparent !important;
+    -fx-opacity: 1.0;
+}
+
+.dark-theme .text-field,
+.dark-theme .combo-box,
+.dark-there .hbox,
+.dark-theme .list-view,
+.dark-theme .table-view {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #f0f0f0;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-border-color: #EEEEEE;
+    -fx-border-radius: 4px;
+}
+
+.dark-theme .text-field:focused,
+.dark-theme .combo-box:focused {
+    -fx-border-color: #EEEEEE;
+    -fx-effect: dropshadow(gaussian, rgba(120,120,255,0.4), 6, 0.4, 0, 0);
+}
+
+.dark-theme .menu-bar {
+    -fx-background-color: #333;
+}
+
+.dark-theme .menu-item {
+    -fx-background-color: #333;
+    -fx-text-fill: #f0f0f0;
+}
+
+.dark-theme .menu-item:hover {
+    -fx-background-color: #444;
+}
+
+.dark-theme .scroll-bar,
+.dark-theme .scroll-bar:horizontal,
+.dark-theme .scroll-bar:vertical {
+    -fx-background-color: #2B2B2B;
+}
+
+.dark-theme .scroll-bar .thumb {
+    -fx-background-color: #555;
+    -fx-background-radius: 5px;
+}
+
+.dark-theme .tooltip {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #f0f0f0;
+    -fx-background-radius: 5px;
+    -fx-padding: 5;
+}
+
+.dark-theme .table-row-cell {
+    -fx-background-color: #2B2B2B;
+    -fx-text-fill: #f0f0f0;
+}
+
+.dark-theme .table-row-cell:selected {
+    -fx-background-color: #444;
+}
+
+.dark-theme .table-cell {
+    -fx-border-color: #444;
+}

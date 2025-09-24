@@ -4,15 +4,15 @@
   "colour" : "#000000",
   "lineType" : "Tourism",
   "stations" : [ {
-    "id" : "SX3",
-    "name" : "sentosa imbiah",
-    "x" : -720.0,
-    "y" : 420.0,
+    "id" : "SX4",
+    "name" : "sentosa waterfront",
+    "x" : -750.0,
+    "y" : 480.0,
     "textX" : 14.399999999999977,
     "textY" : 12.800000000000011,
     "isInterchange" : false,
     "lineNames" : [ "sentosa express" ],
-    "lineIDs" : [ "SX3" ]
+    "lineIDs" : [ "SX4" ]
   }, {
     "id" : "",
     "name" : "harbourfront",
@@ -34,15 +34,15 @@
     "lineNames" : [ "sentosa express" ],
     "lineIDs" : [ "SX2" ]
   }, {
-    "id" : "SX4",
-    "name" : "sentosa waterfront",
-    "x" : -750.0,
-    "y" : 480.0,
+    "id" : "SX3",
+    "name" : "sentosa imbiah",
+    "x" : -720.0,
+    "y" : 420.0,
     "textX" : 14.399999999999977,
     "textY" : 12.800000000000011,
     "isInterchange" : false,
     "lineNames" : [ "sentosa express" ],
-    "lineIDs" : [ "SX4" ]
+    "lineIDs" : [ "SX3" ]
   } ],
   "edges" : [ {
     "from" : "SX1",

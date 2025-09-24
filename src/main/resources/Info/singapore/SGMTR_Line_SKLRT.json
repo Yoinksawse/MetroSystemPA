@@ -4,85 +4,65 @@
   "colour" : "#A9A9A9",
   "lineType" : "LRT",
   "stations" : [ {
+    "id" : "SW2",
+    "name" : "farmway",
+    "x" : -240.0,
+    "y" : -630.0,
+    "textX" : -72.80000000000007,
+    "textY" : 0.0,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW2" ]
+  }, {
     "id" : "SE1",
     "name" : "compassvale",
     "x" : -30.0,
     "y" : -600.0,
-    "textX" : -4.0,
+    "textX" : -27.199999999999932,
     "textY" : 18.399999999999977,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
     "lineIDs" : [ "SE1" ]
   }, {
-    "id" : "SE3",
-    "name" : "bakau",
-    "x" : 0.0,
-    "y" : -480.0,
-    "textX" : 13.600000000000023,
-    "textY" : 11.199999999999932,
+    "id" : "SW5",
+    "name" : "fernvale",
+    "x" : -240.0,
+    "y" : -750.0,
+    "textX" : -70.39999999999998,
+    "textY" : -12.0,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SE3" ]
+    "lineIDs" : [ "SW5" ]
+  }, {
+    "id" : "SW8",
+    "name" : "renjong",
+    "x" : -120.0,
+    "y" : -690.0,
+    "textX" : -67.19999999999982,
+    "textY" : 3.999999999999943,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW8" ]
   }, {
     "id" : "SW6",
     "name" : "layar",
     "x" : -180.0,
     "y" : -750.0,
-    "textX" : 14.400000000000091,
-    "textY" : -29.600000000000023,
+    "textX" : -34.399999999999864,
+    "textY" : 8.799999999999955,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
     "lineIDs" : [ "SW6" ]
-  }, {
-    "id" : "SW1",
-    "name" : "cheng lim",
-    "x" : -210.0,
-    "y" : -600.0,
-    "textX" : -73.59999999999991,
-    "textY" : 8.0,
-    "isInterchange" : false,
-    "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SW1" ]
   }, {
     "id" : "SW7",
     "name" : "tongkang",
     "x" : -150.0,
     "y" : -720.0,
-    "textX" : 13.599999999999909,
-    "textY" : -22.400000000000034,
+    "textX" : -70.4000000000002,
+    "textY" : 4.0,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
     "lineIDs" : [ "SW7" ]
-  }, {
-    "id" : "SW4",
-    "name" : "thanggam",
-    "x" : -270.0,
-    "y" : -720.0,
-    "textX" : 13.599999999999909,
-    "textY" : 10.399999999999977,
-    "isInterchange" : false,
-    "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SW4" ]
-  }, {
-    "id" : "SE4",
-    "name" : "kangkar",
-    "x" : -60.0,
-    "y" : -450.0,
-    "textX" : -55.200000000000045,
-    "textY" : 17.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SE4" ]
-  }, {
-    "id" : "",
-    "name" : "sengkang",
-    "x" : -120.0,
-    "y" : -600.0,
-    "textX" : -28.0,
-    "textY" : 18.399999999999977,
-    "isInterchange" : true,
-    "lineNames" : [ "sengkang lrt", "north east line" ],
-    "lineIDs" : [ "STC", "NE16" ]
   }, {
     "id" : "SW3",
     "name" : "kupang",
@@ -94,25 +74,45 @@
     "lineNames" : [ "sengkang lrt" ],
     "lineIDs" : [ "SW3" ]
   }, {
-    "id" : "SE2",
-    "name" : "rumbia",
-    "x" : 30.0,
-    "y" : -540.0,
-    "textX" : 14.399999999999977,
-    "textY" : 9.600000000000023,
+    "id" : "SE4",
+    "name" : "kangkar",
+    "x" : -60.0,
+    "y" : -450.0,
+    "textX" : -55.200000000000045,
+    "textY" : 17.599999999999966,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SE2" ]
+    "lineIDs" : [ "SE4" ]
   }, {
-    "id" : "SW8",
-    "name" : "renjong",
-    "x" : -120.0,
-    "y" : -690.0,
-    "textX" : 12.800000000000068,
-    "textY" : -29.600000000000023,
+    "id" : "SE3",
+    "name" : "bakau",
+    "x" : 0.0,
+    "y" : -480.0,
+    "textX" : 13.600000000000023,
+    "textY" : 11.199999999999932,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SW8" ]
+    "lineIDs" : [ "SE3" ]
+  }, {
+    "id" : "",
+    "name" : "sengkang",
+    "x" : -120.0,
+    "y" : -600.0,
+    "textX" : -31.199999999999818,
+    "textY" : 19.19999999999999,
+    "isInterchange" : true,
+    "lineNames" : [ "sengkang lrt", "north east line" ],
+    "lineIDs" : [ "STC", "NE16" ]
+  }, {
+    "id" : "SW4",
+    "name" : "thanggam",
+    "x" : -270.0,
+    "y" : -720.0,
+    "textX" : -71.20000000000005,
+    "textY" : 5.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "sengkang lrt" ],
+    "lineIDs" : [ "SW4" ]
   }, {
     "id" : "SE5",
     "name" : "ranggung",
@@ -124,25 +124,25 @@
     "lineNames" : [ "sengkang lrt" ],
     "lineIDs" : [ "SE5" ]
   }, {
-    "id" : "SW2",
-    "name" : "farmway",
-    "x" : -240.0,
-    "y" : -630.0,
-    "textX" : -72.80000000000007,
-    "textY" : 0.0,
+    "id" : "SE2",
+    "name" : "rumbia",
+    "x" : 30.0,
+    "y" : -540.0,
+    "textX" : 14.399999999999977,
+    "textY" : 9.600000000000023,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SW2" ]
+    "lineIDs" : [ "SE2" ]
   }, {
-    "id" : "SW5",
-    "name" : "fernvale",
-    "x" : -240.0,
-    "y" : -750.0,
-    "textX" : -70.39999999999998,
-    "textY" : -12.0,
+    "id" : "SW1",
+    "name" : "cheng lim",
+    "x" : -210.0,
+    "y" : -600.0,
+    "textX" : -73.59999999999991,
+    "textY" : 8.0,
     "isInterchange" : false,
     "lineNames" : [ "sengkang lrt" ],
-    "lineIDs" : [ "SW5" ]
+    "lineIDs" : [ "SW1" ]
   } ],
   "edges" : [ {
     "from" : "STC",

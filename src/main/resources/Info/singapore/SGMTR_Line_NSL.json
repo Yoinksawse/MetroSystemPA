@@ -4,6 +4,166 @@
   "colour" : "#D42E12",
   "lineType" : "MRT",
   "stations" : [ {
+    "id" : "NS15",
+    "name" : "yio chu kang",
+    "x" : -480.0,
+    "y" : -600.0,
+    "textX" : 12.0,
+    "textY" : -26.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS15" ]
+  }, {
+    "id" : "NS10",
+    "name" : "admiralty",
+    "x" : -800.0,
+    "y" : -860.0,
+    "textX" : 14.399999999999864,
+    "textY" : -25.60000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS10" ]
+  }, {
+    "id" : "NS13",
+    "name" : "yishun",
+    "x" : -500.0,
+    "y" : -760.0,
+    "textX" : 12.0,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS13" ]
+  }, {
+    "id" : "",
+    "name" : "newton",
+    "x" : -560.0,
+    "y" : -240.0,
+    "textX" : -23.199999999999932,
+    "textY" : 18.400000000000034,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "downtown line" ],
+    "lineIDs" : [ "NS21", "DT11" ]
+  }, {
+    "id" : "",
+    "name" : "woodlands",
+    "x" : -920.0,
+    "y" : -860.0,
+    "textX" : 19.200000000000045,
+    "textY" : -32.79999999999998,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north south line" ],
+    "lineIDs" : [ "TE2", "NS9" ]
+  }, {
+    "id" : "NS16",
+    "name" : "ang mo kio",
+    "x" : -480.0,
+    "y" : -520.0,
+    "textX" : 14.399999999999864,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS16" ]
+  }, {
+    "id" : "",
+    "name" : "choa chu kang",
+    "x" : -1200.0,
+    "y" : -480.0,
+    "textX" : 15.199999999999932,
+    "textY" : 11.199999999999989,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "bukit panjang lrt" ],
+    "lineIDs" : [ "NS4", "BP1" ]
+  }, {
+    "id" : "NS14",
+    "name" : "khatib",
+    "x" : -480.0,
+    "y" : -680.0,
+    "textX" : 8.799999999999955,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS14" ]
+  }, {
+    "id" : "",
+    "name" : "raffles place",
+    "x" : -480.0,
+    "y" : 180.0,
+    "textX" : -32.799999999999955,
+    "textY" : 16.0,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "east west line" ],
+    "lineIDs" : [ "NS26", "EW14" ]
+  }, {
+    "id" : "NS5",
+    "name" : "yew tee",
+    "x" : -1200.0,
+    "y" : -570.0,
+    "textX" : -65.60000000000002,
+    "textY" : -24.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS5" ]
+  }, {
+    "id" : "NS6",
+    "name" : "sungei kadut",
+    "x" : -1200.0,
+    "y" : -660.0,
+    "textX" : -89.60000000000002,
+    "textY" : -28.799999999999983,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS6" ]
+  }, {
+    "id" : "NS7",
+    "name" : "kranji",
+    "x" : -1140.0,
+    "y" : -780.0,
+    "textX" : 0.0,
+    "textY" : 0.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS7" ]
+  }, {
+    "id" : "NS8",
+    "name" : "marsiling",
+    "x" : -1050.0,
+    "y" : -840.0,
+    "textX" : 0.0,
+    "textY" : 0.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS8" ]
+  }, {
+    "id" : "NS18",
+    "name" : "braddell",
+    "x" : -480.0,
+    "y" : -400.0,
+    "textX" : 14.399999999999977,
+    "textY" : 12.0,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS18" ]
+  }, {
+    "id" : "NS23",
+    "name" : "somerset",
+    "x" : -600.0,
+    "y" : -120.0,
+    "textX" : 14.400000000000091,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS23" ]
+  }, {
+    "id" : "",
+    "name" : "city hall",
+    "x" : -460.0,
+    "y" : 80.0,
+    "textX" : -25.59999999999991,
+    "textY" : 15.999999999999943,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "east west line" ],
+    "lineIDs" : [ "NS25", "EW13" ]
+  }, {
     "id" : "NS2",
     "name" : "bukit batok",
     "x" : -1200.0,
@@ -14,15 +174,95 @@
     "lineNames" : [ "north south line" ],
     "lineIDs" : [ "NS2" ]
   }, {
+    "id" : "NS3",
+    "name" : "bukit gombak",
+    "x" : -1200.0,
+    "y" : -360.0,
+    "textX" : 14.399999999999977,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS3" ]
+  }, {
     "id" : "NS20",
     "name" : "novena",
-    "x" : -540.0,
-    "y" : -330.0,
+    "x" : -500.0,
+    "y" : -280.0,
     "textX" : -20.799999999999955,
     "textY" : 20.0,
     "isInterchange" : false,
     "lineNames" : [ "north south line" ],
     "lineIDs" : [ "NS20" ]
+  }, {
+    "id" : "",
+    "name" : "bishan",
+    "x" : -480.0,
+    "y" : -460.0,
+    "textX" : 19.200000000000045,
+    "textY" : -29.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "circle line" ],
+    "lineIDs" : [ "NS17", "CC15" ]
+  }, {
+    "id" : "NS19",
+    "name" : "toa payoh",
+    "x" : -480.0,
+    "y" : -340.0,
+    "textX" : 12.800000000000068,
+    "textY" : 13.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS19" ]
+  }, {
+    "id" : "NS12",
+    "name" : "canberra",
+    "x" : -570.0,
+    "y" : -840.0,
+    "textX" : 13.600000000000136,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS12" ]
+  }, {
+    "id" : "",
+    "name" : "orchard",
+    "x" : -680.0,
+    "y" : -160.0,
+    "textX" : -70.39999999999998,
+    "textY" : -9.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north south line" ],
+    "lineIDs" : [ "TE14", "NS22" ]
+  }, {
+    "id" : "",
+    "name" : "dhoby ghaut",
+    "x" : -510.0,
+    "y" : -60.0,
+    "textX" : 18.399999999999977,
+    "textY" : -8.0,
+    "isInterchange" : true,
+    "lineNames" : [ "north east line", "north south line", "circle line" ],
+    "lineIDs" : [ "NE6", "NS24", "CC1" ]
+  }, {
+    "id" : "NS28",
+    "name" : "marina south pier",
+    "x" : -450.0,
+    "y" : 360.0,
+    "textX" : 13.600000000000023,
+    "textY" : 14.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS28" ]
+  }, {
+    "id" : "NS11",
+    "name" : "sembawang",
+    "x" : -680.0,
+    "y" : -860.0,
+    "textX" : 14.399999999999864,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "north south line" ],
+    "lineIDs" : [ "NS11" ]
   }, {
     "id" : "",
     "name" : "marina bay",
@@ -43,246 +283,6 @@
     "isInterchange" : true,
     "lineNames" : [ "north south line", "east west line" ],
     "lineIDs" : [ "NS1", "EW24" ]
-  }, {
-    "id" : "NS15",
-    "name" : "yio chu kang",
-    "x" : -480.0,
-    "y" : -630.0,
-    "textX" : 12.0,
-    "textY" : -26.400000000000034,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS15" ]
-  }, {
-    "id" : "",
-    "name" : "city hall",
-    "x" : -450.0,
-    "y" : 90.0,
-    "textX" : 17.600000000000023,
-    "textY" : -1.599999999999966,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "east west line" ],
-    "lineIDs" : [ "NS25", "EW13" ]
-  }, {
-    "id" : "",
-    "name" : "raffles place",
-    "x" : -450.0,
-    "y" : 210.0,
-    "textX" : -23.199999999999932,
-    "textY" : 20.80000000000001,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "east west line" ],
-    "lineIDs" : [ "NS26", "EW14" ]
-  }, {
-    "id" : "NS8",
-    "name" : "marsiling",
-    "x" : -1050.0,
-    "y" : -840.0,
-    "textX" : 0.0,
-    "textY" : 0.0,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS8" ]
-  }, {
-    "id" : "NS11",
-    "name" : "sembawang",
-    "x" : -690.0,
-    "y" : -870.0,
-    "textX" : 14.399999999999864,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS11" ]
-  }, {
-    "id" : "NS13",
-    "name" : "yishun",
-    "x" : -510.0,
-    "y" : -780.0,
-    "textX" : 12.0,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS13" ]
-  }, {
-    "id" : "",
-    "name" : "choa chu kang",
-    "x" : -1200.0,
-    "y" : -480.0,
-    "textX" : 15.199999999999932,
-    "textY" : 11.199999999999989,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "bukit panjang lrt" ],
-    "lineIDs" : [ "NS4", "BP1" ]
-  }, {
-    "id" : "",
-    "name" : "orchard",
-    "x" : -690.0,
-    "y" : -180.0,
-    "textX" : -70.39999999999998,
-    "textY" : -9.600000000000023,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "north south line" ],
-    "lineIDs" : [ "TE14", "NS22" ]
-  }, {
-    "id" : "NS7",
-    "name" : "kranji",
-    "x" : -1140.0,
-    "y" : -780.0,
-    "textX" : 0.0,
-    "textY" : 0.0,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS7" ]
-  }, {
-    "id" : "NS10",
-    "name" : "admiralty",
-    "x" : -810.0,
-    "y" : -870.0,
-    "textX" : 14.399999999999864,
-    "textY" : -25.60000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS10" ]
-  }, {
-    "id" : "",
-    "name" : "newton",
-    "x" : -600.0,
-    "y" : -300.0,
-    "textX" : -22.399999999999977,
-    "textY" : -38.39999999999998,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "downtown line" ],
-    "lineIDs" : [ "NS21", "DT11" ]
-  }, {
-    "id" : "NS16",
-    "name" : "ang mo kio",
-    "x" : -480.0,
-    "y" : -570.0,
-    "textX" : 14.399999999999864,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS16" ]
-  }, {
-    "id" : "NS28",
-    "name" : "marina south pier",
-    "x" : -450.0,
-    "y" : 360.0,
-    "textX" : 13.600000000000023,
-    "textY" : 14.400000000000034,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS28" ]
-  }, {
-    "id" : "NS3",
-    "name" : "bukit gombak",
-    "x" : -1200.0,
-    "y" : -360.0,
-    "textX" : 14.399999999999977,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS3" ]
-  }, {
-    "id" : "NS5",
-    "name" : "yew tee",
-    "x" : -1200.0,
-    "y" : -570.0,
-    "textX" : -65.60000000000002,
-    "textY" : -24.799999999999955,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS5" ]
-  }, {
-    "id" : "",
-    "name" : "dhoby ghaut",
-    "x" : -510.0,
-    "y" : -60.0,
-    "textX" : 18.399999999999977,
-    "textY" : -8.0,
-    "isInterchange" : true,
-    "lineNames" : [ "north east line", "north south line", "circle line" ],
-    "lineIDs" : [ "NE6", "NS24", "CC1" ]
-  }, {
-    "id" : "NS23",
-    "name" : "somerset",
-    "x" : -600.0,
-    "y" : -120.0,
-    "textX" : 14.400000000000091,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS23" ]
-  }, {
-    "id" : "NS6",
-    "name" : "sungei kadut",
-    "x" : -1200.0,
-    "y" : -660.0,
-    "textX" : -89.60000000000002,
-    "textY" : -28.799999999999983,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS6" ]
-  }, {
-    "id" : "",
-    "name" : "woodlands",
-    "x" : -930.0,
-    "y" : -870.0,
-    "textX" : 19.200000000000045,
-    "textY" : -32.79999999999998,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "north south line" ],
-    "lineIDs" : [ "TE2", "NS9" ]
-  }, {
-    "id" : "NS14",
-    "name" : "khatib",
-    "x" : -480.0,
-    "y" : -690.0,
-    "textX" : 8.799999999999955,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS14" ]
-  }, {
-    "id" : "NS12",
-    "name" : "canberra",
-    "x" : -570.0,
-    "y" : -840.0,
-    "textX" : 13.600000000000136,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS12" ]
-  }, {
-    "id" : "NS19",
-    "name" : "toa payoh",
-    "x" : -480.0,
-    "y" : -360.0,
-    "textX" : 12.800000000000068,
-    "textY" : 13.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS19" ]
-  }, {
-    "id" : "NS18",
-    "name" : "braddell",
-    "x" : -480.0,
-    "y" : -420.0,
-    "textX" : 14.399999999999977,
-    "textY" : 12.0,
-    "isInterchange" : false,
-    "lineNames" : [ "north south line" ],
-    "lineIDs" : [ "NS18" ]
-  }, {
-    "id" : "",
-    "name" : "bishan",
-    "x" : -480.0,
-    "y" : -480.0,
-    "textX" : 19.200000000000045,
-    "textY" : -29.600000000000023,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "circle line" ],
-    "lineIDs" : [ "NS17", "CC15" ]
   } ],
   "edges" : [ {
     "from" : "NS1",

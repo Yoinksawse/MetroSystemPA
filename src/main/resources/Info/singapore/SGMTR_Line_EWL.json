@@ -4,106 +4,6 @@
   "colour" : "#009645",
   "lineType" : "MRT",
   "stations" : [ {
-    "id" : "EW10",
-    "name" : "kallang",
-    "x" : -210.0,
-    "y" : -60.0,
-    "textX" : 14.400000000000091,
-    "textY" : 9.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW10" ]
-  }, {
-    "id" : "",
-    "name" : "outram park",
-    "x" : -660.0,
-    "y" : 120.0,
-    "textX" : -88.80000000000007,
-    "textY" : 9.600000000000023,
-    "isInterchange" : true,
-    "lineNames" : [ "thomson-east coast line", "north east line", "east west line" ],
-    "lineIDs" : [ "TE17", "NE3", "EW16" ]
-  }, {
-    "id" : "EW26",
-    "name" : "lakeside",
-    "x" : -1320.0,
-    "y" : -150.0,
-    "textX" : -71.20000000000016,
-    "textY" : -4.0,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW26" ]
-  }, {
-    "id" : "",
-    "name" : "bugis",
-    "x" : -300.0,
-    "y" : 0.0,
-    "textX" : 18.40000000000009,
-    "textY" : 4.800000000000011,
-    "isInterchange" : true,
-    "lineNames" : [ "downtown line", "east west line" ],
-    "lineIDs" : [ "DT14", "EW12" ]
-  }, {
-    "id" : "EW11",
-    "name" : "lavender",
-    "x" : -240.0,
-    "y" : -30.0,
-    "textX" : 14.400000000000091,
-    "textY" : 10.400000000000034,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW11" ]
-  }, {
-    "id" : "",
-    "name" : "jurong east",
-    "x" : -1200.0,
-    "y" : -150.0,
-    "textX" : -31.199999999999932,
-    "textY" : -34.39999999999998,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "east west line" ],
-    "lineIDs" : [ "NS1", "EW24" ]
-  }, {
-    "id" : "EW28",
-    "name" : "pioneer",
-    "x" : -1380.0,
-    "y" : -270.0,
-    "textX" : 12.800000000000068,
-    "textY" : -24.0,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW28" ]
-  }, {
-    "id" : "",
-    "name" : "tanah merah",
-    "x" : 200.0,
-    "y" : -200.0,
-    "textX" : -16.799999999999955,
-    "textY" : 23.19999999999999,
-    "isInterchange" : true,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "CG0" ]
-  }, {
-    "id" : "",
-    "name" : "raffles place",
-    "x" : -450.0,
-    "y" : 210.0,
-    "textX" : -23.199999999999932,
-    "textY" : 20.80000000000001,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "east west line" ],
-    "lineIDs" : [ "NS26", "EW14" ]
-  }, {
-    "id" : "CG2",
-    "name" : "changi airport",
-    "x" : 320.0,
-    "y" : -200.0,
-    "textX" : 7.2000000000000455,
-    "textY" : 19.199999999999932,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "CG2" ]
-  }, {
     "id" : "EW17",
     "name" : "tiong bahru",
     "x" : -720.0,
@@ -113,166 +13,6 @@
     "isInterchange" : false,
     "lineNames" : [ "east west line" ],
     "lineIDs" : [ "EW17" ]
-  }, {
-    "id" : "EW15",
-    "name" : "tanjong pagar",
-    "x" : -600.0,
-    "y" : 210.0,
-    "textX" : -38.39999999999998,
-    "textY" : 16.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW15" ]
-  }, {
-    "id" : "EW5",
-    "name" : "bedok",
-    "x" : 120.0,
-    "y" : -180.0,
-    "textX" : 14.399999999999977,
-    "textY" : 9.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW5" ]
-  }, {
-    "id" : "EW23",
-    "name" : "clementi",
-    "x" : -1110.0,
-    "y" : -150.0,
-    "textX" : -27.200000000000045,
-    "textY" : 20.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW23" ]
-  }, {
-    "id" : "EW25",
-    "name" : "chinese garden",
-    "x" : -1260.0,
-    "y" : -150.0,
-    "textX" : -37.59999999999991,
-    "textY" : 20.0,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW25" ]
-  }, {
-    "id" : "EW32",
-    "name" : "tuas west road",
-    "x" : -1380.0,
-    "y" : -510.0,
-    "textX" : 12.799999999999955,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW32" ]
-  }, {
-    "id" : "EW22",
-    "name" : "dover",
-    "x" : -1020.0,
-    "y" : -150.0,
-    "textX" : -20.799999999999955,
-    "textY" : 21.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW22" ]
-  }, {
-    "id" : "EW19",
-    "name" : "queenstown",
-    "x" : -840.0,
-    "y" : -60.0,
-    "textX" : 12.800000000000068,
-    "textY" : -26.399999999999977,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW19" ]
-  }, {
-    "id" : "EW29",
-    "name" : "joo koon",
-    "x" : -1380.0,
-    "y" : -330.0,
-    "textX" : 13.600000000000023,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW29" ]
-  }, {
-    "id" : "EW1",
-    "name" : "pasir ris",
-    "x" : 200.0,
-    "y" : -400.0,
-    "textX" : 12.799999999999955,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW1" ]
-  }, {
-    "id" : "EW27",
-    "name" : "boon lay",
-    "x" : -1350.0,
-    "y" : -210.0,
-    "textX" : 12.0,
-    "textY" : -26.399999999999977,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW27" ]
-  }, {
-    "id" : "",
-    "name" : "buona vista",
-    "x" : -960.0,
-    "y" : -150.0,
-    "textX" : -7.2000000000000455,
-    "textY" : -37.60000000000002,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "east west line" ],
-    "lineIDs" : [ "CC22", "EW21" ]
-  }, {
-    "id" : "EW33",
-    "name" : "tuas link",
-    "x" : -1380.0,
-    "y" : -570.0,
-    "textX" : 14.399999999999977,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW33" ]
-  }, {
-    "id" : "EW3",
-    "name" : "simei",
-    "x" : 200.0,
-    "y" : -260.0,
-    "textX" : 14.400000000000091,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW3" ]
-  }, {
-    "id" : "EW20",
-    "name" : "commonwealth",
-    "x" : -900.0,
-    "y" : -120.0,
-    "textX" : 13.600000000000023,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW20" ]
-  }, {
-    "id" : "EW31",
-    "name" : "tuas crescent",
-    "x" : -1380.0,
-    "y" : -450.0,
-    "textX" : 12.0,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW31" ]
-  }, {
-    "id" : "",
-    "name" : "expo",
-    "x" : 260.0,
-    "y" : -200.0,
-    "textX" : -2.3999999999998636,
-    "textY" : 20.800000000000068,
-    "isInterchange" : true,
-    "lineNames" : [ "downtown line", "east west line" ],
-    "lineIDs" : [ "DT35", "CG1" ]
   }, {
     "id" : "",
     "name" : "tampines",
@@ -284,16 +24,6 @@
     "lineNames" : [ "downtown line", "east west line" ],
     "lineIDs" : [ "DT32", "EW2" ]
   }, {
-    "id" : "EW9",
-    "name" : "aljunied",
-    "x" : -150.0,
-    "y" : -90.0,
-    "textX" : 14.399999999999977,
-    "textY" : 11.200000000000045,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW9" ]
-  }, {
     "id" : "EW18",
     "name" : "redhill",
     "x" : -780.0,
@@ -303,36 +33,6 @@
     "isInterchange" : false,
     "lineNames" : [ "east west line" ],
     "lineIDs" : [ "EW18" ]
-  }, {
-    "id" : "",
-    "name" : "paya lebar",
-    "x" : -60.0,
-    "y" : -120.0,
-    "textX" : -27.200000000000045,
-    "textY" : 20.0,
-    "isInterchange" : true,
-    "lineNames" : [ "circle line", "east west line" ],
-    "lineIDs" : [ "CC9", "EW8" ]
-  }, {
-    "id" : "EW7",
-    "name" : "eunos",
-    "x" : 0.0,
-    "y" : -140.0,
-    "textX" : -5.600000000000023,
-    "textY" : 17.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW7" ]
-  }, {
-    "id" : "EW30",
-    "name" : "gul circle",
-    "x" : -1380.0,
-    "y" : -390.0,
-    "textX" : 14.399999999999977,
-    "textY" : -27.19999999999999,
-    "isInterchange" : false,
-    "lineNames" : [ "east west line" ],
-    "lineIDs" : [ "EW30" ]
   }, {
     "id" : "EW6",
     "name" : "kembangan",
@@ -345,14 +45,314 @@
     "lineIDs" : [ "EW6" ]
   }, {
     "id" : "",
+    "name" : "bugis",
+    "x" : -320.0,
+    "y" : 60.0,
+    "textX" : 18.40000000000009,
+    "textY" : 4.800000000000011,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "east west line" ],
+    "lineIDs" : [ "DT14", "EW12" ]
+  }, {
+    "id" : "EW19",
+    "name" : "queenstown",
+    "x" : -840.0,
+    "y" : -60.0,
+    "textX" : 12.800000000000068,
+    "textY" : -26.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW19" ]
+  }, {
+    "id" : "EW5",
+    "name" : "bedok",
+    "x" : 120.0,
+    "y" : -180.0,
+    "textX" : 14.399999999999977,
+    "textY" : 9.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW5" ]
+  }, {
+    "id" : "",
+    "name" : "outram park",
+    "x" : -660.0,
+    "y" : 120.0,
+    "textX" : -88.80000000000007,
+    "textY" : 9.600000000000023,
+    "isInterchange" : true,
+    "lineNames" : [ "thomson-east coast line", "north east line", "east west line" ],
+    "lineIDs" : [ "TE17", "NE3", "EW16" ]
+  }, {
+    "id" : "EW28",
+    "name" : "pioneer",
+    "x" : -1380.0,
+    "y" : -270.0,
+    "textX" : 12.800000000000068,
+    "textY" : -24.0,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW28" ]
+  }, {
+    "id" : "EW22",
+    "name" : "dover",
+    "x" : -1020.0,
+    "y" : -150.0,
+    "textX" : -20.799999999999955,
+    "textY" : 21.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW22" ]
+  }, {
+    "id" : "",
+    "name" : "buona vista",
+    "x" : -960.0,
+    "y" : -150.0,
+    "textX" : -7.2000000000000455,
+    "textY" : -37.60000000000002,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "east west line" ],
+    "lineIDs" : [ "CC22", "EW21" ]
+  }, {
+    "id" : "EW25",
+    "name" : "chinese garden",
+    "x" : -1260.0,
+    "y" : -150.0,
+    "textX" : -46.399999999999864,
+    "textY" : 21.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW25" ]
+  }, {
+    "id" : "EW23",
+    "name" : "clementi",
+    "x" : -1110.0,
+    "y" : -150.0,
+    "textX" : -27.200000000000045,
+    "textY" : 20.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW23" ]
+  }, {
+    "id" : "",
+    "name" : "raffles place",
+    "x" : -480.0,
+    "y" : 180.0,
+    "textX" : -32.799999999999955,
+    "textY" : 16.0,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "east west line" ],
+    "lineIDs" : [ "NS26", "EW14" ]
+  }, {
+    "id" : "EW15",
+    "name" : "tanjong pagar",
+    "x" : -600.0,
+    "y" : 240.0,
+    "textX" : -40.80000000000007,
+    "textY" : 12.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW15" ]
+  }, {
+    "id" : "EW32",
+    "name" : "tuas west road",
+    "x" : -1380.0,
+    "y" : -520.0,
+    "textX" : 12.799999999999955,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW32" ]
+  }, {
+    "id" : "EW33",
+    "name" : "tuas link",
+    "x" : -1380.0,
+    "y" : -570.0,
+    "textX" : 14.399999999999977,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW33" ]
+  }, {
+    "id" : "",
+    "name" : "expo",
+    "x" : 260.0,
+    "y" : -200.0,
+    "textX" : -2.3999999999998636,
+    "textY" : 20.800000000000068,
+    "isInterchange" : true,
+    "lineNames" : [ "downtown line", "east west line" ],
+    "lineIDs" : [ "DT35", "CG1" ]
+  }, {
+    "id" : "EW11",
+    "name" : "lavender",
+    "x" : -260.0,
+    "y" : 20.0,
+    "textX" : 14.400000000000091,
+    "textY" : 10.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW11" ]
+  }, {
+    "id" : "",
     "name" : "city hall",
-    "x" : -450.0,
-    "y" : 90.0,
-    "textX" : 17.600000000000023,
-    "textY" : -1.599999999999966,
+    "x" : -460.0,
+    "y" : 80.0,
+    "textX" : -25.59999999999991,
+    "textY" : 15.999999999999943,
     "isInterchange" : true,
     "lineNames" : [ "north south line", "east west line" ],
     "lineIDs" : [ "NS25", "EW13" ]
+  }, {
+    "id" : "EW10",
+    "name" : "kallang",
+    "x" : -220.0,
+    "y" : -20.0,
+    "textX" : 14.400000000000091,
+    "textY" : 9.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW10" ]
+  }, {
+    "id" : "CG2",
+    "name" : "changi airport",
+    "x" : 320.0,
+    "y" : -200.0,
+    "textX" : 7.2000000000000455,
+    "textY" : 19.199999999999932,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "CG2" ]
+  }, {
+    "id" : "EW7",
+    "name" : "eunos",
+    "x" : 0.0,
+    "y" : -140.0,
+    "textX" : -5.600000000000023,
+    "textY" : 17.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW7" ]
+  }, {
+    "id" : "",
+    "name" : "paya lebar",
+    "x" : -80.0,
+    "y" : -120.0,
+    "textX" : 11.199999999999818,
+    "textY" : 14.400000000000034,
+    "isInterchange" : true,
+    "lineNames" : [ "circle line", "east west line" ],
+    "lineIDs" : [ "CC9", "EW8" ]
+  }, {
+    "id" : "",
+    "name" : "tanah merah",
+    "x" : 200.0,
+    "y" : -200.0,
+    "textX" : -32.799999999999955,
+    "textY" : 19.99999999999997,
+    "isInterchange" : true,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "CG0" ]
+  }, {
+    "id" : "EW31",
+    "name" : "tuas crescent",
+    "x" : -1380.0,
+    "y" : -460.0,
+    "textX" : 12.0,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW31" ]
+  }, {
+    "id" : "EW9",
+    "name" : "aljunied",
+    "x" : -160.0,
+    "y" : -60.0,
+    "textX" : 14.399999999999977,
+    "textY" : 11.200000000000045,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW9" ]
+  }, {
+    "id" : "EW26",
+    "name" : "lakeside",
+    "x" : -1320.0,
+    "y" : -150.0,
+    "textX" : -71.20000000000016,
+    "textY" : -4.0,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW26" ]
+  }, {
+    "id" : "EW30",
+    "name" : "gul circle",
+    "x" : -1380.0,
+    "y" : -390.0,
+    "textX" : 14.399999999999977,
+    "textY" : -27.19999999999999,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW30" ]
+  }, {
+    "id" : "EW1",
+    "name" : "pasir ris",
+    "x" : 200.0,
+    "y" : -400.0,
+    "textX" : 12.799999999999955,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW1" ]
+  }, {
+    "id" : "EW29",
+    "name" : "joo koon",
+    "x" : -1380.0,
+    "y" : -330.0,
+    "textX" : 13.600000000000023,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW29" ]
+  }, {
+    "id" : "EW20",
+    "name" : "commonwealth",
+    "x" : -900.0,
+    "y" : -120.0,
+    "textX" : 13.600000000000023,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW20" ]
+  }, {
+    "id" : "",
+    "name" : "jurong east",
+    "x" : -1200.0,
+    "y" : -150.0,
+    "textX" : -31.199999999999932,
+    "textY" : -34.39999999999998,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "east west line" ],
+    "lineIDs" : [ "NS1", "EW24" ]
+  }, {
+    "id" : "EW3",
+    "name" : "simei",
+    "x" : 200.0,
+    "y" : -260.0,
+    "textX" : 14.400000000000091,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW3" ]
+  }, {
+    "id" : "EW27",
+    "name" : "boon lay",
+    "x" : -1350.0,
+    "y" : -210.0,
+    "textX" : 12.0,
+    "textY" : -26.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "east west line" ],
+    "lineIDs" : [ "EW27" ]
   } ],
   "edges" : [ {
     "from" : "EW1",

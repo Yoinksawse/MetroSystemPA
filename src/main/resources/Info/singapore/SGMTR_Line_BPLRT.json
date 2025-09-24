@@ -4,56 +4,6 @@
   "colour" : "#A9A9A9",
   "lineType" : "LRT",
   "stations" : [ {
-    "id" : "BP5",
-    "name" : "phoenix",
-    "x" : -1040.0,
-    "y" : -620.0,
-    "textX" : -24.0,
-    "textY" : 16.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "bukit panjang lrt" ],
-    "lineIDs" : [ "BP5" ]
-  }, {
-    "id" : "BP11",
-    "name" : "segar",
-    "x" : -1080.0,
-    "y" : -750.0,
-    "textX" : 14.399999999999977,
-    "textY" : 10.400000000000006,
-    "isInterchange" : false,
-    "lineNames" : [ "bukit panjang lrt" ],
-    "lineIDs" : [ "BP11" ]
-  }, {
-    "id" : "BP4",
-    "name" : "teck whye",
-    "x" : -1100.0,
-    "y" : -620.0,
-    "textX" : -80.79999999999995,
-    "textY" : -16.000000000000057,
-    "isInterchange" : false,
-    "lineNames" : [ "bukit panjang lrt" ],
-    "lineIDs" : [ "BP4" ]
-  }, {
-    "id" : "BP7",
-    "name" : "petir",
-    "x" : -960.0,
-    "y" : -690.0,
-    "textX" : 12.0,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "bukit panjang lrt" ],
-    "lineIDs" : [ "BP7" ]
-  }, {
-    "id" : "BP9",
-    "name" : "bangkit",
-    "x" : -990.0,
-    "y" : -780.0,
-    "textX" : 14.399999999999977,
-    "textY" : -29.599999999999994,
-    "isInterchange" : false,
-    "lineNames" : [ "bukit panjang lrt" ],
-    "lineIDs" : [ "BP9" ]
-  }, {
     "id" : "BP2",
     "name" : "south view",
     "x" : -1140.0,
@@ -74,15 +24,15 @@
     "lineNames" : [ "bukit panjang lrt" ],
     "lineIDs" : [ "BP3" ]
   }, {
-    "id" : "",
-    "name" : "choa chu kang",
-    "x" : -1200.0,
-    "y" : -480.0,
-    "textX" : 15.199999999999932,
-    "textY" : 11.199999999999989,
-    "isInterchange" : true,
-    "lineNames" : [ "north south line", "bukit panjang lrt" ],
-    "lineIDs" : [ "NS4", "BP1" ]
+    "id" : "BP11",
+    "name" : "segar",
+    "x" : -1080.0,
+    "y" : -750.0,
+    "textX" : 14.399999999999977,
+    "textY" : 10.400000000000006,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP11" ]
   }, {
     "id" : "",
     "name" : "bukit panjang",
@@ -93,16 +43,6 @@
     "isInterchange" : true,
     "lineNames" : [ "downtown line", "bukit panjang lrt" ],
     "lineIDs" : [ "DT1", "BP6" ]
-  }, {
-    "id" : "BP13",
-    "name" : "senja",
-    "x" : -1050.0,
-    "y" : -660.0,
-    "textX" : 13.599999999999909,
-    "textY" : -28.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "bukit panjang lrt" ],
-    "lineIDs" : [ "BP13" ]
   }, {
     "id" : "BP8",
     "name" : "pending",
@@ -124,6 +64,36 @@
     "lineNames" : [ "bukit panjang lrt" ],
     "lineIDs" : [ "BP10" ]
   }, {
+    "id" : "BP7",
+    "name" : "petir",
+    "x" : -960.0,
+    "y" : -690.0,
+    "textX" : 12.0,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP7" ]
+  }, {
+    "id" : "",
+    "name" : "choa chu kang",
+    "x" : -1200.0,
+    "y" : -480.0,
+    "textX" : 15.199999999999932,
+    "textY" : 11.199999999999989,
+    "isInterchange" : true,
+    "lineNames" : [ "north south line", "bukit panjang lrt" ],
+    "lineIDs" : [ "NS4", "BP1" ]
+  }, {
+    "id" : "BP5",
+    "name" : "phoenix",
+    "x" : -1040.0,
+    "y" : -620.0,
+    "textX" : -24.0,
+    "textY" : 16.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP5" ]
+  }, {
     "id" : "BP12",
     "name" : "jelapang",
     "x" : -1080.0,
@@ -133,6 +103,36 @@
     "isInterchange" : false,
     "lineNames" : [ "bukit panjang lrt" ],
     "lineIDs" : [ "BP12" ]
+  }, {
+    "id" : "BP4",
+    "name" : "teck whye",
+    "x" : -1100.0,
+    "y" : -620.0,
+    "textX" : -80.79999999999995,
+    "textY" : -16.000000000000057,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP4" ]
+  }, {
+    "id" : "BP13",
+    "name" : "senja",
+    "x" : -1050.0,
+    "y" : -660.0,
+    "textX" : 13.599999999999909,
+    "textY" : -28.80000000000001,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP13" ]
+  }, {
+    "id" : "BP9",
+    "name" : "bangkit",
+    "x" : -990.0,
+    "y" : -780.0,
+    "textX" : 14.399999999999977,
+    "textY" : -29.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "bukit panjang lrt" ],
+    "lineIDs" : [ "BP9" ]
   } ],
   "edges" : [ {
     "from" : "BP1",

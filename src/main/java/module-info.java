@@ -1,4 +1,4 @@
-module com.example.georgebra {
+module com.example.RouteCrafter {
     requires javafx.controls;
     requires javafx.fxml;
     requires exp4j;
@@ -14,22 +14,22 @@ module com.example.georgebra {
     requires javafx.media;
 
 
-    opens com.example.georgebra to javafx.fxml;
-    exports com.example.georgebra;
-    exports com.example.georgebra.Controller;
-    opens com.example.georgebra.Controller to javafx.fxml;
-    exports com.example.georgebra.Model;
-    opens com.example.georgebra.Model to javafx.fxml, com.fasterxml.jackson.databind;
-    exports com.example.georgebra.Model.InputHandler;
-    opens com.example.georgebra.Model.InputHandler to javafx.fxml, com.fasterxml.jackson.databind;
-    exports com.example.georgebra.Model.TesterClasses;
-    opens com.example.georgebra.Model.TesterClasses to javafx.fxml;
-    exports com.example.georgebra.Model.GraphTheoryHandler;
-    opens com.example.georgebra.Model.GraphTheoryHandler to com.fasterxml.jackson.databind, javafx.fxml;
-    exports com.example.georgebra.Model.StationTypes;
-    exports com.example.georgebra.Model.LineTypes;
-    exports com.example.georgebra.Model.Interfaces;
-    opens com.example.georgebra.Model.Interfaces to com.fasterxml.jackson.databind, javafx.fxml;
+    opens com.example.RouteCrafter to javafx.fxml;
+    exports com.example.RouteCrafter;
+    exports com.example.RouteCrafter.Controller;
+    opens com.example.RouteCrafter.Controller to javafx.fxml;
+    exports com.example.RouteCrafter.Model;
+    opens com.example.RouteCrafter.Model to javafx.fxml, com.fasterxml.jackson.databind;
+    exports com.example.RouteCrafter.Model.InputHandler;
+    opens com.example.RouteCrafter.Model.InputHandler to javafx.fxml, com.fasterxml.jackson.databind;
+    exports com.example.RouteCrafter.Model.TesterClasses;
+    opens com.example.RouteCrafter.Model.TesterClasses to javafx.fxml;
+    exports com.example.RouteCrafter.Model.GraphTheoryHandler;
+    opens com.example.RouteCrafter.Model.GraphTheoryHandler to com.fasterxml.jackson.databind, javafx.fxml;
+    exports com.example.RouteCrafter.Model.StationTypes;
+    exports com.example.RouteCrafter.Model.LineTypes;
+    exports com.example.RouteCrafter.Model.Interfaces;
+    opens com.example.RouteCrafter.Model.Interfaces to com.fasterxml.jackson.databind, javafx.fxml;
 
 
 }

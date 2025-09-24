@@ -4,9 +4,99 @@
   "colour" : "#A9A9A9",
   "lineType" : "LRT",
   "stations" : [ {
+    "id" : "PE6",
+    "name" : "oasis",
+    "x" : 140.0,
+    "y" : -700.0,
+    "textX" : 14.399999999999977,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE6" ]
+  }, {
+    "id" : "PW2",
+    "name" : "teck lee",
+    "x" : -100.0,
+    "y" : -780.0,
+    "textX" : 11.200000000000045,
+    "textY" : -21.599999999999994,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW2" ]
+  }, {
+    "id" : "PW4",
+    "name" : "samudera",
+    "x" : -120.0,
+    "y" : -880.0,
+    "textX" : -71.20000000000005,
+    "textY" : -4.800000000000011,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW4" ]
+  }, {
+    "id" : "PW1",
+    "name" : "sam kee",
+    "x" : -60.0,
+    "y" : -740.0,
+    "textX" : -1.599999999999909,
+    "textY" : -26.400000000000006,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW1" ]
+  }, {
+    "id" : "PE4",
+    "name" : "riviera",
+    "x" : 160.0,
+    "y" : -600.0,
+    "textX" : 14.399999999999977,
+    "textY" : 6.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE4" ]
+  }, {
+    "id" : "PW5",
+    "name" : "nibong",
+    "x" : -60.0,
+    "y" : -900.0,
+    "textX" : 12.0,
+    "textY" : -29.600000000000023,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW5" ]
+  }, {
+    "id" : "PW3",
+    "name" : "punggol point",
+    "x" : -140.0,
+    "y" : -820.0,
+    "textX" : 11.19999999999959,
+    "textY" : -22.399999999999977,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW3" ]
+  }, {
+    "id" : "PW6",
+    "name" : "sumang",
+    "x" : -20.0,
+    "y" : -860.0,
+    "textX" : 12.0,
+    "textY" : -28.0,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW6" ]
+  }, {
+    "id" : "PE5",
+    "name" : "kadaloor",
+    "x" : 180.0,
+    "y" : -660.0,
+    "textX" : 10.400000000000091,
+    "textY" : 10.400000000000034,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE5" ]
+  }, {
     "id" : "PE1",
     "name" : "cove",
-    "x" : 20.0,
+    "x" : 0.0,
     "y" : -660.0,
     "textX" : 12.800000000000068,
     "textY" : -28.80000000000001,
@@ -14,69 +104,9 @@
     "lineNames" : [ "punggol lrt" ],
     "lineIDs" : [ "PE1" ]
   }, {
-    "id" : "PW3",
-    "name" : "punggol point",
-    "x" : -90.0,
-    "y" : -840.0,
-    "textX" : 13.600000000000023,
-    "textY" : 12.800000000000011,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW3" ]
-  }, {
-    "id" : "PE3",
-    "name" : "coral edge",
-    "x" : 120.0,
-    "y" : -600.0,
-    "textX" : 5.599999999999909,
-    "textY" : 18.399999999999977,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PE3" ]
-  }, {
-    "id" : "PE5",
-    "name" : "kadaloor",
-    "x" : 180.0,
-    "y" : -700.0,
-    "textX" : 10.400000000000091,
-    "textY" : 10.400000000000034,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PE5" ]
-  }, {
-    "id" : "PW5",
-    "name" : "nibong",
-    "x" : 0.0,
-    "y" : -870.0,
-    "textX" : 12.0,
-    "textY" : -29.600000000000023,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW5" ]
-  }, {
-    "id" : "PW7",
-    "name" : "soo teck",
-    "x" : 30.0,
-    "y" : -780.0,
-    "textX" : 10.399999999999977,
-    "textY" : -29.599999999999966,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW7" ]
-  }, {
-    "id" : "PE6",
-    "name" : "oasis",
-    "x" : 120.0,
-    "y" : -740.0,
-    "textX" : 14.399999999999977,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PE6" ]
-  }, {
     "id" : "PE2",
     "name" : "meridian",
-    "x" : 60.0,
+    "x" : 40.0,
     "y" : -620.0,
     "textX" : 13.600000000000023,
     "textY" : -29.600000000000023,
@@ -84,39 +114,9 @@
     "lineNames" : [ "punggol lrt" ],
     "lineIDs" : [ "PE2" ]
   }, {
-    "id" : "PW2",
-    "name" : "teck lee",
-    "x" : -90.0,
-    "y" : -780.0,
-    "textX" : 14.400000000000091,
-    "textY" : -24.80000000000001,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW2" ]
-  }, {
-    "id" : "PW1",
-    "name" : "sam kee",
-    "x" : -60.0,
-    "y" : -750.0,
-    "textX" : 14.399999999999977,
-    "textY" : -26.400000000000006,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW1" ]
-  }, {
-    "id" : "PW6",
-    "name" : "sumang",
-    "x" : 30.0,
-    "y" : -840.0,
-    "textX" : 12.0,
-    "textY" : -28.0,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW6" ]
-  }, {
     "id" : "PE7",
     "name" : "damai",
-    "x" : 60.0,
+    "x" : 100.0,
     "y" : -740.0,
     "textX" : 13.600000000000023,
     "textY" : -28.0,
@@ -124,35 +124,35 @@
     "lineNames" : [ "punggol lrt" ],
     "lineIDs" : [ "PE7" ]
   }, {
-    "id" : "PE4",
-    "name" : "riviera",
-    "x" : 180.0,
-    "y" : -640.0,
-    "textX" : 14.399999999999977,
-    "textY" : 6.400000000000034,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PE4" ]
-  }, {
-    "id" : "PW4",
-    "name" : "samudera",
-    "x" : -60.0,
-    "y" : -870.0,
-    "textX" : -79.20000000000005,
-    "textY" : -24.0,
-    "isInterchange" : false,
-    "lineNames" : [ "punggol lrt" ],
-    "lineIDs" : [ "PW4" ]
-  }, {
     "id" : "",
     "name" : "punggol",
-    "x" : 0.0,
-    "y" : -720.0,
-    "textX" : 19.199999999999932,
-    "textY" : 3.200000000000017,
+    "x" : 20.0,
+    "y" : -740.0,
+    "textX" : 10.399999999999636,
+    "textY" : -23.99999999999997,
     "isInterchange" : true,
     "lineNames" : [ "punggol lrt", "north east line" ],
     "lineIDs" : [ "PTC", "NE17" ]
+  }, {
+    "id" : "PW7",
+    "name" : "soo teck",
+    "x" : 20.0,
+    "y" : -820.0,
+    "textX" : 10.399999999999977,
+    "textY" : -29.599999999999966,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PW7" ]
+  }, {
+    "id" : "PE3",
+    "name" : "coral edge",
+    "x" : 80.0,
+    "y" : -580.0,
+    "textX" : 6.399999999999864,
+    "textY" : 8.799999999999955,
+    "isInterchange" : false,
+    "lineNames" : [ "punggol lrt" ],
+    "lineIDs" : [ "PE3" ]
   } ],
   "edges" : [ {
     "from" : "PTC",
