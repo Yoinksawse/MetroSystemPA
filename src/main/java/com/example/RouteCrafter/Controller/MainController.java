@@ -156,8 +156,14 @@ public class MainController {
         });
 
         displayedgeweight_checkbox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
-            if (isSelected) { showEdgeWeight = true; displayMap(showEdgeWeight); }
-            if (!isSelected) { showEdgeWeight = false; displayMap(showEdgeWeight); }
+            if (isSelected) {
+                showEdgeWeight = true;
+                if (isMapShown) displayMap(showEdgeWeight);
+            }
+            if (!isSelected) {
+                showEdgeWeight = false;
+                if (isMapShown) displayMap(showEdgeWeight);
+            }
         });
 
         darkmode_checkbox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
