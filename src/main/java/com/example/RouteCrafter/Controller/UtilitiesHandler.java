@@ -7,6 +7,7 @@ import com.example.RouteCrafter.Model.StationTypes.SingleStation;
 import com.example.RouteCrafter.Model.StationTypes.Station;
 import javafx.animation.Animation;
 import javafx.animation.FillTransition;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -293,10 +294,10 @@ public class UtilitiesHandler { //Meant for containing methods repeatedly used/ 
 
             //System.out.println(u.getName() + " " + v.getName() + ": " + colours);
 
-            edgeLine.startXProperty().bindBidirectional(UGroup.layoutXProperty());
             edgeLine.startYProperty().bindBidirectional(UGroup.layoutYProperty());
             edgeLine.endXProperty().bindBidirectional(VGroup.layoutXProperty());
             edgeLine.endYProperty().bindBidirectional(VGroup.layoutYProperty());
+            edgeLine.startXProperty().bindBidirectional(UGroup.layoutXProperty());
 
             if (lineTypes.get(0).equalsIgnoreCase("LRT")) {
                 edgeLine.setStrokeWidth(MAX_EDGE_WIDTH / 3 * 2);
@@ -400,9 +401,7 @@ public class UtilitiesHandler { //Meant for containing methods repeatedly used/ 
 
         return finalEdge;
     }
-    protected Group drawMetroSystem(Pair<ArrayList<Station>, Integer> bestPath, Station searched, boolean showEdgeWeight) {
-        //clean UI
-        main.currentSystem.getChildren().clear();
+    protected void drawMetroSystem(Pair<ArrayList<Station>, Integer> bestPath, Station searched, boolean showEdgeWeight) {
         main.bestPathThis = bestPath;
 
         ArrayList<Station> bestPathStations = (bestPath != null) ? bestPath.getKey(): null;
@@ -481,16 +480,6 @@ public class UtilitiesHandler { //Meant for containing methods repeatedly used/ 
             }
         }
 
-        // draw all stations first
-        HashMap<String, Group> stationGroups = new HashMap<>();
-        for (Station s: stations) {
-            boolean beingSearched = (searched != null) ? (s.getName().equalsIgnoreCase(searched.getName())) : false;
-
-            boolean shouldHighlight = needHighlight && bestPathStationNames.contains(s.getName().toLowerCase());
-            Group stnGrp = drawMetroStation(s, shouldHighlight, beingSearched);
-            stationGroups.put(s.getName(), stnGrp);
-        }
-
         // bfs and plot stations and edges along the way
         Queue<String> q = new ArrayDeque<>();
         q.add((String) stationNameToStationMap.keySet().toArray()[0]);
@@ -500,12 +489,11 @@ public class UtilitiesHandler { //Meant for containing methods repeatedly used/ 
         visited.put(stationToLocalIndexMap.get(q.peek()), true);
 
         HashSet<Pair<Station, Station>> edges = new HashSet<>();
-
         while (!q.isEmpty()) {
             String curStnName = q.poll();
             Station curStn = stationNameToStationMap.get(curStnName);
             int curStnLocalIndex = stationNameToLocalIndexMap.get(curStnName);
-            Group curGroup = stationGroups.get(curStnName);
+            //Group curGroup = stationGroups.get(curStnName);
 
             for (Map.Entry<Integer, Integer> entry: adjListLocal[curStnLocalIndex].entrySet()) {
                 int nxtIndex = entry.getKey();
@@ -518,23 +506,57 @@ public class UtilitiesHandler { //Meant for containing methods repeatedly used/ 
                     q.add(nxtStnName);
                 }
 
-                Group nxtGroup = stationGroups.get(nxtStnName);
+                //Group nxtGroup = stationGroups.get(nxtStnName);
                 Pair<Station, Station> edgePair1 = new Pair<>(curStn, nxtStn);
                 Pair<Station, Station> edgePair2 = new Pair<>(nxtStn, curStn);
                 if (!edges.contains(edgePair1) && !edges.contains(edgePair2)) {
                     edges.add(edgePair1);
-                    edges.add(edgePair2);
-
-                    Group edgeGroup = drawEdge(curStn, nxtStn, curGroup, nxtGroup, nxtTime);
-                    main.currentSystem.getChildren().add(edgeGroup);
-                    edgeGroup.toBack();
                 }
             }
         }
 
-        for (Group g: stationGroups.values()) main.currentSystem.getChildren().add(g);
+        Platform.runLater(() -> {
+            Group currentMapGroup = new Group(); // Or new Pane();
 
-        return main.currentSystem;
+            // draw all stations first
+            HashMap<String, Group> stationGroups = new HashMap<>();
+            for (Station s: stations) {
+                boolean beingSearched = (searched != null) ? (s.getName().equalsIgnoreCase(searched.getName())) : false;
+
+                boolean shouldHighlight = needHighlight && bestPathStationNames.contains(s.getName().toLowerCase());
+                Group stnGrp = drawMetroStation(s, shouldHighlight, beingSearched);
+                stationGroups.put(s.getName(), stnGrp);
+            }
+
+            ArrayList<Group> edgeGroups = new ArrayList<>();
+
+            for (Pair<Station, Station> edgePair : edges) {
+                Station u = edgePair.getKey();
+                Station v = edgePair.getValue();
+
+                // Ensure we only draw each edge once (e.g., from A->B, but not B->A if already drawn)
+                // The original logic with edges.add(edgePair1); edges.add(edgePair2); is a common pattern
+                // but for simplicity, let's use the actual set:
+                if (!edges.contains(new Pair<>(v, u))) {
+                    Group UGroup = stationGroups.get(u.getName());
+                    Group VGroup = stationGroups.get(v.getName());
+
+                    Integer nxtTime = (showEdgeWeight) ? adjListLocal[stationNameToLocalIndexMap.get(u.getName().toLowerCase())].get(stationNameToLocalIndexMap.get(v.getName().toLowerCase())) : null;
+
+                    // Calls drawEdge on the JAT
+                    Group edgeGroup = drawEdge(u, v, UGroup, VGroup, nxtTime);
+                    edgeGroups.add(edgeGroup);
+                }
+            }
+
+
+            currentMapGroup.getChildren().addAll(stationGroups.values());
+            currentMapGroup.getChildren().addAll(edgeGroups);
+            for (Group edge: edgeGroups) edge.toBack();
+
+            main.mapContainer.getChildren().clear();
+            main.mapContainer.getChildren().add(currentMapGroup);
+        });
     }
 
     protected void drawLineInfoBox(MetroLine mtl, String lineColourName) {

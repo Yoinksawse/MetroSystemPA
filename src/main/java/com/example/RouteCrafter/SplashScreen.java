@@ -24,6 +24,7 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class SplashScreen extends Application {
+    //InputStream is = getClass().getResourceAsStream("/data/config.json");
     private static final String SPLASH_GIF = "/com/example/RouteCrafter.View/train-drivethrough.gif";
     private static final int SPLASH_WIDTH = 720;
     private static final int SPLASH_HEIGHT = 480;
@@ -134,6 +135,9 @@ public class SplashScreen extends Application {
     }
 
     public static void main(String[] args) {
+        Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+            e.printStackTrace();
+        });
         launch(args);
     }
 }

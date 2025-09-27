@@ -6,6 +6,7 @@ import com.example.RouteCrafter.Model.MetroSystem;
 import com.example.RouteCrafter.Model.StationTypes.Interchange;
 import com.example.RouteCrafter.Model.StationTypes.Station;
 import com.example.RouteCrafter.MyApplication;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.scene.control.Alert.*;
@@ -25,6 +26,7 @@ import javafx.util.Pair;
 
 import javax.naming.directory.InvalidAttributesException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -33,7 +35,7 @@ import java.util.regex.Pattern;
 public class MainController {
     //outside fields
     @FXML
-    public StackPane map_container;
+    public StackPane map_container; //TODO
     public VBox rootVBox, lineinfos_vbox;
     public ToolBar selectedstation_infobox;
     public GridPane rootGrid;
@@ -55,7 +57,7 @@ public class MainController {
     protected int curExchangeCnt;
 
     protected StackPane mapContainer; //CONTAINERS FOR DATA
-    protected Group currentSystem = new Group();
+    //protected Group currentSystem = new Group();
     protected IOHandler ioHandler;
     protected MetroSystem msys;
     protected String systemID;
@@ -296,25 +298,21 @@ public class MainController {
     @FXML
     public void getInput() {
         lineinfos_vbox.getChildren().clear();
-        //systemID = map_city_choice.getText();
         cityName = map_city_choice.getText();
-        try {
-            ioHandler = new IOHandler(cityName);
-            this.msys = ioHandler.getMetroSystem();
 
-            averageExchangeTime = ioHandler.getExchangeTime();
-        }
-        catch (InvalidAlgorithmParameterException | InvalidAttributesException e) {
-            System.out.println("Input Exception! \n" + e);
-        }
-        catch (IllegalStateException e) {
-            try {
-                String availableCities = IOHandler.getAvailableCities();
-                utils.showAlert("Metro System not found. Detected: \n" + availableCities, AlertType.WARNING);
-            } catch (IOException ex) { }
-        }
+        //TODO: multithreading
+        Task<Pair<IOHandler, MetroSystem>> inputTask =  new Task<>() {
+            @Override
+            protected Pair<IOHandler, MetroSystem> call() throws InvalidAlgorithmParameterException, InvalidAttributesException, URISyntaxException, IOException {
+                ioHandler = new IOHandler(cityName);
+                msys = ioHandler.getMetroSystem();
+                averageExchangeTime = ioHandler.getExchangeTime();
+                return new Pair<>(ioHandler, msys);
+            }
+        };
 
-        if (this.msys != null) {
+        inputTask.setOnSucceeded(ev -> {
+            if (this.msys == null) return;
             clearPath();
 
             if (devMode) {
@@ -348,8 +346,14 @@ public class MainController {
 
             displayMap(showEdgeWeight);
             isMapShown = true;
-        }
+        });
+
+        inputTask.setOnFailed(e -> {
+            utils.showAlert(inputTask.getException().toString(), AlertType.ERROR);
+        });
+        new Thread(inputTask).start();
     }
+
     @FXML
     public void saveFile() {
         ioHandler.setMetroSystem(this.msys); //update
@@ -391,7 +395,7 @@ public class MainController {
 
             displayMap(showEdgeWeight);
 
-            fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
+            fastestroutetime_textfield.setText("Time needed: " + bestPathThis.getValue() + "min");
             unshow_route.setDisable(false);
             clearmap_button.setDisable(false);
         });
@@ -431,7 +435,7 @@ public class MainController {
             displayMap(showEdgeWeight);
 
             unshow_route.setDisable(false);
-            fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min\n Exchanges: " + curExchangeCnt);
+            fastestroutetime_textfield.setText("Time needed: " + bestPathThis.getValue() + "min (" + curExchangeCnt + ") exc.");
         });
 
         genPathTask.setOnFailed(e -> {
@@ -495,8 +499,14 @@ public class MainController {
         if (bestPathThis != null)
             this.fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
 
-        mapContainer.getChildren().clear();
-        mapContainer.getChildren().add(utils.drawMetroSystem(bestPathThis, searchedStation, showEdgeWeight));
+        Task<Void> drawMsysTask = new Task() {
+            @Override
+            protected Void call() {
+                utils.drawMetroSystem(bestPathThis, searchedStation, showEdgeWeight);
+                return null;
+            }
+        };
+        new Thread(drawMsysTask).start();
 
         final double[] mouseAnchor = new double[2];
         final double[] initialTranslate = new double[2];

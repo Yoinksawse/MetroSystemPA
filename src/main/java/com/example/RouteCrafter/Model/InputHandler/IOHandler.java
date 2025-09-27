@@ -16,6 +16,7 @@ import javax.naming.directory.InvalidAttributesException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.*;
@@ -31,7 +32,9 @@ public class IOHandler {
     private String systemID;
     private String systemName;
     private int exchangeTime;
-    private final static String root = System.getProperty("user.home") + File.separator + ".Georgebra/";
+    //private final static String root = System.getProperty("user.home") + "/" + ".RouteCrafter/";
+    private File executionDir;
+    private final static String ROOT_DATA_NAME = "RouteCrafterData";
     private String thisRoot;
     private ArrayList<String> metroLineIDs = new ArrayList<>();
     private ArrayList<MetroLineData> metroLineDataList = new ArrayList<>();
@@ -42,6 +45,12 @@ public class IOHandler {
     private static Pattern containDigit = Pattern.compile("[0-9]+");
 
     public IOHandler(String systemName) throws IllegalStateException, InvalidAlgorithmParameterException, InvalidAttributesException {
+        try {
+            File jarFile = new File(IOHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            executionDir = jarFile.getParentFile();
+            if (executionDir == null) executionDir = new File(".");
+        } catch (URISyntaxException e) { throw new IllegalStateException("Failed to determine app execution path.", e); }
+
         this.systemName = systemName.toLowerCase();
         this.exchangeTime = 3;
 
@@ -53,13 +62,12 @@ public class IOHandler {
             throw new InvalidAttributesException("nonexistent city");
         }
 
-        Path basePath = Paths.get(root);
-        thisRoot = basePath + File.separator + this.systemName + File.separator;
+        Path dataRootPath = executionDir.toPath().resolve(ROOT_DATA_NAME);
+        Path cityDataPath = dataRootPath.resolve(this.systemName);
+        thisRoot = cityDataPath + "/";
 
-        if (!Files.exists(basePath)) {
-            try { Files.createDirectories(basePath); }
-            catch (IOException e) {}
-        }
+        try { Files.createDirectories(cityDataPath); }
+        catch (IOException e) { }
 
         /*
         Matcher matcher = MetroSystem.systemIDPattern.matcher(systemID);
@@ -145,8 +153,7 @@ public class IOHandler {
                 Station v = stationsHashMap.get(edgeData.getTo());
                 int time = edgeData.getTime();
 
-                if (time <= 0)
-                    throw new InvalidAlgorithmParameterException("Edge weight must be > 0: " + time);
+                if (time <= 0) throw new InvalidAlgorithmParameterException("Edge weight must be > 0: " + time);
 
                 newLine.addEdge(u, v, time);
             }
@@ -199,12 +206,8 @@ public class IOHandler {
         metroLineDataList.clear();
         for (Future<MetroLineData> f : futures) {
             MetroLineData mld;
-            try {
-                mld = f.get();
-            }
-            catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException(e);
-            }
+            try { mld = f.get(); }
+            catch (InterruptedException | ExecutionException e) { return; }
 
             if (mld == null) {
                 String fileName = systemName.toUpperCase() + ((!systemName.toUpperCase().endsWith("MTR")) ? ".json" : "MTR.json");
@@ -223,9 +226,7 @@ public class IOHandler {
             if (!parent.exists()) parent.mkdirs();
 
             mapper.writerWithDefaultPrettyPrinter().writeValue(file, data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
     public void writeAll(MetroSystem msys) {
@@ -368,116 +369,62 @@ public class IOHandler {
         if (!fileName.endsWith("MTR")) fileName += "MTR.json";
         else fileName += ".json";
 
-        //try user.home
         String relativePath = thisRoot + fileName;
         File file = new File(relativePath);
         if (file.exists()) {
-            try {
-                return mapper.readValue(file, MetroSystemData.class);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            try { return mapper.readValue(file, MetroSystemData.class); }
+            catch (IOException e) { System.out.println(relativePath + " does not exist"); }
         }
 
         System.out.println("Fell back to classpath");
 
-        //System.err.println("reading " + relativePath + " failed"); //TODO: copying files out of jar + classpath
-        try (InputStream in = getClass().getResourceAsStream("/" + relativePath)) {
-            if (in != null) {
-                return mapper.readValue(in, MetroSystemData.class);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String classpathResourcePath = this.systemName + "/" + fileName;
+        try (InputStream in = getClass().getResourceAsStream("/" + classpathResourcePath)) {
+            if (in != null) return mapper.readValue(in, MetroSystemData.class);
+        } catch (IOException e) { }
 
         return null;
     }
 
     public MetroLineData parseMetroLineJsonData(String jsonFileName) {
+        String lineFileName = systemID + "_Line_" + jsonFileName + ".json";
         String relativePath = thisRoot + systemID + "_Line_" + jsonFileName + ".json";
 
-        //try user.home
         File file = new File(relativePath);
         if (file.exists()) {
-            try {
-                return mapper.readValue(file, MetroLineData.class);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            try { return mapper.readValue(file, MetroLineData.class); }
+            catch (IOException e) { }
         }
 
         System.out.println("Fell back to classpath");
 
-        //try class
-        try (InputStream in = getClass().getResourceAsStream("/" + relativePath)) {
-            if (in != null) {
-                return mapper.readValue(in, MetroLineData.class);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String classpathResourcePath = this.systemName + "/" + lineFileName;
+        try (InputStream in = getClass().getResourceAsStream("/" + classpathResourcePath)) {
+            if (in != null) return mapper.readValue(in, MetroLineData.class);
+        } catch (IOException e) { e.printStackTrace(); }
 
         throw new IllegalStateException("File not read in classpath or filesystem: " + relativePath);
     }
 
     //util
     public static String getAvailableCities() throws IOException {
-        String s = "";
-        Path targetPath = Paths.get(System.getProperty("user.home"), ".Georgebra", "singapore");
-        Files.createDirectories(targetPath);
+        try {
+            File jarFile = new File(IOHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            File executionDir = jarFile.getParentFile();
+            Path rootDir = executionDir.toPath().resolve(ROOT_DATA_NAME);
 
-        //boolean directoryNotFound = false;
-        File rootDir = new File(root);
-        if (!rootDir.exists() || !rootDir.isDirectory()) throw new NotDirectoryException("No such directory");
-
-        File[] directories = rootDir.listFiles(File::isDirectory);
-        /*
-        if (directories == null || directories.length == 0) {
-            try {
-                Files.createDirectories(targetPath);
-                copyResourceFolder("Info/singapore", targetPath);
-                directories = rootDir.listFiles(File::isDirectory);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to copy default Singapore data ", e);
+            if (!Files.exists(rootDir) || !Files.isDirectory(rootDir)) {
+                return "No metro systems available (Create a 'RouteCrafterData' " +
+                        "folder next to jar and add city subfolders to it).";
             }
+
+            File[] directories = rootDir.toFile().listFiles(File::isDirectory);
+            if (directories == null || directories.length == 0) return "No metro systems available";
+
+            ArrayList<String> directoryNames = new ArrayList<>();
+            for (File dir: directories) { directoryNames.add(dir.getName()); }
+            return String.join("\n", directoryNames);
         }
-         */
-
-        if (directories == null || directories.length == 0) return "No metro systems available";
-
-        ArrayList<String> directoryNames = new ArrayList<>();
-        for (File dir: directories) {
-            directoryNames.add(dir.getName());
-        }
-
-        return String.join("\n", directoryNames);
-    }
-
-    private static void copyFromJar(String resourcePath, Path targetPath) throws IOException {
-        ClassLoader classLoader = IOHandler.class.getClassLoader();
-
-        String[] files = {
-                "SINGAPOREMTR.json",
-                "SGMTR_Line_NSL.json",
-                "SGMTR_Line_EWL.json",
-                "SGMTR_Line_NEL.json",
-                "SGMTR_Line_CCL.json",
-                "SGMTR_Line_DTL.json",
-                "SGMTR_Line_TEL.json",
-                "SGMTR_Line_PGLRT.json",
-                "SGMTR_Line_SKLRT.json",
-                "SGMTR_Line_BPLRT.json",
-                "SGMTR_Line_SX.json"
-        };
-
-        for (String file: files) {
-            String resourceFile = resourcePath + "/" + file;
-            try (InputStream is = classLoader.getResourceAsStream(resourceFile)) {
-                if (is != null) {
-                    Path targetFile = targetPath.resolve(file);
-                    Files.copy(is, targetFile, StandardCopyOption.REPLACE_EXISTING);
-                }
-            }
-        }
+        catch (URISyntaxException e) { throw new IOException("Execution path got issue"); }
     }
 }

@@ -61,6 +61,7 @@ public class MyApplication extends Application {
         try {
             AtomicInteger index = new AtomicInteger(0);
             String[] images = {
+                    "/com/example/RouteCrafter.View/tutorial0.png",
                     "/com/example/RouteCrafter.View/tutorial1.png",
                     "/com/example/RouteCrafter.View/tutorial2.png",
                     "/com/example/RouteCrafter.View/tutorial3.png",
@@ -72,7 +73,10 @@ public class MyApplication extends Application {
                     "/com/example/RouteCrafter.View/tutorial9.png"
             };
             String[] messages = {
-                    "Welcome to Tutorial. This is a metro map. Click to continue!",
+                    "Welcome to Tutorial. Click to continue!",
+                    "This is a the Metro Map, which you can select. \n" +
+                            "To load a new Metro Map, go to our repository (In About Me) and download some packages! \n" +
+                            "unzip them into the \"RouteFinderData\" folder next to the jar.",
                     "Stations are represented by circles. Largest circles are MRT \n " +
                             "stations, followed by LRT lines, followed by Miscellaneous\n" +
                             " types (such as Tourism Lines and Maglevs). Click on a station circle to select it.",
