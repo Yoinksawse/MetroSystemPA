@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
 public class MainController {
     //outside fields
     @FXML
-    public StackPane map_container; //TODO
+    public StackPane map_container;
     public VBox rootVBox, lineinfos_vbox;
     public ToolBar selectedstation_infobox;
     public GridPane rootGrid;
@@ -81,9 +81,6 @@ public class MainController {
 
     protected final UtilitiesHandler utils = new UtilitiesHandler(this);
 
-    //TODO 1: make loading the info and generating the path (slow) and writing concurrent with javafx thread
-    //TODO 2: implement file reading from jar and copying to directory.
-    //TODO 3: create jar
     //TODO 4: Do documentation
     //TODO 5: plan script and record video
     //Sunday: revise chinese, do chinese homework
@@ -300,7 +297,6 @@ public class MainController {
         lineinfos_vbox.getChildren().clear();
         cityName = map_city_choice.getText();
 
-        //TODO: multithreading
         Task<Pair<IOHandler, MetroSystem>> inputTask =  new Task<>() {
             @Override
             protected Pair<IOHandler, MetroSystem> call() throws InvalidAlgorithmParameterException, InvalidAttributesException, URISyntaxException, IOException {
@@ -382,7 +378,6 @@ public class MainController {
             return;
         }
 
-        //TODO: multithreading
         Task<Pair<ArrayList<Station>, Integer>> genPathTask =  new Task<>() {
             @Override
             protected Pair<ArrayList<Station>, Integer> call() {
@@ -419,7 +414,6 @@ public class MainController {
             return;
         }
 
-        //TODO: multithreading
         Task<Pair<ArrayList<Station>, Pair<Integer,Integer>>> genPathTask = new Task<>() {
             @Override
             protected Pair<ArrayList<Station>, Pair<Integer,Integer>> call() {
@@ -459,7 +453,6 @@ public class MainController {
 
         msys = (msys == null) ? ioHandler.getMetroSystem() : this.msys;
         if (displayingLeastExchangePath) {
-            //TODO: multithreading
             Task<Pair<ArrayList<Station>, Pair<Integer,Integer>>> genPathTask = new Task<>() {
                 @Override
                 protected Pair<ArrayList<Station>, Pair<Integer,Integer>> call() {
@@ -479,7 +472,6 @@ public class MainController {
             new Thread(genPathTask).start();
         }
         else if (displayingShortestPath) {
-            //TODO: multithreading
             Task<Pair<ArrayList<Station>, Integer>> genPathTask = new Task<>() {
                 @Override
                 protected Pair<ArrayList<Station>, Integer> call() {
