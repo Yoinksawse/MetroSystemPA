@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class MetroSystem implements Graphable {
     private final int MAXN = 505;
-    private final int HEAVY_EDGE_WEIGHT = 10000;
+    public final static int HEAVY_EDGE_WEIGHT = 10000;
     private String cityName;
     private String systemID;
     public int exchangeTime;
@@ -29,7 +29,7 @@ public class MetroSystem implements Graphable {
     private HashMap<String, String> idToStationNameMap = new HashMap<>();
     //ID REFERS TO "NS13", index REFERS TO AN INTEGER FOR THE UTILITY OF THIS CLASS
     //private HashMap<String,ArrayList<Integer>> interchangeGraphReferences = new HashMap<>();
-    private HashMap<String,HashMap<Integer, String>> interchangeGraphReferences = new HashMap<>();
+    private HashMap<String, ArrayList<Pair<Integer, String>>> interchangeGraphReferences = new HashMap<>();
     //<interchangeName, <<theGraphReference, lineOfThisIndex>>
     public final static Pattern systemIDPattern = Pattern.compile("^[a-zA-Z]{1,10}$");
 
@@ -40,7 +40,24 @@ public class MetroSystem implements Graphable {
         this.systemID = systemID;
         this.cityName = cityName;
         this.exchangeTime = averageExchangeTime;
-        graph = new GraphHandler();
+        this.graph = new GraphHandler();
+    }
+
+    public MetroSystem(MetroSystem other) {
+        this.systemID = other.getSystemID();
+        this.cityName = other.getCityName();
+        this.exchangeTime = other.getExchangeTime();
+        this.graph = other.getGraphHandler();
+
+        this.stationList = other.getStationList();
+        this.interchanges = other.getInterchanges();
+        this.metroLineList = other.getLineList();
+
+        this.stationNameToStationMap = other.getStationNameToStationMap();
+        this.stationNameToIndexesMap = other.getStationNameToIndexesMap();
+        this.indexToStationNameMap = other.getIndexToStationNameMap();
+        this.idToStationNameMap = other.getIdToStationNameMap();
+        this.interchangeGraphReferences = other.getInterchangeGraphReferences();
     }
 
     public void addStation(Station newStation) { //this method avoids handling graphs
@@ -71,7 +88,7 @@ public class MetroSystem implements Graphable {
         }
 
         HashMap<String, Integer> existingIndexes = stationNameToIndexesMap.get(newStation.getName());
-        newGraphIndexes.putAll(newGraphIndexes);
+        newGraphIndexes.putAll(existingIndexes);
         stationNameToIndexesMap.put(newStation.getName(), newGraphIndexes);
         for (Map.Entry<String,Integer> lineInfoEntry: newGraphIndexes.entrySet()) {
             indexToStationNameMap.put(lineInfoEntry.getValue(), newStation.getName());
@@ -110,11 +127,6 @@ public class MetroSystem implements Graphable {
                 graph.addEdge(lineIndexEntryU.getValue(), lineIndexEntryV.getValue(), weight);
             }
         }
-    }
-
-    @Override
-    public GraphHandler getGraphHandler() {
-        return this.graph;
     }
 
     public void addLine(MetroLine newMetroLine) {
@@ -164,8 +176,9 @@ public class MetroSystem implements Graphable {
             else { //merging singleStation
                 HashMap<String, Integer> mp = stationNameToIndexesMap.get(newStationName);
                 if (mp == null) mp = new HashMap<>();
-                mp.put(newStationName, oldIndex + newNodeOffset);
+                mp.put(newMetroLine.getLineName(), oldIndex + newNodeOffset);
                 stationNameToIndexesMap.put(newStationName, mp);
+                //System.out.println(stationNameToIndexesMap);
             }
         }
 
@@ -181,22 +194,22 @@ public class MetroSystem implements Graphable {
             Station newStation = stationNameToStationMapLine.get(stationName);
 
             if (newStation instanceof Interchange) {
-                HashMap<Integer, String> interchangeReferences = interchangeGraphReferences.computeIfAbsent(newStation.getName(), k -> new HashMap<>());
-                interchangeReferences.put(otherNd + newNodeOffset, newMetroLine.getLineName());// + newNodeOffset);
-                //gives resultant interchange node reference after graphs be merged
+                ArrayList<Pair<Integer, String>> interchangeReferences = interchangeGraphReferences.computeIfAbsent(newStation.getName(), k -> new ArrayList<>());
+                interchangeReferences.add(new Pair<>(otherNd + newNodeOffset, newMetroLine.getLineName()));// + newNodeOffset);
+                //gives resultant interchange node reference after graphs be merged //TODO
             }
         }
 
         for (Integer thisNd : graphNodesSystem) {
             String stationName = indexToStationNameMap.get(thisNd);
             Station newStation = stationNameToStationMap.get(stationName);
-            if (newStation instanceof Interchange) {
-                HashMap<Integer, String> interchangeReferences = interchangeGraphReferences.get((newStation.getName()));
+            if (newStation instanceof Interchange) { //TODO
+                ArrayList<Pair<Integer, String>> interchangeReferences = interchangeGraphReferences.get((newStation.getName()));
                 if (interchangeReferences == null) {
-                    interchangeReferences = new HashMap<>();
+                    interchangeReferences = new ArrayList<>();
                     interchangeGraphReferences.put(newStation.getName(), interchangeReferences);
                 }
-                interchangeReferences.put(thisNd, newMetroLine.getLineName());// + newNodeOffset);?
+                interchangeReferences.add(new Pair<>(thisNd, newMetroLine.getLineName()));// + newNodeOffset);? //TODO
                 //gives resultant interchange node reference after graphs be merged
                 // (equal to before, since this.graph remain unchanged)
             }
@@ -208,25 +221,27 @@ public class MetroSystem implements Graphable {
         //4. web interchange transfers
         //interchangeGraphReferences: <interchangeName, <<theGraphReference, lineOfThisIndex>>
 
-        HashSet<Pair<Integer, Integer>> newHiddenEdges = new HashSet<>();
-        for (Map.Entry<String, HashMap<Integer,String>> entry: interchangeGraphReferences.entrySet()) {
+        ArrayList<Pair<Integer, Integer>> interchangeInnerEdgesLocal = new ArrayList<>();
+        for (Map.Entry<String, ArrayList<Pair<Integer,String>>> entry: interchangeGraphReferences.entrySet()) {
             //entry is an interchange's info
-            ArrayList<Integer> curInterchangeNodes = new ArrayList<>(entry.getValue().keySet());
+            ArrayList<Pair<Integer, String>> curInterchangeNodesStationName = new ArrayList<>(entry.getValue());
             //generate complete graph to represent free exchange within interchange
-            for (int i = 0; i < curInterchangeNodes.size(); i++) {
-                for (int j = i + 1; j < curInterchangeNodes.size(); j++) {
+            for (int i = 0; i < curInterchangeNodesStationName.size(); i++) {
+                for (int j = i + 1; j < curInterchangeNodesStationName.size(); j++) {
                     //hiddenedge is within station: 3min transfer
-                    int nodeIndexI = curInterchangeNodes.get(i), nodeIndexJ = curInterchangeNodes.get(j);
+                    int nodeIndexI = curInterchangeNodesStationName.get(i).getKey(),
+                            nodeIndexJ = curInterchangeNodesStationName.get(j).getKey();
                     if (nodeIndexI != nodeIndexJ) {
-                        newHiddenEdges.add(new Pair<>(nodeIndexI, nodeIndexJ));
+                        interchangeInnerEdgesLocal.add(new Pair<>(nodeIndexI, nodeIndexJ));
                     }
                 }
             }
         }
 
         //System.out.println(newHiddenEdges);
-        for (Pair<Integer, Integer> pii: newHiddenEdges) {
-            graph.addEdge(pii.getKey(), pii.getValue(), exchangeTime);
+        for (Pair<Integer, Integer> pii: interchangeInnerEdgesLocal) { //TODO
+            graph.addEdge(pii.getKey(), pii.getValue(), exchangeTime); //add edges for both
+            graph.addHeavyEdge(pii.getKey(), pii.getValue()); //heavy edge adj list need to override previous
         }
 
         //5. merge stations
@@ -237,12 +252,37 @@ public class MetroSystem implements Graphable {
         }
     }
 
+    @Override
+    public GraphHandler getGraphHandler() {
+        return this.graph;
+    }
+
+    private HashMap<String,ArrayList<Pair<Integer, String>>> getInterchangeGraphReferences() {
+        return new HashMap<>(this.interchangeGraphReferences);
+    }
+
+    private HashMap<String, HashMap<String, Integer>> getStationNameToIndexesMap() {
+        return new HashMap<>(this.stationNameToIndexesMap);
+    }
+
     public HashSet<Station> getStationList() {
         return new HashSet<>(this.stationList);
     }
 
+    private HashSet<Interchange> getInterchanges() {
+        return this.interchanges;
+    }
+
+    private int getExchangeTime() {
+        return this.exchangeTime;
+    }
+
     public ArrayList<MetroLine> getLineList() {
         return new ArrayList<>(this.metroLineList);
+    }
+
+    public String getSystemID() {
+        return this.systemID;
     }
 
     public String getCityName() {
@@ -257,7 +297,6 @@ public class MetroSystem implements Graphable {
     public HashMap<String, String> getIdToStationNameMap() {
         return this.idToStationNameMap;
     }
-
 
     @Override
     public Station getStationByName(String name) {
@@ -284,29 +323,29 @@ public class MetroSystem implements Graphable {
         this.systemID = systemID;
     }
 
-    public String getSystemID() {
-        return this.systemID;
-    }
+    //station of the path, time, exchanges
+    public Pair<ArrayList<Station>, Pair<Integer,Integer>> genLeastExchangePath(String UStr, String VStr) throws IllegalArgumentException {
+        Pair<ArrayList<Station>,Integer> leastExchangePath;
+        try { leastExchangePath = genShortestPath(UStr, VStr, true); }
+        catch (IllegalArgumentException e) { throw e; }
+        //I don't have the GUI components here to show error in alertbox; so sadly have throw
 
-    //TODO
-    public Pair<ArrayList<Station>, Integer> genLeastExchangePath(String UStr, String VStr, int originalExchangeTime) throws IllegalArgumentException {
-        Pair<ArrayList<Station>,Integer> shortestPath;
-        try {
-            shortestPath = this.genShortestPath(UStr, VStr);
-        }
-        catch (IllegalArgumentException e) {
-            throw e; //I don't have the GUI components here to show error in alertbox; so sadly have throw
-        }
-        int time = shortestPath.getValue(), exchanges = time / HEAVY_EDGE_WEIGHT;
-        time = (time % HEAVY_EDGE_WEIGHT) + exchanges * originalExchangeTime;
+        int time = leastExchangePath.getValue(), exchanges = time / HEAVY_EDGE_WEIGHT;
+        time = (time % HEAVY_EDGE_WEIGHT) + exchanges * this.exchangeTime;
 
-        return new Pair<>(shortestPath.getKey(), time);
+        ArrayList<Station> shortestPathStations = leastExchangePath.getKey();
+
+        return new Pair<>(shortestPathStations, new Pair<>(time, exchanges));
     }
 
     //utils
-    public Pair<ArrayList<Station>, Integer> genShortestPath(String UStr, String VStr) throws IllegalArgumentException{
+    public Pair<ArrayList<Station>, Integer> genShortestPath(String UStr, String VStr) throws IllegalArgumentException {
+        return this.genShortestPath(UStr, VStr, false);
+    }
+
+    public Pair<ArrayList<Station>, Integer> genShortestPath(String UStr, String VStr, boolean generatingLeastExchangePath) throws IllegalArgumentException {
         UStr = UStr.trim(); VStr = VStr.trim();
-        Station u = null, v = null;
+        Station u, v;
         Pattern containDigit = Pattern.compile("[0-9]+");
         Matcher matcherU = containDigit.matcher(UStr);
         Matcher matcherV = containDigit.matcher(VStr);
@@ -314,43 +353,52 @@ public class MetroSystem implements Graphable {
         if (!matcherU.find() && !matcherV.find()) { //Station names do not contain digits
             u = stationNameToStationMap.get(UStr.toLowerCase()); //Standard Format);
             v = stationNameToStationMap.get(VStr.toLowerCase()); //Standard Format);
-            //System.out.println(stationNameToIndexesMap);
-            //System.out.println(indexToStationNameMap);
         }
-        else { //If digits found in both, input is for station IDs; try to find them.
-            String uName = idToStationNameMap.get(UStr);
-            String vName = idToStationNameMap.get(VStr);
-            //System.out.println(uName);
-            //System.out.println(vName);
-            u = stationNameToStationMap.get(uName.toLowerCase()); //Standard Format
-            v = stationNameToStationMap.get(vName.toLowerCase()); //Standard Format
-        } //null ret by get() if not found
+        else return null; //handle this silently...
 
-        ArrayList<Integer> shortestPathGraphNodes;
-        int time = 0, firstStationIndex = 0;
+        ArrayList<Integer> pathGraphNodes = new ArrayList<>();
+        int time = Integer.MAX_VALUE;
         if (u != null && v != null) {
-            HashMap<String,Integer> uIndexes = stationNameToIndexesMap.get(u.getName().toLowerCase()); //Standard Format
-            HashMap<String,Integer> vIndexes = stationNameToIndexesMap.get(v.getName().toLowerCase()); //Standard Format
-            int uIndex = (Integer) uIndexes.values().toArray()[0]; //get any index
-            int vIndex = (Integer) vIndexes.values().toArray()[0];
-            //System.out.println(uIndex + " " + vIndex + ", " + u.getName() + " " + v.getName());
-            shortestPathGraphNodes = graph.dijkstra(uIndex, vIndex);
-            firstStationIndex = uIndex;
-            //System.out.println(shortestPathGraphNodes);
-            //System.out.println(stationNameToIndexesMap);
-            time = graph.getShortestDistance(vIndex); //valid shortly after running the algo
+            HashMap<String,Integer> uIndexesData = stationNameToIndexesMap.get(u.getName().toLowerCase()); //Standard Format
+            HashMap<String,Integer> vIndexesData = stationNameToIndexesMap.get(v.getName().toLowerCase()); //Standard Format
+
+            int uIndex = 0;
+            HashSet<Integer> vIndices = new HashSet<>(vIndexesData.values());
+
+            if (generatingLeastExchangePath) { //minimum exchange computation
+                for (Object uIndexObj: uIndexesData.values().toArray()) {
+                    uIndex = (Integer) uIndexObj;
+                    ArrayList<Integer> curShortestPathGraphNodes = graph.dijkstra(uIndex, vIndices, true);
+                    int curTime = graph.getShortestDistance(graph.MOST_RECENT_END_NODE); //valid shortly after running the algo
+
+                    if (curTime < time) {
+                        time = curTime;
+                        pathGraphNodes = curShortestPathGraphNodes;
+                        System.out.println(pathGraphNodes + ", Time: " + time);
+                    }
+                }
+            }
+            else { //shortest Path computation
+                for (Object uIndexObj: uIndexesData.values().toArray()) {
+                    uIndex = (Integer) uIndexObj;
+                    ArrayList<Integer> curShortestPathGraphNodes = graph.dijkstra(uIndex, vIndices);
+                    int curTime = graph.getShortestDistance(graph.MOST_RECENT_END_NODE); //valid shortly after running the algo
+
+                    if (curTime < time) {
+                        time = curTime;
+                        pathGraphNodes = curShortestPathGraphNodes;
+                        System.out.println(pathGraphNodes + ", Time: " + time);
+                    }
+                }
+            }
         }
         else throw new IllegalArgumentException("Invalid station names: " + ((u == null) ? UStr : "") + " " + ((v == null) ? VStr : ""));
 
         ArrayList<Station> shortestPath = new ArrayList<>();
         String prevStnName = "";
-        String firstStationName = indexToStationNameMap.get(firstStationIndex);
-        for (Integer stationGraphNode : shortestPathGraphNodes) {
+        for (Integer stationGraphNode : pathGraphNodes) {
             String stationName = indexToStationNameMap.get(stationGraphNode);
-            if (stationName.equalsIgnoreCase(prevStnName)) {
-                if (stationName.equalsIgnoreCase(firstStationName)) time -= 3;
-                continue;
-            }
+            if (stationName.equalsIgnoreCase(prevStnName)) continue;
             shortestPath.add(stationNameToStationMap.get(stationName));
             prevStnName = stationName;
         }

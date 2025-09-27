@@ -7,6 +7,7 @@ import com.example.RouteCrafter.Model.StationTypes.Interchange;
 import com.example.RouteCrafter.Model.StationTypes.Station;
 import com.example.RouteCrafter.MyApplication;
 import javafx.beans.binding.Bindings;
+import javafx.concurrent.Task;
 import javafx.scene.control.Alert.*;
 import javafx.animation.FillTransition;
 import javafx.event.EventHandler;
@@ -36,8 +37,8 @@ public class MainController {
     public VBox rootVBox, lineinfos_vbox;
     public ToolBar selectedstation_infobox;
     public GridPane rootGrid;
-    public ColumnConstraints mapDisplayColumnConstraints ;
-    public Button unshow_route, clearmap_button, compute_fastest_button, compute_leastexchange_button, open_infowindow_button, loadmetrosystem_button, save_button;
+    public ColumnConstraints mapDisplayColumnConstraints;
+    public Button unshow_route, clearmap_button, compute_fastest_button, compute_leastexchange_button, open_infowindow_button, loadmetrosystem_button, save_button, showtutorial_button;
     public ToggleButton switch_devmode;
     public CheckBox darkmode_checkbox, displayedgeweight_checkbox;
     public TextField from_station_input_field, to_station_input_field, search_area, map_city_choice;
@@ -51,6 +52,7 @@ public class MainController {
     protected boolean displayingShortestPath;
     protected boolean displayingLeastExchangePath;
     protected Station searchedStation;
+    protected int curExchangeCnt;
 
     protected StackPane mapContainer; //CONTAINERS FOR DATA
     protected Group currentSystem = new Group();
@@ -70,12 +72,19 @@ public class MainController {
 
     protected final double gridSize = 20.0;
     protected static final double MAX_EDGE_WIDTH = 10;
-    protected Pattern stationNamePattern = Pattern.compile("^[\\D]{1,60}$");
+    protected Pattern stationNamePattern = Pattern.compile("^\\D{1,60}$");
     protected final EventHandler<MouseEvent> preventStationEditFilter = e -> {
         if (e.getTarget() instanceof Group || e.getTarget() instanceof Circle) e.consume();
     };
 
     protected final UtilitiesHandler utils = new UtilitiesHandler(this);
+
+    //TODO 1: make loading the info and generating the path (slow) and writing concurrent with javafx thread
+    //TODO 2: implement file reading from jar and copying to directory.
+    //TODO 3: create jar
+    //TODO 4: Do documentation
+    //TODO 5: plan script and record video
+    //Sunday: revise chinese, do chinese homework
 
     //MAINCONTROLLER is meant for relatively more GUI-related operations & event handling
     @FXML
@@ -201,62 +210,29 @@ public class MainController {
         //set helping tooltips
         utils.installTooltip(switch_devmode, "Editing Mode: Enable customisation of your map!\n" +
                 "User Mode: Enable usage of graph to compute and plan routes.", 0.5);
-        /*
-        Tooltip switchEditingModeButtonExplain =
-                new Tooltip("Editing Mode: Enable customisation of your map!\n" +
-                        "User Mode: Enable usage of graph to compute and plan routes.");
-        switchEditingModeButtonExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(switch_devmode, switchEditingModeButtonExplain);
-         */
-
-        Tooltip computeFastestRouteButtonExplain = new Tooltip("Find the fastest route between 2 stations");
-        computeFastestRouteButtonExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(compute_fastest_button, computeFastestRouteButtonExplain);
-
-        Tooltip computeLeastExchangesButtonExplain = new Tooltip("Find the route between 2 stations\n" +
-                "requiring least interchange exchanges (for lazy people)");
-        computeLeastExchangesButtonExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(compute_leastexchange_button, computeLeastExchangesButtonExplain);
-
-        Tooltip clearMapButtonExplain = new Tooltip("Clear Loaded Metro System");
-        clearMapButtonExplain.setShowDelay(Duration.seconds(1));
-        Tooltip.install(clearmap_button, clearMapButtonExplain);
-
-        Tooltip saveMapButtonExplain = new Tooltip("[Only in Editing Mode] Save Edited Metro Map");
-        saveMapButtonExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(save_button, saveMapButtonExplain);
-
-        Tooltip loadMetroSystemButtonExplain = new Tooltip("Load/Reload Data of Given Metro System");
-        loadMetroSystemButtonExplain.setShowDelay(Duration.seconds(0.01));
-        Tooltip.install(loadmetrosystem_button, loadMetroSystemButtonExplain);
-
-        String clearSelectedString = "Press anywhere on the \nMAP to clear your selection";
-        Tooltip howToClearSelectedStationExplain = new Tooltip(clearSelectedString);
-        howToClearSelectedStationExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(selectedstation_infobox, howToClearSelectedStationExplain);
-
-        Tooltip fromStationFieldExplain = new Tooltip("Right click this field and select a station!");
-        fromStationFieldExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(from_station_input_field, fromStationFieldExplain);
-
-        Tooltip toStationFieldExplain = new Tooltip("Right click this field and select a station!");
-        toStationFieldExplain.setShowDelay(Duration.seconds(0.5));
-        Tooltip.install(to_station_input_field, toStationFieldExplain);
+        utils.installTooltip(compute_fastest_button, "Find the fastest route between 2 stations", 0.5);
+        utils.installTooltip(compute_leastexchange_button, "Find the route between 2 stations\n" +
+                "requiring least interchange exchanges (for lazy people)", 0.5);
+        utils.installTooltip(clearmap_button, "Clear Loaded Metro System", 0.75);
+        utils.installTooltip(save_button, "[Only in Editing Mode] Save Edited Metro Map", 0.5);
+        utils.installTooltip(loadmetrosystem_button, "Load/Reload Data of Given Metro System", 0.01);
+        utils.installTooltip(selectedstation_infobox, "Press anywhere on the \nMAP to clear your selection", 0.5);
+        utils.installTooltip(from_station_input_field, "Right click this field and select a station!", 0.5);
+        utils.installTooltip(to_station_input_field, "Right click this field and select a station!", 0.5);
 
         String availableCities = "None";
-        try {
-            availableCities = IOHandler.getAvailableCities();
-        } catch (IOException e) {
-            System.err.println("Fatal Error: Home Directory not found. Filesystem is incompatible.");
-        }
-        Tooltip mapCityChoiceButtonExplain = new Tooltip("Load a Metro System! Detected: \n" + availableCities);
-        loadMetroSystemButtonExplain.setShowDelay(Duration.seconds(0.1));
-        Tooltip.install(map_city_choice, mapCityChoiceButtonExplain);
+        try { availableCities = IOHandler.getAvailableCities(); }
+        catch (IOException e) { System.err.println("Fatal Error: Home Directory not found. Filesystem is incompatible."); }
+        utils.installTooltip(map_city_choice, "Load a Metro System! Detected: \n" + availableCities, 0.1);
     }
 
     @FXML
     protected void showAboutMe() {
         MyApplication.showAboutMe();
+    }
+    @FXML
+    protected void showTutorial() {
+        MyApplication.showTutorial();
     }
 
     @FXML
@@ -383,9 +359,7 @@ public class MainController {
                 station.setX(node.getLayoutX());
                 station.setY(node.getLayoutY());
             }
-            catch (NullPointerException e) {
-                System.out.println("Expected skipping of non-station circle groups occurred.");
-            }
+            catch (NullPointerException e) { }//System.out.println("Expected skipping of non-station circle groups occurred.");
         }
 
         ioHandler.writeAll(this.msys);
@@ -394,45 +368,77 @@ public class MainController {
     @FXML
     protected void displayShortestPath() {
         saveFile();
-        displayingShortestPath = true;
         isMapShown = true;
-        String uStr = from_station_input_field.getText();
-        String vStr = to_station_input_field.getText();
-        int prevExchangeTime = this.ioHandler.getExchangeTime();
-        try { bestPathThis = msys.genShortestPath(uStr, vStr); }
-        catch (IllegalArgumentException e) { utils.showAlert(e.toString(), AlertType.ERROR); return; }
-        displayMap(showEdgeWeight);
+        displayingShortestPath = true;
+        displayingLeastExchangePath = false;
+        String uStr = from_station_input_field.getText().trim();
+        String vStr = to_station_input_field.getText().trim();
+        if (uStr.isEmpty() || vStr.isEmpty()) {
+            utils.showAlert("Please enter valid station names", AlertType.ERROR);
+            return;
+        }
 
-        fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
-        unshow_route.setDisable(false);
-        clearmap_button.setDisable(false);
+        //TODO: multithreading
+        Task<Pair<ArrayList<Station>, Integer>> genPathTask =  new Task<>() {
+            @Override
+            protected Pair<ArrayList<Station>, Integer> call() {
+                return msys.genShortestPath(uStr, vStr);
+            }
+        };
+
+        genPathTask.setOnSucceeded(e -> {
+            bestPathThis = genPathTask.getValue();
+
+            displayMap(showEdgeWeight);
+
+            fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
+            unshow_route.setDisable(false);
+            clearmap_button.setDisable(false);
+        });
+
+        genPathTask.setOnFailed(e -> {
+            utils.showAlert(genPathTask.getException().toString(), AlertType.ERROR);
+        });
+
+        new Thread(genPathTask).start();
     }
     @FXML
     protected void displayLeastExchangePath() {
         saveFile();
-        displayingLeastExchangePath = true;
         isMapShown = true;
-        int prevExchangeTime = this.ioHandler.getExchangeTime();
-        try {
-            this.ioHandler.setExchangeTime(10000);
-            this.msys = ioHandler.generateMetroSystem();
-            String uStr = from_station_input_field.getText();
-            String vStr = to_station_input_field.getText();
-            try { bestPathThis = msys.genLeastExchangePath(uStr, vStr, prevExchangeTime); }
-            catch (IllegalArgumentException e) { utils.showAlert(e.toString(), AlertType.ERROR); return; }
+        displayingLeastExchangePath = true;
+        displayingShortestPath = false;
+        String uStr = from_station_input_field.getText().trim();
+        String vStr = to_station_input_field.getText().trim();
+        if (uStr.isEmpty() || vStr.isEmpty()) {
+            utils.showAlert("Please enter valid station names", AlertType.ERROR);
+            return;
+        }
+
+        //TODO: multithreading
+        Task<Pair<ArrayList<Station>, Pair<Integer,Integer>>> genPathTask = new Task<>() {
+            @Override
+            protected Pair<ArrayList<Station>, Pair<Integer,Integer>> call() {
+                return msys.genLeastExchangePath(uStr, vStr);
+            }
+        };
+
+        genPathTask.setOnSucceeded(e -> {
+            Pair<ArrayList<Station>, Pair<Integer,Integer>> crudePathData = genPathTask.getValue();
+            bestPathThis = new Pair<>(crudePathData.getKey(), crudePathData.getValue().getKey());
+            curExchangeCnt = crudePathData.getValue().getValue();
 
             displayMap(showEdgeWeight);
+
             unshow_route.setDisable(false);
+            fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min\n Exchanges: " + curExchangeCnt);
+        });
 
-            this.ioHandler.setExchangeTime(prevExchangeTime);
-            this.msys = ioHandler.generateMetroSystem();
+        genPathTask.setOnFailed(e -> {
+            utils.showAlert(genPathTask.getException().toString(), AlertType.ERROR);
+        });
 
-            fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
-        }
-        catch (InvalidAlgorithmParameterException | InvalidAttributesException e) {
-            utils.showAlert("Input Exception \n" + e, AlertType.ERROR);
-        }
-        finally { this.ioHandler.setExchangeTime(prevExchangeTime); }
+        new Thread(genPathTask).start();
     }
 
     @FXML
@@ -446,24 +452,51 @@ public class MainController {
 
         uName = from_station_input_field.getText();
         vName = to_station_input_field.getText();
-        Pair<ArrayList<Station>, Integer> path = null;
 
         msys = (msys == null) ? ioHandler.getMetroSystem() : this.msys;
         if (displayingLeastExchangePath) {
-            try { path = msys.genLeastExchangePath(uName, vName, averageExchangeTime); }
-            catch (IllegalArgumentException e) { utils.showAlert(e.toString(), AlertType.ERROR); return; }
+            //TODO: multithreading
+            Task<Pair<ArrayList<Station>, Pair<Integer,Integer>>> genPathTask = new Task<>() {
+                @Override
+                protected Pair<ArrayList<Station>, Pair<Integer,Integer>> call() {
+                    return msys.genLeastExchangePath(uName, vName);
+                }
+            };
+
+            genPathTask.setOnSucceeded(e -> {
+                Pair<ArrayList<Station>, Pair<Integer,Integer>> crudePathData = genPathTask.getValue();
+                bestPathThis = new Pair<>(crudePathData.getKey(), crudePathData.getValue().getKey());
+                curExchangeCnt = crudePathData.getValue().getValue();
+            });
+            genPathTask.setOnFailed(e -> {
+                utils.showAlert(e.toString(), AlertType.ERROR);
+            });
+
+            new Thread(genPathTask).start();
         }
         else if (displayingShortestPath) {
-            try { path = msys.genShortestPath(uName, vName); }
-            catch (IllegalArgumentException e) { utils.showAlert(e.toString(), AlertType.ERROR); return; }
+            //TODO: multithreading
+            Task<Pair<ArrayList<Station>, Integer>> genPathTask = new Task<>() {
+                @Override
+                protected Pair<ArrayList<Station>, Integer> call() {
+                    return msys.genShortestPath(uName, vName);
+                }
+            };
+
+            genPathTask.setOnSucceeded(e -> {
+                bestPathThis = genPathTask.getValue();
+            });
+
+            genPathTask.setOnFailed(e -> {
+                utils.showAlert(genPathTask.getException().toString(), AlertType.ERROR);
+            });
         }
-        if (path != null) bestPathThis = path;
 
         if (bestPathThis != null)
             this.fastestroutetime_textfield.setText("Time required: " + bestPathThis.getValue() + "min");
 
         mapContainer.getChildren().clear();
-        mapContainer.getChildren().add(utils.drawMetroSystem(path, searchedStation, showEdgeWeight));
+        mapContainer.getChildren().add(utils.drawMetroSystem(bestPathThis, searchedStation, showEdgeWeight));
 
         final double[] mouseAnchor = new double[2];
         final double[] initialTranslate = new double[2];

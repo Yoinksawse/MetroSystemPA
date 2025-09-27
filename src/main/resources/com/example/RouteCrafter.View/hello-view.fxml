@@ -36,7 +36,7 @@
                   <Insets top="30.0" />
                </padding>
             </VBox>
-            <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+            <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="781.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                <items>
                   <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="236.0">
                      <columnConstraints>
@@ -44,9 +44,9 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="620.2666473388672" minHeight="18.533348083496094" prefHeight="204.5999725341797" valignment="CENTER" vgrow="NEVER" />
-                        <RowConstraints maxHeight="620.2666473388672" minHeight="0.0" prefHeight="272.2000244140625" valignment="CENTER" vgrow="NEVER" />
-                        <RowConstraints maxHeight="571.7999267578125" minHeight="0.0" prefHeight="184.60000000000002" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="571.7999267578125" minHeight="10.0" prefHeight="130.20000000000005" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="620.2666473388672" minHeight="0.0" prefHeight="277.8" valignment="CENTER" vgrow="NEVER" />
+                        <RowConstraints maxHeight="571.7999267578125" minHeight="0.0" prefHeight="182.60000000000002" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="571.7999267578125" minHeight="10.0" prefHeight="111.80002441406248" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <ToolBar maxHeight="-Infinity" minHeight="-Infinity" prefHeight="182.0" prefWidth="236.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
@@ -98,9 +98,9 @@
                               </GridPane>
                            </items>
                         </ToolBar>
-                        <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="236.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="236.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <items>
-                              <GridPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="220.0">
+                              <GridPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="220.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
@@ -190,7 +190,7 @@
                         </ToolBar>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="236.0" GridPane.rowIndex="3">
                            <children>
-                              <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="48.0" prefWidth="236.0">
+                              <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="42.0" prefWidth="236.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
@@ -201,40 +201,36 @@
                                     <ToggleButton fx:id="switch_devmode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#switchMode" prefHeight="35.0" prefWidth="220.0" text="Switch To Editing Mode" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                  </children>
                               </GridPane>
-                              <GridPane prefHeight="51.0" prefWidth="236.0">
+                              <GridPane prefHeight="62.0" prefWidth="231.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.00000762939453" minWidth="10.0" prefWidth="138.8000259399414" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.19998168945312" minWidth="10.0" prefWidth="97.1999740600586" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.00000762939453" minWidth="10.0" prefWidth="124.80000610351561" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.19998168945312" minWidth="10.0" prefWidth="95.99999389648437" />
                                  </columnConstraints>
                                  <rowConstraints>
                                     <RowConstraints />
-                                    <RowConstraints maxHeight="49.59997558593749" minHeight="10.0" prefHeight="44.79998779296874" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="49.59997558593749" minHeight="10.0" prefHeight="31.399973678588864" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="49.59997558593749" minHeight="10.0" prefHeight="20.20002632141113" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="open_infowindow_button" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showAboutMe" prefHeight="35.0" prefWidth="77.0" text="More Info" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                                    <GridPane maxWidth="-Infinity" prefHeight="62.0" prefWidth="180.0" GridPane.rowIndex="1">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="30.4" minHeight="10.0" prefHeight="28.8000244140625" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="31.9999755859375" minHeight="10.0" prefHeight="31.9999755859375" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <CheckBox fx:id="displayedgeweight_checkbox" mnemonicParsing="false" text="Display Timing (min)">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font></CheckBox>
-                                          <CheckBox fx:id="darkmode_checkbox" mnemonicParsing="false" text="Dark Mode" GridPane.rowIndex="1">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font></CheckBox>
-                                       </children>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </GridPane>
+                                    <Button fx:id="open_infowindow_button" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showAboutMe" prefHeight="24.0" prefWidth="85.0" text="About Me!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                    <CheckBox fx:id="darkmode_checkbox" mnemonicParsing="false" text="Dark Mode" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="displayedgeweight_checkbox" mnemonicParsing="false" text="Display Timing (min)" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <Button fx:id="showtutorial_button" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showTutorial" prefHeight="24.0" prefWidth="85.0" text="Tutorial" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
                                  </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets right="5.0" />
+                                 </VBox.margin>
                               </GridPane>
                            </children>
                         </VBox>

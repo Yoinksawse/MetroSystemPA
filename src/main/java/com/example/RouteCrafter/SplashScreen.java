@@ -8,6 +8,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,7 +19,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Objects;
 
 public class SplashScreen extends Application {
     private static final String SPLASH_GIF = "/com/example/RouteCrafter.View/train-drivethrough.gif";
@@ -27,10 +30,11 @@ public class SplashScreen extends Application {
 
     @Override
     public void start(Stage splashStage) {
+        URI gifURI;
+        try { gifURI = Objects.requireNonNull(getClass().getResource(SPLASH_GIF)).toURI(); }
+        catch (URISyntaxException e) { throw new RuntimeException(e); }
 
-        URL gifURL = getClass().getResource(SPLASH_GIF);
-        assert gifURL != null;
-        Image image = new Image(gifURL.toExternalForm());
+        Image image = new Image(gifURI.toString());
         ImageView imageView = new ImageView(image);
 
         imageView.setFitWidth(SPLASH_WIDTH);
@@ -78,7 +82,7 @@ public class SplashScreen extends Application {
             protected Void call() throws InterruptedException {
                 int steps = 5;
                 //should be exactly for the train to go through
-                int[] loadingTime = {1024, 420, 2048, 911, 1800};
+                int[] loadingTime = {1024, 420, 1729, 911, 1800};
                 String[] messages = {"Eating Cookies...",
                         "Absorbing CPU Power...",
                         "Preventing Expiration...",

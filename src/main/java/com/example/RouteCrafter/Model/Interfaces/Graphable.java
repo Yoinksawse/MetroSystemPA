@@ -6,7 +6,7 @@ import com.example.RouteCrafter.Model.StationTypes.Station;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public interface Graphable {
+public interface Graphable { //can create graph from the class
     void addStation(Station newStation);
     void addEdge(Station u, Station v, int weight);
     GraphHandler getGraphHandler();

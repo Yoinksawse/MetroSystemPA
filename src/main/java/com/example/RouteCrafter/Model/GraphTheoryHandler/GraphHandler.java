@@ -1,5 +1,6 @@
 package com.example.RouteCrafter.Model.GraphTheoryHandler;
 
+import com.example.RouteCrafter.Model.MetroSystem;
 import javafx.util.Pair;
 
 import java.util.*;
@@ -7,7 +8,9 @@ import java.util.*;
 public class GraphHandler {
     private final int MAXN = 505;
     private HashMap<Integer, Integer> adjList[];
+    private HashMap<Integer, Integer> adjListHeavy[];
     private HashSet<Integer> graphNodes = new HashSet<>();
+    public int MOST_RECENT_END_NODE = Integer.MAX_VALUE;
     //private HashMap<Integer, GraphNode> indexToNode = new HashMap<>();
     private int duplicateInterchangesCnt; //specially created class field to assist with interchange; TODO: find a way to remove/rename
     public GraphHandler() {
@@ -15,6 +18,11 @@ public class GraphHandler {
         this.adjList = new HashMap[MAXN];
         for (int i = 0; i < adjList.length; i++) {
             adjList[i] = new HashMap<>();
+        }
+
+        this.adjListHeavy = new HashMap[MAXN];
+        for (int i = 0; i < adjListHeavy.length; i++) {
+            adjListHeavy[i] = new HashMap<>();
         }
 
         duplicateInterchangesCnt = 0;
@@ -36,12 +44,34 @@ public class GraphHandler {
         addNode(u); addNode(v);
         adjList[u].put(v, weight);
         adjList[v].put(u, weight);
+
+        adjListHeavy[u].put(v, weight);
+        adjListHeavy[v].put(u, weight);
+
+        //System.out.println(u + " " + v + " " + weight);
+
+        if (uAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
+        if (vAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
+    }
+
+    public void addHeavyEdge(int u, int v) {
+        if (u >= MAXN || v >= MAXN || u < 0 || v < 0) return;
+        boolean uAlreadyExistsBeforeAddingNode = graphNodes.contains(u);
+        boolean vAlreadyExistsBeforeAddingNode = graphNodes.contains(v);
+        addNode(u); addNode(v);
+        adjListHeavy[u].put(v, MetroSystem.HEAVY_EDGE_WEIGHT); //TODO: will override the value given in addEdge?
+        adjListHeavy[v].put(u, MetroSystem.HEAVY_EDGE_WEIGHT);
+
         if (uAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
         if (vAlreadyExistsBeforeAddingNode) duplicateInterchangesCnt++;
     }
 
     public HashMap<Integer,Integer>[] getAdjList() {
         return this.adjList;
+    }
+
+    public HashMap<Integer,Integer>[] getAdjListHeavy() {
+        return this.adjListHeavy;
     }
 
     public int getNodeCnt() {
@@ -52,7 +82,6 @@ public class GraphHandler {
     }
 
     public HashSet<Integer> getNodes() {
-        //System.out.println("HAHA" + graphNodes.size());
         return new HashSet<>(this.graphNodes);
     }
 
@@ -75,10 +104,16 @@ public class GraphHandler {
         }
     }
 
+    public ArrayList<Integer> dijkstra(int u, HashSet<Integer> v) {
+        return this.dijkstra(u, v, false);
+    }
+
     private int[] dist;
-    public ArrayList<Integer> dijkstra(int u, int v) {
+    public ArrayList<Integer> dijkstra(int u, HashSet<Integer> vIndices, boolean usingHeavyIntersection) {
         if (!graphNodes.contains(u)) throw new IllegalArgumentException("Node u (" + u + ") doesn't exist");
-        if (!graphNodes.contains(v)) throw new IllegalArgumentException("Node v (" + v + ") doesn't exist");
+        for (int v: vIndices) if (!graphNodes.contains(v)) throw new IllegalArgumentException("Node v (" + v + ") doesn't exist");
+
+        HashMap<Integer, Integer>[] adjListToUse = usingHeavyIntersection ? adjListHeavy : adjList;  //TODO
 
         //prevmap for path reconstruction
         HashMap<Integer, Integer> prevMap = new HashMap<>();
@@ -89,6 +124,7 @@ public class GraphHandler {
         pq.add(new Pair<>(0, u));
         dist = new int[MAXN];
         Arrays.fill(dist, Integer.MAX_VALUE); dist[u] = 0;
+        int lastV = Integer.MIN_VALUE;
 
         while (!pq.isEmpty()) {
             Pair<Integer, Integer> current = pq.poll();
@@ -98,9 +134,12 @@ public class GraphHandler {
             if (currentDist != dist[currentNode]) continue; //skip outdated node
 
             visited[currentNode] = true;
-            if (currentNode == v) break;
+            if (vIndices.contains(currentNode)) {
+                lastV = currentNode;
+                break;
+            }
 
-            for (Map.Entry<Integer,Integer> edge : adjList[currentNode].entrySet()) {
+            for (Map.Entry<Integer,Integer> edge : adjListToUse[currentNode].entrySet()) { //TODO
                 int neighbor = edge.getKey();
                 int weight = edge.getValue();
 
@@ -117,26 +156,24 @@ public class GraphHandler {
 
         //reconstruction from end node
         ArrayList<Integer> path = new ArrayList<>();
-
-        Integer cur = v;
-        if (dist[v] == Integer.MAX_VALUE) return path;
-
+        Integer cur = lastV;
+        if (dist[lastV] == Integer.MAX_VALUE) return path;
         while (cur != null) {
             path.add(cur);
             cur = prevMap.get(cur);
         }
-
         Collections.reverse(path);
 
-        //System.out.println(path);
+        MOST_RECENT_END_NODE = lastV;
         return path;
     }
 
-    public int getShortestDistance(int v) {
+    public int getShortestDistance(int v) { //flag saves state shortly after execution of path finding algo
         if (v < 0 || v >= MAXN || dist == null) return Integer.MAX_VALUE;
         return dist[v];
     }
 
+    @Override
     public String toString() {
         String finalString = "";
         for (int i = 0; i < graphNodes.size(); i++) {

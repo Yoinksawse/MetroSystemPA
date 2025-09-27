@@ -9,6 +9,7 @@ import com.example.RouteCrafter.Model.StationTypes.Interchange;
 import com.example.RouteCrafter.Model.StationTypes.SingleStation;
 import com.example.RouteCrafter.Model.StationTypes.Station;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.concurrent.Task;
 import javafx.util.Pair;
 
 import javax.naming.directory.InvalidAttributesException;
@@ -69,7 +70,6 @@ public class IOHandler {
         //prepare data fields
         this.readJson();
         this.msys = generateMetroSystem();
-
         for (Station s: msys.getStationList()) {
             stationNameToCoordinates.put(s.getName().toLowerCase(), new Pair<>(0.0,0.0));
             stationNameToTextCoordinates.put(s.getName().toLowerCase(), new Pair<>(0.0, 0.0));
@@ -81,10 +81,7 @@ public class IOHandler {
     }
     public MetroSystem generateMetroSystem() throws InvalidAlgorithmParameterException, InvalidAttributesException {
         //if(this.msys != null) return this.msys;
-        //get ready base data for metrosystem
         this.msys = new MetroSystem(systemName, exchangeTime, systemID);
-
-        //create stations + lines + stuff -> msys and return
         for (MetroLineData lineData: metroLineDataList) { //iterate lines
             HashMap<String, Station> stationsHashMap = new HashMap<>(); //id:Station
             MetroLine newLine;
